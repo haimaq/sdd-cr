@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.eclipse.org/alf/schema/EventBase/1"
+	attributeFormDefault="unqualified" elementFormDefault="qualified"
+	targetNamespace="http://www.eclipse.org/alf/schema/EventBase/1"
+	version="1.0">
+	<xs:annotation>
+		<xs:documentation>
+			WARNING: PRELIMINARY VERSION SUBJECT TO CHANGE
+		</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation>
+			Copyright Notice The material in this document is Copyright
+			(c) Serena Software, Inc. and others, 2005, 2006, 2007 Terms and
+			Conditions: The Eclipse Foundation makes available all
+			content in this document ("Content"). Unless otherwise
+			indicated below, the Content is provided to you under the
+			terms and conditions of the Eclipse Public License Version
+			1.0 ("EPL"). A copy of the EPL is available at
+			http://www.eclipse.org/legal/epl-v10.html. For purposes of
+			the EPL, "Program" will mean the Content. If you did not
+			receive this Content directly from the Eclipse Foundation,
+			the Content is being redistributed by another party
+			("Redistributor") and different terms and conditions may
+			apply to your use of any object code in the Content. Check
+			the Redistributor's license that was provided with the
+			Content. If you did not receive any such license, contact
+			the Redistributor. Unless otherwise indicated below, the
+			terms and conditions of the EPL still apply to the Content.
+		</xs:documentation>
+	</xs:annotation>
+	<!-- Begin EventBaseTypes -->
+	<xs:complexType name="EventBaseType">
+		<xs:annotation>
+			<xs:documentation>
+				EventBaseType is a container for that portion of an ALF
+				Event that is generally set by the Tool that raises the
+				event.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="EventId" type="SourceEventIdType" />
+			<xs:element name="Timestamp" type="TimestampType" nillable="true"/>
+			<xs:element name="EventType" type="EventTypeType" />
+			<xs:element name="ObjectType" type="ObjectTypeType" />
+			<xs:element name="ObjectId" type="ObjectIdType" />
+			<xs:element name="Source" type="SourceType" />
+			<xs:element name="User" type="CredentialsType" />
+			<xs:element name="EventControl" type="EmBaseType" minOccurs="0"/>
+			<xs:element minOccurs="0" name="BaseExtension"
+				type="BaseExtensionType" />
+		</xs:sequence>
+		<xs:anyAttribute />
+	</xs:complexType>
+	<xs:complexType name="EmBaseType">
+		<xs:annotation>
+			<xs:documentation>
+				EventControlType is a container for that portion of an
+				ALF Event that is generally set by the ALF EventManager.
+				In some cases, ALF compliant tools may set some fields,
+				in particular when the event is a result of an ALF
+				service call to that tool from a ServiceFlow.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="EmEventId" type="EventIdType" />
+			<xs:element name="EmTimestamp" type="TimestampType"/>
+			<xs:element name="PrecedingEmEventId" type="EventIdType" />
+			<xs:element name="ApplicationName"
+				type="ApplicationNameType" />
+			<xs:element name="EventMatchName" type="EventMatchNameType" />
+			<xs:element name="ServiceFlowName"
+				type="ServiceFlowNameType" />
+			<xs:element name="ServiceFlowId" type="ServiceFlowIdType" />
+			<xs:element name="Callback" type="xs:boolean"/>
+			<xs:element name="Environment" type="EnvironmentType" />
+			<xs:element name="EmUser" type="CredentialsType" />
+			<xs:element name="AttemptCount" type="xs:int" minOccurs="0" />
+			<xs:element minOccurs="0" name="EmExtension"
+				type="EmExtensionType" />
+		</xs:sequence>
+		<xs:anyAttribute />
+	</xs:complexType>
+	<xs:simpleType name="SourceEventIdType">
+		<xs:annotation>
+			<xs:documentation>
+				A id that uniquely identifies the Event instance at the source.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EventIdType">
+		<xs:annotation>
+			<xs:documentation>
+				A UUID that uniquely identifies the Event instance.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceFlowIdType">
+		<xs:annotation>
+			<xs:documentation>
+				A UUID that uniquely identifies the ServiceFlow
+				instance.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimestampType">
+		<xs:annotation>
+			<xs:documentation>
+				The date and timestamp when the EventManager received
+				the Event. This element may be left empty by the event
+				emitter, in which case, the Event Manager will supply a
+				value.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:dateTime" />
+	</xs:simpleType>
+	<xs:simpleType name="EventTypeType">
+		<xs:annotation>
+			<xs:documentation>
+				A string indicating the type of event. EventType
+				designates the verb. That is what action happened to the
+				Objects that triggered the event.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<!-- =============  Object that triggered the event  ============= -->
+	<xs:simpleType name="ObjectIdType">
+		<xs:annotation>
+			<xs:documentation>
+				An ObjectId identifies the entity or relationship that
+				changed within a tool. The identifier must be unique for
+				a particular instance of the source tool. The format of
+				this element will not be standardized by ALF. The
+				primary purpose is to allow subsequent ServiceFlows to
+				uniquely identify (and perhaps access) the object that
+				triggered the event.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="ObjectTypeType">
+		<xs:annotation>
+			<xs:documentation>
+				The type of entity involved. Note that the word entity
+				is taken in its broadest sense, referring to whatever
+				artifact a tool was operating on. For example, for a
+				data modeling tool, an E-R relationship is a type of
+				entity (i.e., and ObjectType) to ALF.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<!-- =============  The source (i.e, tool or product) that emitted the event  ============= -->
+	<xs:complexType name="SourceType">
+		<xs:annotation>
+			<xs:documentation>
+				A Source element is a container type that describes the
+				source of the event. ProductCallbackURI is optional for
+				tools that don't provide a listener to accept the
+				callback from a tool or serviceflow at a later time.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Product" type="ProductType" />
+			<xs:element name="ProductVersion" type="ProductVersionType" />
+			<xs:element name="ProductInstance"
+				type="ProductInstanceType" />
+			<xs:element minOccurs="0" maxOccurs="1"
+				name="ProductCallbackURI" type="ProductCallbackURIType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ProductType">
+		<xs:annotation>
+			<xs:documentation>
+				A descriptive name for the tool (i.e., program) that
+				emitted the Event. Note that this is a datatype for a
+				Product element.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="ProductCallbackURIType">
+		<xs:annotation>
+			<xs:documentation>
+				The web service endpoint for tools that support
+				callbacks from ServiceFlows for additional information.
+				The element content is optional for transient tools that
+				may not be running at a later time, and so cannot accept
+				a callback. Constantly running (server) tools that
+				support callbacks should supply a URI.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI" />
+	</xs:simpleType>
+	<xs:simpleType name="ProductInstanceType">
+		<xs:annotation>
+			<xs:documentation>
+				A unique string identifying the instance of the tool.
+				This is useful when there may be multiple instances of a
+				product working within an instance of ALF.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="ProductVersionType">
+		<xs:annotation>
+			<xs:documentation>
+				The release version of the product, such as 5.06
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<!-- ======  User information identifying the security context of the request ======= -->
+	<xs:complexType name="ALFSecurityType">
+		<xs:sequence>
+			<xs:element name="UsernameToken">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Username" type="xs:string" />
+						<xs:element name="Password" type="xs:string" />
+						<xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax" />
+					</xs:sequence>
+					<xs:anyAttribute />
+				</xs:complexType>
+			</xs:element>
+			<xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CredentialsType">
+		<xs:annotation>
+			<xs:documentation>
+				A structure to hold security
+				authentication-relevant data. If present the
+				data within may be encrypted.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ALFSecurity" type="ALFSecurityType" minOccurs="0" maxOccurs="1" />
+			<xs:any maxOccurs="unbounded" minOccurs="0" processContents="lax" namespace="##other" />
+		</xs:sequence>
+		<xs:anyAttribute />
+	</xs:complexType>
+	<xs:simpleType name="ApplicationNameType">
+		<xs:annotation>
+			<xs:documentation>
+				The name of the ALF application to which this event
+				belongs. Depending on the emitting tool, events may or
+				may not be associated with an ALF application. If the
+				emitting tool has the information available then it can
+				provide the ALF ApplicationName as an additional
+				information to distinguish the event.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="EventMatchNameType">
+		<xs:annotation>
+			<xs:documentation>
+				The name of the event match within the ALF Application
+				that matches this event. This fields is set by the Event
+				Manager when it dispatches the event.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="ServiceFlowNameType">
+		<xs:annotation>
+			<xs:documentation>
+				The name of the service flow withing the event match
+				that matches this event. This field is set by the Event
+				Manager when it dispatches the event.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="EnvironmentType">
+		<xs:annotation>
+			<xs:documentation>
+				The name of the environment in which this event is being
+				raised. This element will be set by the ALF Event
+				manager from its installation configuration.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="ALFSchemaVersionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1.0" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="BaseExtensionType">
+		<xs:annotation>
+			<xs:documentation>
+				Place holder type for future extensions of
+				BaseExtensionType
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any maxOccurs="unbounded" namespace="##targetNamespace" processContents="lax" />
+		</xs:sequence>
+		<xs:anyAttribute />
+	</xs:complexType>
+	<xs:complexType name="EmExtensionType">
+		<xs:annotation>
+			<xs:documentation>
+				Place holder type for future extensions of EmBaseType
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any maxOccurs="unbounded" namespace="##targetNamespace" processContents="lax" />
+		</xs:sequence>
+		<xs:anyAttribute />
+	</xs:complexType>
+	<xs:complexType name="DetailExtensionType">
+		<xs:annotation>
+			<xs:documentation>
+				Place holder type for vocabulary based Event payload
+				"details"
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any maxOccurs="unbounded" namespace="##other"
+				processContents="lax" />
+		</xs:sequence>
+		<xs:anyAttribute />
+	</xs:complexType>
+	<xs:complexType name="CustomExtensionType">
+		<xs:annotation>
+			<xs:documentation>
+				Place holder type for custom Event payload "extensions"
+				##other namespace is recommended but ##any is specified allowing more primitive sources
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any maxOccurs="unbounded" namespace="##any"
+				processContents="lax" />
+		</xs:sequence>
+		<xs:anyAttribute />
+	</xs:complexType>
+	<!-- End EventBaseTypes -->
+	<!--  BEGIN ALFEvent -->
+	<xs:complexType name="ALFEventType">
+		<xs:sequence>
+			<xs:element name="Base" type="EventBaseType" />
+			<xs:element minOccurs="0" name="Detail"
+				type="DetailExtensionType" />
+			<xs:element minOccurs="0" name="Extension"
+				type="CustomExtensionType" />
+			<xs:any maxOccurs="unbounded" minOccurs="0"
+				namespace="##other" processContents="lax" />
+		</xs:sequence>
+		<xs:attribute name="version" type="ALFSchemaVersionType"
+			default="1.0" />
+	</xs:complexType>
+	<xs:complexType name="ALFEventResponseType">
+		<xs:sequence>
+			<xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ALFEventWithReplyResponseType">
+		<xs:sequence>
+			<xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!--  END ALFEvent -->
+
+</xs:schema>

@@ -1,0 +1,428 @@
+﻿.ControlStyle, button.ControlStyle, input.ControlStyle[type='text'], label.ControlStyle, select.ControlStyle
+{
+}
+
+.LabelStyle, button.LabelStyle, input.LabelStyle[type='text'], label.LabelStyle, select.LabelStyle
+{
+}
+
+.HyperLinkStyle, button.HyperLinkStyle, input.HyperLinkStyle[type='text'], label.HyperLinkStyle, select.HyperLinkStyle
+{
+  color: #595959;
+}
+
+.GridStyle
+{
+  background-color: Transparent;
+}
+.GridStyle A
+{
+  }
+.GridStyle TD
+{
+  }
+
+.StatePanelText2, button.StatePanelText2, input.StatePanelText2[type='text'], label.StatePanelText2, select.StatePanelText2
+{
+  color: #575551;
+  font-family: Tahoma;
+  font-size: 14pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.ExpanderStyle
+{
+  color: Black;
+  background-color: Transparent;
+  font-family: Arial;
+  font-size: 12pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.StateHeadingStyle, button.StateHeadingStyle, input.StateHeadingStyle[type='text'], label.StateHeadingStyle, select.StateHeadingStyle
+{
+  color: #5C83B4;
+  font-family: Tahoma;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.TabStyle
+{
+  background-color: Transparent;
+}
+
+.PrintSectionStyle
+{
+}
+
+.PrintFormStyle
+{
+}
+
+.StateFormStyle
+{
+  background-color: White;
+}
+
+.TransitionFormStyle
+{
+  background-color: White;
+}
+
+.CancelButton, button.CancelButton, input.CancelButton[type='text'], label.CancelButton, select.CancelButton
+{
+  color: #007CD0;
+  background-color: White;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+button.CancelButton:hover
+{
+  background-color: #F0F0F0;
+}
+
+.SubmitButton, button.SubmitButton, input.SubmitButton[type='text'], label.SubmitButton, select.SubmitButton
+{
+  color: White;
+  background-color: #007CD0;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+button.SubmitButton:hover
+{
+  background-color: #0074C3;
+}
+
+.DarkPanelStyle
+{
+  color: #595959;
+  background-color: #F2F2F2;
+}
+
+.DefaultContainerStyle
+{
+  color: #0072BC;
+  background-color: Transparent;
+  font-family: Arial;
+  font-size: 12pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.TransitionButton, button.TransitionButton, input.TransitionButton[type='text'], label.TransitionButton, select.TransitionButton
+{
+  color: White;
+  font-family: Arial;
+  font-size: 11.25pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.TransitionButtonStyle, button.TransitionButtonStyle, input.TransitionButtonStyle[type='text'], label.TransitionButtonStyle, select.TransitionButtonStyle
+{
+  background-color: White;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+button.TransitionButtonStyle:hover
+{
+  background-color: #F0F0F0;
+}
+
+.CRTitleStyle, button.CRTitleStyle, input.CRTitleStyle[type='text'], label.CRTitleStyle, select.CRTitleStyle
+{
+  color: #0072BC;
+  font-family: Arial;
+  font-size: 16pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.HeaderStyle
+{
+}
+
+.FooterStyle
+{
+  background-color: White;
+}
+
+.LeftSidebarStyle
+{
+}
+
+.RightSidebarStyle
+{
+}
+
+.MainContainerPanel
+{
+  color: #0072BC;
+  background-color: Transparent;
+  font-family: Arial;
+  font-size: 12pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.WarningStyle, button.WarningStyle, input.WarningStyle[type='text'], label.WarningStyle, select.WarningStyle
+{
+  color: #BA1419;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.StateHeadingStyle, button.StateHeadingStyle, input.StateHeadingStyle[type='text'], label.StateHeadingStyle, select.StateHeadingStyle
+{
+  color: #5C83B4;
+}
+
+.TitleStyle, button.TitleStyle, input.TitleStyle[type='text'], label.TitleStyle, select.TitleStyle
+{
+  color: White;
+  font-family: Tahoma;
+  font-size: 12pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.StatePanel
+{
+  background-color: #01A9E7;
+}
+
+.StatePanelText, button.StatePanelText, input.StatePanelText[type='text'], label.StatePanelText, select.StatePanelText
+{
+  color: #01A9E8;
+  font-family: Arial;
+  font-size: 18pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ExpanderStyle12blue
+{
+  color: #0072BC;
+  background-color: Transparent;
+  font-family: Arial;
+  font-size: 12pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.PanelGroupWBackground
+{
+  background-color: #F7F7F7;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.NoWrapControlStyle, button.NoWrapControlStyle, input.NoWrapControlStyle[type='text'], label.NoWrapControlStyle, select.NoWrapControlStyle
+{
+}
+
+.GroupBoxWBorder
+{
+  color: #5C83B4;
+  background-color: Transparent;
+  font-family: Tahoma;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.loadingMsg
+{
+  background-color: #FFF1A8;
+  padding: 10px 10px 10px 10px;
+}
+
+.errorMsg
+{
+  background-color: #FFAFBB;
+  padding: 10px 10px 10px 10px;
+}
+
+
+.emptyMsg
+{
+  background-color: #E0ECFF;
+  padding: 10px 10px 10px 10px;
+}
+
+.sectionLabelFirst
+{
+  border-left: 1px solid #d0d0cd;
+  border-right: 1px solid #d0d0cd;
+}
+
+.contentSection2
+{
+  background-color: white;
+  border-left: 1px solid #DCD9D2;
+  border-right: 1px solid #DCD9D2;
+  border-bottom: 1px solid #DCD9D2;
+}
+
+.contentSectionCustom
+{
+  border-left: 1px solid #d0d0cd;
+  border-right: 1px solid #d0d0cd;
+}
+
+.hoverHelpLinkText_COMMENTED
+{
+  border-bottom: 1px dashed #929292;
+}
+
+TD.uline
+{
+  border-bottom: 1px solid #F3F1E9;
+}
+
+TD.uline2, td[uline2]
+{
+  border-left: 20px solid transparent;
+  border-bottom: 1px solid #F3F1E9;
+}
+
+TD.noline2, td[noline2]
+{
+  border-left: none;
+}
+
+.contentSectionSCH
+{
+  background-color: transparent;
+}
+
+.contentSection
+{
+  background-color: transparent;
+}
+
+.gridrowpointer
+{
+  cursor: pointer;
+}
+
+#CustomErrorMsg
+{
+  padding-left: 16px;
+}
+
+/* Custom Forms Style Rework */
+.captionBar
+{
+}
+
+.captionBarLabelContainer
+{
+  background-color: #E4E1D0;
+  border-left: 1px solid #d0d0cd;
+  border-right: 1px solid #d0d0cd;
+  padding: 0px 4px 4px 4px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.captionBarLabel
+{
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.unselectable
+{
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.grid
+{
+  font-size: 8.25pt;
+}
+
+.gridRow
+{
+  background-color: #FFFFFF;
+}
+
+.gridRowAlternate
+{
+  background-color: #F7F4EB;
+}
+
+.gridrowhighlight
+{
+  background-color: #C8C5B5;
+}
+
+.gridrowselect
+{
+  background-color: #3399FF;
+  color: #FFFFFF;
+}
+
+.gridrowselect.gridrowhighlight
+{
+  background-color: #3182DB;
+  color: #FFFFFF;
+}
+
+.gridrowselect A
+{
+  color: #FFFFFF;
+}
+
+.gridColumn
+{
+  border-left: 2px solid white;
+  font-weight: bold;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  text-align: left;
+  white-space: nowrap;
+}
+.gridColumn.firstGridColumn
+{
+  border-left: none;
+}
+
+.gridColumnSort A
+{
+  text-decoration: none;
+}
+
+.gridColumnSort A:hover
+{
+  text-decoration: underline;
+}
+
+.gridCell
+{
+  padding-left: 5px;
+  vertical-align: top;
+}

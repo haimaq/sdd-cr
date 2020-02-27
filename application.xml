@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application ID="29a03ba6-c257-47fa-b6b2-b43f5a385e60" type="Serena.Studio.Framework.ObjectModel.ModelApplication" xmlns="http://www.serena.com/vail/definition">
+	<Name>SDD CRS</Name>
+	<Description />
+	<Revision />
+	<Copyright />
+	<SbmVersion>11.3.1</SbmVersion>
+	<ProcessModel ID="a65e4989-ee65-4854-a518-395e91a5e4b8" definition="teamtrack/a65e4989-ee65-4854-a518-395e91a5e4b8/definition.xml" endpoints="teamtrack/a65e4989-ee65-4854-a518-395e91a5e4b8/endpoints.xml" type="Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution" designID="a65e4989-ee65-4854-a518-395e91a5e4b8">
+		<Name>CRS Change Requests</Name>
+		<Description />
+		<RootPath>teamtrack/a65e4989-ee65-4854-a518-395e91a5e4b8/</RootPath>
+	</ProcessModel>
+	<ProcessModel ID="1b7f1aa3-25b5-446a-a05d-78b8d3bc48aa" definition="teamtrack/1b7f1aa3-25b5-446a-a05d-78b8d3bc48aa/definition.xml" endpoints="teamtrack/1b7f1aa3-25b5-446a-a05d-78b8d3bc48aa/endpoints.xml" type="Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution" designID="1b7f1aa3-25b5-446a-a05d-78b8d3bc48aa">
+		<Name>CRS Tasks</Name>
+		<Description />
+		<RootPath>teamtrack/1b7f1aa3-25b5-446a-a05d-78b8d3bc48aa/</RootPath>
+	</ProcessModel>
+	<Dependency ID="00000002-0000-003c-10a4-c358TTUPGRAD" type="Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution" designID="00000002-0000-003c-10a4-c358TTUPGRAD" disabled="false">
+		<Name>Delivery Management</Name>
+		<SourceApplicationID>00000002-0000-0083-10a4-c358TTUPGRAD</SourceApplicationID>
+		<SourceApplicationName>Delivery Management</SourceApplicationName>
+		<SourceVersion>2</SourceVersion>
+	</Dependency>
+	<Dependency ID="44a802a5-0a61-4d85-ad09-bfa3ac4fa076" type="Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution" designID="44a802a5-0a61-4d85-ad09-bfa3ac4fa076" disabled="false">
+		<Name>SDD Global Application Environ</Name>
+		<SourceApplicationID>e5432f59-c12c-4297-9b6b-725bd239e774</SourceApplicationID>
+		<SourceApplicationName>DHIMS Global Auxiliary Mashup</SourceApplicationName>
+		<SourceVersion>1</SourceVersion>
+	</Dependency>
+	<Dependency ID="d9d4b216-8509-49fd-9ddb-4e3590df7893" type="Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution" designID="d9d4b216-8509-49fd-9ddb-4e3590df7893" disabled="false">
+		<Name>SDD Products</Name>
+		<SourceApplicationID>de1d99f1-c76e-415f-8d00-2ce84d0e3b38</SourceApplicationID>
+		<SourceApplicationName>SDD Products</SourceApplicationName>
+		<SourceVersion>1</SourceVersion>
+	</Dependency>
+	<Dependency ID="global-72d31617-f847-4551-9abd-e8270b61a1b1" type="Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution" designID="global-72d31617-f847-4551-9abd-e8270b61a1b1" disabled="false">
+		<Name>Global Application (SBM 11_3 DEV)</Name>
+		<SourceApplicationID>global-ced325b7-1ede-4d92-9896-bf60cb02bfde</SourceApplicationID>
+		<SourceApplicationName>Global Process App (SBM 11_3 DEV)</SourceApplicationName>
+		<SourceVersion>2</SourceVersion>
+	</Dependency>
+	<Dependency ID="a9b23c65-3fae-4d28-b3c4-31a8ececfae6" type="Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution" designID="a9b23c65-3fae-4d28-b3c4-31a8ececfae6" disabled="false">
+		<Name>SDD Change Packages</Name>
+		<SourceApplicationID>84017ed8-5c93-4dc1-b99b-1ecb241d79f0</SourceApplicationID>
+		<SourceApplicationName>SDD CP</SourceApplicationName>
+		<SourceVersion>24</SourceVersion>
+	</Dependency>
+	<Dependency ID="7ede7a9e-1e4c-4ad3-994f-105db49bc8ee" type="Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution" designID="7ede7a9e-1e4c-4ad3-994f-105db49bc8ee" disabled="false">
+		<Name>Release Packages</Name>
+		<SourceApplicationID>9d2fd3b4-65b0-421c-94e1-bdb90b6db76b</SourceApplicationID>
+		<SourceApplicationName>Release Management</SourceApplicationName>
+		<SourceVersion>8</SourceVersion>
+	</Dependency>
+	<BusinessSolution ID="ac6b53d7-3101-4b0f-bd61-6476bf37144e">
+		<Name>SDD CRS</Name>
+		<ShortName>SDD CRS</ShortName>
+		<Description />
+		<Version>1.0</Version>
+		<ImageName>responsive.png</ImageName>
+		<Image>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</Image>
+	</BusinessSolution>
+</Application>

@@ -1,0 +1,82 @@
+add_global_const("CM_ANALYST", "CM_ANALYST_FLD");
+add_global_const("CM_MANAGER", "CM_MANAGER_FLD");
+
+add_global_const("DEVELOPER", "DEVELOPER_FLD");
+add_global_const("DEVELOPMENT_MANAGER", "DEVELOPMENT_MANAGER_FLD");
+
+add_global_const("ISSM", "ISSM_FLD");
+add_global_const("ISSO", "ISSO_FLD");
+add_global_const("OPS_GOV_LEAD", "OPS_GOV_LEAD_FLD");
+add_global_const("PROGRAM_MANAGER", "PROGRAM_MANAGER_FLD");
+add_global_const("PROJECT_ANALYST_CTR", "PROJECT_ANALYST_CTR_FLD");
+add_global_const("PROJECT_CONTROLLER", "PROJECT_CONTROLLER_FLD");
+add_global_const("PROJECT_MANAGER_GOV", "PROJECT_MANAGER_GOV_FLD");
+add_global_const("REQUIREMENTS_ANALYST", "REQUIREMENTS_ANALYST_FLD");
+add_global_const("SYSTEM_ENGINEER_CTR", "SYSTEM_ENGINEER_CTR_FLD");
+add_global_const("SYSTEM_ENGINEER_GOV", "SYSTEM_ENGINEER_GOV_FLD");
+add_global_const("TEST_COORDINATOR", "TEST_COORDINATOR_FLD");
+add_global_const("TEST_LEAD_CTR", "TEST_LEAD_CTR_FLD");
+add_global_const("TEST_LEAD_GOV", "TEST_LEAD_GOV_FLD");
+add_global_const("TESTER", "TESTER_FLD");
+
+add_global_const("AFFECTED_USER_LIST", "AFFECTED_USER_LIST_FLD");
+add_global_const("AFFECTED_USER", "AFFECTED_USER_FLD");
+add_global_const("ASSIGNEE_ID", "ASSIGNEE_ID_FLD");
+add_global_const("REPORTED_BY", "REPORTED_BY_FLD");
+
+add_global_const("CHANGE_REQUEST_TEAM", "CHANGE_REQUEST_TEAM_FLD");
+add_global_const("CM_TEAM", "CM_TEAM_FLD");
+add_global_const("OPS_TEAM", "OPS_TEAM_FLD");
+add_global_const("PROJECT_TEAM", "PROJECT_TEAM_FLD");
+add_global_const("REQUIREMENTS_TEAM", "REQUIREMENTS_TEAM_FLD");
+add_global_const("TEST_TEAM", "TEST_TEAM_FLD");
+add_global_const("VENDOR_TEAM", "VENDOR_TEAM_FLD");
+
+add_global_const("MREL_PRODUCTS", "MREL_PRODUCTS_FLD");
+add_global_const("MREL_VENDORS", "MREL_VENDORS_FLD");
+add_global_const("MREL_TASKS", "MREL_TASKS_FLD");
+
+add_global_const("SREL_CHANGE_PACKAGE", "SREL_CHANGE_PACKAGE_FLD");
+add_global_const("SREL_EPIC", "SREL_EPIC_FLD");
+add_global_const("SREL_PRODUCT", "SREL_PRODUCT_FLD");
+add_global_const("SREL_BRANCH", "SREL_BRANCH_FLD_PRODTBL");
+
+add_global_const( "[none]", "NONE_FOUND" );
+
+
+
+
+add_global_const( "CM_MANAGER", "CM_MANAGER_FLD_PRODTBL");  
+add_global_const( "CM_ANALYST", "CM_ANALYST_FLD_PRODTBL"); 
+add_global_const( "CM_TEAM", "CM_TEAM_FLD_PRODTBL");
+
+add_global_const( "PROJECT_TECH_ENG_LEAD_CTR", "PROJECT_TECH_LEAD_CTR_FLD_PRODTBL");  //get Project TechLead  -- Project Tech/Eng Lead (CTR)
+add_global_const( "PROJECT_COORDINATOR", "PROJECT_COORDINATOR_FLD_PRODTBL");  //get Project Officer 
+add_global_const( "PROJECT_CONTROLLER", "PROJECT_CONTROLLER_FLD_PRODTBL");  //get Project Controller
+add_global_const( "PROJECT_TEAM", "PROJECT_TEAM_FLD_PRODTBL");
+
+add_global_const( "VENDOR_DEVELOPER", "VENDOR_DEVELOPER_FLD_PRODTBL");  //get Vendor CM
+add_global_const( "VENDOR_MANAGER", "VENDOR_MANAGER_FLD_PRODTBL");  //get Vendor PM
+add_global_const( "VENDOR_TEAM", "VENDOR_TEAM_FLD_PRODTBL");
+
+add_global_const( "TEST_COORDINATOR", "TEST_COORDINATOR_FLD_PRODTBL");  //get Vendor PM
+add_global_const( "QA_TEST_ENGINEER", "QA_TEST_ENGINEER_FLD_PRODTBL");  //get Vendor PM
+add_global_const( "QA_TEST_LEAD_CTR", "QA_TEST_LEAD_CTR_FLD_PRODTBL");  //TEST CTR Lead
+add_global_const( "QA_TEST_LEAD_GOV", "QA_TEST_LEAD_GOV_FLD_PRODTBL");  //TEST GOV Lead
+add_global_const( "QA_TEAM", "QA_TEAM_FLD_PRODTBL");
+
+
+add_global_const( "PROGRAM_MANAGER", "PROGRAM_MANAGER_FLD_PRODTBL");  //get Program Manager 
+add_global_const( "PROJECT_OFFICER", "PROJECT_OFFICER_FLD_PRODTBL");  //get Project Officer 
+add_global_const( "SYSTEM_ENGINEER_GOV", "SYSTEM_ENGINEER_GOV_FLD_PRODTBL"); //get System Engineer (SYSTEM_ENGINEER)
+add_global_const( "ISSM", "ISSM_FLD_PRODTBL");  //get Security Analyst (SECURITY_ENGINEER)
+add_global_const( "ISSO", "ISSO_FLD_PRODTBL");  //get IA Analyst
+
+add_global_const( "OPS_GOV_LEAD", "OPS_GOV_LEAD_FLD_PRODTBL");  //get OPS Govt Lead
+add_global_const( "OPS_TEAM", "OPS_TEAM_FLD_PRODTBL");
+
+add_global_const( "REQUIREMENTS_ANALYST", "REQUIREMENTS_ANALYST_FLD_PRODTBL");
+add_global_const( "REQUIREMENTS_TEAM", "REQUIREMENTS_TEAM_FLD_PRODTBL");
+
+add_global_const( "VENDORS", "VENDORS_FLD_PRODTBL");  //get Vendors multi-rel
+add_global_const( "VELOCITY", "VELOCITY_FLD_PRODTBL");  //get Vendors multi-rel

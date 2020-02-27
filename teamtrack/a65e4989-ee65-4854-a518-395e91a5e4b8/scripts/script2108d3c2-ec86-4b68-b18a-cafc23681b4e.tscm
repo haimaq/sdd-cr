@@ -1,0 +1,43 @@
+include("app.ChangeRequests.Constants");
+
+def SetRequester() {
+	var ret = Variant();
+	Shell.Item().SetFieldValue("SUBMITTER",Shell.User().GetId());
+	Shell.Item().SetFieldValue(ASSIGNEE_FLD,Shell.User().GetId());
+	Shell.Item().SetFieldValue(REPORTED_BY_FLD,Shell.User().GetId());
+	return ret;
+}
+
+def ValidateRequester() {
+	var ret = Variant();
+	var iSubmitter = Variant();
+
+	Shell.Item().GetFieldValue("SUBMITTER",iSubmitter);
+	if ( iSubmitter=="" ) {
+		ret="SUBMITTER: No Valid User. ";
+	}
+	Shell.Item().GetFieldValue(ASSIGNEE_FLD,iSubmitter);
+	if ( iSubmitter=="" ) {
+		ret="ASSIGNEE: No Valid User. ";
+	}
+		Shell.Item().GetFieldValue(REPORTED_BY_FLD,iSubmitter);
+	if ( iSubmitter=="" ) {
+		ret="REPORTED_BY: No Valid User. ";
+	}
+	return ret;
+}
+
+global errorMsg;
+if (errorMsg.is_var_undef()) { errorMsg = ""; } // only initialize g2 once, if global decl hit more than once
+global sSecOwners;
+if (sSecOwners.is_var_undef()) {  sSecOwners = ","; }
+
+global retVal = Variant();
+global productRecord = Variant();
+global readOk = Variant();
+global fldValue = Variant();
+global sOutput = Variant();
+
+SetRequester();
+sOutput=ValidateRequester() ;
+Shell.RedoMessage() = sOutput;

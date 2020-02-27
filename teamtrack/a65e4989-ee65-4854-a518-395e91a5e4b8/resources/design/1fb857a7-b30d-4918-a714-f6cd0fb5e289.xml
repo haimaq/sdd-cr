@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FormLogic>
+  <Categories>
+    <Category name="SOO_Actions">SOO Actions</Category>
+    <Category name="SOO_Conditions">SOO Conditions</Category>
+    <Category name="SOO_Events">SOO Events</Category>
+  </Categories>
+  <Restrictions>
+    <Restriction name="SOO_ZoomedNotZoomed">
+      <Value>zoomed</Value>
+      <Value>not zoomed</Value>
+    </Restriction>
+    <Restriction name="SOO_ShellList">
+      <Value>Request Center</Value>
+      <Value>Demand Center</Value>
+    </Restriction>
+    <Restriction name="SOO_WithWithout">
+      <Value>with</Value>
+      <Value>without</Value>
+    </Restriction>
+    <Restriction name="SOO_TabOptions">
+      <Value>Grey Bar</Value>
+      <Value>Wizard</Value>
+    </Restriction>
+    <Restriction name="SOO_AddRemoveOptions">
+      <Value>Add</Value>
+      <Value>Remove</Value>
+    </Restriction>
+
+    <Restriction name="SOO_DateOptions">
+      <Value>later than</Value>
+      <Value>the same date or later than</Value>
+    </Restriction>
+    <Restriction name="SOO_ShowHideOptions">
+      <Value>Show</Value>
+      <Value>Hide</Value>
+    </Restriction>
+    <Restriction name="SOO_CornerOptions">
+      <Value>2px</Value>
+      <Value>4px</Value>
+      <Value>6px</Value>
+      <Value>8px</Value>
+      <Value>10px</Value>
+    </Restriction>
+
+
+    <Restriction name="SOO_ApplicationList">
+      <Value>SSM - Asset Management</Value>
+      <Value>SSM - Incident Management</Value>
+      <Value>SSM - Change Management</Value>
+      <Value>SSM - Problem Management</Value>
+      <Value>SSM - Configuration Management System</Value>
+      <Value>SRC - Service Request</Value>
+      <Value>SRC - Knowledge Management</Value>
+      <Value>SRC - Starter Pack</Value>
+    </Restriction>
+
+    <Restriction name="SOO_Plugins">
+      <Value>Relational Grid</Value>
+      <Value>CI Type Chooser</Value>
+      <Value>Image Picker</Value>
+      <Value>Impact Analysis</Value>
+    </Restriction>
+  </Restrictions>
+
+  <!--
+  <RegularExpressions>
+    <RegularExpression name="XXX" ignoreCase="true" description="XXX">
+      <![CDATA[^XXX$]]>
+    </RegularExpression>
+  </RegularExpressions>
+ -->
+
+  <!-- Events -->
+  <Events>
+    <Event name="event_SOONow" category="SOO_Events" display="execute immediately">
+      <Prototype>
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+         _actionName();
+        ]]>
+      </Implementation>
+    </Event>
+  </Events>
+
+
+  <!-- Conditions -->
+  <Conditions>
+
+    <Condition name="condition_applicationDeployed" category="SOO_Conditions" display="process application [SOO_ApplicationList] is deployed" description="an SOO process application is deployed">
+      <Prototype>
+        <Param position="0" name="operator" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        
+        switch(operator) {
+	        case "SSM - Incident Management":
+		        return SOO.Util.isIncidentManagementDeployed();
+				
+			case "SSM - Asset Management":
+		        return SOO.Util.isAssetManagementDeployed();
+
+	        case "SSM - Change Management":
+		        return SOO.Util.isChangeManagementDeployed();
+
+	        case "SSM - Problem Management":
+		        return SOO.Util.isProblemManagementDeployed();
+
+	        case "SSM - Configuration Management System":
+		        return SOO.Util.isConfigurationManagementSystemDeployed();
+	
+	        case "SRC - Service Request":
+		        return SOO.Util.isServiceRequestDeployed();
+
+	        case "SRC - Knowledge Management":
+		        return SOO.Util.isKnowledgeManagementDeployed();
+
+	        case "SRC - Starter Pack":
+		        return SOO.Util.isStarterPackDeployed();
+
+	        case "SDM - Demand Plan":
+		        return SOO.Util.isDemandPlanDeployed();
+
+	        default:
+		        return false;
+        }
+        
+        ]]>
+      </Implementation>
+    </Condition>
+
+    <Condition name="condition_SOOFormZoomed" category="SOO_Conditions" display="this form is [SOO_ZoomedNotZoomed]" description="this form is zoomed/not zoomed">
+      <Prototype>
+        <Param position="0" name="operator" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        return (operator == "zoomed") ? SOO.ShellFormatting.isZoomedFrame() : !SOO.ShellFormatting.isZoomedFrame();
+        
+        ]]>
+      </Implementation>
+    </Condition>
+
+    <Condition name="condition_SOOInShell" category="SOO_Conditions" display="this form is in [SOO_ShellList] shell" description="this form is in a shell">
+      <Prototype>
+        <Param position="0" name="operator" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        
+        if(operator == "Request Center") {
+          return SOO.ShellFormatting.isInSrp();
+        }
+        else if(operator == "Demand Center") {
+          return SOO.ShellFormatting.isInSdc();
+        }
+        else {
+          return false;
+        }
+        
+        ]]>
+      </Implementation>
+    </Condition>
+    <Condition name="condition_SOOUserInList" category="SOO_Conditions" display="current user is in {Field.MultipleUser}" description="current user is selected in multiuser field">
+      <Prototype>
+        <Param position="0" name="source" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        
+         var curruser = $USERID();
+
+          return SOO.CustomFormActions.isInList(source, curruser);
+        
+        ]]>
+      </Implementation>
+    </Condition>
+    <!-- Added condition_SOOCompareDates in 4.5 -->
+    <Condition name="condition_SOOCompareDates" category="SOO_Conditions" display="{Field.DateTime} is [SOO_DateOptions] {Field.DateTime } " description="format and compare two date fields">
+      <Prototype>
+        <Param position="0" name="date1" />
+        <Param position="1" name="operator" />
+        <Param position="2" name="date2" />
+        <!-- comment out this and added var line below for testing <Param position="2" name="date2" /> -->
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        
+		if(operator == "later than") {
+         return SOO.CustomFormActions.compareDateTimes(date1, date2, "greater");
+        }
+        else {
+           return SOO.CustomFormActions.compareDateTimes(date1, date2, "equalorgreater");
+        }
+                
+        
+        ]]>
+      </Implementation>
+    </Condition>
+  </Conditions>
+
+  <!-- Actions -->
+  <Actions>
+    <Action name="action_SOOFormFormat" category="SOO_Actions" display="do SOO form formatting" description="do SOO form formatting">
+      <Prototype>
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        SOO.ShellFormatting.formatSOOForm();
+        
+        ]]>
+      </Implementation>
+    </Action>
+
+    <Action name="action_SOOLoadUtils" category="SOO_Actions" display="initialize SOO utils" description="initialize SOO utils">
+      <Prototype>
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        SOO.ShellFormatting.init();
+        
+        ]]>
+      </Implementation>
+    </Action>
+
+    <Action name="action_SOOLoadPlugin" category="SOO_Actions" display="load SOO [SOO_Plugins] plugin" description="load SOO plugin">
+      <Prototype>
+        <Param position="0" name="operator" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        
+        if(operator == "Relational Grid") {
+          SOO.Plugins.RelationalGrid.load();
+        }
+        else if(operator == "CI Type Chooser") {
+          SOO.Plugins.CITypeChooser.load();
+        }
+        else if(operator == "Image Picker") {
+          SOO.Plugins.ImagePicker.load();
+        }
+        else if(operator == "Impact Analysis") {
+          SOO.Plugins.ImpactAnalysis.load();
+        }
+        
+        ]]>
+      </Implementation>
+    </Action>
+
+    <Action name="action_SOOSetupMoreActions" category="SOO_Actions" display="add more actions widget to {ActionControl}" description="add more actions widget to an action control">
+      <Prototype>
+        <Param position="0" name="source" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+          //SBMSOL.FormUtil.MoreActions.setupMoreActions(source);
+
+        SOO.ShellFormatting.MoreActions.setupMoreActions(source);
+        
+        
+        ]]>
+      </Implementation>
+    </Action>
+
+    <Action name="action_SOOFormatTab" category="SOO_Actions" display="format {TabControl} with [SOO_TabOptions] style" description="format a tab with new tab style">
+      <Prototype>
+        <Param position="0" name="source" />
+        <Param position="1" name="operator" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        
+        if(operator == "Wizard") {
+          return SOO.ShellFormatting.Tabs.applyNewWizardStyle(source);
+        }
+        else if(operator == "Grey Bar") {
+          return SOO.ShellFormatting.Tabs.applyNewTabStyle(source);
+        }
+        else {
+          return false
+       ;
+        }
+        
+        ]]>
+      </Implementation>
+    </Action>
+
+
+    <Action name="action_SOOToggleSidebar" category="SOO_Actions" display="toggle sidebar control" description="toggle sidebar control">
+      <Prototype>
+        <!-- Param position="0" name="option" / -->
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+       
+
+        //var animate = (option == "with");
+        SOO.ShellFormatting.Sidebar.toggleSidebar(false);
+        
+        ]]>
+      </Implementation>
+    </Action>
+
+    <Action name="action_SOOCollapseSidebar" category="SOO_Actions" display="collapse sidebar control" description="collapse sidebar control">
+      <Prototype>
+        <!-- Param position="0" name="option" / -->
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        //var animate = (option == "with");
+        SOO.ShellFormatting.Sidebar.collapse(false);
+        
+        ]]>
+      </Implementation>
+    </Action>
+
+    <Action name="action_SOOExpandSidebar" category="SOO_Actions" display="expand sidebar control" description="expand sidebar control">
+      <Prototype>
+        <!-- Param position="0" name="option" / -->
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        //var animate = (option == "with");
+        SOO.ShellFormatting.Sidebar.expand(false);
+        
+        ]]>
+      </Implementation>
+    </Action>
+
+    <Action name="action_SOOAddUserToMultiSelect" category="SOO_Actions" display="[SOO_AddRemoveOptions] current user to/from {Field.MultipleUser}" description="add/remove current user from multiuser field">
+      <Prototype>
+
+        <Param position="0" name="operator" />
+        <Param position="1" name="source" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        
+        var curruser = $USERID();
+        if(operator == "Add") {
+          return SOO.CustomFormActions.addRemoveUsers(source, true, curruser);
+        }
+        else if(operator == "Remove") {
+          return SOO.CustomFormActions.addRemoveUsers(source, false, curruser);
+        }
+        else {
+          return false
+       ;
+        }
+        
+        ]]>
+      </Implementation>
+    </Action>
+    <Action name="action_SOOCopyFieldValues" category="SOO_Actions" display="Copy {Field} value to {Field} " description="copy values from one field to another">
+      <Prototype>
+
+        <Param position="0" name="source" />
+        <Param position="1" name="target" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        
+       SetFieldValue(target, GetFieldValue(source))
+        
+        ]]>
+      </Implementation>
+    </Action>
+    <Action name="action_SOOShowHideLabels" category="SOO_Actions" display="[SOO_ShowHideOptions] {Field} label" description="show or hide label associated with the field">
+      <Prototype>
+
+        <Param position="0" name="operator" />
+        <Param position="1" name="source" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+
+        if(operator == "Show") {
+          jQuerySBM('#'+LookupFieldId(source) + '_label').show();
+        }
+        else if(operator == "Hide") {
+          jQuerySBM('#'+LookupFieldId(source) + '_label').hide();
+        }
+        else {
+          return false
+       ;
+        }
+        
+        ]]>
+      </Implementation>
+    </Action>
+    <Action name="action_SOOSetRoundedCorners" category="SOO_Actions" display="Set {SectionControl} corners to [SOO_CornerOptions] " description="create rounded corners on a section or panel">
+      <Prototype>
+
+        <Param position="0" name="section" />
+        <Param position="1" name="size" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+       jQuerySBM('#'+section).css('border-radius',size);
+        
+        ]]>
+      </Implementation>
+    </Action>
+    <Action name="action_SOOSetFakeButton" category="SOO_Actions" display="Apply button styling to {ImageControl} " description="apply fake button styling to image">
+      <Prototype>
+
+        <Param position="0" name="imagecontrol" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+       jQuerySBM('#'+imagecontrol).addClass('fakebutton');
+        
+        ]]>
+      </Implementation>
+    </Action>
+
+    <Action name="action_SOORemoveExpanderBorders" category="SOO_Actions" display="remove borders from {SectionControl}" description="remove borders from an expander">
+      <Prototype>
+        <Param position="0" name="source" />
+      </Prototype>
+      <Implementation>
+        <![CDATA[
+		SOO.ShellFormatting.stylizeExpander(source);
+		//SBMSOL.FormUtil.stylizeExpander(source);
+		]]>
+      </Implementation>
+    </Action>
+
+  </Actions>
+</FormLogic>

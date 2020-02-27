@@ -1,0 +1,231 @@
+// set up some constants for use later in the script
+add_global_const( "USR_SDDCRS_TASKS.CRS_TASKS_PROJECT", "CRS_TASKS_PROJECT" );
+add_global_const( "[none]", "NONE_FOUND" ); // add a global constant called "TBL_NAME"
+
+
+// Get TS_ID from TS_SELECTIONS for any field value of type "single selection" or "multi-selection"
+// tblName: DBNAME of original table; fldName: DBNAME of the original field; displayValue: The value to search
+def GetSelectionId(tblName, fldName, displayValue) {
+  var GetSelectionId = Variant();
+  var ts_table = Variant();
+  var ts_field = Variant();
+  var ts_selections = Variant();
+  var tblId = Variant();
+  var fldId = Variant();
+  // Call Ext.LogInfoMsg(time & " --> GetSelectionId(" & tblName & "," & fldName & "," & displayValue & ")" & vbCrLf)
+  // Get table id
+  ts_table = Ext.CreateAppRecord(Ext.TableId("TS_TABLES"));
+  if ( !vbNOT!( ts_table.ReadWithWhere("ts_dbname = '" &&& UCase(tblName) &&& "'")  )) {
+      GetSelectionId = "0";
+      return GetSelectionId;
+  }   //TS_TABLES
+  tblId = ts_table.GetId();
+  // Get field id
+  if ( (InStr(1,fldName, "TS_", 1) == 1) ) {
+      fldName = Mid(fldName, 4);
+  }  //fldName
+  ts_field = Ext.CreateAppRecord(Ext.TableId("TS_FIELDS"));
+  if ( !vbNOT!( ts_field.ReadWithWhere("ts_dbname = '" &&& UCase(fldName) &&& "' AND ts_tableid = " &&& CStr(tblId))  )) {
+      GetSelectionId = "0";
+      return GetSelectionId;
+  }  //TS_FIELDS
+  fldId = ts_field.GetId();
+  // Get internal value (TS_ID) from TS_SELECTIONS table
+  ts_selections = Ext.CreateAppRecord(Ext.TableId("TS_SELECTIONS"));
+  if ( !vbNOT!( ts_selections.ReadWithWhere("ts_fldid = " &&& CStr(fldId) &&& " AND UPPER(ts_name) = '" &&& UCase(displayValue) &&& "' AND ts_status = 0")  )) {
+      GetSelectionId = "0";
+      return GetSelectionId;
+  }  //TS_SELECTIONS
+  GetSelectionId = CStr(ts_selections.GetId());
+  return GetSelectionId;
+}
+// define a function that trims commas and returns the new string
+def TrimCommas( s ) {
+/*  ChaiScript engine automatically returns whatever occurs on the last line of a
+    function. We could add a "return" statement here if desired for clarity.
+    This may be a little hard to follow, but we call drop_while on our string to remove
+    the starting commas, then the return value is reversed, we do drop_while again to
+    trim the back, then reverse again.
+    These "fun" statements are anonymous functions known as lambdas */
+    reverse( drop_while( reverse( drop_while( s, fun(x){ return x == ','; } ) ),
+        fun(x) { x == ','; }));
+}
+
+def GetSelectionIDf(name, table_id) {
+  var GetSelectionID = Variant();
+    var record = Variant();
+    var recordList = Variant();
+    var readOk = Variant();
+    record = Ext.CreateAppRecord(Ext.TableId("TS_SELECTIONS", "database") );
+
+    if ( record.ReadWithWhere("TS_NAME='" &&& name &&& "' AND TS_TABLEID = " &&& table_id) ) {
+
+        GetSelectionID = record.GetId();
+    } else {
+        GetSelectionID = 0;
+    }
+
+    return GetSelectionID;
+  }
+
+def ItemGetDisplayValue(item, fldName, errorMsg) {
+	if ( errorMsg != "" ) { return; }
+
+    var fldObj = item.Fields().FindField( fldName );
+	var fldVal = Variant();
+	if ( fldObj.is_var_null() ) { fldVal = NONE_FOUND; } else { fldObj.GetDisplayValue( fldVal ); }
+	return fldVal.to_string();
+}
+
+def  WriteField(trgName, fldValue) {
+	// Write to the destination field
+	if ( !( Shell.Item().SetFieldValue( trgName, fldValue ) )) {
+		// Error finding the field or writing to it
+		Ext.LogErrorMsg( "Cannot write to field \"" &&& trgName&&& "\"" );
+		// ModScript can use backslash to escape double quotes
+		return;
+	}
+}
+
+def GetItemMultiRelationalIDsByFld(sTableID,  sWhereClause, returnField) {
+ // var GetItemMultiRelationalIDsByFld = Variant();
+  var objItemList = Variant();
+  var nNbPoPs = Variant();
+  var objItem = Variant();
+  var nRecordId = Variant();
+  var str_Item_Ids = Variant();
+  var fldVal = Variant();
+  str_Item_Ids = ",";
+  objItemList = Ext.CreateAppRecordList(Ext.TableId(sTableID));
+  // sWhereClause = "TS_"& UCase(mrFldName) & " = " & nItemID
+
+  if ( objItemList.ReadWithWhere(sWhereClause) ) {
+      for (  objItem : objItemList ) {
+	  if ( (returnField == "ID") ) {
+          	nRecordId = objItem.GetId();
+	  	str_Item_Ids = str_Item_Ids &&& nRecordId &&& ","	;
+      	  } else {
+          if ( objItem.GetFieldValue(returnField, fldVal) ) { 
+		str_Item_Ids = str_Item_Ids &&& fldVal &&& ",";
+          } else {
+              str_Item_Ids  = NONE_FOUND;
+          }
+      }
+	// nRecordId = objItem.GetId()
+         // str_Item_Ids = str_Item_Ids & nRecordId & ","
+      }
+}
+//  GetItemMultiRelationalIDsByFld = str_Item_Ids;
+  return str_Item_Ids;
+}
+def FormatNumberString(number, digits) {
+	
+	var str = number.to_string();
+	var count = digits - str.size();
+	var strValue = "";
+    if( (str.size() < digits) ) {
+		for (var i = 0; i < count; ++i) { strValue = strValue &&& to_string(0);}
+		str = strValue &&& str;
+	}
+	return str;
+}
+
+global errorMsg;
+if (errorMsg.is_var_undef()) { errorMsg = ""; } // only initialize g2 once, if global decl hit more than once
+
+//global NONE_FOUND = Variant( "[none]" );
+global recordID = Variant();
+global crRecordIDs = Variant();
+global readOk = Variant();
+global fldValue = Variant();
+global nCurrentId = Variant();
+global selDisplayValue = Variant();
+global ts_selections = Variant();
+global sWhere = Variant();
+global parentItem = Variant();
+global projectRecord = Variant();
+
+global sTaskTitle = Variant();
+global sTaskDescription = Variant();
+global sTaskProduct = Variant();
+global sTaskType = Variant();
+global sTaskOwner = Variant();
+global sTaskTeam = Variant();
+global sTaskParentCr = Variant();
+global sTaskComments = Variant();
+global sTaskWorkLog = Variant();
+global sTaskDueDate = Variant();
+sTaskTitle = TrimCommas(Shell.Item().GetFieldValue("EXT_ITEM_TITLE").to_string().trim());
+sTaskDescription = TrimCommas(Shell.Item().GetFieldValue("EXT_ITEM_DESCRIPTION").to_string().trim());
+sTaskOwner = TrimCommas(Shell.Item().GetFieldValue("AFFECTED_USER").to_string().trim());
+sTaskTeam = TrimCommas(Shell.Item().GetFieldValue("AFFECTED_USER_LIST").to_string().trim());
+sTaskDueDate = TrimCommas(Shell.Item().GetFieldValue("EXT_ITEM_DUE_DATE").to_string().trim());
+sTaskComments = TrimCommas(Shell.Item().GetFieldValue("EXT_ITEM_COMMENTS").to_string().trim());
+sTaskWorkLog = TrimCommas(Shell.Item().GetFieldValue("EXT_ITEM_WORK_LOG").to_string().trim());
+sTaskProduct = TrimCommas(Shell.Item().GetFieldValue("SREL_PRODUCT").to_string().trim());
+sTaskParentCr = Shell.Item().GetId();
+
+
+Shell.Item().Fields().FindField("EXT_ITEM_TYPE").GetDisplayValue(sTaskType);
+//sTaskType = TrimCommas(Shell.Item().GetFieldValue("TASK_TYPE").to_string().trim());
+//sTaskType = ItemGetDisplayValue(Shell.Item(), "EXT_ITEM_TYPE",errorMsg);
+//Shell.RedoMessage() =sTaskType &&& "<br>" &&&  sTaskTitle &&& "<br>" &&& sTaskDescription &&& "<br>" &&& sTaskOwner &&& "<br>" &&& sTaskTeam &&& "<br>" &&& sTaskDueDate &&& "<br>" &&& sTaskComments &&& "<br>" &&& sTaskWorkLog &&& "<br>" &&& sTaskProduct &&& "<br>";
+
+recordID = Shell.Item().GetId();
+
+projectRecord = Ext.CreateProjectBasedRecord(Ext.TableId("USR_SDDCRS_TASKS"));
+projectRecord.StartSubmitToProject( "USR_SDDCRS_TASKS.CRS_TASKS_PROJECT" );
+
+readOk  = projectRecord.SetFieldValue("CHANGE_REQUEST", recordID);
+
+readOk = Shell.Item().GetFieldValue("TASK_TITLE", fldValue);
+readOk = projectRecord.SetFieldValue("TITLE", sTaskTitle);
+
+readOk = Shell.Item().GetFieldValue("TASK_DESCRIPTION", fldValue);
+readOk = projectRecord.SetFieldValue("DESCRIPTION", sTaskDescription);
+
+readOk = Shell.Item().GetFieldValue("SDDPRODUCT", fldValue);
+readOk = projectRecord.SetFieldValue("SDD_APPLICATION", sTaskProduct);
+
+
+
+readOk = Shell.Item().GetFieldValue("TASK_OWNER", fldValue);
+readOk = projectRecord.SetFieldValue("TASK_OWNER", sTaskOwner);
+
+readOk = Shell.Item().GetFieldValue("TASK_TEAM", fldValue);
+readOk = projectRecord.SetFieldValue("TASK_TEAM", sTaskTeam);
+
+readOk = Shell.Item().GetFieldValue("TASK_DUE_DATE", fldValue);
+readOk = projectRecord.SetFieldValue("DUE_DATE", sTaskDueDate);
+
+readOk = Shell.Item().GetFieldValue("TASK_COMMENTS", fldValue);
+readOk = projectRecord.SetFieldValue("COMMENTS", sTaskComments);
+
+readOk = Shell.Item().GetFieldValue("TASK_WORKLOG", fldValue);
+readOk = projectRecord.SetFieldValue("WORK_LOG", sTaskWorkLog);
+
+//projectRecord.QuickSubmitToProject( CRS_TASKS_PROJECT);	
+//fldValue = ItemGetDisplayValue(Shell.Item(), "TASK_TYPE",errorMsg);
+//fldValue = GetSelectionID(fldValue, Ext.TableId("USR_SDDCRS_TASKS"))
+//readOk = projectRecord.SetFieldValue("ISSUETYPE", fldValue);
+readOk         = projectRecord.SetFieldValue("ACTIVEINACTIVE", 0);
+
+readOk         = projectRecord.SetFieldValue("ISSUETYPE", GetSelectionId("USR_SDDCRS_TASKS", "ISSUETYPE", sTaskType ));
+
+readOk         = projectRecord.FinishSubmitToProject();
+if(readOk) {
+	Shell.Item().Fields().FindField("EXT_ITEM_TITLE").SetBlankValue();
+	Shell.Item().Fields().FindField("EXT_ITEM_DESCRIPTION").SetBlankValue();
+	Shell.Item().Fields().FindField("AFFECTED_USER").SetBlankValue();
+	Shell.Item().Fields().FindField("EXT_ITEM_TYPE").SetBlankValue();
+	Shell.Item().Fields().FindField("AFFECTED_USER_LIST").SetBlankValue();
+	Shell.Item().Fields().FindField("EXT_ITEM_DUE_DATE").SetBlankValue();
+	Shell.Item().Fields().FindField("EXT_ITEM_COMMENTS").SetBlankValue();
+	Shell.Item().Fields().FindField("EXT_ITEM_WORK_LOG").SetBlankValue();
+	
+    	sWhere = "TS_ACTIVEINACTIVE=0 AND TS_CHANGE_REQUEST=" &&& recordID;
+	crRecordIDs = GetItemMultiRelationalIDsByFld("USR_SDDCRS_TASKS" , sWhere, "ID");
+	WriteField("MREL_TASKS",  crRecordIDs );
+	
+}
+

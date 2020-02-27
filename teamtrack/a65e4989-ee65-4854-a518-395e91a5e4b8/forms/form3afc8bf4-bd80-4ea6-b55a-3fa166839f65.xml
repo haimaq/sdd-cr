@@ -1,0 +1,1156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TtForm version="100103000" showSizeGuide="True" width="1000" height="600" validateRequiredFields="True" includeJQuery="True" layoutMode="Responsive" hAlign="Justify" vAlign="Near">
+  <Name>Link Change Package Form 4</Name>
+  <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+  <Type>transition</Type>
+  <FormSBMVersion>11.3.1</FormSBMVersion>
+  <CollapseToolBar>false</CollapseToolBar>
+  <ShowItemIdentifier>false</ShowItemIdentifier>
+  <ShowProjectName>false</ShowProjectName>
+  <ShowButtonBar>true</ShowButtonBar>
+  <ShowActionBar>true</ShowActionBar>
+  <ShowViewport>true</ShowViewport>
+  <ShowTransitionIndicator>false</ShowTransitionIndicator>
+  <HideCustomButtonsFromButtonBar>false</HideCustomButtonsFromButtonBar>
+  <AllowExtendedTransitionButtonMapping>false</AllowExtendedTransitionButtonMapping>
+  <MasterLayout>Sections</MasterLayout>
+  <SideLabels>false</SideLabels>
+  <LegacyMode>false</LegacyMode>
+  <StyleOverride>cornerradius: 0;</StyleOverride>
+  <JavaScript>551a1c6f-f6bf-4a10-a4d4-5dd64dd1e2de</JavaScript>
+  <JavaScript>ef8b6da9-3093-47ed-97d8-5b900bb9f342</JavaScript>
+  <StringList sortOrder="Name" />
+  <TransitionBar dock="top" UUID="1ce088c5-c924-45c5-80e8-9fd666bbc8e0">
+    <EnabledActions>DisplayItemWorkflow, GetItemHelp</EnabledActions>
+    <SubmitButtonText />
+    <CancelButtonText />
+  </TransitionBar>
+  <TableLayout columns="1" rows="2" cellPadding="0" cellSpacing="0">
+    <ColumnDefs>
+      <Column min-width="12">
+        <WidthFlavor>Fixed</WidthFlavor>
+        <PixelWidth>800</PixelWidth>
+        <PercentageWidth>100</PercentageWidth>
+        <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+      </Column>
+    </ColumnDefs>
+    <RowDefs>
+      <Row>
+        <HeightFlavor>AutoSize</HeightFlavor>
+        <PixelHeight>20</PixelHeight>
+        <PercentageHeight>100</PercentageHeight>
+      </Row>
+      <Row>
+        <HeightFlavor>AutoSize</HeightFlavor>
+        <PixelHeight>20</PixelHeight>
+        <PercentageHeight>100</PercentageHeight>
+      </Row>
+    </RowDefs>
+    <Cell row="0">
+      <TtFieldSectionControl UUID="fce39757-8845-4717-93ba-692883259ffc" layoutMode="Inherit" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0" defaultbgcolor="White">
+        <Name>DetailsTab</Name>
+        <Description />
+        <Text />
+        <HorizontalAlignment>Justify</HorizontalAlignment>
+        <VerticalAlignment>Near</VerticalAlignment>
+        <Padding>
+          <Left>20</Left>
+          <Top>10</Top>
+          <Right>20</Right>
+          <Bottom>10</Bottom>
+        </Padding>
+        <SectionType>GroupBox</SectionType>
+        <BoundPrivilegeSections>None</BoundPrivilegeSections>
+        <CustomText>True</CustomText>
+        <PlaceholderRow>-1</PlaceholderRow>
+        <SideLabels>false</SideLabels>
+        <AutoSection>false</AutoSection>
+        <StyleOverride>bgcolor: White;cornerradius: -1;</StyleOverride>
+        <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+        <TableLayout columns="1" rows="1" cellPadding="4" cellSpacing="0">
+          <ColumnDefs>
+            <Column min-width="12">
+              <WidthFlavor>Percentage</WidthFlavor>
+              <PixelWidth>400</PixelWidth>
+              <PercentageWidth>100</PercentageWidth>
+              <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+            </Column>
+          </ColumnDefs>
+          <RowDefs>
+            <Row>
+              <HeightFlavor>AutoSize</HeightFlavor>
+              <PixelHeight>20</PixelHeight>
+              <PercentageHeight>100</PercentageHeight>
+            </Row>
+          </RowDefs>
+          <Cell row="0">
+            <TtFieldSectionControl UUID="eb9324a5-e9c1-4d71-af8f-d6cd4314c2a3" layoutMode="Inherit" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0" defaultbgcolor="White">
+              <Name>SubtasksGroupBox</Name>
+              <Description />
+              <Text />
+              <HorizontalAlignment>Justify</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <Padding>
+                <Left>0</Left>
+                <Top>10</Top>
+                <Right>0</Right>
+                <Bottom>0</Bottom>
+              </Padding>
+              <SectionType>GroupBox</SectionType>
+              <BoundPrivilegeSections>None</BoundPrivilegeSections>
+              <CustomText>True</CustomText>
+              <PlaceholderRow>-1</PlaceholderRow>
+              <SideLabels>true</SideLabels>
+              <AutoSection>false</AutoSection>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+              <TableLayout columns="1" rows="3" cellPadding="0" cellSpacing="0">
+                <ColumnDefs>
+                  <Column min-width="12">
+                    <WidthFlavor>Percentage</WidthFlavor>
+                    <PixelWidth>150</PixelWidth>
+                    <PercentageWidth>100</PercentageWidth>
+                    <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+                  </Column>
+                </ColumnDefs>
+                <RowDefs>
+                  <Row>
+                    <HeightFlavor>AutoSize</HeightFlavor>
+                    <PixelHeight>20</PixelHeight>
+                    <PercentageHeight>100</PercentageHeight>
+                  </Row>
+                  <Row>
+                    <HeightFlavor>AutoSize</HeightFlavor>
+                    <PixelHeight>20</PixelHeight>
+                    <PercentageHeight>100</PercentageHeight>
+                  </Row>
+                  <Row>
+                    <HeightFlavor>AutoSize</HeightFlavor>
+                    <PixelHeight>20</PixelHeight>
+                    <PercentageHeight>100</PercentageHeight>
+                  </Row>
+                </RowDefs>
+                <Cell row="0">
+                  <TtFieldSectionControl UUID="303e7155-04bc-4283-8587-44dcfa394891" layoutMode="Standard" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0" defaultbgcolor="White">
+                    <Name>FilterPanel</Name>
+                    <Description />
+                    <Text>Panel</Text>
+                    <HorizontalAlignment>Justify</HorizontalAlignment>
+                    <VerticalAlignment>Near</VerticalAlignment>
+                    <Padding>
+                      <Left>0</Left>
+                      <Top>0</Top>
+                      <Right>0</Right>
+                      <Bottom>0</Bottom>
+                    </Padding>
+                    <SectionType>Panel</SectionType>
+                    <BoundPrivilegeSections>None</BoundPrivilegeSections>
+                    <CustomText>True</CustomText>
+                    <PlaceholderRow>-1</PlaceholderRow>
+                    <SideLabels>false</SideLabels>
+                    <AutoSection>false</AutoSection>
+                    <StyleOverride>cornerradius: -1;</StyleOverride>
+                    <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+                    <TableLayout columns="3" rows="1" cellPadding="4" cellSpacing="0">
+                      <ColumnDefs>
+                        <Column min-width="350">
+                          <WidthFlavor>AutoSize</WidthFlavor>
+                          <PixelWidth>180</PixelWidth>
+                          <PercentageWidth>50</PercentageWidth>
+                          <ResponsiveBlockWidth>4</ResponsiveBlockWidth>
+                        </Column>
+                        <Column min-width="20">
+                          <WidthFlavor>Fixed</WidthFlavor>
+                          <PixelWidth>20</PixelWidth>
+                          <PercentageWidth>100</PercentageWidth>
+                          <ResponsiveBlockWidth>4</ResponsiveBlockWidth>
+                        </Column>
+                        <Column min-width="201">
+                          <WidthFlavor>Percentage</WidthFlavor>
+                          <PixelWidth>20</PixelWidth>
+                          <PercentageWidth>100</PercentageWidth>
+                          <ResponsiveBlockWidth>1</ResponsiveBlockWidth>
+                        </Column>
+                      </ColumnDefs>
+                      <RowDefs>
+                        <Row>
+                          <HeightFlavor>AutoSize</HeightFlavor>
+                          <PixelHeight>20</PixelHeight>
+                          <PercentageHeight>100</PercentageHeight>
+                        </Row>
+                      </RowDefs>
+                      <Cell row="0">
+                        <UnEditControl UUID="2694a3ad-cf00-4482-b17b-875723d39778" mobileOption="HideInSimpleMode" width="350">
+                          <Name>TitleSearchTextBox</Name>
+                          <Description />
+                          <Text />
+                          <EditType>EditBox</EditType>
+                          <Password>false</Password>
+                          <AssociatedControlID>3f19442e-acfe-49fd-99dc-3498f46762d5</AssociatedControlID>
+                          <RefreshableContent />
+                          <RefreshOnPageLoad>false</RefreshOnPageLoad>
+                          <RefreshOnDataChange>false</RefreshOnDataChange>
+                          <RefreshOnClick>false</RefreshOnClick>
+                          <RefreshButtonID />
+                          <HorizontalAlignment>Near</HorizontalAlignment>
+                          <VerticalAlignment>Center</VerticalAlignment>
+                          <StyleOverride>cornerradius: -1;</StyleOverride>
+                          <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                          <Render>
+                            <Template outputHtml="False" />
+                            <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                          </Render>
+                        </UnEditControl>
+                      </Cell>
+                      <Cell />
+                      <Cell>
+                        <TtFieldSectionControl UUID="e88ea50b-d2fc-466a-904e-b89174456f56" layoutMode="Standard" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0" CornerRadius="0">
+                          <Name>Panel2</Name>
+                          <Description />
+                          <Text>Panel</Text>
+                          <HorizontalAlignment>Near</HorizontalAlignment>
+                          <VerticalAlignment>Near</VerticalAlignment>
+                          <Padding>
+                            <Left>0</Left>
+                            <Top>0</Top>
+                            <Right>0</Right>
+                            <Bottom>0</Bottom>
+                          </Padding>
+                          <SectionType>Panel</SectionType>
+                          <BoundPrivilegeSections>None</BoundPrivilegeSections>
+                          <CustomText>True</CustomText>
+                          <PlaceholderRow>-1</PlaceholderRow>
+                          <SideLabels>true</SideLabels>
+                          <AutoSection>false</AutoSection>
+                          <StyleOverride>bgcolor: Transparent;cornerradius: 0;</StyleOverride>
+                          <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+                          <TableLayout columns="2" rows="1" cellPadding="4" cellSpacing="0">
+                            <ColumnDefs>
+                              <Column min-width="84">
+                                <WidthFlavor>AutoSize</WidthFlavor>
+                                <PixelWidth>20</PixelWidth>
+                                <PercentageWidth>100</PercentageWidth>
+                                <ResponsiveBlockWidth>4</ResponsiveBlockWidth>
+                              </Column>
+                              <Column min-width="101">
+                                <WidthFlavor>AutoSize</WidthFlavor>
+                                <PixelWidth>20</PixelWidth>
+                                <PercentageWidth>100</PercentageWidth>
+                                <ResponsiveBlockWidth>8</ResponsiveBlockWidth>
+                              </Column>
+                            </ColumnDefs>
+                            <RowDefs>
+                              <Row>
+                                <HeightFlavor>AutoSize</HeightFlavor>
+                                <PixelHeight>20</PixelHeight>
+                                <PercentageHeight>100</PercentageHeight>
+                              </Row>
+                            </RowDefs>
+                            <Cell row="0">
+                              <ButtonControl UUID="d8a795a8-8a91-429a-b713-2c411b6ae90b" mobileOption="HideInSimpleMode" width="0" height="0">
+                                <Name>GetItems</Name>
+                                <Description />
+                                <Text>Filter Items</Text>
+                                <Behavior>URL</Behavior>
+                                <Url />
+                                <Target>_blank</Target>
+                                <PopupHTML />
+                                <PopupFeatures>height=300, width=500, status=no, menubar=no, resizable=no, scrollbars=yes, toolbar=no, location=no</PopupFeatures>
+                                <ShowTransitionName>false</ShowTransitionName>
+                                <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                <ToolTipText />
+                                <RefreshableContent />
+                                <RefreshOnPageLoad>false</RefreshOnPageLoad>
+                                <RefreshOnDataChange>false</RefreshOnDataChange>
+                                <RefreshOnClick>false</RefreshOnClick>
+                                <RefreshButtonID />
+                                <HorizontalAlignment>Far</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                                <Render>
+                                  <Template outputHtml="True" />
+                                  <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                </Render>
+                              </ButtonControl>
+                            </Cell>
+                            <Cell>
+                              <ButtonControl UUID="963b8d97-cd53-4184-87f4-2a9ea5532a09" mobileOption="HideInSimpleMode" width="0" height="0">
+                                <Name>ClearButton</Name>
+                                <Description />
+                                <Text>Clear Selection</Text>
+                                <Behavior>URL</Behavior>
+                                <Url />
+                                <Target>_blank</Target>
+                                <PopupHTML />
+                                <PopupFeatures>height=300, width=500, status=no, menubar=no, resizable=no, scrollbars=yes, toolbar=no, location=no</PopupFeatures>
+                                <ShowTransitionName>false</ShowTransitionName>
+                                <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                <ToolTipText />
+                                <RefreshableContent />
+                                <RefreshOnPageLoad>false</RefreshOnPageLoad>
+                                <RefreshOnDataChange>false</RefreshOnDataChange>
+                                <RefreshOnClick>false</RefreshOnClick>
+                                <RefreshButtonID />
+                                <HorizontalAlignment>Far</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <StyleOverride>bgcolor: Transparent;cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                                <Render>
+                                  <Template outputHtml="True" />
+                                  <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                </Render>
+                              </ButtonControl>
+                            </Cell>
+                          </TableLayout>
+                        </TtFieldSectionControl>
+                      </Cell>
+                    </TableLayout>
+                  </TtFieldSectionControl>
+                </Cell>
+                <Cell row="1">
+                  <CustomWidget UUID="7b94fcaa-d16f-4382-b3e8-edc9ab2c741b" mobileOption="AlwaysHide" formWidgetName="RelationalList" borders="False" scrollbars="True" width="0" height="250">
+                    <Name>RelationalList</Name>
+                    <Description>name:'F_TS_CHANGE_PACKAGE',value:'{Change  Package[ID]}'</Description>
+                    <Caption />
+                    <Parameters>
+                      <Parameter name="reportRef" label="reportRef" type="String" required="False" defaultValue="" value="62daeaab-b4f6-45ac-b9aa-d1117fab8db9" />
+                      <Parameter name="appRptProjId" label="appRptProjId" type="String" required="False" defaultValue="" value="I_USR_SDD_CHANGE_PACKAGES.SDD_CP_PROJECT" />
+                      <Parameter name="selectionMode" label="selectionMode" type="String" required="False" defaultValue="auto" value="single" />
+                      <Parameter name="fieldName" label="fieldName" type="String" required="False" defaultValue="" value="SREL_CPID" />
+                      <Parameter name="Parameters1" label="Search Filter 1" type="String" required="False" defaultValue="" value="name:'F_TS_TITLE',value:'{&quot;Control.TitleSearchTextBox&quot;,&quot;5a086e2a-f768-4142-840e-a0c623a408cc&quot;,&quot;&quot;}', fieldName:'TitleSearchTextBox',bindChangeEvent:true" />
+                      <Parameter name="Parameters2" label="Search Filter 2" type="String" required="False" defaultValue="" value="" />
+                      <Parameter name="Parameters3" label="Search Filter 3" type="String" required="False" defaultValue="" value="" />
+                      <Parameter name="Parameters4" label="Search Filter 4" type="String" required="False" defaultValue="" value="" />
+                      <Parameter name="Parameters5" label="Search Filter 5" type="String" required="False" defaultValue="" value="" />
+                      <Parameter name="Parameters6" label="Search Filter 6" type="String" required="False" defaultValue="" value="" />
+                      <Parameter name="Parameters7" label="Search Filter 7" type="String" required="False" defaultValue="" value="" />
+                    </Parameters>
+                    <Refresh onpageload="True" ondatachange="False" onclick="False" />
+                    <HorizontalAlignment>Justify</HorizontalAlignment>
+                    <VerticalAlignment>Near</VerticalAlignment>
+                    <StyleOverride>cornerradius: -1;</StyleOverride>
+                    <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                    <Render customwidget="1" type="HTML">
+                      <StaticContent>&lt;div  id="RelationalListGridWrapper" class="b4sbm"&gt;
+	&lt;div id="RelationalListGrid" class=""&gt;&lt;/div&gt;
+&lt;/div&gt;
+</StaticContent>
+                      <Template outputHtml="True">&lt;!--  &lt;!--  type=\"text/javascript\" src=\"$FORM_EXTENSION_ASSET_PATH(Relational Grid Extension)/javascript/ActionListUtilities.js\"&gt; --&gt;--&gt;\
+  &lt;!-- &gt;\
+			var RelationalListParams = [];\
+			var RelationalListCheckFilter = function(a){\
+				if(a.name &amp;&amp; a){\
+					var RelationalListPrefixed = /^F_TS_.+/i.test(a.name);\
+					if (!RelationalListPrefixed){\
+						var RelationalListTemp = \"F_TS_\"+a.name;\
+						a.name = RelationalListTemp;\
+					}\
+					RelationalListParams.push(a);\
+				}\
+			};\
+			\
+			RelationalListCheckFilter({name:\'F_TS_TITLE\',value:\'{0}\', fieldName:\'TitleSearchTextBox\',bindChangeEvent:true});\
+			RelationalListCheckFilter({});\
+			RelationalListCheckFilter({});\
+			RelationalListCheckFilter({});\
+			RelationalListCheckFilter({});\
+			RelationalListCheckFilter({});\
+			RelationalListCheckFilter({});\
+			\
+			jQuerySBM(document).ready(function() {\
+				jQuerySBM(\"#RelationalListGrid\").relationalGrid({\
+					fieldName: \"SREL_CPID\",\
+					reportRef: \"62daeaab-b4f6-45ac-b9aa-d1117fab8db9\",\
+					appRptProjId: \"I_USR_SDD_CHANGE_PACKAGES.SDD_CP_PROJECT\",\
+					reportParams: RelationalListParams,\
+					emptyFieldText: \"(None)\",\
+					widgetName: \"RelationalList\",\
+					selectionMode: \"single\"\
+				});\
+			});  \
+		 --&gt;\
+</Template>
+                      <Param>TitleSearchTextBox</Param>
+                    </Render>
+                  </CustomWidget>
+                </Cell>
+                <Cell row="2" />
+              </TableLayout>
+            </TtFieldSectionControl>
+          </Cell>
+        </TableLayout>
+      </TtFieldSectionControl>
+    </Cell>
+    <Cell row="1">
+      <TtFieldSectionControl UUID="4816b02b-9b43-4281-ba54-8b026bade8c8" layoutMode="Inherit" mobileOption="AlwaysShow" CollapsedDefault="True" ShowRowLines="False" width="0" defaultbgcolor="White">
+        <Name>HiddenFields</Name>
+        <Description />
+        <Text>HiddenFields</Text>
+        <HorizontalAlignment>Justify</HorizontalAlignment>
+        <VerticalAlignment>Near</VerticalAlignment>
+        <Padding>
+          <Left>20</Left>
+          <Top>0</Top>
+          <Right>20</Right>
+          <Bottom>10</Bottom>
+        </Padding>
+        <SectionType>Expandable</SectionType>
+        <BoundPrivilegeSections>None</BoundPrivilegeSections>
+        <CustomText>True</CustomText>
+        <PlaceholderRow>-1</PlaceholderRow>
+        <SideLabels>true</SideLabels>
+        <AutoSection>false</AutoSection>
+        <StyleOverride>cornerradius: -1;</StyleOverride>
+        <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+        <TableLayout columns="2" rows="5" cellPadding="4" cellSpacing="0">
+          <ColumnDefs>
+            <Column min-width="3">
+              <WidthFlavor>AutoSize</WidthFlavor>
+              <PixelWidth>20</PixelWidth>
+              <PercentageWidth>100</PercentageWidth>
+              <ResponsiveBlockWidth>3</ResponsiveBlockWidth>
+            </Column>
+            <Column min-width="9">
+              <WidthFlavor>Percentage</WidthFlavor>
+              <PixelWidth>20</PixelWidth>
+              <PercentageWidth>100</PercentageWidth>
+              <ResponsiveBlockWidth>9</ResponsiveBlockWidth>
+            </Column>
+          </ColumnDefs>
+          <RowDefs>
+            <Row>
+              <HeightFlavor>AutoSize</HeightFlavor>
+              <PixelHeight>20</PixelHeight>
+              <PercentageHeight>100</PercentageHeight>
+            </Row>
+            <Row>
+              <HeightFlavor>AutoSize</HeightFlavor>
+              <PixelHeight>20</PixelHeight>
+              <PercentageHeight>100</PercentageHeight>
+            </Row>
+            <Row>
+              <HeightFlavor>AutoSize</HeightFlavor>
+              <PixelHeight>20</PixelHeight>
+              <PercentageHeight>100</PercentageHeight>
+            </Row>
+            <Row>
+              <HeightFlavor>AutoSize</HeightFlavor>
+              <PixelHeight>20</PixelHeight>
+              <PercentageHeight>100</PercentageHeight>
+            </Row>
+            <Row>
+              <HeightFlavor>AutoSize</HeightFlavor>
+              <PixelHeight>20</PixelHeight>
+              <PercentageHeight>100</PercentageHeight>
+            </Row>
+          </RowDefs>
+          <Cell row="0">
+            <TtLabelControl UUID="1c407790-42af-438b-b1dc-98cd84164712" width="0" colIndex="0">
+              <Name>SelfServiceRequest_Label</Name>
+              <Description />
+              <Text>Self Service Request</Text>
+              <HorizontalAlignment>Far</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <FieldID>5171b615-0791-41ee-89a7-b75cfe9d3e2a</FieldID>
+              <AssociatedControlID>5bfc6dc1-dfd3-42a4-9ee6-2fc148708c9c</AssociatedControlID>
+              <CustomLabel>False</CustomLabel>
+              <PreviousFieldName>Self Service Request</PreviousFieldName>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+            </TtLabelControl>
+          </Cell>
+          <Cell>
+            <TtListControl UUID="5bfc6dc1-dfd3-42a4-9ee6-2fc148708c9c" mobileOption="HideInSimpleMode" dualList="True" width="0">
+              <Name>SelfServiceRequest_Control</Name>
+              <Description />
+              <Text>Self Service Request</Text>
+              <HorizontalAlignment>Near</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <ListType>ComboBox</ListType>
+              <FieldID>5171b615-0791-41ee-89a7-b75cfe9d3e2a</FieldID>
+              <AssociatedControlID>1c407790-42af-438b-b1dc-98cd84164712</AssociatedControlID>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+            </TtListControl>
+          </Cell>
+          <Cell row="1">
+            <TtLabelControl UUID="7b0b52ac-9c97-40f6-a342-0a8eb798a97a" width="0" colIndex="0">
+              <Name>SubmitOnBehalfEnabled_Label</Name>
+              <Description />
+              <Text>Submit on Behalf Enabled</Text>
+              <HorizontalAlignment>Far</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <FieldID>78fb0c78-0b99-4a7f-a3bc-96fb92be9323</FieldID>
+              <AssociatedControlID>58834b1e-ce69-483c-8fa4-8eebc5b900c2</AssociatedControlID>
+              <CustomLabel>False</CustomLabel>
+              <PreviousFieldName>Submit on Behalf Enabled</PreviousFieldName>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+            </TtLabelControl>
+          </Cell>
+          <Cell>
+            <TtListControl UUID="58834b1e-ce69-483c-8fa4-8eebc5b900c2" mobileOption="HideInSimpleMode" dualList="True">
+              <Name>SubmitOnBehalfEnabled_Control</Name>
+              <Description />
+              <Text>Submit on Behalf Enabled</Text>
+              <HorizontalAlignment>Near</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <ListType>RadioButtonList</ListType>
+              <FieldID>78fb0c78-0b99-4a7f-a3bc-96fb92be9323</FieldID>
+              <AssociatedControlID>7b0b52ac-9c97-40f6-a342-0a8eb798a97a</AssociatedControlID>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+            </TtListControl>
+          </Cell>
+          <Cell row="2">
+            <TtLabelControl UUID="81e614d1-e8fd-4a20-81a3-b94ef390d234" width="0" colIndex="0">
+              <Name>Submitter_Label</Name>
+              <Description />
+              <Text>Submitter</Text>
+              <HorizontalAlignment>Far</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <FieldID>4290dfd3-a387-40f0-9d04-172fd2130142</FieldID>
+              <AssociatedControlID>2d01ba63-e146-43fd-a579-066d26c9c6ae</AssociatedControlID>
+              <CustomLabel>False</CustomLabel>
+              <PreviousFieldName>Submitter</PreviousFieldName>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+            </TtLabelControl>
+          </Cell>
+          <Cell>
+            <TtListControl UUID="2d01ba63-e146-43fd-a579-066d26c9c6ae" mobileOption="HideInSimpleMode" dualList="True" width="0">
+              <Name>Submitter_Control</Name>
+              <Description />
+              <Text>Submitter</Text>
+              <HorizontalAlignment>Near</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <ListType>ComboBox</ListType>
+              <FieldID>4290dfd3-a387-40f0-9d04-172fd2130142</FieldID>
+              <AssociatedControlID>81e614d1-e8fd-4a20-81a3-b94ef390d234</AssociatedControlID>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+            </TtListControl>
+          </Cell>
+          <Cell row="3">
+            <UnLabelControl UUID="11c91c95-f28d-42a4-8199-d470e139d28c" width="0" colIndex="0">
+              <Name>KbArticleTitle_Label</Name>
+              <Description />
+              <Text>KbArticleTitle</Text>
+              <AssociatedControlID>596dc4fe-4f3d-46be-be2f-0535e300551c</AssociatedControlID>
+              <HorizontalAlignment>Far</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+            </UnLabelControl>
+          </Cell>
+          <Cell>
+            <UnEditControl UUID="596dc4fe-4f3d-46be-be2f-0535e300551c" mobileOption="HideInSimpleMode" width="0">
+              <Name>KbArticleTitle</Name>
+              <Description />
+              <Text />
+              <EditType>EditBox</EditType>
+              <Password>false</Password>
+              <AssociatedControlID>11c91c95-f28d-42a4-8199-d470e139d28c</AssociatedControlID>
+              <RefreshableContent />
+              <RefreshOnPageLoad>false</RefreshOnPageLoad>
+              <RefreshOnDataChange>false</RefreshOnDataChange>
+              <RefreshOnClick>false</RefreshOnClick>
+              <RefreshButtonID />
+              <HorizontalAlignment>Near</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+              <Render>
+                <Template outputHtml="False" />
+                <Refresh onpageload="False" ondatachange="False" onclick="False" />
+              </Render>
+            </UnEditControl>
+          </Cell>
+          <Cell row="4">
+            <TtLabelControl UUID="1673efe4-0c53-4c5b-89ee-8793dd15e45d" width="0" colIndex="0">
+              <Name>ChangePackage_Label</Name>
+              <Description />
+              <Text>Change  Package</Text>
+              <HorizontalAlignment>Far</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <FieldID>f235a3c5-0546-4299-808a-9d05f1c02a3d</FieldID>
+              <AssociatedControlID>03f6d6c4-7de0-45d7-936f-d60c95db3559</AssociatedControlID>
+              <CustomLabel>False</CustomLabel>
+              <PreviousFieldName>Change  Package</PreviousFieldName>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+            </TtLabelControl>
+          </Cell>
+          <Cell>
+            <TtListControl UUID="03f6d6c4-7de0-45d7-936f-d60c95db3559" mobileOption="HideInSimpleMode" dualList="True" width="0">
+              <Name>ChangePackage_Control</Name>
+              <Description />
+              <Text>Change  Package</Text>
+              <HorizontalAlignment>Near</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <ListType>ComboBox</ListType>
+              <FieldID>f235a3c5-0546-4299-808a-9d05f1c02a3d</FieldID>
+              <AssociatedControlID>1673efe4-0c53-4c5b-89ee-8793dd15e45d</AssociatedControlID>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+            </TtListControl>
+          </Cell>
+        </TableLayout>
+      </TtFieldSectionControl>
+    </Cell>
+  </TableLayout>
+  <FieldSections>
+    <Section id="fce39757-8845-4717-93ba-692883259ffc" name="DetailsTab" mobileOption="AlwaysShow" display="" type="GroupBox">
+      <Section id="eb9324a5-e9c1-4d71-af8f-d6cd4314c2a3" name="SubtasksGroupBox" mobileOption="AlwaysShow" display="" type="GroupBox">
+        <Section id="303e7155-04bc-4283-8587-44dcfa394891" name="FilterPanel" mobileOption="AlwaysShow" display="Panel" type="Panel">
+          <EditControl id="2694a3ad-cf00-4482-b17b-875723d39778" name="TitleSearchTextBox" mobileOption="HideInSimpleMode" text="" />
+          <Section id="e88ea50b-d2fc-466a-904e-b89174456f56" name="Panel2" mobileOption="AlwaysShow" display="Panel" type="Panel">
+            <Button id="d8a795a8-8a91-429a-b713-2c411b6ae90b" name="GetItems" mobileOption="HideInSimpleMode" text="Filter Items" action="URL" url="" target="_blank" />
+            <Button id="963b8d97-cd53-4184-87f4-2a9ea5532a09" name="ClearButton" mobileOption="HideInSimpleMode" text="Clear Selection" action="URL" url="" target="_blank" />
+          </Section>
+        </Section>
+      </Section>
+    </Section>
+    <Section id="4816b02b-9b43-4281-ba54-8b026bade8c8" name="HiddenFields" mobileOption="AlwaysShow" display="HiddenFields" type="Expandable" collapsedDefault="True">
+      <Field id="5171b615-0791-41ee-89a7-b75cfe9d3e2a" name="Self Service Request" mobileOption="HideInSimpleMode" dbName="SELF_SERVICE_REQUEST" spanEntireRow="False" />
+      <Field id="78fb0c78-0b99-4a7f-a3bc-96fb92be9323" name="Submit on Behalf Enabled" mobileOption="HideInSimpleMode" dbName="SUBMIT_ON_BEHALF_ENABLED" spanEntireRow="False" />
+      <Field id="4290dfd3-a387-40f0-9d04-172fd2130142" name="Submitter" mobileOption="HideInSimpleMode" dbName="SUBMITTER" spanEntireRow="False" />
+      <EditControl id="596dc4fe-4f3d-46be-be2f-0535e300551c" name="KbArticleTitle" mobileOption="HideInSimpleMode" labelid="11c91c95-f28d-42a4-8199-d470e139d28c" labeltext="KbArticleTitle" text="" />
+      <Field id="f235a3c5-0546-4299-808a-9d05f1c02a3d" name="Change  Package" mobileOption="HideInSimpleMode" dbName="SREL_CPID" spanEntireRow="False" />
+    </Section>
+  </FieldSections>
+  <FormLogicCollection>
+    <FormLogic UUID="7cde11aa-74d5-4047-9cde-0afa7e6c65d0" enabled="True" ignoreOnImport="true">
+      <Name>InvFormHeaderRefresh__!hiddenImpl</Name>
+      <Description />
+      <Events>
+        <Event>
+          <Name>event_PageLoaded</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue />
+              <TargetType>Undefined</TargetType>
+              <TargetValueMobile />
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+        <Event>
+          <Name>event_FieldOrInputControlChanged</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>{Field.Text | Field.Selection | Field.MultipleSelection | Field.Binary | Field.Numeric | Field.Summation | Field.DateTime | Field.Relational | Field.Contact | Field.MultipleRelational | Field.State | Field.User | Field.MultipleUser | Field.MultipleGroup | Field.SubRelational | Field.File | Field.URL | InputControl | RelationalGridWidget | RESTGridWidget}</Name>
+              <Description />
+              <TargetNodeID>8f5a8886-b538-42a5-a1bc-8fe337be8211</TargetNodeID>
+              <TargetIDs />
+              <TargetValue>Title/Summary</TargetValue>
+              <TargetType>Field</TargetType>
+              <TargetValueMobile>Title/Summary</TargetValueMobile>
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue />
+              <TargetType>Undefined</TargetType>
+              <TargetValueMobile />
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+      </Events>
+      <FormStatements>
+        <FormStatement>
+          <ActionsOnly>true</ActionsOnly>
+          <OrConditions>false</OrConditions>
+          <Conditions />
+          <Actions>
+            <Action>
+              <Name>action_SetFieldOrControlValue</Name>
+              <Description />
+              <FormLogicBindParameters>
+                <FormLogicBindParameter>
+                  <Name>{Field.Text | Field.Selection | Field.MultipleSelection | Field.Binary | Field.Numeric | Field.DateTime | Field.User | Field.MultipleUser | TextControl | ImageControl | InputControl | ButtonControl | LinkControl}</Name>
+                  <Description />
+                  <TargetNodeID>906d3e92-3bdc-4251-bb96-6ab66ba6291d</TargetNodeID>
+                  <TargetIDs />
+                  <TargetValue>InvFormHeader</TargetValue>
+                  <TargetType>StaticControl</TargetType>
+                  <TargetValueMobile>InvFormHeader</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+                <FormLogicBindParameter>
+                  <Name>{?}</Name>
+                  <Description />
+                  <TargetIDs />
+                  <TargetValue>{"Field.Title/Summary","8f5a8886-b538-42a5-a1bc-8fe337be8211",""}</TargetValue>
+                  <TargetType>DependentValue</TargetType>
+                  <TargetValueMobile>{8f5a8886-b538-42a5-a1bc-8fe337be8211}</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+              </FormLogicBindParameters>
+            </Action>
+          </Actions>
+        </FormStatement>
+      </FormStatements>
+    </FormLogic>
+    <FormLogic UUID="b770858e-ae2b-40f9-9d1c-94a917e3e5fd" enabled="True">
+      <Name>Form Load: Adjust Contractor/Vendor zero-Value</Name>
+      <Description />
+      <Events>
+        <Event>
+          <Name>event_PageLoaded</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue>fn_FormLoadAdjustContractorVendorZeroValue</TargetValue>
+              <TargetType>ActionName</TargetType>
+              <TargetValueMobile>fn_FormLoadAdjustContractorVendorZeroValue</TargetValueMobile>
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+      </Events>
+      <FormStatements>
+        <FormStatement>
+          <ActionsOnly>true</ActionsOnly>
+          <OrConditions>false</OrConditions>
+          <Conditions />
+          <Actions>
+            <Action>
+              <Name>action_SOOLoadUtils</Name>
+              <Description />
+              <FormLogicBindParameters />
+            </Action>
+            <Action>
+              <Name>action_ExecuteJavascript</Name>
+              <Description />
+              <FormLogicBindParameters>
+                <FormLogicBindParameter>
+                  <Name>{Javascript}</Name>
+                  <Description />
+                  <TargetIDs />
+                  <TargetValue>//get location field ID
+//var ContractId = LookupFieldId("SDDPRODUCT");
+//update zero-Value text
+//jQuerySBM("#"+ContractId+" option[value='0']").text("All");
+//update zero-Value value
+//jQuerySBM("#"+ContractId+" option[value='0']").attr('value','');</TargetValue>
+                  <TargetType>Javascript</TargetType>
+                  <TargetValueMobile>//get location field ID
+//var ContractId = LookupFieldId("SDDPRODUCT");
+//update zero-Value text
+//jQuerySBM("#"+ContractId+" option[value='0']").text("All");
+//update zero-Value value
+//jQuerySBM("#"+ContractId+" option[value='0']").attr('value','');</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+              </FormLogicBindParameters>
+            </Action>
+            <Action>
+              <Name>action_ShowFieldOrControl</Name>
+              <Description />
+              <FormLogicBindParameters>
+                <FormLogicBindParameter>
+                  <Name>[ShowHide]</Name>
+                  <Description />
+                  <TargetIDs />
+                  <TargetValue>hide</TargetValue>
+                  <TargetType>Restriction</TargetType>
+                  <TargetValueMobile>hide</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+                <FormLogicBindParameter>
+                  <Name>{Field | StaticControl | InputControl | ActionControl | WidgetControl | SectionControl | TabControl | Tab}</Name>
+                  <Description />
+                  <TargetNodeID>4816b02b-9b43-4281-ba54-8b026bade8c8</TargetNodeID>
+                  <TargetIDs />
+                  <TargetValue>HiddenFields</TargetValue>
+                  <TargetType>SectionControl</TargetType>
+                  <TargetValueMobile>HiddenFields</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+              </FormLogicBindParameters>
+            </Action>
+          </Actions>
+        </FormStatement>
+      </FormStatements>
+    </FormLogic>
+    <FormLogic UUID="e9c1932b-c7ef-426f-8c7a-342e33973dd9" enabled="True">
+      <Name>FormAction</Name>
+      <Description />
+      <Events>
+        <Event>
+          <Name>event_WidgetOrActionControlClicked</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>{ActionControl | WidgetControl}</Name>
+              <Description />
+              <TargetNodeID>963b8d97-cd53-4184-87f4-2a9ea5532a09</TargetNodeID>
+              <TargetIDs />
+              <TargetValue>ClearButton</TargetValue>
+              <TargetType>ButtonControl</TargetType>
+              <TargetValueMobile>ClearButton</TargetValueMobile>
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue>fn_FormAction</TargetValue>
+              <TargetType>ActionName</TargetType>
+              <TargetValueMobile>fn_FormAction</TargetValueMobile>
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+      </Events>
+      <FormStatements>
+        <FormStatement>
+          <ActionsOnly>true</ActionsOnly>
+          <OrConditions>false</OrConditions>
+          <Conditions />
+          <Actions>
+            <Action>
+              <Name>action_ExecuteJavascript</Name>
+              <Description />
+              <FormLogicBindParameters>
+                <FormLogicBindParameter>
+                  <Name>{Javascript}</Name>
+                  <Description />
+                  <TargetIDs />
+                  <TargetValue>jQuerySBM("#RelationalListGrid").relationalGrid("clear");</TargetValue>
+                  <TargetType>Javascript</TargetType>
+                  <TargetValueMobile>jQuerySBM("#RelationalListGrid").relationalGrid("clear");</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+              </FormLogicBindParameters>
+            </Action>
+          </Actions>
+        </FormStatement>
+      </FormStatements>
+    </FormLogic>
+    <FormLogic UUID="50d22aa6-9fab-4e52-82c4-3b8216e7b75b" enabled="False">
+      <Name>Form Load: SSM Formatting 2</Name>
+      <Description>Apply SOO formatting</Description>
+      <Events>
+        <Event>
+          <Name>event_PageLoaded</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue>fn_FormLoadSSMFormatting2</TargetValue>
+              <TargetType>ActionName</TargetType>
+              <TargetValueMobile>fn_FormLoadSSMFormatting2</TargetValueMobile>
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+      </Events>
+      <FormStatements>
+        <FormStatement>
+          <ActionsOnly>true</ActionsOnly>
+          <OrConditions>false</OrConditions>
+          <Conditions />
+          <Actions>
+            <Action>
+              <Name>action_SOOLoadPlugin</Name>
+              <Description />
+              <FormLogicBindParameters>
+                <FormLogicBindParameter>
+                  <Name>[SOO_Plugins]</Name>
+                  <Description />
+                  <TargetIDs />
+                  <TargetValue>Relational Grid</TargetValue>
+                  <TargetType>Restriction</TargetType>
+                  <TargetValueMobile>Relational Grid</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+              </FormLogicBindParameters>
+            </Action>
+            <Action>
+              <Name>action_ExecuteJavascript</Name>
+              <Description />
+              <FormLogicBindParameters>
+                <FormLogicBindParameter>
+                  <Name>{Javascript}</Name>
+                  <Description />
+                  <TargetIDs />
+                  <TargetValue>jQuerySBM("#serviceGrid").relationalGrid(\{
+	fieldName: "CHANGE_PACKAGE",
+	AppRptProjId: "I_USR_RELEASE_PACKAGE.CHANGE_RELEASE_SYSTEM___VERSION_",
+	reportRef: "62daeaab-b4f6-45ac-b9aa-d1117fab8db9",
+	reportParams: \{name:'F_TS_ACTIVEINACTIVE', value:'0'\},
+	selectionMode: "single"
+\});
+</TargetValue>
+                  <TargetType>Javascript</TargetType>
+                  <TargetValueMobile>jQuerySBM("#serviceGrid").relationalGrid({
+	fieldName: "CHANGE_PACKAGE",
+	AppRptProjId: "I_USR_RELEASE_PACKAGE.CHANGE_RELEASE_SYSTEM___VERSION_",
+	reportRef: "62daeaab-b4f6-45ac-b9aa-d1117fab8db9",
+	reportParams: {name:'F_TS_ACTIVEINACTIVE', value:'0'},
+	selectionMode: "single"
+});
+</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+              </FormLogicBindParameters>
+            </Action>
+          </Actions>
+        </FormStatement>
+      </FormStatements>
+    </FormLogic>
+    <FormLogic UUID="3e753b30-b9b5-4388-be8a-e7d24f145310" enabled="True">
+      <Name>Form Load:SR Formatting 3</Name>
+      <Description />
+      <Events>
+        <Event>
+          <Name>event_PageLoaded</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue>fn_FormLoadSRFormatting3</TargetValue>
+              <TargetType>ActionName</TargetType>
+              <TargetValueMobile>fn_FormLoadSRFormatting3</TargetValueMobile>
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+      </Events>
+      <FormStatements>
+        <FormStatement>
+          <ActionsOnly>true</ActionsOnly>
+          <OrConditions>false</OrConditions>
+          <Conditions />
+          <Actions>
+            <Action>
+              <Name>action_ClickButtonControl</Name>
+              <Description />
+              <FormLogicBindParameters>
+                <FormLogicBindParameter>
+                  <Name>{ButtonControl}</Name>
+                  <Description />
+                  <TargetNodeID>d8a795a8-8a91-429a-b713-2c411b6ae90b</TargetNodeID>
+                  <TargetIDs />
+                  <TargetValue>GetItems</TargetValue>
+                  <TargetType>ButtonControl</TargetType>
+                  <TargetValueMobile>GetItems</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+              </FormLogicBindParameters>
+            </Action>
+          </Actions>
+        </FormStatement>
+      </FormStatements>
+    </FormLogic>
+    <FormLogic UUID="07f9cd20-3288-4545-9350-6b65355eb977" enabled="True">
+      <Name>Form Load: Create Expand All Extension</Name>
+      <Description />
+      <Events>
+        <Event>
+          <Name>event_PageLoaded</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue>fn_FormLoadCreateExpandAllExtension</TargetValue>
+              <TargetType>ActionName</TargetType>
+              <TargetValueMobile>fn_FormLoadCreateExpandAllExtension</TargetValueMobile>
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+      </Events>
+      <FormStatements>
+        <FormStatement>
+          <ActionsOnly>true</ActionsOnly>
+          <OrConditions>false</OrConditions>
+          <Conditions />
+          <Actions>
+            <Action>
+              <Name>action_SOO_loadExpandAllExtension</Name>
+              <Description />
+              <FormLogicBindParameters />
+            </Action>
+          </Actions>
+        </FormStatement>
+      </FormStatements>
+    </FormLogic>
+    <FormLogic UUID="37a44d5d-3475-4437-a1fb-4b905912cf2f" enabled="True">
+      <Name>FormAction 2</Name>
+      <Description />
+      <Events>
+        <Event>
+          <Name>event_PageLoaded</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue>fn_FormAction2</TargetValue>
+              <TargetType>ActionName</TargetType>
+              <TargetValueMobile>fn_FormAction2</TargetValueMobile>
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+      </Events>
+      <FormStatements>
+        <FormStatement>
+          <ActionsOnly>true</ActionsOnly>
+          <OrConditions>false</OrConditions>
+          <Conditions />
+          <Actions>
+            <Action>
+              <Name>action_SOO_loadTransitionIconExtension</Name>
+              <Description />
+              <FormLogicBindParameters>
+                <FormLogicBindParameter>
+                  <Name>{Image}</Name>
+                  <Description />
+                  <TargetNodeID>3a157766-d93a-4c03-bc29-581bb55e9e12</TargetNodeID>
+                  <TargetIDs />
+                  <TargetValue>responsive</TargetValue>
+                  <TargetType>Image</TargetType>
+                  <TargetValueMobile>responsive</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+                <FormLogicBindParameter>
+                  <Name>{String}</Name>
+                  <Description />
+                  <TargetIDs />
+                  <TargetValue>SDD CRS</TargetValue>
+                  <TargetType>String</TargetType>
+                  <TargetValueMobile>SDD CRS</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+              </FormLogicBindParameters>
+            </Action>
+          </Actions>
+        </FormStatement>
+      </FormStatements>
+    </FormLogic>
+  </FormLogicCollection>
+  <TopSidebar layoutMode="Inherit" hAlign="Justify" vAlign="Justify">
+    <SizeFlavor>AutoSize</SizeFlavor>
+    <PixelSize>100</PixelSize>
+    <PercentageSize>20</PercentageSize>
+    <SideLabels>true</SideLabels>
+    <Padding>
+      <Left>0</Left>
+      <Top>0</Top>
+      <Right>0</Right>
+      <Bottom>0</Bottom>
+    </Padding>
+    <StyleOverride>cornerradius: 0;</StyleOverride>
+    <DefaultStyleClass>HeaderStyle</DefaultStyleClass>
+    <TableLayout columns="1" rows="1" cellPadding="0" cellSpacing="0">
+      <ColumnDefs>
+        <Column min-width="12">
+          <WidthFlavor>AutoSize</WidthFlavor>
+          <PixelWidth>20</PixelWidth>
+          <PercentageWidth>100</PercentageWidth>
+          <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+        </Column>
+      </ColumnDefs>
+      <RowDefs>
+        <Row>
+          <HeightFlavor>AutoSize</HeightFlavor>
+          <PixelHeight>20</PixelHeight>
+          <PercentageHeight>100</PercentageHeight>
+        </Row>
+      </RowDefs>
+      <Cell row="0">
+        <TtFieldSectionControl UUID="e4f6a549-5c7b-4a6c-80ef-f41c1135f7da" layoutMode="Standard" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0" defaultbgcolor="White">
+          <Name>StateTopPanel2</Name>
+          <Description />
+          <Text>Panel</Text>
+          <HorizontalAlignment>Justify</HorizontalAlignment>
+          <VerticalAlignment>Near</VerticalAlignment>
+          <Padding>
+            <Left>0</Left>
+            <Top>0</Top>
+            <Right>0</Right>
+            <Bottom>0</Bottom>
+          </Padding>
+          <SectionType>Panel</SectionType>
+          <BoundPrivilegeSections>None</BoundPrivilegeSections>
+          <CustomText>True</CustomText>
+          <PlaceholderRow>-1</PlaceholderRow>
+          <SideLabels>false</SideLabels>
+          <AutoSection>false</AutoSection>
+          <StyleOverride>cornerradius: -1;</StyleOverride>
+          <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+          <TableLayout columns="1" rows="1" cellPadding="0" cellSpacing="0">
+            <ColumnDefs>
+              <Column min-width="216">
+                <WidthFlavor>Percentage</WidthFlavor>
+                <PixelWidth>20</PixelWidth>
+                <PercentageWidth>50</PercentageWidth>
+                <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+              </Column>
+            </ColumnDefs>
+            <RowDefs>
+              <Row>
+                <HeightFlavor>AutoSize</HeightFlavor>
+                <PixelHeight>20</PixelHeight>
+                <PercentageHeight>100</PercentageHeight>
+              </Row>
+            </RowDefs>
+            <Cell row="0">
+              <StaticTextControl UUID="906d3e92-3bdc-4251-bb96-6ab66ba6291d" mobileOption="HideInSimpleMode" width="0">
+                <Name>InvFormHeader</Name>
+                <Description />
+                <Text>{Item Id}: {Name}</Text>
+                <Behavior>URL</Behavior>
+                <Url />
+                <Target>_blank</Target>
+                <PopupHTML />
+                <PopupFeatures>height=300, width=500, status=no, menubar=no, resizable=no, scrollbars=yes, toolbar=no, location=no</PopupFeatures>
+                <ShowTransitionName>false</ShowTransitionName>
+                <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                <ToolTipText />
+                <RefreshableContent>{"Field.Title/Summary","8f5a8886-b538-42a5-a1bc-8fe337be8211",""}</RefreshableContent>
+                <RefreshOnPageLoad>true</RefreshOnPageLoad>
+                <RefreshOnDataChange>true</RefreshOnDataChange>
+                <RefreshOnClick>false</RefreshOnClick>
+                <RefreshButtonID />
+                <HorizontalAlignment>Near</HorizontalAlignment>
+                <VerticalAlignment>Center</VerticalAlignment>
+                <StyleOverride>fgcolor: #575551;cornerradius: -1;font: Arial Black;fontsize: 16;bold: True;</StyleOverride>
+                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                <Render>
+                  <Template outputHtml="True">{0}</Template>
+                  <Param>TITLE</Param>
+                  <Refresh onpageload="True" ondatachange="True" onclick="False" />
+                </Render>
+              </StaticTextControl>
+            </Cell>
+          </TableLayout>
+        </TtFieldSectionControl>
+      </Cell>
+    </TableLayout>
+  </TopSidebar>
+  <HiddenField name="Title/Summary" id="8f5a8886-b538-42a5-a1bc-8fe337be8211" needSubmit="False" omitFromAutoSections="False" />
+</TtForm>

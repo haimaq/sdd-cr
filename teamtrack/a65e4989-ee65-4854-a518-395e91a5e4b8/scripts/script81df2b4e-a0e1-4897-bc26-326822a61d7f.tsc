@@ -1,0 +1,639 @@
+Dim gOutputBuffer,JSON_FIELDLIST
+
+Dim vbCr
+Dim vbLf
+Dim vbCrLf
+Dim vbEol
+Dim vbQuote
+Dim vbSingleQuote
+Dim vbHtmlNewLine
+vbCr          = Chr(13)
+vbLf          = Chr(10)
+vbCrLf        = vbCr & vbLf
+vbEol         = "<br>" + vbCrLf
+vbHtmlNewLine = "<br>" + vbCrLf
+vbQuote       = Chr(34)
+vbSingleQuote = Chr(39)
+
+'  VB VarType() constants
+'vbEmpty = 0             'Uninitialized (default)
+'vbNull = 1              'Contains no valid data
+vbInteger  = 2           'Integer subtype
+vbLong     = 3              'Long subtype
+vbSingle   = 4            'Single subtype
+vbDouble   = 5            'Double subtype
+vbCurrency = 6          'Currency subtype
+'vbDate = 7              'Date subtype
+vbString   = 8            'String subtype
+'vbObject = 9            'Object
+'vbError = 10            'Error subtype
+vbBoolean = 11          'Boolean subtype
+'vbVariant = 12          'Variant (used only for arrays of variants)
+'vbDataObject = 13       'Data access object
+'vbDecimal = 14          'Decimal subtype
+vbByte = 17             'Byte subtype
+'vbArray = 8192          'Array
+'******************************************************************************************************************
+'* generate
+'******************************************************************************************************************
+Function GenerateJObjValue(value)
+    Dim action
+
+    If IsNull(value) Then
+        writeJSON("null")
+    ElseIf IsObject(value) Then
+        Dim objectType
+        objectType = TypeName(value)
+
+        If value Is Nothing Then
+            writeJSON("null")
+        ElseIf objectType = "Dictionary" Then
+            parseDictionary(value)
+        ElseIf objectType = "AppRecord" Then
+            parseAppRecord(value)
+        ElseIf objectType = "VarRecord" Then
+            '  parseVarRecord(value)
+        ElseIf objectType = "AppRecordList" Then
+            parseAppRecordList(value)
+        ElseIf objectType = "VarFieldList" Then
+            '    parseVarFieldList(value)
+        ElseIf objectType = "Field" Then
+            '    parseField(value)
+        Else
+            'generateObject(value)
+        End If
+
+    Else
+        Select Case VarType(value)
+            Case vbInteger
+                writeJSON(value)
+            Case vbLong
+                writeJSON(CInt(value))
+            Case vbBoolean         'bool
+            If value Then writeJSON("true") Else writeJSON("false")
+            Case vbByte Or 19         'int, long, byte
+                writeJSON(CLng(value))
+            Case vbSingle Or vbDouble Or vbCurrency Or 14
+                writeJSON(Replace(CDbl(value), ",", "."))
+            Case vbString
+                writeJSON(vbQuote & JSONEscape(value) & vbQuote )
+            Case Else
+                writeJSON(vbQuote & JSONEscape("Not supported data type") & vbQuote )
+        End Select
+    End If
+
+    GenerateJObjValue = gOutputBuffer
+End Function
+
+Function GenerateJSON(name, jvalue, isNested)
+
+    If isNested = False And Not IsEmpty(name) Then
+        writeJSON("{" & vbCrLf)
+
+    End If
+
+    If IsBlank(name) = False Then
+        writeJSON(vbQuote & JSONEscape(name) & vbQuote & ": ")
+        'writeJSON("" & vbQuote & "" & escape(name) & vbQuote &": ")
+    End If
+    Call GenerateJObjValue(jvalue)
+
+    If isNested = False And Not IsEmpty(name) Then
+        writeJSON("}" & vbCrLf)
+    End If
+    GenerateJSON = gOutputBuffer
+End Function
+
+Function JSONEscape(byVal str)
+    Dim i
+    Dim j
+    Dim uChar
+    Dim uCode
+    Dim p
+    Dim uCharDic
+    Set uCharDic = CreateObject("Scripting.Dictionary")
+    uCharDic.Add &H22, &H22
+    uCharDic.Add &H5C, &H5C
+    uCharDic.Add &H2F, &H2F
+    uCharDic.Add &H08, &H62
+    uCharDic.Add &H0C, &H66
+    uCharDic.Add &H0A, &H6E
+    uCharDic.Add &H0D, &H72
+    uCharDic.Add &H09, &H09
+
+    For i = 1 To Len(str)
+        p     = True
+        uChar = Mid(str, i, 1)
+
+        For Each uCode in uCharDic
+
+            If uChar = Chr(uCode) Then
+                JSONEscape = JSONEscape & "\" & Chr(uCharDic.Item(uCode))
+                p          = False
+                Exit For
+            End If
+
+        Next
+
+        If p Then
+            Dim charCode
+            charCode = AscW(uChar)
+
+            If charCode > 31 And charCode < 127 Then
+                JSONEscape = JSONEscape & uChar
+            ElseIf charCode >  - 1 Or charCode < 65535 Then
+                JSONEscape = JSONEscape & "\u" & String(4 - Len(Hex(charCode)), "0") & Hex(charCode)
+            End If
+
+        End If
+
+    Next
+
+End Function
+
+
+
+
+Sub parseDictionary(dictObj)
+        Dim json, key, isFirst, isArray
+
+    If dictObj.Count = 0 Then
+        Call GenerateJSON(Empty, Null, True)
+        Exit Sub
+    End If
+    isArray = true
+    For Each key in dictObj
+      If IsEmpty(key) Or Not IsNumeric(key) Then
+        isArray = false
+        Exit For
+      End If
+    Next
+    If isArray Then
+  		writeJSON("[" & vbCrLf)
+  	Else
+  		writeJSON("{" & vbCrLf)
+  	End If
+    isFirst = true
+    For Each key in dictObj
+      If isFirst Then
+        isFirst = false
+      Else
+        writeJSON("," & vbCrLf)
+      End If
+      If isArray Then
+        Call GenerateJObjValue(dictObj.Item(key))
+      Else
+        Call GenerateJSON(key, dictObj.Item(key), True)
+      End If
+    Next
+    If isArray Then
+  		writeJSON("]" & vbCrLf)
+  	Else
+  		writeJSON("}" & vbCrLf)
+  	End If
+
+End Sub
+
+Sub parseAppRecordList(recordList)
+    Dim Item
+    Dim i
+    writeJSON("[" & vbCrLf)
+    i = 0
+    For Each Item in recordList
+
+        If i > 0 Then
+            writeJSON("," & vbCrLf)
+        End If
+
+        Call GenerateJObjValue(Item)
+
+        i = i + 1
+    Next
+
+    writeJSON("]" & vbCrLf)
+End Sub
+
+
+Sub parseAppRecord(objIem)
+	Dim fieldList,field,kvDicObj,fldValue
+    If IsBlank(JSON_FIELDLIST) Then
+        JSON_FIELDLIST = "ID,NAME"
+    End If
+
+    Set fieldList = parseMulti(JSON_FIELDLIST)
+    Set kvDicObj = CreateObject("Scripting.Dictionary")
+
+    If fieldList.Count() <> 0 Then
+        For Each field in fieldList
+            Select Case field
+                Case "ID"
+                    fldValue = objIem.getId()
+                    fldValue = CInt(fldValue)
+                    kvDicObj.Add LCase(field), fldValue
+                Case Else
+                    Call objIem.GetFieldValue(field,fldValue)
+                    kvDicObj.Add LCase(field), fldValue
+            End Select
+        Next
+        Call GenerateJSON(empty, kvDicObj, false)
+    End If
+
+End Sub
+'******************************************************************************************************************
+'* generateRecordset
+'******************************************************************************************************************
+Sub generateRecordset(itemList)
+  Call Ext.WriteStream("generateRecordset")
+
+    dim i, curRow, item, fldValue,fldName, numOfItems, fldList, fld, fldDictionary, itemID
+    numOfItems = itemList.Count()
+    Set fldDictionary = CreateObject("Scripting.Dictionary")
+
+    writeJSON("[")
+    curRow = 0
+    'recordset.pagesize = -1 means it is not paged.
+
+    'while curRow < numOfItems
+      for each item in itemList
+        fldDictionary.RemoveAll
+        itemID = item.getId()
+        Set fldList = item.fields()
+        if i > 0 then writeJSON(",")
+        'Set fldDictionary = buildFieldDictionary(item, "ID,PROJECTID,STAFF_FIRST_NAME,STAFF_LAST_NAME,STAFF_PHONE_NUMBER,STAFF_BB_NUMBER,STAFF_EMAIL,record_url", ",")
+          'Set fldDictionary = buildFieldDictionary(item, strDBFieldList, ",")
+          Call GenerateJSON(empty, fldDictionary, true)
+          curRow = curRow + 1
+        if curRow < numOfItems  then writeJSON(",")
+      next
+    'wend
+    writeJSON("]")
+End Sub
+Sub parseVarFieldList(fieldList)
+    Dim field
+    Dim i
+    Dim fldValue
+    Dim objItem
+    Dim objItems
+    Dim fieldName
+    Dim objField
+    Set objItems = parseMulti(JSON_FIELDLIST)
+
+    writeJSON("{" & vbCrLf)
+    i = 0
+
+    If objItems.Count() <> 0 Then
+
+        For Each objItem in objItems
+            Set objField = fieldList.FindField(LCase(objItem))
+            Call objField.GetDisplayValue(fldValue)
+            If i < objItems.Count() Then writeJSON(",")
+            Call GenerateJSON(objItem,fldValue, True)
+            i = i + 1
+        Next
+
+        writeJSON("}" & vbCrLf)
+    End If
+End Sub
+
+Sub writeJSON(str)
+
+    If Ext.OutputStreamExists() Then
+        'Call Ext.WriteStream( str & vbCrLf )
+        gOutputBuffer = gOutputBuffer & str
+    Else
+        Call  Ext.LogInfoMsg(str)
+    End If
+
+End Sub
+
+Sub WriteBuffer(str, doWrite)
+    'Call Ext.WriteStream( str & vbCrLf )
+    If IsEmpty(doWrite) Then doWrite = False
+
+    If doWrite = True Then
+        Call Ext.WriteStream(gOutputBuffer)
+        gOutputBuffer = Empty
+    Else
+        gOutputBuffer = gOutputBuffer & str
+    End If
+
+End Sub
+
+
+'  Write directly to the HTTP output stream.  This requires proper
+'  HTTP headers.
+
+' -------------------------------------------------------------
+
+'  Requires:
+'    Logging Library.tsc
+
+'  Provides:
+'    Function writeResponse(strContent,str_ContentType)
+'    Function writeHttpResponse(ByVal strContent)
+
+'  Write to the HTTP output stream using the raw RedirectHTTP output.
+
+' -------------------------------------------------------------
+
+' Use of shell.redirectHTTP suggested by Jeff Malin ...
+'  Suggested content types:
+'    text/html
+'    application/json
+'    application/javascript ; application/ecmascript ; text/javascript ; text/ecmascript
+'        NOTE: MSIE does not accept "application/java | ecmascript", but does allow "text/..."
+'    application/excel ; application/vnd.ms-excel
+'    text/aspwriteResponse(strContent , "application/json")
+'    application/pdf
+Function writeResponse(strContent , strContentType)
+    Dim Response
+    Response               = Shell.ServerProtocol & " 200 OK" & vbCrLf
+    Response               = Response & "Date: " & Now & vbCrLf
+    Response               = Response & "X-Powered-By: ASP.NET" & vbCrLf
+    Response               = Response & "Cache-Control: no-cache" & vbcrlf
+    Response               = Response & "Expires: 0" & vbCrLf
+    Response               = Response & "Content-Type: " & strContentType & vbCrLf
+    Response               = Response & "Accept-Charset: UTF-8" & vbCrLf
+    Response               = Response & "Server: " & Shell.ServerSoftware & vbcrlf
+    Response               = Response & "Content-Length: " & Len(strContent) & vbcrlf
+
+    If Ext.ShellHasProp("RedirectHTTP") Then
+        Shell.RedirectHTTP = Response & vbCrLf & strContent ' Must separate the headers from the Content with a linefeed
+    Else
+        Call Ext.LogInfoMsg("Didn't have the Shell.RedirectHTTP property in a " & Shell.Context & " context.")
+    End If
+
+End Function
+
+' *****************************************************************************
+
+
+
+
+
+' Name: parseMulti
+' Function: Take a Multi-Selection/Relational field string and parse out the
+'        IDs into a Dictionary object. Each entry uses the actual ID as the key.
+'        A For Each loop returns the Key of the Dictionary entries.
+' Parameters:
+'        strFMulti - String input of Multiple IDs (multi-select/relational)
+' Returns:
+'        Scripting.Dictionary object containing each of the IDs found in the
+'        multi-selection/relational field.
+'        Count will return 0 if no IDs found
+'
+' Usage:
+'        Add this script to your system. Name it whatever you want, but note
+'        the name. In your code, place $INCLUDE(<name of the script>) where
+'        you want the function to reside. Then add the following to your script
+'        to use the function:
+'Set objIDs = parseMulti(strFieldValue)
+'if objIDs.Count() <> 0 Then
+'  ' Process each ID found in the field
+'  For Each nId in objIDs
+'    ' Process the IDs
+'  Next
+'End If
+'
+' Date: 07/28/2006
+Function parseMulti(strFMulti)
+    Dim nStart
+    Dim nEnd
+    Dim nLength
+    Dim nId
+    Dim objIds
+    strFMulti  = "," & strFMulti & ","
+    ' Create the Dictionary object to hold the IDs
+    Set objIds = CreateObject("Scripting.Dictionary")
+    ' If there are no IDs in the field, return the empty Dictionary object
+    ' An empty multi-selection contains a single comma
+    ' An empty multi-relational contains two commas
+
+    If (strFMulti = ",") Or (strFMulti = ",,") Then
+        Set parseMulti = objIds
+        Exit Function
+    End If
+
+    ' Length of the string of IDs
+    nLength = Len(strFMulti)
+    ' Starting position in the string of IDs, past the first comma
+    nStart  = 2
+
+    Do While nStart <= nLength
+        ' Find the next comma after the start comma
+        nEnd = InStr(nStart,strFMulti,",")
+        ' Strip out the ID between the commas
+        nId  = Mid(strFMulti, nStart, nEnd - nStart)
+
+        ' Create the Dictionary entry using the ID as the key
+
+        If Not objIds.Exists(nId) Then
+            objIds.Add nId, nId
+        End If
+
+        ' Point past the next start comma
+        nStart = nEnd + 1
+    Loop
+
+    ' Return the Dictionary object
+    Set parseMulti = objIds
+End Function
+
+'******************************************************************************************************************
+'* checks if a variable is blank
+'******************************************************************************************************************
+Function IsBlank(Value)
+    'returns True if Empty or NULL or Zero
+
+    If IsEmpty(Value) Or IsNull(Value) Then
+        IsBlank = True
+        Exit Function
+    ElseIf VarType(Value) = vbString Then
+
+        If Value = "" Or Value = "undefined" Then
+            IsBlank = True
+            Exit Function
+        End If
+
+    ElseIf IsObject(Value) Then
+
+        If Value Is Nothing Then
+            IsBlank = True
+            Exit Function
+        End If
+
+    ElseIf IsNumeric(Value) Then
+
+        If Value = 0 Then
+            Call Ext.LogErrorMsg( "TeamScript warning:  Zero value found" )
+            IsBlank = True
+            Exit Function
+        End If
+
+    Else
+        IsBlank = False
+    End If
+
+End Function
+
+Function ReadParam(paramName)
+    '* syntactic sugar. Helps avoid inadvertently adding an empty key, which would then cause Exists to return true.
+
+    If Shell.Params.Exists(LCase(paramName)) Then
+        ReadParam = Shell.Params.Item(LCase(paramName))
+    End If
+
+End Function
+
+
+
+'Retourne une liste de valeurs.
+Function parseMultiValues(commaSeparatedValues)
+	Dim nFirst, nSecond, nLength, nValue, nKey, objlds
+
+  If(NOT Right(commaSeparatedValues,1) = ",")then
+		commaSeparatedValues = commaSeparatedValues & ","
+	End If
+	If(NOT Left(commaSeparatedValues,1) = ",")then
+		commaSeparatedValues =  "," & commaSeparatedValues
+	End If
+
+	nKey = 0
+	nFirst  = InStr( commaSeparatedValues, "," )
+	nSecond = InStr( nFirst + 1,commaSeparatedValues, "," )
+	nLength = Len( commaSeparatedValues )
+ 	Set objlds= CreateObject("Scripting.Dictionary")
+	Do While nLength > nFirst
+        nValue = Mid( commaSeparatedValues, nFirst + 1, ( nSecond - nFirst ) - 1 )
+
+	objlds.Add nKey, Trim(nValue)
+         nFirst  = nSecond
+         nSecond = InStr( nFirst + 1, commaSeparatedValues, "," )
+	nKey= nKey + 1
+	Loop
+	Set parseMultiValues = objlds
+End Function
+'  Field name is either UPPERCASE DATABASE NAME without "TS_", or Mixed Case Display Name
+Function GetFieldDBName(ByVal nTableId,strFldName)
+    Dim str
+    Dim arec
+    Set arec = Ext.CreateAppRecord(Ext.TableID("TS_FIELDS","database"))
+
+    If arec.ReadWithWhere("ts_tableid=" & nTableId & " and TS_NAME='" & strFldName & "'") Then
+        Call arec.GetFieldValue("DBNAME",str)
+        GetFieldDBName = Trim(str)
+
+    Else
+        GetFieldDBName = "Can't read fldID '" & strFldName & "' for tableID '" & nTableId & "' in TS_FIELDS"
+    End If
+
+End Function
+
+
+
+'Convert a Dictionary to a json object
+'If the dictionary is empty or contain only numeric keys, the json object will be an array
+Function jsonFromObject(dico)
+	Dim json, key, isFirst, isArray
+	isArray = true
+	For Each key in dico
+		If IsEmpty(key) Or Not IsNumeric(key) Then
+			isArray = false
+			Exit For
+		End If
+	Next
+	If isArray Then
+		json = "["
+	Else
+		json = "{"
+	End If
+	isFirst = true
+	For Each key in dico
+		If isFirst Then
+			isFirst = false
+		Else 
+			json = json & ","
+		End If
+		If isArray Then
+			json = json & jsonValOnly(dico.Item(key))
+		Else
+			json = json & jsonKeyVal(key, dico.Item(key))
+		End If
+	Next
+	If isArray Then
+		json = json & "]"
+	Else
+		json = json & "}"
+	End If
+	jsonFromObject = json
+End Function
+
+'Get a json "key:value"
+Function jsonKeyVal(param,value)
+	jsonKeyVal = "" & chr(34) & param & chr(34) & ":" & jsonValOnly(value)
+End Function
+
+'Get a json "value", without any "key:" before
+Function jsonValOnly(value)
+	Select Case VarType(value)
+		Case 2,3,4,5,17 'Interger, Long, Single, Double, Byte
+			jsonValOnly = value
+		Case 8,11 ' String, Boolean
+			jsonValOnly = chr(34) & jsonEncoding(value) & chr(34)
+		Case 9 'Object (Array not supported by AppScript)
+			jsonValOnly = jsonFromObject(value)
+		Case 0,1
+			jsonValOnly = chr(34) & chr(34)
+		Case Else 'otherwise
+			jsonValOnly = chr(34) & "Not supported data type" & chr(34)
+	End Select
+End Function
+
+'Convert a String to a compatible json String
+Function jsonEncoding(txt)
+	Dim result
+	result = txt
+	result = Replace(result, "\","\\") 'to do first !!!
+	result = Replace(result, chr(13) & chr(10), "\n")
+	result = Replace(result, chr(13), "\n")
+	result = Replace(result, chr(10), "\n")
+	result = Replace(result, chr(9), "\t")
+	'result = Replace(result,"'","\'")
+	result = Replace(result,chr(34),"\" & chr(34))
+	jsonEncoding = result
+End Function
+
+
+
+Sub GetUsers(strFind)  
+	Dim lstRec,rec,json,whereClause, fldValue,readOk
+	'whereClause = "TS_TITLE  like '%" & CStr(findMe) & "%'"
+            whereClause = "TS_ID > 0  AND TS_TITLE like '%" &strFind & "%'"
+	
+	Set lstRec = Ext.CreateAppRecordList(Ext.TableId("USR_CRS_CHANGEREQ_TAGS"))
+	Call lstRec.ReadWithWhere(whereClause)
+
+    	readOk = lstRec.ReadWithWhere(whereClause)
+    If readOk Then
+	JSON_FIELDLIST = "ID,TITLE"
+	fldValue = GenerateJSON("tags", lstRec, false)
+	Call writeResponse(fldValue , "application/json")
+    End If
+	'Call DoLogging(Time&" Nb DB found: " & CStr(lstRec.Count()) & vbcrlf,0)
+	Set json=CreateObject("Scripting.Dictionary")
+	For Each rec in lstRec
+		json.Add json.Count, CreateObject("Scripting.Dictionary")
+		json.Item(json.Count-1).Add "id", rec.GetId()
+		json.Item(json.Count-1).Add "name", rec.GetDisplayName()
+	Next
+	json = jsonFromObject(json)
+	
+End Sub
+
+
+
+
+
+Dim find
+find = Shell.Params.Item("find")
+Call GetUsers(find)

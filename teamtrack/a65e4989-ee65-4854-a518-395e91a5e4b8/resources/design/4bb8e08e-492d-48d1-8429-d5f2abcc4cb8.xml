@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CustomStorage>
+  <Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution>
+    <TtSolution id="a65e4989-ee65-4854-a518-395e91a5e4b8">
+      <EventID>0507bbca-85c7-4c80-a359-fce2ee3a6678</EventID>
+    </TtSolution>
+  </Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution>
+  <Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtScript>
+    <TtScript id="53cfd0cc-df5b-4d5a-8284-a752beac720c">
+      <Description />
+    </TtScript>
+    <TtScript id="c7823d9d-4aa3-4fb1-871c-533004ba81f2">
+      <Description />
+    </TtScript>
+    <TtScript id="2108d3c2-ec86-4b68-b18a-cafc23681b4e">
+      <Description />
+    </TtScript>
+    <TtScript id="84371cdf-fe98-40bb-a10c-c0fd15cfe38f">
+      <Description />
+    </TtScript>
+    <TtScript id="1a9e34a0-cee0-4fa7-9e24-9966f72d1d94">
+      <Description />
+    </TtScript>
+    <TtScript id="9b9c005b-ba90-45cd-83a0-7cabbf10dd9b">
+      <Description />
+    </TtScript>
+    <TtScript id="d80cda29-5727-445c-a0cb-5d35e876fe1b">
+      <Description />
+    </TtScript>
+    <TtScript id="a3eab9db-8e2a-404e-94b0-9468610904c7">
+      <Description />
+    </TtScript>
+    <TtScript id="a72daf30-199a-4d56-a862-5b620dd9914c">
+      <Description />
+    </TtScript>
+    <TtScript id="ebcfb01e-435c-45fc-954b-bceb125f74c2">
+      <Description />
+    </TtScript>
+    <TtScript id="e1474797-de91-44ce-bd3e-28e54537e0a2">
+      <Description />
+    </TtScript>
+    <TtScript id="9fa315bf-d1d8-45d7-bf4e-02de72fc1711">
+      <Description />
+    </TtScript>
+    <TtScript id="d59a779a-cd93-4679-ba88-9d0256062609">
+      <Description />
+    </TtScript>
+    <TtScript id="2b465550-c2c4-4a72-8d1f-921edb6225f3">
+      <Description />
+    </TtScript>
+    <TtScript id="81df2b4e-a0e1-4897-bc26-326822a61d7f">
+      <Description>[{"id":1,"name":"TEST"},{"id":2,"name":"HELLO"},{"id":3,"name":"Submit"},{"id":4,"name":"Advanced"}]
+{ "data": [ { "id": 1, "title": "TEST"} , { "id": 2, "title": "HELLO"} , { "id": 3, "title": "Submit"} , { "id": 4, "title": "Advanced"} ] }</Description>
+    </TtScript>
+    <TtScript id="e8d2ea03-8f26-409e-9b88-3a52d89bed58">
+      <Description />
+    </TtScript>
+    <TtScript id="788d788f-be2c-4045-8194-058c3153a088">
+      <Description />
+    </TtScript>
+    <TtScript id="1deaac0f-ff2f-440a-9321-d6dcac6deeb4">
+      <Description />
+    </TtScript>
+    <TtScript id="546d3e89-3100-41fa-9d12-d0462d389fde">
+      <Description />
+    </TtScript>
+    <TtScript id="2c3554a0-ffd0-4ea3-82db-1f018980f084">
+      <Description />
+    </TtScript>
+  </Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtScript>
+</CustomStorage>

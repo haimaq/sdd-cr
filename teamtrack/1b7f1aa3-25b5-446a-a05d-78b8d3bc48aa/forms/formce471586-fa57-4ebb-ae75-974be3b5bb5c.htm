@@ -1,0 +1,408 @@
+﻿$INCLUDE(jquery)<div><!-- --><script>
+      var nCurrentSection = [];
+      var TabGroups = {};
+      var bValidate = false;
+      
+      var bgColor = "White";
+      var bgRepeat = "no-repeat"; bValidate = true; </script>
+    $JAVASCRIPT(aeplugin_modern.js)
+    
+      $INCLUDE(angular)
+    
+      $JAVASCRIPT(form_plugins/angularRelationalGrid.js)
+    
+    $INCLUDE(javascript/date.jsvar)
+    $JAVASCRIPT(date.js)
+    <link rel="stylesheet" type="text/css" href="$FORM_EXTENSION_ASSET_PATH(Transition Icon)/styles/TransitionIcon.css" /><script language="Javascript" name="ExpandAll.js" src="$FORM_EXTENSION_ASSET_PATH(Expand All)/javascript/ExpandAll.js"> </script><link rel="stylesheet" type="text/css" href="$FORM_EXTENSION_ASSET_PATH(sddcfext)/css/sbmAppStyle.css" /><script>
+      SetFormVersion("11.3.1");   
+      var isPreview = false;
+
+      InitFieldLookup({ "Fields": [
+        { uuid: "newnote", name: "newnote", fid: "newnote", dbName: "_NEWNOTE" }, 
+        $JSONDATAFROMFIELDUUID(3246a5d1-2ff3-46c3-baf0-ea45f4b50d7b),
+        $JSONDATAFROMFIELDUUID(add5508e-f9c5-4b02-b0c4-5e058c98b94a),
+        $JSONDATAFROMFIELDUUID(a99b8741-e4a4-4918-8492-9173fbfda49f),
+        $JSONDATAFROMFIELDUUID(3c11ffe6-43ae-45d2-8d12-cc7fe7881d74),
+        $JSONDATAFROMFIELDUUID(bb0023ec-be61-4867-92a7-4451779b23a6),
+        $JSONDATAFROMFIELDUUID(4693b9c6-22d2-4902-bae1-eac5c6cc8c45),
+        $JSONDATAFROMFIELDUUID(e4391aa2-5b84-49d5-b11f-f6d2f2e171ae),
+        $JSONDATAFROMFIELDUUID(cd166126-e764-423e-ae05-7aa24685487b),
+        $JSONDATAFROMFIELDUUID(9a341716-8b57-45d0-9589-2551937807a7),
+        $JSONDATAFROMFIELDUUID(df2fc2be-d1a0-4931-9382-e09fb04ce7ff),
+        $JSONDATAFROMFIELDUUID(85124da3-3dcc-4f45-a4fe-cb4dda35f83f),
+        $JSONDATAFROMFIELDUUID(23f92d83-3797-4dbe-93f3-5988b03e6681),
+        $JSONDATAFROMFIELDUUID(8d6e3cd5-6135-4db8-8d1c-38699ed60202),
+        $JSONDATAFROMFIELDUUID(aec49555-7c8e-4c34-986d-27ced7467964),
+        $JSONDATAFROMFIELDUUID(4f22942a-fa87-4dca-ba7a-13390be0ecd0),
+        $JSONDATAFROMFIELDUUID(6f4237bc-b136-4b5d-9846-37973106b335),
+        { uuid: "TitleLabel", name: "TitleLabel", fid: "TitleLabel", dbName: null, type: "edit" },
+        { uuid: "LogohImage", name: "LogohImage", fid: "LogohImage", dbName: null, type: "image" },
+        { uuid: "SubmitButton", name: "SubmitButton", fid: "SubmitButton", dbName: null, type: "button" },
+        { uuid: "CancelButton", name: "CancelButton", fid: "CancelButton", dbName: null, type: "button" },
+        { uuid: "6dce72f4-0494-4410-89ee-de3a75e7670c", name: "EventsERW", fid: "6dce72f4-0494-4410-89ee-de3a75e7670c", dbName: null, type: "grid" },
+        { uuid: "ea0a005d-3f8d-4cc1-8fe3-eb67e8215293", name: "AssociateEventsExpander", fid: "ea0a005d-3f8d-4cc1-8fe3-eb67e8215293", dbName: null, type: "section" },
+        { uuid: "4d7642be-1955-49fc-93d2-abc4e2c6f465", name: "HiddenFieldsPanel", fid: "4d7642be-1955-49fc-93d2-abc4e2c6f465", dbName: null, type: "section" },
+        { uuid: "cf70a39e-c28d-49f2-9ac5-2a677519f575", name: "sTopPanel", fid: "cf70a39e-c28d-49f2-9ac5-2a677519f575", dbName: null, type: "container" },
+        { uuid: "4f5c05bc-529f-43c2-91db-b29692501edb", name: "Panel3", fid: "4f5c05bc-529f-43c2-91db-b29692501edb", dbName: null, type: "container" },
+        { uuid: "b0ca00e3-3d6e-44e1-ae45-005367b92244", name: "ContentPanel", fid: "b0ca00e3-3d6e-44e1-ae45-005367b92244", dbName: null, type: "container" },
+        { uuid: "cc796f61-2fbb-45e4-9ed4-e23a28189e4b", name: "CategoryPanel", fid: "cc796f61-2fbb-45e4-9ed4-e23a28189e4b", dbName: null, type: "container" },
+        { uuid: "3c8eb9ec-128e-46bf-81dd-a2c632fef41f", name: "Panel4", fid: "3c8eb9ec-128e-46bf-81dd-a2c632fef41f", dbName: null, type: "container" },
+        { uuid: "e951c7d0-2dc5-4bd5-accf-7be33a3632dd", name: "FieldControilPanel1", fid: "e951c7d0-2dc5-4bd5-accf-7be33a3632dd", dbName: null, type: "container" },
+        { uuid: "4a26053a-0fc9-48f8-9393-a1be16190f55", name: "ManufacturerAddressPanel", fid: "4a26053a-0fc9-48f8-9393-a1be16190f55", dbName: null, type: "container" },
+        { uuid: "f08ee9ec-c2b3-4970-affd-1690089f99a7", name: "TransitionTopPanel", fid: "f08ee9ec-c2b3-4970-affd-1690089f99a7", dbName: null, type: "container" },
+        { uuid: "d556db8d-01ba-4246-96a0-5a14734ee3bc", name: "ButtonPanel", fid: "d556db8d-01ba-4246-96a0-5a14734ee3bc", dbName: null, type: "container" },
+        { uuid: null, name: null, fid: null, dbName: null, type: null } ]}, bValidate
+      );
+
+      InitTransitionLookup({ "Transitions": [
+        $JSONDATATRANSINFO()
+        { name: null, fid: null, type: null } ] }
+      );
+    </script><div id="fixedContainer"><table class="tableFixed" cellpadding="0" cellspacing="0"><tr><td colspan="3" id="TopSidebar" class="header-footer sidebarCell" style=""><!----></td></tr><tr><td id="LeftSidebar" class="sidebar sidebarCell" style=""><!----></td><td class="scrollableCell" style="height:100%; width:100%;"><div id="ScrollableContent"><table cellspacing="0" cellpadding="0"><tr><td id="ScrollableAlign" align="left" vertical-align="top"><div id="ErrorMsgTransplant"><!--placeholder for server error--></div><div id="CustomErrorMsg" class="dberr" style="display: none; "><!--placeholder for custom error message--></div><div class=""><div class="LayoutTable responsive" cellpadding="0px"><div class="LayoutRow"><div class="LayoutCell col-md-12"><div id="signDiv">$SIGN()</div></div></div><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:0px;" align="left" vertical-align="top"><div id="cf70a39e-c28d-49f2-9ac5-2a677519f575" class="Panel" data-name="sTopPanel" style="padding: 10px 10px 10px 10px; border-radius: 0px; background-color: Transparent;width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="right" vertical-align="middle"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="4f5c05bc-529f-43c2-91db-b29692501edb" class="Panel" data-name="Panel3" style="padding: 0px 0px 0px 0px; border-radius: 0px; background-color: Transparent;"><table class="LayoutTable" border="0" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="center" vertical-align="middle"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="LogohImage" class="CustomImage hoverHelpText " style="color: #000000; background-image: url($IMAGE(88a8bd74-51cc-4c08-bee6-8a2430d8936f.png, NOTAG)); width: 64px; height: 64px; " title=""><span style="" class="ImageText ControlStyle" id="LogohImage.text"> </span><script>
+      function widgetLogohImageLoad()
+      {
+        SetFieldValue("LogohImage", "", true);
+      }
+        
+      // add event callbacks
+    </script><script>
+      function widgetLogohImageLoad2()
+      {
+        var valueObj = {text: ''};
+        
+        SetFieldValue("LogohImage", valueObj, true);
+      }
+        
+      // add event callbacks
+    </script></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="middle"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="TitleLabel" class="LabelStyle StaticText" style="color: Black; font-family: 'Tahoma'; font-size: 12pt; font-weight: bold; font-style: normal; ">$UUIDSTRING(b3a89175-187a-4582-9ad3-f821808beaf8)<!----></div><script>
+      function widgetTitleLabelLoad()
+      {
+        var errors = new Array();
+        var params = new Array();
+    
+        params[0] = htmlEncode(GetInternalFieldValue("TITLE", null));
+        if (params[0] == null) errors[errors.length] = "TITLE";
+        
+        var template = '<b>$TRANSITIONNAME():</b> {0}';
+        var content = BuildString(template, params);
+            
+        SetFieldValue("TitleLabel", content, true);
+      }
+        
+      // add event callbacks
+    
+      AddLoadCallback(widgetTitleLabelLoad);
+    
+      AddChangeCallback("TITLE", widgetTitleLabelLoad);
+            </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="176" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:0px;" align="left" vertical-align="top"><div id="b0ca00e3-3d6e-44e1-ae45-005367b92244" class="Panel" data-name="ContentPanel" style="padding: 15px 10px 10px 10px; border-radius: 0px; background-color: Transparent;width: 100%; "><div class="LayoutTable responsive" cellpadding="4px"><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:4px;" align="left" vertical-align="top"><div id="cc796f61-2fbb-45e4-9ed4-e23a28189e4b" class="Panel" data-name="CategoryPanel" style="padding: 0px 0px 0px 0px; border-radius: 0px; background-color: Transparent;width: 100%; "><div class="LayoutTable responsive" cellpadding="2px"><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:2px;" align="left" vertical-align="top"><div id="3c8eb9ec-128e-46bf-81dd-a2c632fef41f" class="Panel" data-name="Panel4" style="padding: 0px 0px 0px 0px; border-radius: 0px; background-color: Transparent;width: 100%; "><div class="LayoutTable responsive" cellpadding="0px"><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="bottom" abbr="Title" nowrap="">
+    $ITEMFIELDLABEL(3246a5d1-2ff3-46c3-baf0-ea45f4b50d7b, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="justify" vertical-align="top" abbr="Title">
+    
+    $ITEMFIELDVALUE(3246a5d1-2ff3-46c3-baf0-ea45f4b50d7b, , ControlStyle, )
+    
+    <script>
+      function widgetTITLELoad()
+      {
+        SetFieldValue("Title", "", true);
+      }
+        
+      // add event callbacks
+    </script></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Description" nowrap="">
+    $ITEMFIELDLABEL(add5508e-f9c5-4b02-b0c4-5e058c98b94a, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="justify" vertical-align="top" abbr="Description"><div class="longTextWrapper memoFld" style="overflow: auto; ">
+      $ITEMFIELDVALUE(add5508e-f9c5-4b02-b0c4-5e058c98b94a, height: 60px; , ControlStyle TxaCtrl, height: 100%; )
+    </div><script>
+      function widgetDESCRIPTIONLoad()
+      {
+        SetFieldValue("Description", "", true);
+      }
+        
+      // add event callbacks
+    </script></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-5 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Task Type" nowrap="">
+    $ITEMFIELDLABEL(a99b8741-e4a4-4918-8492-9173fbfda49f, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Task Type">
+    
+    $ITEMFIELDVALUE(a99b8741-e4a4-4918-8492-9173fbfda49f, , ControlStyle, )
+  </div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div><div class="col-md-2 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;"><!----></div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" vertical-align="top"><!----></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div><div class="col-md-5 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Submit Date" nowrap="">
+    $ITEMFIELDLABEL(3c11ffe6-43ae-45d2-8d12-cc7fe7881d74, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Submit Date">
+    
+    $ITEMFIELDVALUE(3c11ffe6-43ae-45d2-8d12-cc7fe7881d74, , ControlStyle, )
+    <script>
+      function widgetSUBMITDATELoad()
+      {
+        SetFieldValue("Submit Date", "", true);
+      }
+        
+      // add event callbacks
+    </script></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-5 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Task Owner" nowrap="">
+    $ITEMFIELDLABEL(bb0023ec-be61-4867-92a7-4451779b23a6, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Task Owner">
+    
+    $ITEMFIELDVALUE(bb0023ec-be61-4867-92a7-4451779b23a6, , ControlStyle, )
+  </div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div><div class="col-md-2 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;"><!----></div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" vertical-align="top"><!----></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div><div class="col-md-5 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Target Due Date" nowrap="">
+    $ITEMFIELDLABEL(4693b9c6-22d2-4902-bae1-eac5c6cc8c45, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Target Due Date">
+    
+    $ITEMFIELDVALUE(4693b9c6-22d2-4902-bae1-eac5c6cc8c45, , ControlStyle, )
+    <script>
+      function widgetDUE_DATELoad()
+      {
+        SetFieldValue("Target Due Date", "", true);
+      }
+        
+      // add event callbacks
+    </script></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-5  LayoutCell" style=" padding:0px;" align="left" vertical-align="top"><div id="e951c7d0-2dc5-4bd5-accf-7be33a3632dd" class="Panel" data-name="FieldControilPanel1" style="padding: 0px 0px 0px 0px; border-radius: 0px; background-color: Transparent;width: 100%; "><div class="LayoutTable responsive" cellpadding="0px"><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Parent Task" nowrap="">
+    $ITEMFIELDLABEL(e4391aa2-5b84-49d5-b11f-f6d2f2e171ae, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Parent Task">
+    
+    $ITEMFIELDVALUE(e4391aa2-5b84-49d5-b11f-f6d2f2e171ae, , ControlStyle, )
+  </div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div><div class="col-md-2  LayoutCell" style=" padding:0px;"><!----></div><div class="responsiveCellMinHeight" style=""> </div><div class="col-md-5  LayoutCell" style=" padding:0px;" align="left" vertical-align="top"><div id="4a26053a-0fc9-48f8-9393-a1be16190f55" class="Panel" data-name="ManufacturerAddressPanel" style="padding: 0px 0px 0px 0px; border-radius: 0px; background-color: Transparent;width: 100%; "><div class="LayoutTable responsive" cellpadding="0px"><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Parent CR Complete" nowrap="">
+    $ITEMFIELDLABEL(cd166126-e764-423e-ae05-7aa24685487b, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Parent CR Complete"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(cd166126-e764-423e-ae05-7aa24685487b, , ControlStyle, )
+    </div></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Parent Task Title" nowrap="">
+    $ITEMFIELDLABEL(9a341716-8b57-45d0-9589-2551937807a7, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Parent Task Title"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(9a341716-8b57-45d0-9589-2551937807a7, , ControlStyle, )
+    </div></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Change Package" nowrap="">
+    $ITEMFIELDLABEL(df2fc2be-d1a0-4931-9382-e09fb04ce7ff, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Change Package"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(df2fc2be-d1a0-4931-9382-e09fb04ce7ff, , ControlStyle, )
+    </div></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="bottom" abbr="Comments" nowrap="">
+    $ITEMFIELDLABEL(85124da3-3dcc-4f45-a4fe-cb4dda35f83f, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="justify" vertical-align="top" abbr="Comments"><div class="longTextWrapper memoFld" style="">
+      $ITEMFIELDVALUE(85124da3-3dcc-4f45-a4fe-cb4dda35f83f, , ControlStyle TxaCtrl, height: 100%; )
+    </div><script>
+      function widgetCOMMENTSLoad()
+      {
+        SetFieldValue("Comments", "", true);
+      }
+        
+      // add event callbacks
+    </script></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:0px;" align="left" vertical-align="top"><div id="f08ee9ec-c2b3-4970-affd-1690089f99a7" class="Panel" data-name="TransitionTopPanel" style="padding: 0px 0px 10px 0px; border-radius: 0px; background-color: Transparent;width: 100%; "><div class="LayoutTable responsive" cellpadding="0px"><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="bottom" abbr="Work Log" nowrap="">
+    $ITEMFIELDLABEL(23f92d83-3797-4dbe-93f3-5988b03e6681, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="justify" vertical-align="top" abbr="Work Log"><div class="longTextWrapper memoFld" style="overflow: auto; font-family: 'Tahoma'; font-size: 10pt; font-weight: normal; font-style: normal; ">
+      $ITEMFIELDVALUE(23f92d83-3797-4dbe-93f3-5988b03e6681, height: 100px; font-family: 'Tahoma'; font-size: 10pt; font-weight: normal; font-style: normal; , ControlStyle TxaCtrl, height: 100%; )
+    </div><script>
+      function widgetWORK_LOGLoad()
+      {
+        SetFieldValue("Work Log", "", true);
+      }
+        
+      // add event callbacks
+    </script></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:4px;" align="left" vertical-align="top"><div id="ea0a005d-3f8d-4cc1-8fe3-eb67e8215293" style="background-color: transparent; width: 100%;  border-radius: 0px; " class="expanderRoot FlexColumn responsive"><div id="ea0a005d-3f8d-4cc1-8fe3-eb67e8215293_header" class="expanderHead FlexHead" style="" onclick="toggleVisible('ea0a005d-3f8d-4cc1-8fe3-eb67e8215293');" alt="Expand/Collapse section"><a href="#" onclick="event.preventDefault()" class="rttl2" style="color: Black; font-family: 'Arial'; font-size: 12pt; font-weight: normal; " id="ea0a005d-3f8d-4cc1-8fe3-eb67e8215293_label" width="100%">$UUIDSTRING(ea0a005d-3f8d-4cc1-8fe3-eb67e8215293) </a></div><div id="ea0a005d-3f8d-4cc1-8fe3-eb67e8215293_content" class="expanderContent FlexBody"><div class="expanderContentWrap" style="background-color: Transparent; padding: 0px 0px 0px 0px; "><div class="LayoutTable responsive" cellpadding="2px"><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:2px;" align="left" vertical-align="top"><div id="6dce72f4-0494-4410-89ee-de3a75e7670c.wrapper" name="6dce72f4-0494-4410-89ee-de3a75e7670c.wrapper" class=" widgetWrapper FlexColumn  GridStyle" style="width: 100%; background-color: transparent; "><div id="6dce72f4-0494-4410-89ee-de3a75e7670c.outer" name="6dce72f4-0494-4410-89ee-de3a75e7670c.outer" key="EventsERW" class="widgetContent FlexBody GridStyle" style="border: none; overflow: auto; " ng-controller="relationalGridCtrl">
+          $INCLUDE(form_plugins/angularRelationalGrid)
+        </div><script>
+      var _EventsERWParams = {
+        id:'6dce72f4-0494-4410-89ee-de3a75e7670c',
+        name:'EventsERW',
+        class: 'GridStyle',
+        fieldname: 'CHANGE_REQUEST',
+          selectMode:_GridSelectMode.CHECKBOX,
+        filterCols:[  ],
+        loadExternal:widgetEventsERWLoad,
+        showOnlySelected:_ShowOnlySelectedItems.NO,
+        show: {
+          showOnlySelectedCheckbox:_ShowShowOnlySelectedCheckbox.NEVER,
+          title:false,
+          details:false,
+          requeryLink:true,
+          selectLinks:true,
+          clearLink:true
+        }
+      }
+
+      if (LookupFieldReadOnly("6f4237bc-b136-4b5d-9846-37973106b335")) _EventsERWParams.selectMode = _GridSelectMode.NONE;
+      
+      var _widgetEventsERW = new EmbeddedRelationalReportWidget(_EventsERWParams);
+          
+      function widgetEventsERWLoad()
+      {
+        var urlString = "tmtrack.dll";
+          
+        var errors = new Array();
+        var params = new Array();
+    
+        var msg = '<b>' + defaultParamErrorString + '</b><br />' + defaultPermissionErrorString + '<br />';
+        if (SetFrameErrorIfNeeded("EventsERW", msg, errors)) return;
+  
+        var template = 'ReportPage=&template=reports%2Fjsonlist&ReportUUID=3fb5436e-ded0-4b4f-a84d-c43844cbef50&AppRptProjId=-1&embedded=';
+        urlString = urlString + "?" + BuildURL(template, params);
+
+        _widgetEventsERW.Load(urlString);
+      }      
+          
+      // add event callbacks
+    
+      AddLoadCallback(widgetEventsERWLoad);
+    </script></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:4px;" align="left" vertical-align="top"><div id="4d7642be-1955-49fc-93d2-abc4e2c6f465" style="background-color: transparent; width: 100%;  border-radius: 0px; " class="expanderRoot FlexColumn responsive collapsed"><div id="4d7642be-1955-49fc-93d2-abc4e2c6f465_header" class="expanderHead FlexHead" style="" onclick="toggleVisible('4d7642be-1955-49fc-93d2-abc4e2c6f465');" alt="Expand/Collapse section"><a href="#" onclick="event.preventDefault()" class="rttl2" style="color: Black; font-family: 'Arial'; font-size: 12pt; font-weight: normal; " id="4d7642be-1955-49fc-93d2-abc4e2c6f465_label" width="100%">$UUIDSTRING(4d7642be-1955-49fc-93d2-abc4e2c6f465) </a></div><div id="4d7642be-1955-49fc-93d2-abc4e2c6f465_content" class="expanderContent FlexBody"><div class="expanderContentWrap" style="background-color: Transparent; padding: 0px 20px 0px 20px; "><div class="LayoutTable responsive" cellpadding="4px"><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:4px;" vertical-align="top"><div class="doubleCell" style="padding:4px;" align="left" vertical-align="top" abbr="Subtasks" nowrap="">
+    $ITEMFIELDLABEL(8d6e3cd5-6135-4db8-8d1c-38699ed60202, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:4px;" align="left" vertical-align="top" abbr="Subtasks">
+    
+    $ITEMFIELDVALUE(8d6e3cd5-6135-4db8-8d1c-38699ed60202, , ControlStyle, )
+  </div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:4px;" vertical-align="top"><div class="doubleCell" style="padding:4px;" align="left" vertical-align="top" abbr="Subtasks Complete" nowrap="">
+    $ITEMFIELDLABEL(aec49555-7c8e-4c34-986d-27ced7467964, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:4px;" align="left" vertical-align="top" abbr="Subtasks Complete">
+    
+    $ITEMFIELDVALUE(aec49555-7c8e-4c34-986d-27ced7467964, , ControlStyle, )
+  </div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:4px;" vertical-align="top"><div class="doubleCell" style="padding:4px;" align="left" vertical-align="top" abbr="Task Complete" nowrap="">
+    $ITEMFIELDLABEL(4f22942a-fa87-4dca-ba7a-13390be0ecd0, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:4px;" align="left" vertical-align="top" abbr="Task Complete">
+    
+    $ITEMFIELDVALUE(4f22942a-fa87-4dca-ba7a-13390be0ecd0, , ControlStyle, )
+  </div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div></td></tr></table></div><div class="scrollableStretch"> </div></td><td id="RightSidebar" class="sidebar sidebarCell" style=""><!----></td></tr><tr><td colspan="3" id="BottomSidebar" class="header-footer sidebarCell" style="background-color:White;padding: 0px 0px 0px 0px; " autosize="" align="left" vertical-align="top"><!----><div style="" class="sidebarContainer  hJustify vJustify"><div class="LayoutTable responsive" cellpadding="4px"><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:4px;" align="right" vertical-align="top"><div id="d556db8d-01ba-4246-96a0-5a14734ee3bc" class="Panel" data-name="ButtonPanel" style="padding: 0px 5px 0px 0px; border-radius: 0px; background-color: Transparent;"><table class="LayoutTable" border="0" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="right" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><button type="button" id="SubmitButton" style="" customlook="true" class="roundedbutton hoverHelpText SubmitButton" title="">$UUIDSTRING(9837742a-0cd7-4b5b-a759-026d86ec33cb)</button><script>
+      function getSubmitButtonTransitionID()
+      {
+        return 'formbtns_ok';
+      }
+      
+      function handleSubmitButtonTransition()
+      {
+        var $el = jQuerySBM(document.getElementById('SubmitButton'));
+        if ($el.length)
+        {
+          var tid = getSubmitButtonTransitionID();
+          if (tid != null)
+          {
+            $el.on("click", doSubmitButtonStandardClick);
+
+            var title = $el.attr("data-original-title");
+            if (title == "" || title == null) $el.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+        
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doSubmitButtonStandardClick(e) 
+      {
+        var tid = getSubmitButtonTransitionID(); 
+        PerformTransitionEx('SubmitButton', tid, true); 
+        return false;
+      }       
+        
+      
+      AddLoadCallback(handleSubmitButtonTransition);
+      </script><script>
+      function widgetSubmitButtonLoad()
+      {
+        SetFieldValue("SubmitButton", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><button type="button" id="CancelButton" style="" customlook="true" class="roundedbutton hoverHelpText CancelButton" title="">$UUIDSTRING(a272d8a3-1d40-422d-a466-63e327b99354)</button><script>
+      function getCancelButtonTransitionID()
+      {
+        return 'formbtns_cancel';
+      }
+      
+      function handleCancelButtonTransition()
+      {
+        var $el = jQuerySBM(document.getElementById('CancelButton'));
+        if ($el.length)
+        {
+          var tid = getCancelButtonTransitionID();
+          if (tid != null)
+          {
+            $el.on("click", doCancelButtonStandardClick);
+
+            var title = $el.attr("data-original-title");
+            if (title == "" || title == null) $el.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+        
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doCancelButtonStandardClick(e) 
+      {
+        var tid = getCancelButtonTransitionID(); 
+        PerformTransitionEx('CancelButton', tid, true); 
+        return false;
+      }       
+        
+      
+      AddLoadCallback(handleCancelButtonTransition);
+      </script><script>
+      function widgetCancelButtonLoad()
+      {
+        SetFieldValue("CancelButton", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div><!----></div></td></tr></table></div>
+      $HIDDENFIELDFROMUUID(6f4237bc-b136-4b5d-9846-37973106b335)
+    <style> #buttonsHeaderSection, #formbtns, #viewpoint {display:none;}#titlebar, #itemtitle {display:none;}#projectName {display:none;}#buttonsDiv {display:none;}#transitionbuttons, #state_form_buttons {display:none;}#lasttransitioninfo {display:none;}#actionControls, #toggle {display:none;}</style><script>
+      AddLoadCallback(function()
+      {
+        
+      });
+    </script><script>
+      function GetTransitionInternalName()
+      {
+        return "$TRANSITIONINTERNALNAME()";
+      }
+      function GetCurrentUser()
+      {
+        return "$USERID()";
+      }
+    </script><script language="javascript" type="text/javascript">
+
+AddLoadCallback(fn_FormLoadSSMFormatting);
+
+function fn_FormLoadSSMFormatting(e)
+{
+  action_SOOLoadUtils();
+
+  SetVisible("HiddenFieldsPanel", "hide");
+}
+
+
+function action_SOOLoadUtils()
+{
+  SOO.ShellFormatting.init();
+}
+
+</script>
+      $STUDIOJS(942b0c3b-87b4-4334-8dcd-b5606ff03877)
+    
+      $STUDIOJS(fa006dfc-e359-4b76-88e0-6fdd78509738)
+    
+      $STUDIOJS(b10bdd77-73ec-46f5-8487-642312ac9364)
+    
+      $STUDIOJS(9be73a96-afa6-4525-9bcc-67de709c451b)
+    
+      $STUDIOJS(d2175845-c570-4237-aaa2-3dd9a7b4ecef)
+    </div>

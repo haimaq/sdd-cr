@@ -1,0 +1,417 @@
+// set up some constants for use later in the script
+//add_global_const( "USR_SDD_CHANGE_PACKAGES", "USR_SDD_CHANGE_PACKAGES_TBL_NAME" );
+add_global_const( "MREL_CHANGE_REQUESTS", "MREL_CHANGE_REQUESTS_FLD" );
+add_global_const( "USR_SDDCRS_CHANGE_REQUESTS", "USR_SDDCRS_CHANGE_REQUESTS_TBL_NAME" );
+add_global_const( "SREL_CPID", "SREL_CPID_FLD" );
+add_global_const( "USR_SDDCRS_CHANGE_REQUESTS.CRS_CHANGE_REQUESTS_PROJECT", "CRS_CHANGE_REQUESTS_PROJECT" );
+add_global_const( "USR_SDD_CHANGE_PACKAGES.SDD_CP_PROJECT", "SDD_CP_PROJECT" );
+//add_global_const( "[none]", "NONE_FOUND" ); // add a global constant called "TBL_NAME"
+add_global_const( "FLD_DBVALUE_SAVE", "FLD_DBVALUE_SAVE_FLD" ); // add a global constant called "TBL_NAME"
+add_global_const( 0, "CR_TASKS_COMPLETED_NO" ); // add a global constant called "TBL_NAME"
+add_global_const( 1, "TASK_COMPLETE_YES" ); // add a global constant called "TBL_NAME"
+add_global_const( 0, "TASK_COMPLETE_NO" ); // add a global constant called "TBL_NAME"
+
+include("app.ChangePackage.Constants");
+//include("app.ChangePackage.CalculatetPlannedStoryPointValue");
+include("app.ChangePackage.CalculatetCompletedStoryPointValue");
+
+
+// *******************************
+def CheckOldCRs() {
+	// *******************************
+	//  compares the "old" list of CRs, before this trnsition,
+	//  to the "New" List of CRs after this transition.
+	//  Looks for CRs that have been removed and resets
+	//  the state back to CR Release Queue and Release Package to 0
+	var sChangePackageId_new = Shell.Item().GetFieldValue( "SREL_CPID");
+	var sChangePackageId_old = Shell.Item().GetFieldValue( "FLD_DBVALUE_SAVE");
+	
+	if(sChangePackageId_new == sChangePackageId_old &&  sChangePackageId_new > 0)
+	{
+		sWhere = "TS_SREL_CPID=" &&& sChangePackageId_new;
+	}
+	if(sChangePackageId_new != sChangePackageId_old)
+	{
+		sWhere = "TS_SREL_CPID=" &&& sChangePackageId_new;
+	}
+
+	var cr_list_old  = GetItemMultiRelationalIDsByFld("USR_SDDCRS_CHANGE_REQUESTS", "TS_SREL_CPID=" &&& Shell.Item().GetFieldValue( "SREL_CPID").to_string(), "ID");
+	var cr_list_new = [];
+	
+	for (int i = 0; i < cr_list_old.size(); ++i)
+	{
+		var CRfound = cr_list_old.contains(sChangePackageId_new);
+		if(!CRfound){ cr_list_new.push_back(cr_list_old[i]); }
+	}
+	if(!IsBlank(sChangePackageId_new)){ sWhere = "TS_ID=" &&& sChangePackageId_old; }
+	
+
+	var cr_list_ids = ("[${TrimCommas(cr_list)}]").from_json();
+	
+	if(IsBlank(sChangePackageId_new)){
+		
+		
+	} else {
+	
+	}
+
+
+	
+
+	USR_SDD_CHANGE_PACKAGES_TBL = Ext.TableId(USR_SDD_CHANGE_PACKAGES_TBL_NAME);
+	var appRec= Ext.CreateAppRecord( USR_SDD_CHANGE_PACKAGES_TBL);
+	if(appRec.ReadWithWhere("TS_ID=" &&& Shell.Item().GetFieldValue( "SREL_CPID").to_string())) {
+	var cr_list = appRec.GetFieldValue(MREL_CHANGE_REQUESTS_FLD).to_string();
+	var cr_list_ids = ("[${TrimCommas(cr_list)}]").from_json();
+	var CRfound = cr_list_ids.contains(Shell.Item().GetId());
+
+	if(!CRfound) {
+		//item.Lock();
+		cr_list_ids.push_back(Shell.Item().GetId());
+		appRec.SetFieldValue(MREL_CHANGE_REQUESTS, "," &&& cr_list_ids.join(",") &&& ",");
+
+		//Shell.Item().SetFieldValue(SREL_CPID_FLD, 0)
+		Shell.Item().SetFieldValue("CHANGE_PACKAGE_ASSIGNED", 0);
+		//appRec.UpdateWithLock( true );
+		//item.Update();
+		//item.Unlock();
+	} 
+
+	appRec.UpdateWithLock( true );
+
+	}
+
+
+	if(!IsBlank(old_cr_list)){
+
+		
+		// Find the multi-relational field
+		var relational = Ext.CreateAppRecord( Ext.TableId("TS_FIELDS"), FieldTypeConstants.MULTIPLE_RELATIONAL );
+		relational.ReadByColumnAndColumn("TABLEID", USR_SDD_CHANGE_PACKAGES_TBL, "DBNAME", "MREL_CHANGE_REQUESTS" );
+		
+		// Create a list, as it is possible that our item is in more than one container items
+		var containerList = Ext.CreateAppRecordList( USR_SDDCRS_CHANGE_REQUESTS_TBL );
+
+		/* Yes, ModScript has multi-line comments!
+
+		Read the list of items that contain this item.
+		Use SQL binding by passing a Vector of Pair objects, each with a data type and a value.
+		Vectors can be created on the fly using [ ... ] syntax */
+		containerList.ReadWithWhere("TS_ID in (select TS_RELATEDRECORDID from TS_USAGES where TS_FIELDID=? and TS_SOURCERECORDID=?)",
+			[ Pair(DBTypeConstants.INTEGER, relational.GetId()),
+			Pair(DBTypeConstants.INTEGER, Shell.Item().GetId()) ] );
+		Ext.LogInfoMsg("containerList = " &&& containerList.Length());
+		// loop through the resulting list, using the "for each" syntax (just a ":")
+
+		sqlWhere = "TS_ID IN (" &&& TrimCommas(old_cr_list) &&& ")";
+		itemList.ReadWithWhere(sqlWhere);
+		numItems = itemList.Length();
+		//if(numItems == 0){ Shell.Item().SetFieldValue( "CR_TASKS_COMPLETE",  CR_TASKS_COMPLETED_YES);  }
+		if(numItems > 0){
+			for ( item : itemList ) {
+				// locked = item.Lock();
+				var CRfound = new_cr_list_ids.contains(item.GetId());
+				if(!CRfound) {
+					//item.Lock();
+					item.SetFieldValue(SREL_CPID_FLD, 0)
+					item.SetFieldValue("CHANGE_PACKAGE_ASSIGNED", 0);
+					item.UpdateWithLock( true );
+					//item.Update();
+					//item.Unlock();
+				}
+				//item.Update();
+				//var unlocked = item.Unlock();
+			}
+		}
+	}//IsBlank
+}
+// *****************************
+def CheckCRs() {
+	// *****************************
+	//   Loops through the current list of CRs and checks
+	//   they are in the correct state and have an RP attached
+
+	if(!IsBlank(new_cr_list)){
+	sqlWhere = "TS_ID IN (" &&& TrimCommas(new_cr_list) &&& ")";
+	itemList.ReadWithWhere(sqlWhere);
+	if(itemList.Length() > 0){
+		for ( item : itemList ) {
+			// locked = item.Lock();
+			var CRfound = new_cr_list_ids.contains(item.GetId());
+			if(CRfound) {
+			//	item.Lock();
+				item.SetFieldValue(SREL_CPID_FLD, Shell.Item().GetId());
+				item.SetFieldValue("CHANGE_PACKAGE_ASSIGNED",1);
+
+				//item.Update();
+				//item.Unlock();
+				item.UpdateWithLock( true );
+			}
+			//item.Update();
+			//var unlocked = item.Unlock();
+		}
+	}
+	}//IsBlank
+
+}
+
+def  WriteField(trgName, fldValue) {
+	// Write to the destination field
+	if ( !( Shell.Item().SetFieldValue( trgName, fldValue ) )) {
+		// Error finding the field or writing to it
+		Ext.LogErrorMsg( "Cannot write to field \"" &&& trgName&&& "\"" );
+		// ModScript can use backslash to escape double quotes
+		return;
+	}
+}
+
+// define a function that trims commas and returns the new string
+def TrimCommas( s ) {
+	// ChaiScript engine automatically returns whatever occurs on the last line of a function. 
+	// We could add a "return" statement here if desired for clarity
+	// This may be a little hard to follow, but we call drop_while on our string to remove the starting commas, then the return value is reversed, we do drop_while again to trim the back, then reverse again.
+	// These "fun" statements are anonymous functions known as lambdas
+	reverse( drop_while( reverse( drop_while( s, fun(x){ return x == ','; } ) ), fun(x) { x == ','; })); 
+}
+def IsBlank(fldval) {
+	var retVal = false;
+	if ( fldval.is_var_undef() ) {
+		retVal = true;
+	}
+	if( IsNumeric(fldval) || fldval.type_name == "int"){
+		if ( fldval == 0 ) { retVal = true; } 
+	}
+	if( fldval.is_var_null() ) {
+		retVal = true;
+	}
+	switch ( fldval.type_name() ) {
+		case( "Vector" ) {
+			if( fldval.empty()) { retVal = true; }
+			break;
+		}
+		case( "Map" ) {
+			if( fldval.empty()) { retVal = true; }
+			break;
+		}
+		case( "string" ) {
+			if( fldval.trim().empty() || (trim(fldval) == ",") || (trim(fldval) == ",,") ) { retVal = true; }
+			//if( fldval.trim().empty()) { retVal = true; }
+			//if ( (trim(fldval) == ",") || (trim(fldval) == ",,") ){ retVal = true; }
+			break;
+		}
+		case( "Variant" ) {
+			if ( IsEmpty(fldval) || IsNull(fldval) ) {
+				retVal = true;
+			} else if( IsNumeric(fldval) ){
+				if ( fldval == 0 ) {  
+					retVal = true; 
+				}
+			} else if(IsObject(fldval)) {
+				if(IsEmpty(fldval) ) {
+					retVal = true;
+				}
+			} else if( VarType(fldval) == vbString ) {
+				if( fldval == "" ) { retVal = true; }
+				if ( (fldval == ",") || (fldval == ",,") ){ retVal = true; }
+			}
+			break;
+		}
+		default {
+			retVal = false;
+        break;
+    }
+	} 
+	return retVal;
+}
+
+def GetItemMultiRelationalIDsByFld(sTableID,  sWhereClause, returnField) {
+  var objItemList = Variant();
+  var nNbPoPs = Variant();
+  var objItem = Variant();
+  var nRecordId = Variant();
+  var str_Item_Ids = Variant();
+  var fldVal = Variant();
+  str_Item_Ids = ",";
+  objItemList = Ext.CreateAppRecordList(Ext.TableId(sTableID));
+  // sWhereClause = "TS_"& UCase(mrFldName) & " = " & nItemID
+
+  if ( objItemList.ReadWithWhere(sWhereClause) ) {
+      for (  objItem : objItemList ) {
+	  if ( (returnField == "ID") ) {
+          	nRecordId = objItem.GetId();
+	  	str_Item_Ids = str_Item_Ids &&& nRecordId &&& ","	;
+      	  } else {
+          if ( objItem.GetFieldValue(returnField, fldVal) ) { 
+		str_Item_Ids = str_Item_Ids &&& fldVal &&& ",";
+          } else {
+              str_Item_Ids  = NONE_FOUND;
+          }
+      }
+	// nRecordId = objItem.GetId()
+         // str_Item_Ids = str_Item_Ids & nRecordId & ","
+      }
+}
+  return str_Item_Ids.to_string();
+}
+
+def CalculatetPlannedStoryPointValue(sTable, sWhere, returnField) {
+    var plannedStoryPointValue = 0;
+    var storyPoint = Variant();
+    var fldValue = Variant();
+     var objItem = Variant();
+    var ItemList = Ext.CreateAppRecordList(Ext.TableId(sTable));
+    if ( ItemList.ReadWithWhere(sWhere) ) {
+	       	for (  objItem : ItemList ) {
+		        if ( !( objItem.Fields().FindField("STORY_POINTS").IsBlank()) ) {
+		            objItem.Fields().FindField("STORY_POINTS").GetDisplayValue(fldValue);
+		            plannedStoryPointValue = plannedStoryPointValue + fldValue.to_string().to_int();
+		        }
+        	}
+        //plannedStoryPointValue = plannedStoryPointValue;
+    }
+    return plannedStoryPointValue;
+}
+
+// Use SQL to find findMe in title column of Issues table
+// Resulting list goes into global itemList
+// Return true for successful SQL operation, false for failure
+def getItemList() {
+	itemList = Ext.CreateAppRecordList( USR_SDD_CHANGE_PACKAGES_TBL );
+	//sqlWhere = COL_NAME &&& " like '%" &&& findMe &&& "%'";
+	sqlWhere = "TS_SREL_CPID=" &&& Shell.Item().GetId();
+	return itemList.ReadWithWhere( sqlWhere );
+}
+
+
+// Get the container application table id and add it as a global
+global USR_SDDCRS_CHANGE_REQUESTS_TBL;
+global USR_SDD_CHANGE_PACKAGES_TBL;
+global errorMsg;
+if (errorMsg.is_var_undef()) { errorMsg = ""; } // only initialize g2 once, if global decl hit more than once
+// Declare all vars
+// Several subroutines below will use these global vars
+global tableID;
+global itemList;
+global sqlWhere;
+global recordID = Variant();
+global new_cr_list;
+global  new_cr_list_ids;
+
+global readOk = Variant();
+global fldValue = Variant();
+global sWhere = Variant();
+global numItems = Variant();
+global projectRecord = Variant();
+//global new_cr_list = Variant();
+//global old_cr_list = Variant();
+global old_cr_list;
+global  old_cr_list_ids;
+
+
+
+//Shell.RedoMessage() = old_cr_list_ids.size() &&& " :  " &&& new_cr_list_ids.size()
+
+
+
+/**
+if(!IsBlank(old_cr_list)){
+	for ( old_cr_item : old_cr_list_ids ) {
+		// locked = item.Lock();
+		
+		item.SetFieldValue(SREL_CPID_FLD, sChangePackageId)
+		//item.Update();
+		//var unlocked = item.Unlock();
+		item.UpdateWithLock( true );
+	}
+
+}
+**/
+
+// turn comma separated list into Vector of values.
+// ChaiScript can do this with "from_json" if we use array syntax [ ... ]
+// ChaiScript has in-string processing, use ${ ... } inside a string and the stuff
+// inside the braces will be processed by the engine and put inline in the string.g
+
+//for (itemID : itemIDs_Pre) { print(itemID) };
+
+//Shell.RedoMessage() = cpChangeReqList &&& " :  " &&& cpChangeReqListOld
+/**
+ if ( !any_of( itemIDs,
+            fun( itemID ) { // return true if item is active
+                var contained = Ext.CreateProjectBasedRecord( CONTAINER_TBL );
+                return contained.Read(itemID) &&
+                    contained.GetFieldValue( "ACTIVEINACTIVE" ) == 0;
+            } ) ){
+        // no items found that are active, we need to transition this container item
+        containerItem.QuickTransition( "CONTAINER.CLOSE", true );
+    }
+**/
+/**
+if ( getItemList() ) {
+	var numItems = itemList.Length();
+	if( numItems > 0) {
+	for ( item : itemList ) {
+		// locked = item.Lock();
+		item.SetFieldValue(SREL_CPID_FLD, sChangePackageId)
+		//item.Update();
+		//var unlocked = item.Unlock();
+		item.UpdateWithLock( true );
+	}
+}
+}
+**/
+//sWhere = "TS_CHANGE_REQUEST=" &&& sTaskParentCr;
+
+
+
+//Shell.RedoMessage() = numItems &&& ": " &&& crTaskList
+/**
+if(numItems == 0) {
+		
+	//projectRecord = Ext.CreateProjectBasedRecord( USR_SDDCRS_CHANGE_REQUESTS_TBL );
+	//projectRecord.QuickTransition( "CRS_CHANGE_REQUESTS.ALL_TASKS_COMPLETE_2", true );
+	Shell.Item().SetFieldValue( "CR_TASKS_COMPLETE", 1);
+
+} 
+if(numItems > 0) {
+//Shell.RedoMessage() = itemIDs.size();
+	//projectRecord = Ext.CreateProjectBasedRecord( USR_SDDCRS_CHANGE_REQUESTS_TBL );
+	//projectRecord.QuickTransition( "CRS_CHANGE_REQUESTS.ALL_TASKS_COMPLETE_2", true );
+		Shell.Item().SetFieldValue( "CR_TASKS_COMPLETE", 0);
+
+} 
+**/
+/**
+if ( !any_of( itemIDs, 
+			fun( itemID ) { // return true if item is active
+				 projectRecord = Ext.CreateProjectBasedRecord( USR_SDDCRS_TASKS_TBL );
+				return projectRecord.Read(itemID) && projectRecord.GetFieldValue( "TASK_COMPLETE" ) == 0;
+			} ) ){
+		// no items found that are active, we need to transition this container item
+		projectRecord.QuickTransition( "CRS_CHANGE_REQUESTS.ALL_TASKS_COMPLETE_2", true );
+	}
+**/
+
+
+//CheckCRs(); // Update CRs added to List
+//CheckOldCRs()	; //Update CRs removed from Lis
+
+// Find the item being transitioned
+if ( Ext.ShellHasProp( "Item" ) ) {
+	USR_SDDCRS_CHANGE_REQUESTS_TBL = Ext.TableId(USR_SDDCRS_CHANGE_REQUESTS_TBL_NAME);
+	//tableID = Ext.TableId( USR_SDDCRS_CHANGE_REQUESTS_TBL, "database" );
+	itemList = Ext.CreateAppRecordList(USR_SDDCRS_CHANGE_REQUESTS_TBL );
+	new_cr_list = GetItemMultiRelationalIDsByFld(USR_SDDCRS_CHANGE_REQUESTS_TBL_NAME, sqlWhere, "ID");
+	new_cr_list_ids = ("[${TrimCommas(new_cr_list)}]").from_json();
+	
+	
+	//global old_cr_list = Shell.Item().GetFieldValue(APP_FIELVALUE_TEMP_FLD).to_string();
+	sqlWhere = "TS_SREL_CPID=" &&& Shell.Item().GetId();
+	old_cr_list  = GetItemMultiRelationalIDsByFld(USR_SDDCRS_CHANGE_REQUESTS_TBL_NAME, sqlWhere, "ID");
+	old_cr_list_ids = ("[${TrimCommas(old_cr_list)}]").from_json();
+	CheckOldCRs();
+	CheckCRs();
+} else {
+	// There is no current item, so write a message to the event viewer
+	Ext.LogErrorMsg( "ModScript error: Shell.Item() does not exist." );
+}

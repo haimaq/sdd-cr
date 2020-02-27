@@ -1,0 +1,79 @@
+
+include("app.ChangeRequests.Constants");
+include("app.ChangeRequests.Utils");
+
+global retVal = Variant();
+global productRecord = Variant();
+global readOk = Variant();
+global fldValue = Variant();
+global cr_state = Variant();
+var productID = Variant();
+
+global sSecOwners;
+if (sSecOwners.is_var_undef()) {  sSecOwners = ","; }
+
+global errorMsg;
+if (errorMsg.is_var_undef()) { errorMsg = ""; } // only initialize g2 once, if global decl hit more than once
+//  Find the item being transitioned
+if ( Ext.ShellHasProp( "Item" ) ) {
+	var toState = Shell.ToStateName().to_string();
+	var toTransition = Shell.TransitionName().to_string();
+	Shell.Item().Fields().FindField(CR_STATE_FLD).GetDisplayValue(cr_state);
+
+	switch (toTransition){
+		case( "Return to Product Back Log" ) {
+				script_init_journalfield("COMMENTS", "");
+				Shell.Item().Fields().FindField(SREL_CHANGE_PACKAGE_FLD).SetBlankValue();
+				break;
+		}
+		case( "Tasks Complete"){
+			fldValue = Shell.Item().GetFieldValue( AFFECTED_USER_FLD );
+			if(!IsBlank(fldValue)){ Shell.Item().SetFieldValue( DEVELOPER_FLD , fldValue);  }
+
+			var listRecord = Ext.CreateAppRecordList(Ext.TableId(USR_SDDCRS_TASKS_TBL_NAME));
+			listRecord.ReadWithWhere("TS_ACTIVEINACTIVE = 0 AND TS_TASK_COMPLETE=? AND TS_CHANGE_REQUEST=?", [ Pair(DBTypeConstants.INTEGER, TASK_COMPLETE_NO), Pair(DBTypeConstants.INTEGER, Shell.Item().GetId())]);
+			var numItems = listRecord.Length();
+			if(numItems == 0){ Shell.Item().SetFieldValue( "IS_CR_TASKS_COMPLETE",  CR_TASKS_COMPLETED_YES);  }
+			if(numItems > 0){ Shell.Item().SetFieldValue( "IS_CR_TASKS_COMPLETE",  CR_TASKS_COMPLETED_NO);  }
+			break;
+		}
+
+		case( "All Tasks Complete") {
+			fldValue = Shell.Item().GetFieldValue( AFFECTED_USER_FLD );
+			if(!IsBlank(fldValue)){ Shell.Item().SetFieldValue( DEVELOPER_FLD , fldValue);  }
+
+			var listRecord = Ext.CreateAppRecordList(Ext.TableId(USR_SDDCRS_TASKS_TBL_NAME));
+			listRecord.ReadWithWhere("TS_ACTIVEINACTIVE = 0 AND TS_TASK_COMPLETE=? AND TS_CHANGE_REQUEST=?", [ Pair(DBTypeConstants.INTEGER, TASK_COMPLETE_NO), Pair(DBTypeConstants.INTEGER, Shell.Item().GetId())]);
+			var numItems = listRecord.Length();
+			if(numItems == 0){ Shell.Item().SetFieldValue( "IS_CR_TASKS_COMPLETE",  CR_TASKS_COMPLETED_YES);  }
+			if(numItems > 0){ Shell.Item().SetFieldValue( "IS_CR_TASKS_COMPLETE",  CR_TASKS_COMPLETED_NO);  }
+			break;
+		}
+		case( "Assign to Sprint/CP" ) {
+			//fldValue = Shell.Item().GetFieldValue( ASSIGNEE_ID_FLD );
+		//	fldValue = Shell.Item().GetFieldValue( QA_TEST_ENGINEER_FLD_CRTBL);
+			//if(!IsBlank(fldValue)){ Shell.Item().SetFieldValue( ASSIGNEE_ID_FLD, fldValue);  }
+			break;
+		}
+
+		default {
+			//fldValue = Shell.User().GetId(); 
+			break;
+		}
+	}
+
+	if(!IsBlank(fldValue)){
+		//Shell.Item().SetFieldValue(ASSIGNEE_FLD, fldValue); 
+	} else {
+		//Shell.Item().SetFieldValue(ASSIGNEE_FLD, Shell.User().GetId()); 
+	}
+	//Shell.Item().Fields().FindField("CRS_TEAM").SetBlankValue();
+	//Shell.Item().SetFieldValue("CRS_TEAM", ",,"); 
+
+	//if(sSecOwners == ","){ sSecOwners = sSecOwners &&& ","; }
+	//return sSecOwners;
+  	//Shell.Item().Fields().FindField(ASSIGNEE_ID_FLD).SetBlankValue();
+} else {
+	//  There is no current item, so write a message to the event viewer
+	Ext.LogErrorMsg( "ModScript error: Shell.Item does not exist." );
+}

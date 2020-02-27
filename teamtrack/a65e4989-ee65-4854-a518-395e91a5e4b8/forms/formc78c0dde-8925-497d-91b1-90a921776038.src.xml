@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TtForm validateRequiredFields="True" includeJQuery="True" layoutMode="Responsive" labelLocation="Top" bgcolor="White">
+  <Name>Epic Item Edit Form</Name>
+  <Type>transition</Type>
+  <FormSBMVersion>11.3.1</FormSBMVersion>
+  <ApplicationId>a65e4989-ee65-4854-a518-395e91a5e4b8</ApplicationId>
+  <CollapseToolBar>true</CollapseToolBar>
+  <ShowItemIdentifier>false</ShowItemIdentifier>
+  <ShowProjectName>false</ShowProjectName>
+  <ShowButtonBar>false</ShowButtonBar>
+  <ShowActionBar>false</ShowActionBar>
+  <ShowViewport>true</ShowViewport>
+  <ShowTransitionIndicator>false</ShowTransitionIndicator>
+  <HideCustomButtonsFromButtonBar>false</HideCustomButtonsFromButtonBar>
+  <AllowExtendedTransitionButtonMapping>false</AllowExtendedTransitionButtonMapping>
+  <GenerationMode>runtime</GenerationMode>
+  <ThemeDir>graphite</ThemeDir>
+  <IsModern>true</IsModern>
+  <IsResponsive>true</IsResponsive>
+  <ImagesDir>images</ImagesDir>
+  <ImagesThemeDir>images\$THEME()</ImagesThemeDir>
+  <LayoutMode>Responsive</LayoutMode>
+  <CssHref>33e8c0ea-6387-4edb-a51b-fd25a0758193.css</CssHref>
+  <Scripts>
+    <Script>6e756b30-fb9a-4fa2-9017-ec69e4c7b6d0</Script>
+    <Script>551a1c6f-f6bf-4a10-a4d4-5dd64dd1e2de</Script>
+    <Script>96d32648-6c14-4d3a-a18e-afb9dad20df4</Script>
+    <Script>b35ec051-fee4-4f43-a020-d18aaeb33dc1</Script>
+    <Script>cda3927c-4a18-40e6-a607-7aa3b57b51aa</Script>
+  </Scripts>
+  <InvalidFieldText>One or more fields are invalid.</InvalidFieldText>
+  <RequiredFieldText>'{0}' is a required field. Please supply a valid value to complete this transition.</RequiredFieldText>
+  <SSOPreviewText>Preview only supports SSO authentication if you are logged in to the repository. In the User Workspace, customers will see the Web page located at: {0}</SSOPreviewText>
+  <SSONoTokenText>Unable to retrieve a valid Security Token for request to: {0}.</SSONoTokenText>
+  <PDFMissingText>Download Adobe Acrobat Reader in order to view this PDF.</PDFMissingText>
+  <ReportPreviewText>Preview does not support embedded reports. In the User Workspace, customers will see the report located at: {0}</ReportPreviewText>
+  <WeCouldNotLocateErrorText>We could not locate all of the data needed to perform your request.</WeCouldNotLocateErrorText>
+  <YouMayNotHavePermissionsErrorText>You may not have permission to access these fields.</YouMayNotHavePermissionsErrorText>
+  <SearchingEllipsesText>Searching...</SearchingEllipsesText>
+  <WeDidNotFindAnyMatchesErrorText>REST service call failed. Check the authentication settings of the endpoint used by this REST grid in Application Repository.</WeDidNotFindAnyMatchesErrorText>
+  <TheResponseWasTooLargeErrorText>The response was too large.</TheResponseWasTooLargeErrorText>
+  <PleaseTryRestrictingTheDataErrorText>Please try restricting the data returned by adjusting the input parameters.</PleaseTryRestrictingTheDataErrorText>
+  <UpdatingEllipsesText>Updating...</UpdatingEllipsesText>
+  <UpdatedText>Updated</UpdatedText>
+  <AuthorizationFailedErrorText>Authorization failed - check the Screen Name and Password</AuthorizationFailedErrorText>
+  <StatusPostErrorText>An error occured posting the status update</StatusPostErrorText>
+  <ShowingRangeText>Showing {0}-{1} of {2}</ShowingRangeText>
+  <ShowingPageText>Showing page {0}</ShowingPageText>
+  <GotoFirstPageText>Go to first page</GotoFirstPageText>
+  <GotoPreviousPageText>Go to previous page</GotoPreviousPageText>
+  <GotoNextPageText>Go to next page</GotoNextPageText>
+  <GotoLastPageText>Go to last page</GotoLastPageText>
+  <TheRestGridIsNotConfigured>The REST Grid is not configured: </TheRestGridIsNotConfigured>
+  <FormLogic>
+
+AddLoadCallback(fn_FormLoadSSMFormatting);
+
+function fn_FormLoadSSMFormatting(e)
+{
+  action_SOOLoadUtils();
+
+  SetVisible("HiddenFieldsPanel", "hide");
+
+  SetVisible("WorkLogPanel", "hide");
+
+  SetVisible("CommentsPanel", "hide");
+
+  SetVisible("RolesPanel", "hide");
+}
+
+
+AddLoadCallback(fn_FormAction4);
+
+function fn_FormAction4(e)
+{
+  if (condition_CurrentTransition("in", "CRS_CHANGE_REQUESTS.ADD_WORK_LOG"))
+  {
+    SetVisible("CommentsPanel", "show");
+
+    SetBackgroundColor("CommentsPanel", "rgb(255, 253, 215)");
+  }
+  else
+  {
+    SetVisible("CommentsPanel", "hide");
+  }
+}
+
+
+function condition_CurrentTransition(operator, value)
+{
+  var asInternalNames = value.split(',');
+  var transitionInternalName = GetTransitionInternalName();
+  for (var i = 0; i &lt; asInternalNames.length; i++)
+  {
+    if (transitionInternalName == asInternalNames[i]) 
+    {
+      return (operator == "in");
+    }
+  }
+  return (operator != "in");
+}
+
+function action_SOOLoadUtils()
+{
+  SOO.ShellFormatting.init();
+}
+
+</FormLogic>
+  <TransitionBar dock="top" UUID="788887da-985a-4e25-bed8-f8faddc2cf73" custom="True">
+    <EnabledActions>TransitionBarActions</EnabledActions>
+    <Button name="OK" width="70px" default="true" system="true">
+      <Text>OK</Text>
+    </Button>
+    <Button name="Cancel" system="true">
+      <Text>Cancel</Text>
+    </Button>
+    <ActionOption id="AttAction" templateUrl="attnote" name="AddNote" enabled="True">
+      <Text>Add Note</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="atturl" name="AddURL" enabled="True">
+      <Text>Add URL</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="attfile" name="AddFile" enabled="True">
+      <Text>Add File</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="attlink" name="AddItemLink" enabled="True">
+      <Text>Add Item Link</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="itemnotification" name="AddItemNotification" enabled="True">
+      <Text>Add Item Notification</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="vcmanage" name="AddFileAssociation" enabled="True">
+      <Text>Add File Association</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="linksubtask-1" name="LinkSubtasks" enabled="True">
+      <Text>Link Subtasks</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="linksubtask-2" name="LinkToPrincipal" enabled="True">
+      <Text>Link to Principal</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="unlinkprincipal" name="UnlinkPrincipal" enabled="True">
+      <Text>Unlink Principal</Text>
+    </ActionOption>
+    <ActionButton id="emaillink" name="SendEmail" enabled="True">
+      <Text>Click to Send E-mail</Text>
+    </ActionButton>
+    <ActionButton id="manage_ext_users" name="ManageExternalUsers" enabled="True">
+      <Text>Manage External Users</Text>
+    </ActionButton>
+    <ActionButton id="display_associated_workflow" name="DisplayItemWorkflow" enabled="True">
+      <Text>Get Help for this Application</Text>
+    </ActionButton>
+    <ActionButton id="display_help" name="GetItemHelp" enabled="True">
+      <Text>Get Help for this Form</Text>
+    </ActionButton>
+  </TransitionBar>
+  <TopFormTable>
+    <TopSidebar layoutMode="Responsive" hAlign="Justify" vAlign="Justify">
+      <SizeFlavor>AutoSize</SizeFlavor>
+      <PixelSize>100</PixelSize>
+      <PercentageSize>20</PercentageSize>
+      <Padding>
+        <Left>0</Left>
+        <Top>0</Top>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </Padding>
+      <Container cellPadding="0">
+        <ResponsiveRow>
+          <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+            <Panel name="StateTopPanel3" id="bdd4dc4d-12d8-4069-abd9-a3ce9ece3c4d" panelId="bdd4dc4d-12d8-4069-abd9-a3ce9ece3c4d" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+              <Padding>
+                <Left>10</Left>
+                <Top>10</Top>
+                <Right>10</Right>
+                <Bottom>10</Bottom>
+              </Padding>
+              <Text id="bdd4dc4d-12d8-4069-abd9-a3ce9ece3c4d">Panel</Text>
+              <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                <ColumnDefs>
+                  <Column />
+                  <Column width="100%" min-width="253" />
+                  <Column />
+                </ColumnDefs>
+                <Row>
+                  <Cell hAlign="Far" vAlign="Center">
+                    <Panel name="Panel2" id="cd2c6d2a-94b3-486a-a66e-d144d1f258d6" panelId="cd2c6d2a-94b3-486a-a66e-d144d1f258d6" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" bgcolor="Transparent" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                      <Padding>
+                        <Left>0</Left>
+                        <Top>0</Top>
+                        <Right>0</Right>
+                        <Bottom>0</Bottom>
+                      </Padding>
+                      <Text id="cd2c6d2a-94b3-486a-a66e-d144d1f258d6">Panel</Text>
+                      <Table hAlign="Near" vAlign="Near" cellPadding="0" cellSpacing="0">
+                        <ColumnDefs>
+                          <Column />
+                        </ColumnDefs>
+                        <Row>
+                          <Cell hAlign="Center" vAlign="Center">
+                            <StaticImage name="LogohImage2" id="LogohImage2" buttonStyle="False" class="ControlStyle" image="56037e57-2ac0-4fa1-a247-e433cd5a9178.png" image-repeat-x="true" image-repeat-y="true" width="64" height="64">
+                              <Behavior>URL</Behavior>
+                              <Parameter name="Url">
+                                <Template outputHtml="False" />
+                              </Parameter>
+                              <Target>_blank</Target>
+                              <Template outputHtml="False" />
+                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              <SecondaryContent>
+                                <Template outputHtml="False" />
+                                <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              </SecondaryContent>
+                              <ToolBarAction>refresh_view</ToolBarAction>
+                            </StaticImage>
+                          </Cell>
+                        </Row>
+                      </Table>
+                    </Panel>
+                  </Cell>
+                  <Cell hAlign="Near" vAlign="Center">
+                    <StaticText name="TitleLabel2" id="TitleLabel2" mobileOption="HideInSimpleMode" class="TitleStyle">
+                      <Text id="c2932d82-9e14-4d61-a138-a032db215544">Transition: {Full Name)</Text>
+                      <Template outputHtml="True">&lt;b&gt;$TRANSITIONNAME():&lt;/b&gt; {0}</Template>
+                      <Param>TITLE</Param>
+                      <Refresh onpageload="True" ondatachange="False" onclick="False" />
+                    </StaticText>
+                  </Cell>
+                  <Cell hAlign="Near" vAlign="Center">
+                    <StaticImage name="AppIcon2" id="AppIcon2" buttonStyle="False" class="ControlStyle" image="6eeed96c-1012-4b56-a55a-cd29f9f6501d.png" image-repeat-x="true" image-repeat-y="true" width="63" height="64">
+                      <ToolTipText id="3aafea38-072f-4f52-a7f8-65262a3e2bf9.ToolTip">Current Application: Staff Management</ToolTipText>
+                      <Behavior>PerformToolBarAction</Behavior>
+                      <Template outputHtml="False" />
+                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                      <SecondaryContent>
+                        <Template outputHtml="False" />
+                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                      </SecondaryContent>
+                      <ToolBarAction>refresh_view</ToolBarAction>
+                    </StaticImage>
+                  </Cell>
+                </Row>
+              </Table>
+            </Panel>
+          </ResponsiveCell>
+        </ResponsiveRow>
+      </Container>
+    </TopSidebar>
+    <LeftSidebar empty="true" />
+    <ScrollableContent percentageWidth="100" percentageHeight="100" hAlign="Near" vAlign="Near">
+      <Container cellPadding="0">
+        <ResponsiveRow>
+          <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+            <Panel name="ContentPanel" id="75b68cba-e5ef-4297-a6e9-92e579e2284d" panelId="75b68cba-e5ef-4297-a6e9-92e579e2284d" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+              <Padding>
+                <Left>10</Left>
+                <Top>10</Top>
+                <Right>10</Right>
+                <Bottom>10</Bottom>
+              </Padding>
+              <Text id="75b68cba-e5ef-4297-a6e9-92e579e2284d">Panel</Text>
+              <Container cellPadding="5">
+                <ResponsiveRow>
+                  <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+                    <Panel name="CategoryPanel" id="e07e1f32-261f-4f97-9e4a-976e21ec89c9" panelId="e07e1f32-261f-4f97-9e4a-976e21ec89c9" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                      <Padding>
+                        <Left>0</Left>
+                        <Top>0</Top>
+                        <Right>0</Right>
+                        <Bottom>0</Bottom>
+                      </Padding>
+                      <Text id="e07e1f32-261f-4f97-9e4a-976e21ec89c9">Panel</Text>
+                      <Container cellPadding="2">
+                        <ResponsiveRow>
+                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                            <TtLabel name="Title/Summary" id="8f5a8886-b538-42a5-a1bc-8fe337be8211" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                              <Text>Title/Summary</Text>
+                              <Description>High-level summary of the change being requested, expressed clearly enough for non-technical staff to comprehend</Description>
+                            </TtLabel>
+                            <TtEditBox name="Title/Summary" id="8f5a8886-b538-42a5-a1bc-8fe337be8211" dbname="TITLE" ftype="text" stype="fixed" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2">
+                              <Template outputHtml="False" />
+                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              <Text>Title/Summary</Text>
+                            </TtEditBox>
+                          </ResponsiveCell>
+                        </ResponsiveRow>
+                        <ResponsiveRow>
+                          <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+                            <Panel name="ResolutionPanel4" id="0d6dd649-1958-4179-b0fe-6f08dd0463fc" panelId="0d6dd649-1958-4179-b0fe-6f08dd0463fc" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                              <Padding>
+                                <Left>0</Left>
+                                <Top>0</Top>
+                                <Right>0</Right>
+                                <Bottom>0</Bottom>
+                              </Padding>
+                              <Text id="0d6dd649-1958-4179-b0fe-6f08dd0463fc">Panel</Text>
+                              <Container cellPadding="4">
+                                <ResponsiveRow topHeight="39">
+                                  <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                    <TtLabel name="Description" id="8c3c3e86-2f31-451c-973a-61dfe59898c5" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                      <Text>Description</Text>
+                                      <Description>Detailed description of the change being requested, specifying affected components/subsystems, and to what degree items will be changed</Description>
+                                    </TtLabel>
+                                    <TtEditBoxMultiLine name="Description" id="8c3c3e86-2f31-451c-973a-61dfe59898c5" dbname="DESCRIPTION" ftype="text" stype="memo" mobileOption="HideInSimpleMode" class="ControlStyle" height="100" doublecellpos="2">
+                                      <Template outputHtml="False" />
+                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                      <Text>Description</Text>
+                                    </TtEditBoxMultiLine>
+                                  </ResponsiveCell>
+                                </ResponsiveRow>
+                              </Container>
+                            </Panel>
+                          </ResponsiveCell>
+                        </ResponsiveRow>
+                        <ResponsiveRow>
+                          <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+                            <Panel name="JustificationPanel" id="a7ef0818-8359-45fc-855d-34166b634338" panelId="a7ef0818-8359-45fc-855d-34166b634338" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                              <Padding>
+                                <Left>0</Left>
+                                <Top>0</Top>
+                                <Right>0</Right>
+                                <Bottom>0</Bottom>
+                              </Padding>
+                              <Text id="a7ef0818-8359-45fc-855d-34166b634338">Panel</Text>
+                              <Container cellPadding="4">
+                                <ResponsiveRow topHeight="40">
+                                  <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                    <TtLabel name="Requirement Statement/User Story" id="92fb2eec-bbd0-4a84-bd39-66cf6f1f8c50" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                      <Text>Requirement Statement/User Story</Text>
+                                      <Description>The applicable requirement statement or user story addressed by the CR</Description>
+                                    </TtLabel>
+                                    <TtEditBoxMultiLine name="Requirement Statement/User Story" id="92fb2eec-bbd0-4a84-bd39-66cf6f1f8c50" dbname="RM_STATEMENT_USER_STORY" ftype="text" stype="memo" mobileOption="HideInSimpleMode" class="ControlStyle" height="100" doublecellpos="2">
+                                      <Template outputHtml="False" />
+                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                      <Text>Requirement Statement/User Story</Text>
+                                    </TtEditBoxMultiLine>
+                                  </ResponsiveCell>
+                                </ResponsiveRow>
+                              </Container>
+                            </Panel>
+                          </ResponsiveCell>
+                        </ResponsiveRow>
+                        <ResponsiveRow>
+                          <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+                            <Panel name="Panel" id="2735c021-8b3c-44e5-a6ff-faf14e8e2e2b" panelId="2735c021-8b3c-44e5-a6ff-faf14e8e2e2b" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                              <Padding>
+                                <Left>0</Left>
+                                <Top>0</Top>
+                                <Right>0</Right>
+                                <Bottom>0</Bottom>
+                              </Padding>
+                              <Text id="2735c021-8b3c-44e5-a6ff-faf14e8e2e2b">Panel</Text>
+                              <Container cellPadding="0">
+                                <ResponsiveRow>
+                                  <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+                                    <GroupBox name="KnownErrors_GroupBox" id="84abf8e0-d5d1-4e0a-87b4-a710cae1f810" groupId="84abf8e0-d5d1-4e0a-87b4-a710cae1f810" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                      <Padding>
+                                        <Left>0</Left>
+                                        <Top>0</Top>
+                                        <Right>0</Right>
+                                        <Bottom>0</Bottom>
+                                      </Padding>
+                                      <Text id="84abf8e0-d5d1-4e0a-87b4-a710cae1f810" />
+                                      <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                                        <ColumnDefs>
+                                          <Column width="100%" min-width="542" />
+                                        </ColumnDefs>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Panel name="Panel13" id="ec5ba09f-6215-4d8f-929c-439cf50619e7" panelId="ec5ba09f-6215-4d8f-929c-439cf50619e7" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                              <Padding>
+                                                <Left>0</Left>
+                                                <Top>0</Top>
+                                                <Right>0</Right>
+                                                <Bottom>0</Bottom>
+                                              </Padding>
+                                              <Text id="ec5ba09f-6215-4d8f-929c-439cf50619e7">Panel</Text>
+                                              <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                                                <ColumnDefs>
+                                                  <Column />
+                                                  <Column />
+                                                  <Column width="100%" min-width="62" />
+                                                </ColumnDefs>
+                                                <Row>
+                                                  <Cell hAlign="Near" vAlign="Center">
+                                                    <TtLabel name="SDD Application" id="f03f72d6-b512-4d88-bc5c-ce576dd8ca31" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                                      <Text>SDD Application</Text>
+                                                      <Description>Selection of SDD application being changed</Description>
+                                                    </TtLabel>
+                                                  </Cell>
+                                                  <Cell hAlign="Justify" vAlign="Near">
+                                                    <TtComboBox name="SDD Application" id="f03f72d6-b512-4d88-bc5c-ce576dd8ca31" dbname="SREL_PRODUCT" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" />
+                                                  </Cell>
+                                                  <Cell />
+                                                </Row>
+                                                <Row>
+                                                  <Cell hAlign="Near" vAlign="Center">
+                                                    <UnLabel name="knownErrorsSearchBox_Label" id="knownErrorsSearchBox_Label" colIndex="0" class="LabelStyle" font="Arial" fontsize="10" bold="True" italic="False">
+                                                      <Text>Refine Search</Text>
+                                                    </UnLabel>
+                                                  </Cell>
+                                                  <Cell hAlign="Near" vAlign="Near">
+                                                    <UnEditBox name="TitleSearchTextBox" id="4a5ec4b4-5fec-474d-a8bd-e78600b3dff5" useTranslation="True" mobileOption="HideInSimpleMode" class="ControlStyle" width="350">
+                                                      <Text />
+                                                      <Template outputHtml="False" />
+                                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                                    </UnEditBox>
+                                                  </Cell>
+                                                  <Cell hAlign="Near" vAlign="Near">
+                                                    <Button name="goButton" id="goButton" mobileOption="HideInSimpleMode" class="SubmitButton">
+                                                      <Text id="18276362-7850-4cc7-9a67-2596f75d2cae">Search</Text>
+                                                      <Behavior>URL</Behavior>
+                                                      <Parameter name="Url">
+                                                        <Template outputHtml="False" />
+                                                      </Parameter>
+                                                      <Target>_blank</Target>
+                                                      <Template outputHtml="True" />
+                                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                                    </Button>
+                                                  </Cell>
+                                                </Row>
+                                              </Table>
+                                            </Panel>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <EmbeddedReportWidget name="RelationalGridWidget" id="fcc941fe-cf32-48ac-adf7-aa369e9e36a0" borders="False" scrollbars="True" class="GridStyle" height="500">
+                                              <ReportType>Relational</ReportType>
+                                              <RelationalField>MREL_CHANGE_REQUESTS</RelationalField>
+                                              <RelationalFieldID>361c179c-b2d9-4e34-997d-77f4dbee633c</RelationalFieldID>
+                                              <ShowOnlySelectedItemsJSValue>_ShowOnlySelectedItems.NO</ShowOnlySelectedItemsJSValue>
+                                              <ShowShowOnlySelectedCheckboxJSValue>_ShowShowOnlySelectedCheckbox.NEVER</ShowShowOnlySelectedCheckboxJSValue>
+                                              <ShowTitle>false</ShowTitle>
+                                              <ShowDetails>false</ShowDetails>
+                                              <ShowRequeryLink>false</ShowRequeryLink>
+                                              <ShowSelectLinks>true</ShowSelectLinks>
+                                              <ShowClearLink>true</ShowClearLink>
+                                              <ReportHash>z1Q2lWBacpap92/gDydKxgHe66U=</ReportHash>
+                                              <AlternateSelection>true</AlternateSelection>
+                                              <Caption />
+                                              <Url>tmtrack.dll</Url>
+                                              <Query>
+                                                <Template outputHtml="False">ReportPage=&amp;template=reports%2Fjsonlist&amp;ReportUUID=43990241-e570-4990-b978-13c422e7e3f7&amp;AppRptProjId=I_USR_SDDCRS_CHANGE_REQUESTS.CRS_CHANGE_REQUESTS_PROJECT&amp;HasRuntimeParams=1&amp;F_TS_ISSUEID={0}&amp;F_TS_TITLE={0}&amp;F_TS_SREL_PRODUCT={1}&amp;embedded=</Template>
+                                                <Param>TitleSearchTextBox</Param>
+                                                <Param field="SDD Application" path="ID">SREL_PRODUCT</Param>
+                                              </Query>
+                                              <Refresh onpageload="True" ondatachange="True" onclick="True" buttonname="goButton" buttonid="18276362-7850-4cc7-9a67-2596f75d2cae" />
+                                            </EmbeddedReportWidget>
+                                          </Cell>
+                                        </Row>
+                                      </Table>
+                                    </GroupBox>
+                                  </ResponsiveCell>
+                                </ResponsiveRow>
+                              </Container>
+                            </Panel>
+                          </ResponsiveCell>
+                        </ResponsiveRow>
+                        <ResponsiveRow>
+                          <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+                            <Panel name="RolesPanel" id="ebf43c7e-00df-4e6a-a7e9-51c59aac884b" panelId="ebf43c7e-00df-4e6a-a7e9-51c59aac884b" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                              <Padding>
+                                <Left>0</Left>
+                                <Top>0</Top>
+                                <Right>0</Right>
+                                <Bottom>0</Bottom>
+                              </Padding>
+                              <Text id="ebf43c7e-00df-4e6a-a7e9-51c59aac884b">Panel</Text>
+                              <Container cellPadding="4">
+                                <ResponsiveRow>
+                                  <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+                                    <StaticText name="ContactPaneHeader2" id="ContactPaneHeader2" mobileOption="HideInSimpleMode" class="CRStateHeadingStyle" fontsize="12">
+                                      <Text id="62e7b911-fe59-481d-912d-f44a6ed2c4f9">ROLES</Text>
+                                      <Template outputHtml="True" />
+                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                    </StaticText>
+                                  </ResponsiveCell>
+                                </ResponsiveRow>
+                                <ResponsiveRow>
+                                  <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="4">
+                                    <Panel name="GroupBoxApprovedBudget" id="cdb3721e-d8af-4c75-b723-579ef8dd0454" panelId="cdb3721e-d8af-4c75-b723-579ef8dd0454" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                      <Padding>
+                                        <Left>0</Left>
+                                        <Top>0</Top>
+                                        <Right>10</Right>
+                                        <Bottom>0</Bottom>
+                                      </Padding>
+                                      <Text id="cdb3721e-d8af-4c75-b723-579ef8dd0454" />
+                                      <Container cellPadding="4">
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="Project Manager (GOV)" id="0923e477-a860-48f0-a201-598028f5b4b2" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>Project Manager (GOV)</Text>
+                                              <Description>Project Officer</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="Project Manager (GOV)" id="0923e477-a860-48f0-a201-598028f5b4b2" dbname="PROJECT_MANAGER_GOV" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="Project Analyst (CTR)" id="91a46a56-5d01-4b9e-a543-7e60a6183a29" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>Project Analyst (CTR)</Text>
+                                            </TtLabel>
+                                            <TtComboBox name="Project Analyst (CTR)" id="91a46a56-5d01-4b9e-a543-7e60a6183a29" dbname="PROJECT_ANALYST_CTR" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="Development Manager" id="780dee66-ae3c-4fcf-9f34-8ffe759b9fa3" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>Development Manager</Text>
+                                              <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="Development Manager" id="780dee66-ae3c-4fcf-9f34-8ffe759b9fa3" dbname="DEVELOPMENT_MANAGER" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="Requirements Analyst" id="28c31b3c-de8d-4b40-89d0-56e079eba8d1" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>Requirements Analyst</Text>
+                                              <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="Requirements Analyst" id="28c31b3c-de8d-4b40-89d0-56e079eba8d1" dbname="REQUIREMENTS_ANALYST" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="CM Analyst" id="807fb204-0688-4666-902b-352c596d6306" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>CM Analyst</Text>
+                                              <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="CM Analyst" id="807fb204-0688-4666-902b-352c596d6306" dbname="CM_ANALYST" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="ISSM" id="303d8d99-50cd-4e38-9204-59be3aa8373d" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>ISSM</Text>
+                                              <Description>Cyber Security Engineer</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="ISSM" id="303d8d99-50cd-4e38-9204-59be3aa8373d" dbname="ISSM" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                      </Container>
+                                    </Panel>
+                                  </ResponsiveCell>
+                                  <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="4">
+                                    <Panel name="GroupBoxOrderedBudget" id="b7251e92-340f-4166-8354-a469390e39d8" panelId="b7251e92-340f-4166-8354-a469390e39d8" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                      <Padding>
+                                        <Left>10</Left>
+                                        <Top>0</Top>
+                                        <Right>10</Right>
+                                        <Bottom>0</Bottom>
+                                      </Padding>
+                                      <Text id="b7251e92-340f-4166-8354-a469390e39d8" />
+                                      <Container cellPadding="4">
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="CM Manager" id="872c8355-b58c-48bc-beee-31935cf6ce34" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>CM Manager</Text>
+                                              <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="CM Manager" id="872c8355-b58c-48bc-beee-31935cf6ce34" dbname="CM_MANAGER" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="Developer" id="fcff1643-76a5-4792-bb2c-e6652337e463" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>Developer</Text>
+                                              <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="Developer" id="fcff1643-76a5-4792-bb2c-e6652337e463" dbname="DEVELOPER" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="Test Lead (CTR)" id="39aa8b95-73ad-4848-8ae5-1ccb244ebbfe" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>Test Lead (CTR)</Text>
+                                              <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="Test Lead (CTR)" id="39aa8b95-73ad-4848-8ae5-1ccb244ebbfe" dbname="TEST_LEAD_CTR" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="Test Lead (GOV)" id="3d785d69-924e-4be0-8504-83a1b890bd6e" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>Test Lead (GOV)</Text>
+                                              <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="Test Lead (GOV)" id="3d785d69-924e-4be0-8504-83a1b890bd6e" dbname="TEST_LEAD_GOV" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="OPS Gov Lead" id="a24ea68f-a2ef-4af5-b449-9da8ae84e482" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>OPS Gov Lead</Text>
+                                            </TtLabel>
+                                            <TtComboBox name="OPS Gov Lead" id="a24ea68f-a2ef-4af5-b449-9da8ae84e482" dbname="OPS_GOV_LEAD" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="System Engineer (CTR)" id="559c8306-8ee8-499c-a1c6-1c914fa7b116" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>System Engineer (CTR)</Text>
+                                            </TtLabel>
+                                            <TtComboBox name="System Engineer (CTR)" id="559c8306-8ee8-499c-a1c6-1c914fa7b116" dbname="SYSTEM_ENGINEER_CTR" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                      </Container>
+                                    </Panel>
+                                  </ResponsiveCell>
+                                  <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="4">
+                                    <Panel name="GroupBoxRemainingBudget" id="94b902bf-a209-4917-b135-f85e90b53fbc" panelId="94b902bf-a209-4917-b135-f85e90b53fbc" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                      <Padding>
+                                        <Left>10</Left>
+                                        <Top>0</Top>
+                                        <Right>0</Right>
+                                        <Bottom>0</Bottom>
+                                      </Padding>
+                                      <Text id="94b902bf-a209-4917-b135-f85e90b53fbc" />
+                                      <Container cellPadding="4">
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="Project Controller" id="959753ae-046f-4f10-91b8-49f848107021" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>Project Controller</Text>
+                                              <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="Project Controller" id="959753ae-046f-4f10-91b8-49f848107021" dbname="PROJECT_CONTROLLER" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="System Engineer (GOV)" id="b1f445fc-f15a-46d5-9eb0-ae54c2e9fa70" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>System Engineer (GOV)</Text>
+                                              <Description>&lt;br&gt;</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="System Engineer (GOV)" id="b1f445fc-f15a-46d5-9eb0-ae54c2e9fa70" dbname="SYSTEM_ENGINEER_GOV" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="ISSO" id="3a6543c5-b08c-49d8-b076-c150719c9915" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>ISSO</Text>
+                                              <Description>&amp;nbsp;(IA Analyst)</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="ISSO" id="3a6543c5-b08c-49d8-b076-c150719c9915" dbname="ISSO" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="Program Manager" id="f92d7c03-cf26-476c-a4f0-54d1dcb729e9" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>Program Manager</Text>
+                                              <Description>Program Manager</Description>
+                                            </TtLabel>
+                                            <TtComboBox name="Program Manager" id="f92d7c03-cf26-476c-a4f0-54d1dcb729e9" dbname="PROGRAM_MANAGER" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                        <ResponsiveRow>
+                                          <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                                            <TtLabel name="Tester" id="8577bff4-2fd0-4d09-b328-71f55a899f3e" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                                              <Text>Tester</Text>
+                                            </TtLabel>
+                                            <TtComboBox name="Tester" id="8577bff4-2fd0-4d09-b328-71f55a899f3e" dbname="TESTER" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                                          </ResponsiveCell>
+                                        </ResponsiveRow>
+                                      </Container>
+                                    </Panel>
+                                  </ResponsiveCell>
+                                </ResponsiveRow>
+                              </Container>
+                            </Panel>
+                          </ResponsiveCell>
+                        </ResponsiveRow>
+                      </Container>
+                    </Panel>
+                  </ResponsiveCell>
+                </ResponsiveRow>
+                <ResponsiveRow>
+                  <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+                    <Panel name="CommentsPanel" id="a20072ea-c4b5-4fa1-a00d-247bc49208ee" panelId="a20072ea-c4b5-4fa1-a00d-247bc49208ee" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                      <Padding>
+                        <Left>0</Left>
+                        <Top>0</Top>
+                        <Right>0</Right>
+                        <Bottom>0</Bottom>
+                      </Padding>
+                      <Text id="a20072ea-c4b5-4fa1-a00d-247bc49208ee">Panel</Text>
+                      <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                        <ColumnDefs>
+                          <Column width="100%" min-width="100" />
+                        </ColumnDefs>
+                        <Row height="40">
+                          <Cell hAlign="Near" vAlign="Far">
+                            <TtLabel name="Comments" id="e1f54da6-7d5b-4a73-b143-809abb994a41" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                              <Text>Comments</Text>
+                              <Description>General comments that relate to this CR, to be retained as part of the record</Description>
+                            </TtLabel>
+                          </Cell>
+                        </Row>
+                        <Row>
+                          <Cell hAlign="Justify" vAlign="Near">
+                            <TtEditBoxMultiLine name="Comments" id="e1f54da6-7d5b-4a73-b143-809abb994a41" dbname="COMMENTS" ftype="text" mobileOption="HideInSimpleMode" class="ControlStyle" height="150">
+                              <Template outputHtml="False" />
+                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              <Text>Comments</Text>
+                            </TtEditBoxMultiLine>
+                          </Cell>
+                        </Row>
+                      </Table>
+                    </Panel>
+                  </ResponsiveCell>
+                </ResponsiveRow>
+                <ResponsiveRow>
+                  <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+                    <Panel name="WorkLogPanel" id="2c0a34d5-4263-41cc-b772-08adcbf299ca" panelId="2c0a34d5-4263-41cc-b772-08adcbf299ca" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                      <Padding>
+                        <Left>0</Left>
+                        <Top>0</Top>
+                        <Right>0</Right>
+                        <Bottom>0</Bottom>
+                      </Padding>
+                      <Text id="2c0a34d5-4263-41cc-b772-08adcbf299ca">Panel</Text>
+                      <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                        <ColumnDefs>
+                          <Column width="100%" min-width="100" />
+                        </ColumnDefs>
+                        <Row height="40">
+                          <Cell hAlign="Near" vAlign="Far">
+                            <TtLabel name="Work Log" id="ed2c954d-f62f-4bbc-918a-53ed6f9fecbe" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                              <Text>Work Log</Text>
+                              <Description>Remarks between the developers/software providers, to be maintained at the discretion of the vendor team</Description>
+                            </TtLabel>
+                          </Cell>
+                        </Row>
+                        <Row>
+                          <Cell hAlign="Justify" vAlign="Near">
+                            <TtEditBoxMultiLine name="Work Log" id="ed2c954d-f62f-4bbc-918a-53ed6f9fecbe" dbname="WORK_LOG" ftype="text" mobileOption="HideInSimpleMode" class="ControlStyle" height="150">
+                              <Template outputHtml="False" />
+                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              <Text>Work Log</Text>
+                            </TtEditBoxMultiLine>
+                          </Cell>
+                        </Row>
+                      </Table>
+                    </Panel>
+                  </ResponsiveCell>
+                </ResponsiveRow>
+              </Container>
+            </Panel>
+          </ResponsiveCell>
+        </ResponsiveRow>
+        <ResponsiveRow>
+          <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+            <Section name="HiddenFieldsPanel" id="f24fb99b-f63c-4d6b-9604-96cbb0511649" sectionId="f24fb99b-f63c-4d6b-9604-96cbb0511649" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Top" font="Arial" fontsize="12" collapsed="True" showRowLines="False" CornerRadius="0">
+              <Padding>
+                <Left>20</Left>
+                <Top>0</Top>
+                <Right>20</Right>
+                <Bottom>0</Bottom>
+              </Padding>
+              <Text id="f24fb99b-f63c-4d6b-9604-96cbb0511649">Hidden Fields</Text>
+              <Container cellPadding="4">
+                <ResponsiveRow>
+                  <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Far" hAlign2="Justify" vAlign2="Near">
+                    <TtLabel name="Issue Type" id="876dd07a-997d-43d4-b6e0-24bcc3a18037" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                      <Text>Issue Type</Text>
+                      <Description>Selection of issue type that made the change request necessary (Defect/SIR, SCR-T, or SCR-F)</Description>
+                    </TtLabel>
+                    <TtComboBox name="Issue Type" id="876dd07a-997d-43d4-b6e0-24bcc3a18037" dbname="ISSUETYPE" ftype="single" mobileOption="HideInSimpleMode" class="ControlStyle" doublecellpos="2" />
+                  </ResponsiveCell>
+                </ResponsiveRow>
+                <ResponsiveRow>
+                  <ResponsiveCell ResponsiveBlockWidth="12" hAlign="Near" vAlign="Near" hAlign2="Near" vAlign2="Near">
+                    <TtLabel name="SDD Application Module(s)" id="67f3ea28-17bf-49a2-9c49-1b27ea4a5b4b" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle" doublecellpos="1">
+                      <Text>SDD Application Module(s)</Text>
+                      <Description>An optional subcomponent of the SDD Application, if so used by the product team</Description>
+                    </TtLabel>
+                    <TtListBox size="5" name="SDD Application Module(s)" id="67f3ea28-17bf-49a2-9c49-1b27ea4a5b4b" dbname="MREL_PRODUCTS" ftype="multi" mobileOption="HideInSimpleMode" class="ControlStyle" multiple="True" doublecellpos="2" />
+                  </ResponsiveCell>
+                </ResponsiveRow>
+              </Container>
+            </Section>
+          </ResponsiveCell>
+        </ResponsiveRow>
+      </Container>
+    </ScrollableContent>
+    <RightSidebar empty="true" />
+    <BottomSidebar layoutMode="Responsive" hAlign="Justify" vAlign="Justify" bgcolor="White">
+      <SizeFlavor>AutoSize</SizeFlavor>
+      <PixelSize>51</PixelSize>
+      <PercentageSize>20</PercentageSize>
+      <Padding>
+        <Left>0</Left>
+        <Top>0</Top>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </Padding>
+      <Container cellPadding="4">
+        <ResponsiveRow>
+          <ResponsiveCell hAlign="Far" vAlign="Near" ResponsiveBlockWidth="12">
+            <Panel name="ButtonPanel" id="3e3da2c2-80c0-4cc7-92f8-5fd1718c70dd" panelId="3e3da2c2-80c0-4cc7-92f8-5fd1718c70dd" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Top" bgcolor="Transparent" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+              <Padding>
+                <Left>0</Left>
+                <Top>0</Top>
+                <Right>5</Right>
+                <Bottom>0</Bottom>
+              </Padding>
+              <Text id="3e3da2c2-80c0-4cc7-92f8-5fd1718c70dd">Panel</Text>
+              <Table hAlign="Near" vAlign="Near" cellPadding="4" cellSpacing="0">
+                <ColumnDefs>
+                  <Column />
+                  <Column />
+                </ColumnDefs>
+                <Row>
+                  <Cell hAlign="Near" vAlign="Near">
+                    <Button name="SubmitButton" id="SubmitButton" mobileOption="AlwaysShow" class="ControlStyle">
+                      <Text id="bab100ac-a562-4902-8638-96097110436a">OK</Text>
+                      <Behavior>SubmitForm</Behavior>
+                      <Template outputHtml="True" />
+                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                    </Button>
+                  </Cell>
+                  <Cell hAlign="Near" vAlign="Near">
+                    <Button name="CancelButton" id="CancelButton" mobileOption="AlwaysShow" class="ControlStyle">
+                      <Text id="d3a39c18-337b-400f-9d41-ea4fddf5c341">Cancel</Text>
+                      <Behavior>CancelForm</Behavior>
+                      <Template outputHtml="True" />
+                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                    </Button>
+                  </Cell>
+                </Row>
+              </Table>
+            </Panel>
+          </ResponsiveCell>
+        </ResponsiveRow>
+      </Container>
+    </BottomSidebar>
+  </TopFormTable>
+  <HiddenField name="Change Request(s)" id="361c179c-b2d9-4e34-997d-77f4dbee633c" needSubmit="False" omitFromAutoSections="True" />
+  <Includes>
+    <Include type="js" name="ExpandAll.js">$FORM_EXTENSION_ASSET_PATH(Expand All)/javascript/ExpandAll.js</Include>
+    <Include type="css" name="TransitionIcon.css">$FORM_EXTENSION_ASSET_PATH(Transition Icon)/styles/TransitionIcon.css</Include>
+  </Includes>
+</TtForm>

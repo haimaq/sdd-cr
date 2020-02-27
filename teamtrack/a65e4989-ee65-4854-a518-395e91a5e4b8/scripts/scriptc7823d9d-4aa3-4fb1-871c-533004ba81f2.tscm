@@ -1,0 +1,173 @@
+include("app.ChangeRequests.Constants");
+include("app.ChangeRequests.Utils");
+include("app.ChangeRequests.SetControllerAndSubstitutes");
+///include("app.Utils.script_init_journalfield");
+
+
+def script_init_journalfield2(journalField, strJrFldValue) {
+    var s_changepackage = Variant();
+
+    //  Recuperation des valeurs des champs a afficher
+    var valTransition = Shell.TransitionName();
+    var valFromState = Shell.FromStateName();
+    var valToState = Shell.ToStateName();
+    var currentUser = Shell.User().GetId();
+    Shell.Item().Fields().FindField("CHANGE_PACKAGE").GetDisplayValue(s_changepackage);
+    
+    var fldValue  = "";
+    fldValue = fldValue &&& "CP: " &&& s_changepackage.to_string() &&& "\n";
+    fldValue = fldValue &&& "FromState: " &&& valFromState &&& "\n";
+    fldValue = fldValue &&& "TransitionFrom: " &&& valTransition &&& "\n";
+    fldValue = fldValue &&& "ToState: " &&& valToState &&& "\n";
+    fldValue = fldValue &&&  "By: "  &&& NameByUserId(currentUser)  &&& "\n";
+    fldValue = fldValue &&& "Date: " &&& Now() &&& "\n";
+	// Call DoLogging("Must append following string to journal field " & Appendvalue,2)
+
+    var field = Shell.Item().Fields().FindField(journalField);
+    //  Insertion du texte dans le champ journal
+    if ( !( field.AppendJournalText(fldValue) )) {
+        // Call DoLogging("Error : Fail to update field " & journalField & " with " & Appendvalue & vbCrLf,0)
+        return;
+    } else {
+        //  Call DoLogging("Field " & journalField & " updated with " & Appendvalue & vbCrLf,1)
+    }
+}
+
+
+global errorMsg;
+if (errorMsg.is_var_undef()) { errorMsg = ""; } // only initialize g2 once, if global decl hit more than once
+
+global recordID = Variant();
+global parentItem = Variant();
+global fldValue = Variant();
+global item = Variant();
+global recordList = Variant();
+global retVal = Variant();
+global whereClause = Variant();
+global record = Variant();
+global projectRecord = Variant();
+global readOk = Variant();
+global appRec = Variant();
+global cr_state = Variant();
+
+var s_QATeam = Variant();
+var s_VendorTeam = Variant();
+var s_CMTeam = Variant();
+var s_ProjectTeam = Variant();
+var s_OpsTeam = Variant();
+
+var productID = Variant();
+var userFldAlternateAssignee = Variant();
+var userFldPrimaryAssignee = Variant();
+
+var arl_DeploymentTasks = Variant();
+var pbr_DeploymentTask = Variant();
+var vfl_DeploymentTask = Variant();
+var fld_DeploymentTask = Variant();
+var n_DeploymentTasksTblId = Variant();
+
+
+//Shell.Item().Fields().FindField("CRS_TEAM").SetBlankValue();
+Shell.Item().SetFieldValue( CHANGE_REQUEST_TEAM_FLD, SetControllerAndSubstitutes());
+
+var toTransition = Shell.TransitionName().to_string().trim();
+var toState = Shell.ToStateName().to_string();
+Shell.Item().Fields().FindField(CR_STATE_FLD).GetDisplayValue(cr_state);
+
+switch (toTransition){
+	case( "Submit for Gov Approval" ) {
+		var cmAcceptance = Variant();
+		var rmAcceptance = Variant();
+		Shell.Item().Fields().FindField("CM_TEAM_ACCCEPTANCE").GetDisplayValue(cmAcceptance);
+		Shell.Item().Fields().FindField("RM_TEAM_ACCEPTANCE").GetDisplayValue(rmAcceptance);
+		if(cmAcceptance == "No") {
+			errorMsg = errorMsg &&& "CM Team Acceptance is required to proceed. <br>"
+		}
+		if(rmAcceptance == "No") {
+			errorMsg = errorMsg &&& "RM Team Acceptance is required to proceed. <br>"
+		}
+		Shell.RedoMessage() = errorMsg;
+		break;
+	}
+	case( "Assign to Sprint/CP" ) {
+		fldValue = Shell.Item().GetFieldValue( "SREL_CPID");
+		if(IsBlank(fldValue)){
+		Shell.RedoMessage() = "To proceed please assign a cp to this item by Add/Remove/Update CP. <br>";
+		}
+		break;
+	}
+
+	case( "Reassign/Return to Sprint Backlog" ) {
+		Shell.Item().Fields().FindField("ACTION_TYPE").GetDisplayValue(s_AssignmentAction);
+		n_Assignee = Shell.Item().GetFieldValue(ASSIGNEE_FLD);
+		if(s_AssignmentAction == "Assign to Tech/Fulfiller/Working") {
+			if(!IsBlank(n_Assignee )){ Shell.Item().SetFieldValue(DEVELOPER_FLD, n_Assignee);  } else { errorMsg = errorMsg &&& "Assignee field is required. <br>";  }
+		}
+		else if(s_AssignmentAction == "Assign to Test Queue/Sprint Backlog") {
+			//if(!IsBlank(fldValue)){ Shell.Item().SetFieldValue( VENDOR_MANAGER_FLD_CRTBL, fldValue);  }
+			Shell.Item().Fields().FindField(ASSIGNEE_FLD).SetBlankValue();
+			Shell.Item().Fields().FindField(DEVELOPER_FLD).SetBlankValue();
+		} else {
+
+		}
+		
+		//if(IsBlank(fldValue)){ s_AssignmentAction = "Assign to Test Queue/Sprint Backlog"; } else {  s_AssignmentAction = "Assign to Tech/Fulfiller/Working"; }
+		//Shell.Item().SetFieldValue( "ASSIGNMENT_ACTION", GetSelectionId("USR_SDDCRS_CHANGE_REQUESTS", "ASSIGNMENT_ACTION",  s_AssignmentAction));  
+		//Shell.Item().Fields().FindField(VENDOR_DEVELOPER_FLD_CRTBL).SetBlankValue();
+		//Shell.Item().Fields().FindField("ASSIGNEE").SetBlankValue();
+		//if(!IsBlank(fldValue)){ Shell.Item().SetFieldValue( VENDOR_DEVELOPER_FLD_CRTBL, fldValue);  }
+		break;
+	}
+	case( "Assign/Begin Work" ) {
+		Shell.Item().Fields().FindField("ACTION_TYPE").GetDisplayValue(s_AssignmentAction);
+		n_Assignee  = Shell.Item().GetFieldValue(ASSIGNEE_FLD);
+		if(s_AssignmentAction == "Assign to Tech/Fulfiller/Working") {
+			if(!IsBlank(n_Assignee )){ Shell.Item().SetFieldValue(DEVELOPER_FLD, n_Assignee);  } else { errorMsg = errorMsg &&& "Assignee field is required. <br>";  }
+		}
+		else if(s_AssignmentAction == "Assign to Test Queue/Sprint Backlog") {
+			//if(!IsBlank(fldValue)){ Shell.Item().SetFieldValue( VENDOR_MANAGER_FLD_CRTBL, fldValue);  }
+			Shell.Item().Fields().FindField(ASSIGNEE_FLD).SetBlankValue();
+			Shell.Item().Fields().FindField(DEVELOPER_FLD).SetBlankValue();
+		} else {
+
+		}
+
+		//	fldValue = Shell.Item().GetFieldValue("ASSIGNEE");
+		//	if(IsBlank(fldValue)){ s_AssignmentAction = "Assign to Test Queue/Sprint Backlog"; } else {  s_AssignmentAction = "Assign to Tech/Fulfiller/Working"; }
+		//	Shell.Item().SetFieldValue( "ASSIGNMENT_ACTION", GetSelectionId("USR_SDDCRS_CHANGE_REQUESTS", "ASSIGNMENT_ACTION",  s_AssignmentAction));  
+
+			//fldValue = Shell.Item().GetFieldValue( "ASSIGNEE");
+			//if(!IsBlank(fldValue)){ Shell.Item().SetFieldValue( VENDOR_DEVELOPER_FLD_CRTBL, fldValue);  }
+		break;
+	}
+
+	case( "Add/Remove/Update CP" ) {
+		
+		fldValue = Shell.Item().GetFieldValue( "SREL_CPID");
+		if(!IsBlank(fldValue)){
+			var sWhere = "TS_ACTIVEINACTIVE=0 AND TS_SREL_CPID=" &&& Shell.Item().GetFieldValue( "SREL_CPID").to_string();
+			var crRecordIDs = GetItemMultiRelationalIDsByFld("USR_SDDCRS_CHANGE_REQUESTS" , sWhere, "ID");
+			if(!IsBlank(crRecordIDs)) { crRecordIDs = "," &&& TrimCommas(crRecordIDs).to_string() &&& "," &&& to_string(Shell.Item().GetId()) &&& ","; } else { crRecordIDs = "," &&& to_string(Shell.Item().GetId()) &&& ","; }
+
+			if(!IsBlank(crRecordIDs)){
+				var cpRecord = Ext.CreateAppRecord ( Ext.TableId("USR_SDD_CHANGE_PACKAGES"));
+				cpRecord.ReadWithWhere("TS_ID=" &&& Shell.Item().GetFieldValue( "SREL_CPID").to_string());
+				cpRecord.SetFieldValue("MREL_CHANGE_REQUESTS", crRecordIDs);
+				//item.Update();
+				//item.Unlock();
+				cpRecord.UpdateWithLock( true );
+			}
+		}
+
+		break;
+	}
+	case( "Return to Product Back Log" ) {
+		script_init_journalfield("COMMENTS", "");
+		Shell.Item().Fields().FindField(SREL_CHANGE_PACKAGE_FLD).SetBlankValue();
+		break;
+		}
+	default {
+		break;
+	}
+}
+

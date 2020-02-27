@@ -1,0 +1,73 @@
+
+def getChangtRoles(){
+
+	var sProjectController = Variant();
+	var sProjectCoordinator = Variant();
+	var sProjectTechEngLeadCTR = Variant();
+	var sProjectTeam = Variant();
+	var sVendorDeveloper = Variant();
+	var sVendorManager = Variant();
+	var sVendorTeam = Variant();
+
+	var sCMManager = Variant();
+	var sCMAnalyst = Variant();
+	var sCMTeam = Variant();
+
+	var sTestCoordinator = Variant();
+	var sQATestLeadCtr = Variant();
+	var sQATestLeadGOV = Variant();
+	var sTester = Variant();
+	var sQATeam = Variant();
+
+	var sRequirementsAnalyst = Variant();
+	var sReqTeam = Variant();
+
+	var sProjectOfficer = Variant();
+	var sISSM = Variant();
+	var sISSO = Variant();
+	var sSystemEngineerGOV = Variant();
+	var sProgramManager = Variant();
+	var sOPSGovLead = Variant();
+
+	var sReportedBy = Variant();
+	var sAssignee = Variant();
+	var sAffectedUser = Variant();
+
+	var sVendors = Variant();
+
+	var sProductID = Shell.Item().GetFieldValue("SDDPRODUCT").to_string();
+
+	oProduct.ReadWithWhere("TS_ID=" &&& sProductID;
+
+	readOk = oProduct.ReadWithWhere("TS_ID=" &&& sProductI;)
+
+	oProduct = Ext.CreateAppRecord(Ext.TableId(SDD_PRODUCTS_TBL));
+
+	if ( oProduct.ReadWithWhere("TS_ID=" &&& sProductID) {
+
+			sProjectController = XferFieldValue(0, oProduct, Shell.Item(), PROJECT_CONTROLLER_FLD_PRODUCTSTBL, PROJECT_CONTROLLER_FLD_CRTBL);
+			sProjectCoordinator = XferFieldValue(0, oProduct, Shell.Item(), PROJECT_COORDINATOR_FLD_PRODUCTSTBL,  PROJECT_COORDINATOR_FLD_CRTBL);
+			sProjectTechEngLeadCTR = XferFieldValue(0, oProduct, Shell.Item(), PROJECT_TECH_ENG_LEAD_CTR_FLD_PRODUCTSTBL, PROJECT_TECH_ENG_LEAD_CTR_FLD_CRTBL);
+			sProjectTeam = XferFieldValue(0, oProduct, Shell.Item(), PROJECT_TEAM_FLD_PRODUCTSTBL, PROJECT_TEAM_FLD_CRTBL);
+			sProjectOfficer = XferFieldValue(0, oProduct, Shell.Item(), PROJECT_OFFICER_FLD_PRODUCTSTBL, PROJECT_OFFICER_FLD_CRTBL);
+			sVendorManager = XferFieldValue(0, oProduct, Shell.Item(), VENDOR_MANAGER_FLD_PRODUCTSTBL, VENDOR_MANAGER_FLD_CRTBL);
+			sVendorDeveloper = XferFieldValue(0, oProduct, Shell.Item(), VENDOR_DEVELOPER_FLD_PRODUCTSTBL, VENDOR_DEVELOPER_FLD_CRTBL);
+			sVendorTeam = XferFieldValue(0, oProduct, Shell.Item(), VENDOR_TEAM_FLD_PRODUCTSTBL, VENDOR_TEAM_FLD_CRTBL);
+			sCMAnalyst = XferFieldValue(0, oProduct, Shell.Item(), CM_ANALYST_FLD_PRODUCTSTBL, CM_ANALYST_FLD_CRTBL);
+			sCMTeam = XferFieldValue(0, oProduct, Shell.Item(), CM_TEAM_FLD_PRODUCTSTBL, CM_TEAM_FLD_CRTBL);
+			sISSM = XferFieldValue(0, oProduct, Shell.Item(), ISSM_FLD_PRODUCTSTBL, ISSM_FLD_CRTBL);
+			sISSO = XferFieldValue(0, oProduct, Shell.Item(), ISSO_FLD_PRODUCTSTBL, ISSO_FLD_CRTBL);
+			sRequirementsAnalyst = XferFieldValue(0, oProduct, Shell.Item(), REQUIREMENTS_ANALYST_FLD_PRODUCTSTBL, REQUIREMENTS_ANALYST_FLD_CRTBL);
+			sReqTeam = XferFieldValue(0, oProduct, Shell.Item(), REQUIREMENTS_TEAM_FLD_PRODUCTSTBL, REQUIREMENTS_TEAM_FLD_PRODUCTSTBL);
+			sSystemEngineerGOV = XferFieldValue(0, oProduct, Shell.Item(), SYSTEM_ENGINEER_GOV_FLD_PRODUCTSTBL, SYSTEM_ENGINEER_GOV_FLD_CRTBL);
+			sOPSGovLead = XferFieldValue(0, oProduct, Shell.Item(), OPS_GOV_LEAD_FLD_PRODUCTSTBL, OPS_GOV_LEAD_FLD_CRTBL);
+			sCMManager = XferFieldValue(0, oProduct, Shell.Item(), CM_MANAGER_FLD_PRODUCTSTBL, CM_MANAGER_FLD_CRTBL);
+			sProgramManager = XferFieldValue(0, oProduct, Shell.Item(), PROGRAM_MANAGER_FLD_PRODUCTSTBL, PROGRAM_MANAGER_FLD_CRTBL);
+			sVendors = XferFieldValue(0, oProduct, Shell.Item(), "VENDORS", "VENDORS");
+}	
+
+
+
+}
+}
+//Shell.Item().SetFieldValue( "CRS_TEAM", SetControllerAndSubstitutes()

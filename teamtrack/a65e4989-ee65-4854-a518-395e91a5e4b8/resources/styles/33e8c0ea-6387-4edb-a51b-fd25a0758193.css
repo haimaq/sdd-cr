@@ -1,0 +1,600 @@
+﻿.ControlStyle, button.ControlStyle, input.ControlStyle[type='text'], label.ControlStyle, select.ControlStyle
+{
+}
+
+.StatePanel
+{
+  background-color: #01A9E7;
+}
+
+.StatePanelText, button.StatePanelText, input.StatePanelText[type='text'], label.StatePanelText, select.StatePanelText
+{
+  color: #01A9E7;
+  font-family: Arial;
+  font-size: 18pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.WarningStyle, button.WarningStyle, input.WarningStyle[type='text'], label.WarningStyle, select.WarningStyle
+{
+  color: #BA1419;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.GroupBoxWBorder
+{
+  color: #5C83B4;
+  background-color: Transparent;
+  font-family: Tahoma;
+  font-size: 10.2pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.TransitionLink, button.TransitionLink, input.TransitionLink[type='text'], label.TransitionLink, select.TransitionLink
+{
+  color: #56606E;
+  background-color: Transparent;
+  font-family: Arial;
+  font-size: 11.25pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+button.TransitionLink:hover
+{
+  background-color: #F0F0F0;
+}
+
+.TransitionFormButtonPanel
+{
+  background-color: #F6F6F6;
+}
+
+.TitlebarPanelStyle3
+{
+  color: White;
+  background-color: #646363;
+  font-family: Arial;
+  font-size: 8.25pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.TitlebarPanelStyle
+{
+  color: White;
+  background-color: #646363;
+  font-family: Arial;
+  font-size: 8.25pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.StateHeaderPanelText, button.StateHeaderPanelText, input.StateHeaderPanelText[type='text'], label.StateHeaderPanelText, select.StateHeaderPanelText
+{
+  color: #575551;
+  font-family: Tahoma;
+  font-size: 14pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.SooGroupBoxWBorder
+{
+  color: #8066A0;
+  background-color: #F7F4EB;
+  font-family: Tahoma;
+  font-size: 10.2pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.PrinterSubHeading, button.PrinterSubHeading, input.PrinterSubHeading[type='text'], label.PrinterSubHeading, select.PrinterSubHeading
+{
+  color: #727272;
+  font-family: Tahoma;
+  font-size: 7.8pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.LabelStyle, button.LabelStyle, input.LabelStyle[type='text'], label.LabelStyle, select.LabelStyle
+{
+}
+
+.TransitionButton, button.TransitionButton, input.TransitionButton[type='text'], label.TransitionButton, select.TransitionButton
+{
+}
+
+.NoWrapControlStyle, button.NoWrapControlStyle, input.NoWrapControlStyle[type='text'], label.NoWrapControlStyle, select.NoWrapControlStyle
+{
+  font-family: Arial;
+  font-size: 8pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.HyperLinkStyle, button.HyperLinkStyle, input.HyperLinkStyle[type='text'], label.HyperLinkStyle, select.HyperLinkStyle
+{
+  color: #595959;
+}
+
+.IMStateHeadingStyle, button.IMStateHeadingStyle, input.IMStateHeadingStyle[type='text'], label.IMStateHeadingStyle, select.IMStateHeadingStyle
+{
+  color: #0072BC;
+  font-family: Tahoma;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.ExpanderStyle
+{
+  font-family: Arial;
+  font-size: 12pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.UIPBackground
+{
+  color: White;
+  background-color: WhiteSmoke;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.TabStyle
+{
+  font-family: Arial;
+  font-size: 12pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.SDDCFStateHeadingStyle, button.SDDCFStateHeadingStyle, input.SDDCFStateHeadingStyle[type='text'], label.SDDCFStateHeadingStyle, select.SDDCFStateHeadingStyle
+{
+  color: #5C83B4;
+  background-color: Transparent;
+  font-family: Tahoma;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+button.SDDCFStateHeadingStyle:hover
+{
+  background-color: #F0F0F0;
+}
+
+.StateFormStyle
+{
+  background-color: Transparent;
+}
+
+.ContainerStyle
+{
+  background-color: Transparent;
+}
+
+.CRStateHeadingStyle, button.CRStateHeadingStyle, input.CRStateHeadingStyle[type='text'], label.CRStateHeadingStyle, select.CRStateHeadingStyle
+{
+  color: #5C83B4;
+  font-family: Arial;
+  font-size: 16pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.TitlebarPanelStyle4
+{
+  color: White;
+  background-color: #646363;
+  font-family: Arial;
+  font-size: 8.25pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.TransitionFormStyle
+{
+  background-color: Transparent;
+}
+
+.GridStyle
+{
+  background-color: Transparent;
+}
+.GridStyle A
+{
+  }
+.GridStyle TD
+{
+  }
+
+.PanelGroupWBackground
+{
+  background-color: #F7F7F7;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.SubmitButton, button.SubmitButton, input.SubmitButton[type='text'], label.SubmitButton, select.SubmitButton
+{
+  color: White;
+  background-color: #007CD0;
+}
+
+button.SubmitButton:hover
+{
+  background-color: #0074C3;
+}
+
+.PrintSectionStyle
+{
+}
+
+.BlueText, button.BlueText, input.BlueText[type='text'], label.BlueText, select.BlueText
+{
+  color: #36595D;
+}
+
+.BlueTextContainer
+{
+  color: #36595D;
+}
+
+.CancelButton, button.CancelButton, input.CancelButton[type='text'], label.CancelButton, select.CancelButton
+{
+  color: #007CD0;
+  background-color: White;
+}
+
+button.CancelButton:hover
+{
+  background-color: #F0F0F0;
+}
+
+.HeaderTextStyle, button.HeaderTextStyle, input.HeaderTextStyle[type='text'], label.HeaderTextStyle, select.HeaderTextStyle
+{
+  color: White;
+  font-family: Arial;
+  font-size: 14.25pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.PrintFormStyle
+{
+}
+
+.TransitionButtonStyle, button.TransitionButtonStyle, input.TransitionButtonStyle[type='text'], label.TransitionButtonStyle, select.TransitionButtonStyle
+{
+  background-color: White;
+  font-family: Tahoma;
+  font-size: 9pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+button.TransitionButtonStyle:hover
+{
+  background-color: #F0F0F0;
+}
+
+.MainContainerPanel
+{
+  background-color: Transparent;
+}
+
+.HeaderStyle
+{
+}
+
+.TitleStyle, button.TitleStyle, input.TitleStyle[type='text'], label.TitleStyle, select.TitleStyle
+{
+  color: White;
+  font-family: Arial;
+  font-size: 16pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.FooterStyle
+{
+  background-color: White;
+}
+
+.LeftSidebarStyle
+{
+  background-color: #F7F7F7;
+}
+
+.RightSidebarStyle
+{
+}
+
+.DarkPanelStyle
+{
+  color: #595959;
+  background-color: #F2F2F2;
+}
+
+.DefaultContainerStyle
+{
+  color: #0073E7;
+  background-color: Transparent;
+  font-family: Tahoma;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.SooButtonText, button.SooButtonText, input.SooButtonText[type='text'], label.SooButtonText, select.SooButtonText
+{
+  color: White;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.SooCancelButton
+{
+  color: White;
+  background-color: #F7F4EB;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.NewExpanderStyle
+{
+  color: #0071BC;
+  background-color: Transparent;
+  font-family: Tahoma;
+  font-size: 12pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.CRSExpanderStyle
+{
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.ExpanderStyle12blue
+{
+  color: #0072BC;
+  background-color: Transparent;
+  font-family: Arial;
+  font-size: 12pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.HeaderPanelStyle
+{
+  background-color: #F6F6F6;
+}
+
+.Header1ContainerStyle
+{
+  color: White;
+  background-color: #959697;
+  font-family: Arial;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.SRStateHeadingStyle, button.SRStateHeadingStyle, input.SRStateHeadingStyle[type='text'], label.SRStateHeadingStyle, select.SRStateHeadingStyle
+{
+  color: #5C83B4;
+  font-family: Tahoma;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.OKButton
+{
+  color: White;
+  background-color: Transparent;
+  font-family: Tahoma;
+  font-size: 10.2pt;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.loadingMsg
+{
+  background-color: #FFF1A8;
+  padding: 10px 10px 10px 10px;
+}
+
+.errorMsg
+{
+  background-color: #FFAFBB;
+  padding: 10px 10px 10px 10px;
+}
+
+
+.emptyMsg
+{
+  background-color: #E0ECFF;
+  padding: 10px 10px 10px 10px;
+}
+
+.sectionLabelFirst
+{
+  border-left: 1px solid #d0d0cd;
+  border-right: 1px solid #d0d0cd;
+}
+
+.contentSection2
+{
+  background-color: white;
+  border-left: 1px solid #DCD9D2;
+  border-right: 1px solid #DCD9D2;
+  border-bottom: 1px solid #DCD9D2;
+}
+
+.contentSectionCustom
+{
+  border-left: 1px solid #d0d0cd;
+  border-right: 1px solid #d0d0cd;
+}
+
+.hoverHelpLinkText_COMMENTED
+{
+  border-bottom: 1px dashed #929292;
+}
+
+TD.uline
+{
+  border-bottom: 1px solid #F3F1E9;
+}
+
+TD.uline2, td[uline2]
+{
+  border-left: 20px solid transparent;
+  border-bottom: 1px solid #F3F1E9;
+}
+
+TD.noline2, td[noline2]
+{
+  border-left: none;
+}
+
+.contentSectionSCH
+{
+  background-color: transparent;
+}
+
+.contentSection
+{
+  background-color: transparent;
+}
+
+.gridrowpointer
+{
+  cursor: pointer;
+}
+
+#CustomErrorMsg
+{
+  padding-left: 16px;
+}
+
+/* Custom Forms Style Rework */
+.captionBar
+{
+}
+
+.captionBarLabelContainer
+{
+  background-color: #E4E1D0;
+  border-left: 1px solid #d0d0cd;
+  border-right: 1px solid #d0d0cd;
+  padding: 0px 4px 4px 4px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.captionBarLabel
+{
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.unselectable
+{
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.grid
+{
+  font-size: 8.25pt;
+}
+
+.gridRow
+{
+  background-color: #FFFFFF;
+}
+
+.gridRowAlternate
+{
+  background-color: #F7F4EB;
+}
+
+.gridrowhighlight
+{
+  background-color: #C8C5B5;
+}
+
+.gridrowselect
+{
+  background-color: #3399FF;
+  color: #FFFFFF;
+}
+
+.gridrowselect.gridrowhighlight
+{
+  background-color: #3182DB;
+  color: #FFFFFF;
+}
+
+.gridrowselect A
+{
+  color: #FFFFFF;
+}
+
+.gridColumn
+{
+  border-left: 2px solid white;
+  font-weight: bold;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  text-align: left;
+  white-space: nowrap;
+}
+.gridColumn.firstGridColumn
+{
+  border-left: none;
+}
+
+.gridColumnSort A
+{
+  text-decoration: none;
+}
+
+.gridColumnSort A:hover
+{
+  text-decoration: underline;
+}
+
+.gridCell
+{
+  padding-left: 5px;
+  vertical-align: top;
+}

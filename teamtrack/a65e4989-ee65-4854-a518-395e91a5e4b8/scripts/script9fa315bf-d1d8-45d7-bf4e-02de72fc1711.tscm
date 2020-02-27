@@ -1,0 +1,363 @@
+// set up some constants for use later in the script
+add_global_const( "USR_SDD_PRODUCTS", "SDD_PRODUCTS_TBL" );
+
+add_global_const( "[none]", "NONE_FOUND" );
+
+add_global_const( "SDDPRODUCT", "SDDPRODUCT_FLD_CRTBL" );
+
+
+global errorMsg;
+if (errorMsg.is_var_undef()) { errorMsg = ""; } // only initialize g2 once, if global decl hit more than once
+global sSecOwners;
+if (sSecOwners.is_var_undef()) {  sSecOwners = ","; }
+
+global retVal = Variant();
+global productRecord = Variant();
+global readOk = Variant();
+global fldValue = Variant();
+
+def ValidateBudgetNumber() {
+	var ret = Variant();
+	ret="";
+
+	var sQATeam = Variant();
+	var sVendorTeam = Variant();
+	var sCMTeam = Variant();
+	var sProjectTeam = Variant();
+	var sOpsTeam = Variant();
+	var sReqTeam = Variant();
+	
+	if(sQATeam.is_var_undef()) {  sQATeam = ","; }
+	if(sReqTeam.is_var_undef()) {  sReqTeam = ","; }
+	if(sVendorTeam.is_var_undef()) {  sVendorTeam = ","; }
+	if(sCMTeam.is_var_undef()) {  sCMTeam = ","; }
+	if(sProjectTeam.is_var_undef()) {  sProjectTeam = ","; }
+	if(sOpsTeam.is_var_undef()) {  sOpsTeam = ","; }
+
+	var sProductID = Variant();
+	Shell.Item().GetFieldValue("SDDPRODUCT",sProductID);
+
+	var productRecord= Variant();
+	var sWhere = Variant();
+	if(!IsBlank(sProductID)){ 
+		sWhere="TS_ID=" &&& sProductID;
+		productRecord=Ext.CreateAppRecord(Ext.TableId(SDD_PRODUCTS_TBL));
+		if ( productRecord.ReadWithWhere(sWhere) > 0 ) {
+					fldValue = productRecord.GetFieldValue( PROJECT_CONTROLLER_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+				Shell.Item().SetFieldValue( PROJECT_CONTROLLER_FLD_CRTBL,fldValue);
+				sProjectTeam = sProjectTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( PROJECT_COORDINATOR_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+				Shell.Item().SetFieldValue( PROJECT_COORDINATOR_FLD_CRTBL,fldValue);
+				sProjectTeam = sProjectTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( PROJECT_TECH_ENG_LEAD_CTR_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+				Shell.Item().SetFieldValue( PROJECT_TECH_ENG_LEAD_CTR_FLD_CRTBL,fldValue);
+				sProjectTeam = sProjectTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( PROJECT_TEAM_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+				sProjectTeam = sProjectTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		if(!IsBlank(sProjectTeam)){ 
+			Shell.Item().SetFieldValue( PROJECT_TEAM_FLD_CRTBL, sProjectTeam); 
+			//sSecOwners = sSecOwners &&& TrimCommas(sProjectTeam.to_string()) &&& ",";
+		}
+
+		
+		fldValue = productRecord.GetFieldValue( PROJECT_OFFICER_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+				Shell.Item().SetFieldValue( PROJECT_OFFICER_FLD_CRTBL,fldValue);
+			//	sSecOwners = sSecOwners &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( PROGRAM_MANAGER_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+				Shell.Item().SetFieldValue( PROGRAM_MANAGER_FLD_CRTBL,fldValue);
+				//sSecOwners = sSecOwners &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( SYSTEM_ENGINEER_GOV_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+				Shell.Item().SetFieldValue( SYSTEM_ENGINEER_GOV_FLD_CRTBL,fldValue);
+			//	sSecOwners = sSecOwners &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( ISSM_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( ISSM_FLD_CRTBL,fldValue);
+		//	sSecOwners = sSecOwners &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( ISSO_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( ISSO_FLD_CRTBL,fldValue);
+			//sSecOwners = sSecOwners &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( OPS_GOV_LEAD_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( OPS_GOV_LEAD_FLD_CRTBL,fldValue);
+		//	sSecOwners = sSecOwners &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( CM_MANAGER_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( CM_MANAGER_FLD_CRTBL,fldValue);
+			//sCMTeam = sCMTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}	
+		
+		fldValue = productRecord.GetFieldValue( REQUIREMENTS_ANALYST_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( REQUIREMENTS_ANALYST_FLD_CRTBL,fldValue);
+			sReqTeam = sReqTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( REQUIREMENTS_TEAM_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			sReqTeam = sReqTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		if(!IsBlank(sReqTeam)){ 
+			Shell.Item().SetFieldValue( REQUIREMENTS_TEAM_FLD_CRTBL, sReqTeam); 
+			//sSecOwners = sSecOwners &&& TrimCommas(sReqTeam.to_string()) &&& ",";
+		}
+
+
+
+
+		fldValue = productRecord.GetFieldValue( CM_ANALYST_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( CM_ANALYST_FLD_CRTBL,fldValue);
+			sCMTeam = sCMTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( CM_TEAM_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+				sCMTeam = sCMTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		if(!IsBlank(sCMTeam)){
+			 Shell.Item().SetFieldValue( CM_TEAM_FLD_CRTBL, sCMTeam);
+			// sSecOwners = sSecOwners &&& TrimCommas(sCMTeam.to_string()) &&& ",";
+		  }
+
+		fldValue = productRecord.GetFieldValue( QA_TEST_LEAD_CTR_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( QA_TEST_LEAD_CTR_FLD_CRTBL,fldValue);
+			sQATeam = sQATeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( QA_TEST_LEAD_GOV_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( QA_TEST_LEAD_GOV_FLD_CRTBL,fldValue);
+			sQATeam = sQATeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( QA_TEST_ENGINEER_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( QA_TEST_ENGINEER_FLD_CRTBL,fldValue);
+			sQATeam = sQATeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( TEST_COORDINATOR_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( QA_TEST_COORDINATOR_FLD_CRTBL,fldValue);
+			sQATeam = sQATeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( QA_TEAM_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){ 
+			sQATeam = sQATeam &&& TrimCommas(fldValue.to_string()) &&& ","; 
+		}
+		if(!IsBlank(sQATeam)){ 
+			Shell.Item().SetFieldValue( QA_TEAM_FLD_CRTBL, sQATeam);
+		//	sSecOwners = sSecOwners &&& TrimCommas(sQATeam.to_string()) &&& ",";
+		 }
+
+		fldValue = productRecord.GetFieldValue( VENDOR_DEVELOPER_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( VENDOR_DEVELOPER_FLD_CRTBL,fldValue);
+			sVendorTeam = sVendorTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( VENDOR_MANAGER_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( VENDOR_MANAGER_FLD_CRTBL,fldValue);
+			sVendorTeam = sVendorTeam &&& TrimCommas(fldValue.to_string()) &&& ",";
+		}
+		fldValue = productRecord.GetFieldValue( VENDOR_TEAM_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){ 
+			sVendorTeam = sVendorTeam &&& TrimCommas(fldValue.to_string()) &&& ","; 
+		}
+		if(!IsBlank(sVendorTeam)){ 
+			Shell.Item().SetFieldValue( VENDOR_TEAM_FLD_CRTBL, sVendorTeam);
+			//sSecOwners = sSecOwners &&& TrimCommas(sVendorTeam.to_string()) &&& ",";
+		}
+
+		if(!IsBlank(sSecOwners)){
+		//	Shell.RedoMessage() = Shell.ToStateName().to_string() &&& ": " &&& sSecOwners;
+		
+		//	Shell.Item().SetFieldValue( "CRS_TEAM", SetControllerAndSubstitutes());
+		}
+
+		fldValue = productRecord.GetFieldValue( VENDORS_FLD_PRODUCTSTBL );
+		if(!IsBlank(fldValue)){
+			Shell.Item().SetFieldValue( VENDORS_FLD_CRTBL,fldValue);
+		}
+
+		} else {
+			ret=ret &&& "Internal Error: Cannot read Table: SDD PRODUCTS<br>";
+		}
+	} else {
+		ret=ret &&& "OOPS!";
+	}
+
+	return ret;
+}
+
+
+def SetApprovalLimits() {
+  var SetApprovalLimits = Variant();
+	var ret = Variant();
+	ret="";
+
+	var APPR_1 = Variant();
+	var APPR_2 = Variant();
+	var APPR_3 = Variant();
+	var sWhere = Variant();
+	var oApprovalLimits = Variant();
+
+	oApprovalLimits=Ext.CreateAppRecord(Ext.TableId("USR_APPROVAL_LIMITS"));
+
+	sWhere="TS_TITLE='1'";
+	if ( oApprovalLimits.ReadWithWhere(sWhere) ) {
+		oApprovalLimits.GetFieldValue("LIMIT",APPR_1);
+	}
+
+	sWhere="TS_TITLE='2'";
+	if ( oApprovalLimits.ReadWithWhere(sWhere) ) {
+		oApprovalLimits.GetFieldValue("LIMIT",APPR_2);
+	}
+
+	sWhere="TS_TITLE='3'";
+	if ( oApprovalLimits.ReadWithWhere(sWhere) ) {
+		oApprovalLimits.GetFieldValue("LIMIT",APPR_3);
+	}
+
+	Shell.Item().SetFieldValue("APPR_1",APPR_1);
+	Shell.Item().SetFieldValue("APPR_2",APPR_2);
+	Shell.Item().SetFieldValue("APPR_3",APPR_3);
+
+	SetApprovalLimits=ret;
+	return SetApprovalLimits;
+}
+
+def SetDepartment() {
+  var SetDepartment = Variant();
+	var ret = Variant();
+	var sWhere = Variant();
+	var oContacts = Variant();
+	var UserId = Variant();
+	var DepartmentId = Variant();
+
+	oContacts=Ext.CreateAppRecord(Ext.TableId("USR_SDD_PRODUCTS"));
+	UserId = Shell.User().GetId();
+
+	sWhere="TS_USER=" &&& UserId;
+	if ( oContacts.ReadWithWhere(sWhere) ) {
+		oContacts.GetFieldValue("Department",DepartmentId);
+		Shell.Item().SetFieldValue("DEPARTMENT", DepartmentId);
+	} else {
+	ret="Error Reading USR_CONTACTS";
+	}
+
+	SetDepartment=ret		;
+	return SetDepartment;
+}
+
+
+def SetControllerAndSubstitutes() {
+	var ret = Variant();
+	ret="";
+
+	var ControllerId = Variant();
+	var Controller1stSubId = Variant();
+	var Controller2ndSubId = Variant();
+
+	Shell.Item().Fields().FindField("Cost Center Controller").GetValue(ControllerId);
+	Shell.Item().Fields().FindField("Cost Center Controller 1st Substitute").GetValue(Controller1stSubId);
+	Shell.Item().Fields().FindField("Cost Center Controller 2nd Substitute").GetValue(Controller2ndSubId);
+
+	Shell.Item().SetFieldValue("RESPONSIBLE_CONTROLLER",ControllerId);
+	Shell.Item().SetFieldValue("RESPONSIBLE_CONTROLLER_SUB",Controller1stSubId);
+	Shell.Item().SetFieldValue("RESP_CONTROLLER_2ND_SUB",Controller2ndSubId);
+
+	var sSecOwners = Variant();
+//Substitute Controllers
+
+	sSecOwners=",";
+	if ( Controller1stSubId>0 ) { sSecOwners=sSecOwners &&& Controller1stSubId &&& ","; }
+	if ( Controller2ndSubId>0 ) { sSecOwners=sSecOwners &&& Controller2ndSubId &&& ","; }
+	if ( sSecOwners=="," ) { sSecOwners=",," ; }
+	Shell.Item().SetFieldValue("SECONDARYOWNER",sSecOwners);
+	if ( sSecOwners==",," ) {
+		sSecOwners="," &&& ControllerId &&& ",";
+		} else {
+		sSecOwners=sSecOwners &&& ControllerId &&& ",";
+	}
+
+	Shell.Item().SetFieldValue("RESPONSIBLE_CONTROLLERS",sSecOwners);
+
+	SetControllerAndSubstitutes=ret;
+	return SetControllerAndSubstitutes;
+}
+
+
+
+def SetBudgetValues() {
+  var SetBudgetValues = Variant();
+	var ret = Variant();
+	ret="";
+
+	var fBudgetCAPEX = Variant();
+	var fBudgetOPEX = Variant();
+	var fBudgetTotal = Variant();
+	var fRemainingCAPEX = Variant();
+	var fRemainingOPEX = Variant();
+	var fRemainingTotal = Variant();
+
+	Shell.Item().Fields().FindField("CAPEX_BUDGET").GetValue(fBudgetCAPEX);
+	Shell.Item().Fields().FindField("OPEX_BUDGET").GetValue(fBudgetOPEX);
+
+	fBudgetTotal=CDbl(CDbl(fBudgetCAPEX) + CDbl(fBudgetOPEX));
+	fRemainingCAPEX=fBudgetCAPEX;
+	fRemainingOPEX=fBudgetOPEX;
+	fRemainingTotal=CDbl(CDbl(fRemainingCAPEX) + CDbl(fRemainingOPEX));
+
+	var sLocale = Variant();
+	var bReplaceDecimalPoint = Variant();
+	sLocale=GetLocale();
+	bReplaceDecimalPoint = (InStr(sLocale, "de") == 1);
+
+	var sNewBudgetTotal = Variant();
+	var sNewRemainingCAPEX = Variant();
+	var sNewRemainingOPEX = Variant();
+	var sNewRemainingTotal = Variant();
+	if ( bReplaceDecimalPoint ) { 
+		// Replace "." with ","
+		sNewBudgetTotal=Replace(fBudgetTotal,".",",");
+		sNewRemainingCAPEX=Replace(fRemainingCAPEX,".",",");
+		sNewRemainingOPEX=Replace(fRemainingOPEX,".",",");
+		sNewRemainingTotal=Replace(fRemainingTotal,".",",");
+
+		// Write to Database
+		Shell.Item().SetFieldValue("TOTALBUDGET",sNewBudgetTotal);
+		Shell.Item().SetFieldValue("REMAINING_CAPEX_BUDGET",sNewRemainingCAPEX);
+		Shell.Item().SetFieldValue("REMAINING_OPEX_BUDGET",sNewRemainingOPEX);
+		Shell.Item().SetFieldValue("REMAINING_TOTAL_BUDGET",sNewRemainingTotal)	;
+
+	} else {
+		Shell.Item().SetFieldValue("TOTALBUDGET",fBudgetTotal);
+		Shell.Item().SetFieldValue("REMAINING_CAPEX_BUDGET",fRemainingCAPEX);
+		Shell.Item().SetFieldValue("REMAINING_OPEX_BUDGET",fRemainingOPEX);
+		Shell.Item().SetFieldValue("REMAINING_TOTAL_BUDGET",fRemainingTotal);
+	}
+
+	if ( fBudgetTotal<1 ) {
+		ret=ret&&& "A Budget cannot be zero or negative!<br>";
+	}
+
+	SetBudgetValues=ret;
+	return SetBudgetValues;
+}
+
+

@@ -1,0 +1,1906 @@
+﻿$INCLUDE(jquery)<div><!-- --><script>
+      var nCurrentSection = [];
+      var TabGroups = {};
+      var bValidate = false;
+      var bgRepeat = "no-repeat"; </script>
+    $JAVASCRIPT(aeplugin_modern.js)
+    
+    $INCLUDE(javascript/date.jsvar)
+    $JAVASCRIPT(date.js)
+    <script language="Javascript" name="ExpandAll.js" src="$FORM_EXTENSION_ASSET_PATH(Expand All)/javascript/ExpandAll.js"> </script><link rel="stylesheet" type="text/css" href="$FORM_EXTENSION_ASSET_PATH(Transition Icon)/styles/TransitionIcon.css" /><script>
+      SetFormVersion("11.3.1");   
+      var isPreview = false;
+
+      InitFieldLookup({ "Fields": [
+        { uuid: "newnote", name: "newnote", fid: "newnote", dbName: "_NEWNOTE" }, 
+        $JSONDATAFROMFIELDUUID(8f5a8886-b538-42a5-a1bc-8fe337be8211),
+        $JSONDATAFROMFIELDUUID(8c3c3e86-2f31-451c-973a-61dfe59898c5),
+        $JSONDATAFROMFIELDUUID(92fb2eec-bbd0-4a84-bd39-66cf6f1f8c50),
+        $JSONDATAFROMFIELDUUID(876dd07a-997d-43d4-b6e0-24bcc3a18037),
+        $JSONDATAFROMFIELDUUID(f03f72d6-b512-4d88-bc5c-ce576dd8ca31),
+        $JSONDATAFROMFIELDUUID(89385fc6-a54d-4d6f-a3a3-0528897e6391),
+        $JSONDATAFROMFIELDUUID(67f3ea28-17bf-49a2-9c49-1b27ea4a5b4b),
+        $JSONDATAFROMFIELDUUID(18a1f59f-9a36-4cae-ac57-b9ea5d3b37af),
+        $JSONDATAFROMFIELDUUID(d3effaa4-f098-450b-95c5-66569de91add),
+        $JSONDATAFROMFIELDUUID(e1f54da6-7d5b-4a73-b143-809abb994a41),
+        $JSONDATAFROMFIELDUUID(ed2c954d-f62f-4bbc-918a-53ed6f9fecbe),
+        $JSONDATAFROMFIELDUUID(0923e477-a860-48f0-a201-598028f5b4b2),
+        $JSONDATAFROMFIELDUUID(959753ae-046f-4f10-91b8-49f848107021),
+        $JSONDATAFROMFIELDUUID(91a46a56-5d01-4b9e-a543-7e60a6183a29),
+        $JSONDATAFROMFIELDUUID(807fb204-0688-4666-902b-352c596d6306),
+        $JSONDATAFROMFIELDUUID(872c8355-b58c-48bc-beee-31935cf6ce34),
+        $JSONDATAFROMFIELDUUID(fcff1643-76a5-4792-bb2c-e6652337e463),
+        $JSONDATAFROMFIELDUUID(780dee66-ae3c-4fcf-9f34-8ffe759b9fa3),
+        $JSONDATAFROMFIELDUUID(303d8d99-50cd-4e38-9204-59be3aa8373d),
+        $JSONDATAFROMFIELDUUID(3a6543c5-b08c-49d8-b076-c150719c9915),
+        $JSONDATAFROMFIELDUUID(f92d7c03-cf26-476c-a4f0-54d1dcb729e9),
+        $JSONDATAFROMFIELDUUID(a24ea68f-a2ef-4af5-b449-9da8ae84e482),
+        $JSONDATAFROMFIELDUUID(28c31b3c-de8d-4b40-89d0-56e079eba8d1),
+        $JSONDATAFROMFIELDUUID(559c8306-8ee8-499c-a1c6-1c914fa7b116),
+        $JSONDATAFROMFIELDUUID(b1f445fc-f15a-46d5-9eb0-ae54c2e9fa70),
+        $JSONDATAFROMFIELDUUID(39aa8b95-73ad-4848-8ae5-1ccb244ebbfe),
+        $JSONDATAFROMFIELDUUID(3d785d69-924e-4be0-8504-83a1b890bd6e),
+        $JSONDATAFROMFIELDUUID(38428ad4-ccfc-44cb-9eca-b70f730e8cd8),
+        $JSONDATAFROMFIELDUUID(8577bff4-2fd0-4d09-b328-71f55a899f3e),
+        $JSONDATAFROMFIELDUUID(26cbabc2-ec6e-414d-a584-b4b6cc725c4e),
+        $JSONDATAFROMFIELDUUID(d8959853-b81c-4ef2-8ce5-3304814cecd4),
+        $JSONDATAFROMFIELDUUID(b383a394-0597-4bf1-b5dc-2804c7c8a7b4),
+        $JSONDATAFROMFIELDUUID(9bb6b04f-17c6-4e68-b2b6-3494b2517299),
+        $JSONDATAFROMFIELDUUID(10217fe9-4857-4c53-b0b6-ae39e0ad9e64),
+        $JSONDATAFROMFIELDUUID(3cb5039c-f16b-43a6-8def-8fea94206907),
+        $JSONDATAFROMFIELDUUID(aa0c261a-757b-4d2a-a57d-ee2ab1ba31a7),
+        $JSONDATAFROMFIELDUUID(383dfe5d-0343-4124-bc62-9116bce3eae1),
+        $JSONDATAFROMFIELDUUID(b853a0d8-fec0-4557-a4f2-612951984c8d),
+        $JSONDATAFROMFIELDUUID(81824406-b5ce-4df9-91ab-b01ec4f2aa51),
+        $JSONDATAFROMFIELDUUID(4290dfd3-a387-40f0-9d04-172fd2130142),
+        $JSONDATAFROMFIELDUUID(493bfdea-2210-4428-a030-ac8c7a8dfb84),
+        $JSONDATAFROMFIELDUUID(dbea4456-45db-43a9-a7b7-105dea5945ea),
+        $JSONDATAFROMFIELDUUID(45e2b82b-2617-4ba8-877a-bd059aea4146),
+        $JSONDATAFROMFIELDUUID(d6a00b2b-e749-4823-a2ca-ccc853e3f58a),
+        $JSONDATAFROMFIELDUUID(aeeac7d7-b6a7-4ae0-b6b2-c1e199361d28),
+        $JSONDATAFROMFIELDUUID(34c7c5d1-7345-4dcb-8003-73e68fd9752b),
+        $JSONDATAFROMFIELDUUID(95ca5234-5eb9-4cc3-acbf-48df40dac97e),
+        $JSONDATAFROMFIELDUUID(df2ad3d1-b7e6-4238-ad3f-dadc9b56de48),
+        $JSONDATAFROMFIELDUUID(8799bf34-4002-49d0-a848-57cfee630321),
+        $JSONDATAFROMFIELDUUID(361c179c-b2d9-4e34-997d-77f4dbee633c),
+        $JSONDATAFROMFIELDUUID(f4263f2a-872f-499e-a365-384c8f0fa31b),
+        $JSONDATAFROMFIELDUUID(f235a3c5-0546-4299-808a-9d05f1c02a3d),
+        { uuid: "TitleBarText", name: "TitleBarText", fid: "TitleBarText", dbName: null, type: "edit" },
+        { uuid: "Text11", name: "Text11", fid: "Text11", dbName: null, type: "edit" },
+        { uuid: "Text10", name: "Text10", fid: "Text10", dbName: null, type: "edit" },
+        { uuid: "StateLabel", name: "StateLabel", fid: "StateLabel", dbName: null, type: "edit" },
+        { uuid: "OwnerSummaryText2", name: "OwnerSummaryText2", fid: "OwnerSummaryText2", dbName: null, type: "edit" },
+        { uuid: "OwnerLabel", name: "OwnerLabel", fid: "OwnerLabel", dbName: null, type: "edit" },
+        { uuid: "OwnerSummaryText", name: "OwnerSummaryText", fid: "OwnerSummaryText", dbName: null, type: "edit" },
+        { uuid: "ChangeRequestsReportMessage", name: "ChangeRequestsReportMessage", fid: "ChangeRequestsReportMessage", dbName: null, type: "edit" },
+        { uuid: "SubtasksText2", name: "SubtasksText2", fid: "SubtasksText2", dbName: null, type: "edit" },
+        { uuid: "AttachmentsText", name: "AttachmentsText", fid: "AttachmentsText", dbName: null, type: "edit" },
+        { uuid: "NotesText", name: "NotesText", fid: "NotesText", dbName: null, type: "edit" },
+        { uuid: "SystemFieldsText", name: "SystemFieldsText", fid: "SystemFieldsText", dbName: null, type: "edit" },
+        { uuid: "StateChangeHistoryText", name: "StateChangeHistoryText", fid: "StateChangeHistoryText", dbName: null, type: "edit" },
+        { uuid: "ChangeHistoryText", name: "ChangeHistoryText", fid: "ChangeHistoryText", dbName: null, type: "edit" },
+        { uuid: "RefreshImage", name: "RefreshImage", fid: "RefreshImage", dbName: null, type: "image" },
+        { uuid: "Image", name: "Image", fid: "Image", dbName: null, type: "image" },
+        { uuid: "uSERS", name: "uSERS", fid: "uSERS", dbName: null, type: "image" },
+        { uuid: "TransitionButton21", name: "TransitionButton21", fid: "TransitionButton21", dbName: null, type: "button" },
+        { uuid: "TransitionButton22", name: "TransitionButton22", fid: "TransitionButton22", dbName: null, type: "button" },
+        { uuid: "TransitionButton23", name: "TransitionButton23", fid: "TransitionButton23", dbName: null, type: "button" },
+        { uuid: "TransitionButton24", name: "TransitionButton24", fid: "TransitionButton24", dbName: null, type: "button" },
+        { uuid: "TransitionButton25", name: "TransitionButton25", fid: "TransitionButton25", dbName: null, type: "button" },
+        { uuid: "TransitionButton1", name: "TransitionButton1", fid: "TransitionButton1", dbName: null, type: "button" },
+        { uuid: "TransitionButton17", name: "TransitionButton17", fid: "TransitionButton17", dbName: null, type: "button" },
+        { uuid: "TransitionButton19", name: "TransitionButton19", fid: "TransitionButton19", dbName: null, type: "button" },
+        { uuid: "TransitionButton9", name: "TransitionButton9", fid: "TransitionButton9", dbName: null, type: "button" },
+        { uuid: "TransitionButton20", name: "TransitionButton20", fid: "TransitionButton20", dbName: null, type: "button" },
+        { uuid: "TransitionButton27", name: "TransitionButton27", fid: "TransitionButton27", dbName: null, type: "button" },
+        { uuid: "TransitionButton16", name: "TransitionButton16", fid: "TransitionButton16", dbName: null, type: "button" },
+        { uuid: "TransitionButton26", name: "TransitionButton26", fid: "TransitionButton26", dbName: null, type: "button" },
+        { uuid: "TransitionButton12", name: "TransitionButton12", fid: "TransitionButton12", dbName: null, type: "button" },
+        { uuid: "MoreActions", name: "MoreActions", fid: "MoreActions", dbName: null, type: "button" },
+        { uuid: "AddCommentsLog", name: "AddCommentsLog", fid: "AddCommentsLog", dbName: null, type: "link" },
+        { uuid: "AddWorkLog", name: "AddWorkLog", fid: "AddWorkLog", dbName: null, type: "link" },
+        { uuid: "215fdc27-2f3b-411f-b8ab-d16fe0b2aad0", name: "FormStackPanel", fid: "215fdc27-2f3b-411f-b8ab-d16fe0b2aad0", dbName: null, type: "widget" },
+        { uuid: "6ed19145-5026-4773-ab91-b2f3366534c0", name: "ChangeRequestsReportWidget", fid: "6ed19145-5026-4773-ab91-b2f3366534c0", dbName: null, type: "widget" },
+        { uuid: "07b0b93f-b3d6-466e-b03b-2fe0b17358b8", name: "ActionList", fid: "07b0b93f-b3d6-466e-b03b-2fe0b17358b8", dbName: null, type: "widget" },
+        $JSONDATAFROMFIELDUUID(c8eca6c4-10fb-4e92-8bce-f95943819dd5, false),
+        { uuid: "2adac8b5-fd08-42b2-b572-9a2c1af9e266", name: "HiddenFieldsPanel", fid: "2adac8b5-fd08-42b2-b572-9a2c1af9e266", dbName: null, type: "section" },
+        { uuid: "f8219434-c73a-4469-984d-a66c2d900ba5", name: "DetailsTab", fid: "0-f8219434-c73a-4469-984d-a66c2d900ba5", dbName: null, type: "tab", layoutMode: "Standard" },
+        { uuid: "91c1eca6-a61f-443f-b7c8-156989360edd", name: "ChangeRequestsTab", fid: "0-91c1eca6-a61f-443f-b7c8-156989360edd", dbName: null, type: "tab", layoutMode: "Standard" },
+        { uuid: "a4246cf5-7372-4690-a238-df91bb20f96f", name: "CRTasksTab", fid: "0-a4246cf5-7372-4690-a238-df91bb20f96f", dbName: null, type: "tab", layoutMode: "Standard" },
+        { uuid: "ec030016-affd-467d-bcbe-71080c96c0d1", name: "CommentsTab", fid: "0-ec030016-affd-467d-bcbe-71080c96c0d1", dbName: null, type: "tab", layoutMode: "Standard" },
+        { uuid: "067b4ed3-2cc5-465a-aa0c-4d0283149763", name: "WorkLogTab", fid: "0-067b4ed3-2cc5-465a-aa0c-4d0283149763", dbName: null, type: "tab", layoutMode: "Standard" },
+        { uuid: "b5f492c6-5f21-46ff-b281-4367008e40b1", name: "CRRolesTeamsTab", fid: "0-b5f492c6-5f21-46ff-b281-4367008e40b1", dbName: null, type: "tab", layoutMode: "Standard" },
+        { uuid: "5bc7dd76-b748-461d-a915-0ae661cb5e79", name: "NotesAttachmentsTab", fid: "0-5bc7dd76-b748-461d-a915-0ae661cb5e79", dbName: null, type: "tab", layoutMode: "Standard" },
+        { uuid: "f16aef48-93e4-41a9-91f1-84db23bcc20c", name: "HistoryTab", fid: "0-f16aef48-93e4-41a9-91f1-84db23bcc20c", dbName: null, type: "tab", layoutMode: "Standard" },
+        { uuid: "d05e384a-cc42-4565-9f65-12d88f2cb3c1", name: "UserRequestsGroupBox", fid: "d05e384a-cc42-4565-9f65-12d88f2cb3c1", dbName: null, type: "container" },
+        { uuid: "1a4467eb-ddf1-430e-9782-c28c2d4ad477", name: "SubtasksGroupBox6", fid: "1a4467eb-ddf1-430e-9782-c28c2d4ad477", dbName: null, type: "container" },
+        { uuid: "9233629b-b392-4e8b-9229-950c1c8b38b2", name: "StateHeaderPanel", fid: "9233629b-b392-4e8b-9229-950c1c8b38b2", dbName: null, type: "container" },
+        { uuid: "80408ced-6c6e-4b41-84a3-7dc2e54f326f", name: "PrimaryContentPanel", fid: "80408ced-6c6e-4b41-84a3-7dc2e54f326f", dbName: null, type: "container" },
+        { uuid: "b1c4f9a3-d6d3-4ea9-a49a-e19aa13abd1f", name: "SideBarPanel", fid: "b1c4f9a3-d6d3-4ea9-a49a-e19aa13abd1f", dbName: null, type: "container" },
+        { uuid: "edf153f5-4903-4040-bc65-222a9bba8a19", name: "Sidebar_Expanded", fid: "edf153f5-4903-4040-bc65-222a9bba8a19", dbName: null, type: "container" },
+        { uuid: "8a858014-64c1-491e-9f13-443b8ce2eadb", name: "buttonPanel", fid: "8a858014-64c1-491e-9f13-443b8ce2eadb", dbName: null, type: "container" },
+        { uuid: "23507803-aaa1-4de6-b099-b48ddbc06a91", name: "Panel12", fid: "23507803-aaa1-4de6-b099-b48ddbc06a91", dbName: null, type: "container" },
+        { uuid: "979dd0ef-3cba-4acd-a6c0-443b90554981", name: "MoreActionsPanel", fid: "979dd0ef-3cba-4acd-a6c0-443b90554981", dbName: null, type: "container" },
+        { uuid: "59c1c2b8-f2f1-4fa0-8e99-6cc10021a337", name: "Panel4", fid: "59c1c2b8-f2f1-4fa0-8e99-6cc10021a337", dbName: null, type: "container" },
+        { uuid: "4c3685f7-f066-4280-bbc1-a1365293438c", name: "Panel16", fid: "4c3685f7-f066-4280-bbc1-a1365293438c", dbName: null, type: "container" },
+        { uuid: "b15c4fc3-ece6-4982-9d3c-0ec799dedd5f", name: "StatePanel", fid: "b15c4fc3-ece6-4982-9d3c-0ec799dedd5f", dbName: null, type: "container" },
+        { uuid: "8271e9fd-4436-45fc-820a-5498699f14bc", name: "OwnerPanel", fid: "8271e9fd-4436-45fc-820a-5498699f14bc", dbName: null, type: "container" },
+        { uuid: "ab1d679c-ac45-4e0a-b498-849b97f20398", name: "DetailsPanel", fid: "ab1d679c-ac45-4e0a-b498-849b97f20398", dbName: null, type: "container" },
+        { uuid: "b89ae662-d465-4208-9a3c-51254569cc34", name: "OptionsPanel", fid: "b89ae662-d465-4208-9a3c-51254569cc34", dbName: null, type: "container" },
+        { uuid: "99b5c586-e228-4793-84dd-2aa5d2c74707", name: "CommentsPanel", fid: "99b5c586-e228-4793-84dd-2aa5d2c74707", dbName: null, type: "container" },
+        { uuid: "17ab6489-f2e7-4797-8489-b0d7de6bea14", name: "OptionsPanel2", fid: "17ab6489-f2e7-4797-8489-b0d7de6bea14", dbName: null, type: "container" },
+        { uuid: "e3c327e7-323f-4018-ab09-536db64cfa3d", name: "WorkLogPanel", fid: "e3c327e7-323f-4018-ab09-536db64cfa3d", dbName: null, type: "container" },
+        { uuid: "4c441386-dee3-431a-b75c-7de5aafa5bed", name: "DetailsPanel5", fid: "4c441386-dee3-431a-b75c-7de5aafa5bed", dbName: null, type: "container" },
+        { uuid: "3a41078c-0559-42b4-8058-6fb9a3854036", name: "Attachments_Section", fid: "3a41078c-0559-42b4-8058-6fb9a3854036", dbName: null, type: "container" },
+        { uuid: "4968752b-3e28-4483-9e4f-132bf4177815", name: "Notes_Section", fid: "4968752b-3e28-4483-9e4f-132bf4177815", dbName: null, type: "container" },
+        { uuid: "0c40b4c9-419f-4aec-8eb7-5f6fb39f64b2", name: "SystemExpander", fid: "0c40b4c9-419f-4aec-8eb7-5f6fb39f64b2", dbName: null, type: "container" },
+        { uuid: "cc1214ac-30fd-403f-81b0-e3c39e8b6c49", name: "StateChangeHistory_Section", fid: "cc1214ac-30fd-403f-81b0-e3c39e8b6c49", dbName: null, type: "container" },
+        { uuid: "e3935d8c-7e86-44e2-9ec9-3ed5ba92072e", name: "ChangeHistory_Section", fid: "e3935d8c-7e86-44e2-9ec9-3ed5ba92072e", dbName: null, type: "container" },
+        { uuid: null, name: null, fid: null, dbName: null, type: null } ]}, bValidate
+      );
+
+      InitTransitionLookup({ "Transitions": [
+        $JSONDATATRANSINFO()
+        { name: null, fid: null, type: null } ] }
+      );
+    </script><div id="fixedContainer"><table class="tableFixed" cellpadding="0" cellspacing="0"><tr><td colspan="3" id="TopSidebar" class="header-footer sidebarCell" style="padding: 0px 0px 0px 0px; " autosize="" align="left" vertical-align="top"><!----><div style="" class="sidebarContainer  hJustify"><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="9233629b-b392-4e8b-9229-950c1c8b38b2" class="Panel" data-name="StateHeaderPanel" style="padding: 0px 0px 0px 0px; border-radius: 0px; background-color: White;width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div class="widgetWrapper FlexColumn vPx" style="height: 30px; "><div class="widgetContent FlexBody" id="215fdc27-2f3b-411f-b8ab-d16fe0b2aad0" style="border: none; overflow: hidden; "><div class="vFillWrap HTMLJS"><div id="reportToggle" style="white-space:nowrap;"></div><div style="font-size:0;"> </div></div></div></div><!----></div></div></td><td class="LayoutCell" style=" " rowspan="2" align="center" vertical-align="middle"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper">$IF(ACTIONENABLED|refresh_view)<div id="RefreshImage" class="CustomImage hoverHelpText " style="color: #000000; background-image: url($IMAGE(20ebd9ee-e084-4f02-94c7-146c1519fe6b.png, NOTAG)); width: 64px; height: 64px; " title=""><span style="" class="ImageText ControlStyle" id="RefreshImage.text"> </span><a id="RefreshImage" class="ImageAnchor" href="#" onclick="return false;"> </a><script>
+      function performRefreshImageAction()
+      {
+        launchActionControl('refresh_view');
+      }
+      AddClickCallback('RefreshImage', performRefreshImageAction);      
+      </script><script>
+      function widgetRefreshImageLoad()
+      {
+        SetFieldValue("RefreshImage", "", true);
+      }
+        
+      // add event callbacks
+    </script><script>
+      function widgetRefreshImageLoad2()
+      {
+        var valueObj = {text: ''};
+        
+        SetFieldValue("RefreshImage", valueObj, true);
+      }
+        
+      // add event callbacks
+    </script></div>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="TitleBarText" class="LabelStyle StaticText" style="font-family: 'Tahoma'; font-size: 14pt; font-weight: bold; font-style: normal; ">$UUIDSTRING(55188890-2a18-4803-b12c-bd2d3aad7bc1)<!----></div><script>
+      function widgetTitleBarTextLoad()
+      {
+        var errors = new Array();
+        var params = new Array();
+    
+        params[0] = htmlEncode(GetInternalFieldValue("ISSUEID", null));
+        if (params[0] == null) errors[errors.length] = "ISSUEID";
+        
+        params[1] = htmlEncode(GetInternalFieldValue("TITLE", null));
+        if (params[1] == null) errors[errors.length] = "TITLE";
+        
+        var template = '{0}: {1}';
+        var content = BuildString(template, params);
+            
+        SetFieldValue("TitleBarText", content, true);
+      }
+        
+      // add event callbacks
+    
+      AddLoadCallback(widgetTitleBarTextLoad);
+    
+      AddChangeCallback("ISSUEID", widgetTitleBarTextLoad);
+            
+      AddChangeCallback("TITLE", widgetTitleBarTextLoad);
+            </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="176" height="0" src="images/t1x1.gif" /></th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="240" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table><!----></div></td></tr><tr><td id="LeftSidebar" class="sidebar sidebarCell" style=""><!----></td><td class="scrollableCell" style="height:100%; width:100%;"><div id="ScrollableContent"><table cellspacing="0" cellpadding="0"><tr><td id="ScrollableAlign" align="left" vertical-align="top"><div id="ErrorMsgTransplant"><!--placeholder for server error--></div><div id="CustomErrorMsg" class="dberr" style="display: none; "><!--placeholder for custom error message--></div><div class=" hJustify vJustify"><table class="LayoutTable" border="0" width="100%" height="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style="height:100%; "><td class="LayoutCell vFill" style=" " colspan="3" align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="80408ced-6c6e-4b41-84a3-7dc2e54f326f" class="Panel" data-name="PrimaryContentPanel" style="padding: 10px 0px 0px 0px; border-radius: 0px; width: 100%; height: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="b1c4f9a3-d6d3-4ea9-a49a-e19aa13abd1f" class="Panel" data-name="SideBarPanel" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; "><table class="LayoutTable" border="0" height="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style="height:100%; "><td class="LayoutCell" style=" height:100%;" align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="edf153f5-4903-4040-bc65-222a9bba8a19" class="Panel" data-name="Sidebar_Expanded" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; "><table class="LayoutTable" border="0" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="8a858014-64c1-491e-9f13-443b8ce2eadb" class="Panel" data-name="buttonPanel" style="padding: 0px 5px 5px 5px; border-radius: 0px; background-color: Transparent;width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="1" cellpadding="2"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|a0789e99-5471-4b17-8ab8-8b4915a7b430|4c75a0c4-e77a-4285-952d-bc9be02e7349)<button type="button" id="TransitionButton21" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton21TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        var ctid = LookupTransitionId('a0789e99-5471-4b17-8ab8-8b4915a7b430');
+        if (ctid != null)
+        {
+          var corder = LookupTransitionOrder('a0789e99-5471-4b17-8ab8-8b4915a7b430');
+          if ((tid == null) || (corder < order))
+          {
+            tid = ctid;
+            order = corder;
+          }
+        }
+          
+        var ctid = LookupTransitionId('4c75a0c4-e77a-4285-952d-bc9be02e7349');
+        if (ctid != null)
+        {
+          var corder = LookupTransitionOrder('4c75a0c4-e77a-4285-952d-bc9be02e7349');
+          if ((tid == null) || (corder < order))
+          {
+            tid = ctid;
+            order = corder;
+          }
+        }
+          
+        return tid;
+      }
+      
+      function handleTransitionButton21Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton21'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton21TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton21TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton21TransitionClick(e) 
+      {
+        var tid = getTransitionButton21TransitionID();
+        PerformTransitionEx('TransitionButton21', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton21Transition);
+      </script><script>
+      function widgetTransitionButton21Load()
+      {
+        SetFieldValue("TransitionButton21", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|797d5ff8-cc74-44b8-aa65-993ba69792f6|c46cd1e0-c0e8-4957-b912-6c48efcbfa93)<button type="button" id="TransitionButton22" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton22TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        var ctid = LookupTransitionId('797d5ff8-cc74-44b8-aa65-993ba69792f6');
+        if (ctid != null)
+        {
+          var corder = LookupTransitionOrder('797d5ff8-cc74-44b8-aa65-993ba69792f6');
+          if ((tid == null) || (corder < order))
+          {
+            tid = ctid;
+            order = corder;
+          }
+        }
+          
+        var ctid = LookupTransitionId('c46cd1e0-c0e8-4957-b912-6c48efcbfa93');
+        if (ctid != null)
+        {
+          var corder = LookupTransitionOrder('c46cd1e0-c0e8-4957-b912-6c48efcbfa93');
+          if ((tid == null) || (corder < order))
+          {
+            tid = ctid;
+            order = corder;
+          }
+        }
+          
+        return tid;
+      }
+      
+      function handleTransitionButton22Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton22'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton22TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton22TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton22TransitionClick(e) 
+      {
+        var tid = getTransitionButton22TransitionID();
+        PerformTransitionEx('TransitionButton22', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton22Transition);
+      </script><script>
+      function widgetTransitionButton22Load()
+      {
+        SetFieldValue("TransitionButton22", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|e41f8672-b9ac-4ff0-830b-e76c79461556)<button type="button" id="TransitionButton23" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton23TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        var ctid = LookupTransitionId('e41f8672-b9ac-4ff0-830b-e76c79461556');
+        if (ctid != null)
+        {
+          var corder = LookupTransitionOrder('e41f8672-b9ac-4ff0-830b-e76c79461556');
+          if ((tid == null) || (corder < order))
+          {
+            tid = ctid;
+            order = corder;
+          }
+        }
+          
+        return tid;
+      }
+      
+      function handleTransitionButton23Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton23'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton23TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton23TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton23TransitionClick(e) 
+      {
+        var tid = getTransitionButton23TransitionID();
+        PerformTransitionEx('TransitionButton23', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton23Transition);
+      </script><script>
+      function widgetTransitionButton23Load()
+      {
+        SetFieldValue("TransitionButton23", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|b831619f-c350-458e-8487-13115ec523cb)<button type="button" id="TransitionButton24" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton24TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        var ctid = LookupTransitionId('b831619f-c350-458e-8487-13115ec523cb');
+        if (ctid != null)
+        {
+          var corder = LookupTransitionOrder('b831619f-c350-458e-8487-13115ec523cb');
+          if ((tid == null) || (corder < order))
+          {
+            tid = ctid;
+            order = corder;
+          }
+        }
+          
+        return tid;
+      }
+      
+      function handleTransitionButton24Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton24'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton24TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton24TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton24TransitionClick(e) 
+      {
+        var tid = getTransitionButton24TransitionID();
+        PerformTransitionEx('TransitionButton24', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton24Transition);
+      </script><script>
+      function widgetTransitionButton24Load()
+      {
+        SetFieldValue("TransitionButton24", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|83763b5b-48ef-44c8-9393-47002a8a16ee)<button type="button" id="TransitionButton25" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton25TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        var ctid = LookupTransitionId('83763b5b-48ef-44c8-9393-47002a8a16ee');
+        if (ctid != null)
+        {
+          var corder = LookupTransitionOrder('83763b5b-48ef-44c8-9393-47002a8a16ee');
+          if ((tid == null) || (corder < order))
+          {
+            tid = ctid;
+            order = corder;
+          }
+        }
+          
+        return tid;
+      }
+      
+      function handleTransitionButton25Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton25'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton25TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton25TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton25TransitionClick(e) 
+      {
+        var tid = getTransitionButton25TransitionID();
+        PerformTransitionEx('TransitionButton25', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton25Transition);
+      </script><script>
+      function widgetTransitionButton25Load()
+      {
+        SetFieldValue("TransitionButton25", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|)<button type="button" id="TransitionButton1" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton1TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        return tid;
+      }
+      
+      function handleTransitionButton1Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton1'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton1TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton1TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton1TransitionClick(e) 
+      {
+        var tid = getTransitionButton1TransitionID();
+        PerformTransitionEx('TransitionButton1', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton1Transition);
+      </script><script>
+      function widgetTransitionButton1Load()
+      {
+        SetFieldValue("TransitionButton1", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|)<button type="button" id="TransitionButton17" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton17TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        return tid;
+      }
+      
+      function handleTransitionButton17Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton17'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton17TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton17TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton17TransitionClick(e) 
+      {
+        var tid = getTransitionButton17TransitionID();
+        PerformTransitionEx('TransitionButton17', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton17Transition);
+      </script><script>
+      function widgetTransitionButton17Load()
+      {
+        SetFieldValue("TransitionButton17", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|)<button type="button" id="TransitionButton19" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton19TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        return tid;
+      }
+      
+      function handleTransitionButton19Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton19'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton19TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton19TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton19TransitionClick(e) 
+      {
+        var tid = getTransitionButton19TransitionID();
+        PerformTransitionEx('TransitionButton19', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton19Transition);
+      </script><script>
+      function widgetTransitionButton19Load()
+      {
+        SetFieldValue("TransitionButton19", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|)<button type="button" id="TransitionButton9" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton9TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        return tid;
+      }
+      
+      function handleTransitionButton9Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton9'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton9TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton9TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton9TransitionClick(e) 
+      {
+        var tid = getTransitionButton9TransitionID();
+        PerformTransitionEx('TransitionButton9', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton9Transition);
+      </script><script>
+      function widgetTransitionButton9Load()
+      {
+        SetFieldValue("TransitionButton9", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|)<button type="button" id="TransitionButton20" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton20TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        return tid;
+      }
+      
+      function handleTransitionButton20Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton20'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton20TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton20TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton20TransitionClick(e) 
+      {
+        var tid = getTransitionButton20TransitionID();
+        PerformTransitionEx('TransitionButton20', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton20Transition);
+      </script><script>
+      function widgetTransitionButton20Load()
+      {
+        SetFieldValue("TransitionButton20", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|)<button type="button" id="TransitionButton27" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton27TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        return tid;
+      }
+      
+      function handleTransitionButton27Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton27'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton27TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton27TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton27TransitionClick(e) 
+      {
+        var tid = getTransitionButton27TransitionID();
+        PerformTransitionEx('TransitionButton27', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton27Transition);
+      </script><script>
+      function widgetTransitionButton27Load()
+      {
+        SetFieldValue("TransitionButton27", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|)<button type="button" id="TransitionButton16" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton16TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        return tid;
+      }
+      
+      function handleTransitionButton16Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton16'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton16TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton16TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton16TransitionClick(e) 
+      {
+        var tid = getTransitionButton16TransitionID();
+        PerformTransitionEx('TransitionButton16', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton16Transition);
+      </script><script>
+      function widgetTransitionButton16Load()
+      {
+        SetFieldValue("TransitionButton16", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|e71cd09f-831e-47dd-a70f-d33dcc11b4f0)<button type="button" id="TransitionButton26" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton26TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        var ctid = LookupTransitionId('e71cd09f-831e-47dd-a70f-d33dcc11b4f0');
+        if (ctid != null)
+        {
+          var corder = LookupTransitionOrder('e71cd09f-831e-47dd-a70f-d33dcc11b4f0');
+          if ((tid == null) || (corder < order))
+          {
+            tid = ctid;
+            order = corder;
+          }
+        }
+          
+        return tid;
+      }
+      
+      function handleTransitionButton26Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton26'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton26TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton26TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton26TransitionClick(e) 
+      {
+        var tid = getTransitionButton26TransitionID();
+        PerformTransitionEx('TransitionButton26', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton26Transition);
+      </script><script>
+      function widgetTransitionButton26Load()
+      {
+        SetFieldValue("TransitionButton26", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|)<button type="button" id="TransitionButton12" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="" /><script>
+      function getTransitionButton12TransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        return tid;
+      }
+      
+      function handleTransitionButton12Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('TransitionButton12'));
+        if ($el.length)
+        {
+          var tid = getTransitionButton12TransitionID();
+          if (tid != null)
+          {
+            $el.html(LookupTransitionName(tid));
+            $el.on("click", doTransitionButton12TransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doTransitionButton12TransitionClick(e) 
+      {
+        var tid = getTransitionButton12TransitionID();
+        PerformTransitionEx('TransitionButton12', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleTransitionButton12Transition);
+      </script><script>
+      function widgetTransitionButton12Load()
+      {
+        SetFieldValue("TransitionButton12", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="142" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="23507803-aaa1-4de6-b099-b48ddbc06a91" class="Panel" data-name="Panel12" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; background-color: transparent; background-image: url($IMAGE(80b65c1a-f46e-458d-8578-a7bc62457e5b.png, NOTAG)); background-repeat: repeat; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="Text11" class="LabelStyle StaticText" style="">$UUIDSTRING(41cf304f-442b-483d-bf17-640ae8298184)<!----></div><script>
+      function widgetText11Load()
+      {
+        SetFieldValue("Text11", "&nbsp;", true);
+      }
+        
+      // add event callbacks
+    
+      AddLoadCallback(widgetText11Load);
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="20" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="979dd0ef-3cba-4acd-a6c0-443b90554981" class="Panel" data-name="MoreActionsPanel" style="padding: 0px 5px 0px 5px; border-radius: 0px; background-color: Transparent;width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><button type="button" id="MoreActions" style="width: 100%; " customlook="true" class="roundedbutton hoverHelpText TransitionButtonStyle" title="">$UUIDSTRING(fe34ea92-ad9d-4817-9e9c-85c4e1243f51)</button><script>
+      function widgetMoreActionsLoad()
+      {
+        SetFieldValue("MoreActions", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="120" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="59c1c2b8-f2f1-4fa0-8e99-6cc10021a337" class="Panel" data-name="Panel4" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; background-color: transparent; background-image: url($IMAGE(80b65c1a-f46e-458d-8578-a7bc62457e5b.png, NOTAG)); background-repeat: repeat; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="Text10" class="LabelStyle StaticText" style="">$UUIDSTRING(c8bc242f-abc5-4dd6-ba14-0da940cfab5e)<!----></div><script>
+      function widgetText10Load()
+      {
+        SetFieldValue("Text10", "&nbsp;", true);
+      }
+        
+      // add event callbacks
+    
+      AddLoadCallback(widgetText10Load);
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="20" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="4c3685f7-f066-4280-bbc1-a1365293438c" class="Panel" data-name="Panel16" style="padding: 0px 5px 10px 5px; border-radius: 0px; width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="1" cellpadding="2"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper"><div id="b15c4fc3-ece6-4982-9d3c-0ec799dedd5f" class="Panel" data-name="StatePanel" style="padding: 2px 2px 2px 2px; border-radius: 0px; background-color: #FFC000;width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="Image" class="CustomImage hoverHelpText " style="color: #000000; background-image: url($IMAGE(fe2e158b-1eeb-43ce-8e55-33dcfdc2ec1f.png, NOTAG)); width: 30px; height: 30px; " title=""><span style="" class="ImageText ControlStyle" id="Image.text"> </span><script>
+      function widgetImageLoad()
+      {
+        SetFieldValue("Image", "", true);
+      }
+        
+      // add event callbacks
+    </script><script>
+      function widgetImageLoad2()
+      {
+        var valueObj = {text: ''};
+        
+        SetFieldValue("Image", valueObj, true);
+      }
+        
+      // add event callbacks
+    </script></div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="middle"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="StateLabel" class="LabelStyle StaticText" style="font-family: 'Arial'; font-size: 11pt; font-weight: bold; font-style: normal; ">$UUIDSTRING(51676815-fee8-4411-a3c8-22c2ef589c28)<!----></div><script>
+      function widgetStateLabelLoad()
+      {
+        SetFieldValue("StateLabel", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="2" align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="OwnerSummaryText2" class="LabelStyle StaticText" style="color: White; font-family: 'Arial'; font-size: 11pt; font-weight: normal; font-style: normal; ">$UUIDSTRING(be76bd65-40e8-49a8-b472-96fc1090652f)<!----></div><script>
+      function widgetOwnerSummaryText2Load()
+      {
+        var errors = new Array();
+        var params = new Array();
+    
+        params[0] = htmlEncode(GetInternalFieldValue("STATE", null));
+        if (params[0] == null) errors[errors.length] = "STATE";
+        
+        var template = '<span style=\"white-space:nowrap;\">{0}</span>';
+        var content = BuildString(template, params);
+            
+        SetFieldValue("OwnerSummaryText2", content, true);
+      }
+        
+      // add event callbacks
+    
+      AddLoadCallback(widgetOwnerSummaryText2Load);
+    
+      AddChangeCallback("STATE", widgetOwnerSummaryText2Load);
+            </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; max-width: 30px; min-width: 30px;"> 
+            <img width="30" height="0" src="images/t1x1.gif" /></th><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="47" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper"><div id="8271e9fd-4436-45fc-820a-5498699f14bc" class="Panel" data-name="OwnerPanel" style="padding: 2px 2px 2px 2px; border-radius: 0px; background-color: #548DD4;width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="uSERS" class="CustomImage hoverHelpText " style="color: #000000; background-image: url($IMAGE(e25deb9f-b5c1-4c80-889e-7801e08c1f22.png, NOTAG)); width: 30px; height: 30px; " title=""><span style="" class="ImageText ControlStyle" id="uSERS.text"> </span><script>
+      function widgetuSERSLoad()
+      {
+        SetFieldValue("uSERS", "", true);
+      }
+        
+      // add event callbacks
+    </script><script>
+      function widgetuSERSLoad2()
+      {
+        var valueObj = {text: ''};
+        
+        SetFieldValue("uSERS", valueObj, true);
+      }
+        
+      // add event callbacks
+    </script></div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="middle"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="OwnerLabel" class="LabelStyle StaticText" style="font-family: 'Arial'; font-size: 11pt; font-weight: bold; font-style: normal; ">$UUIDSTRING(6c9f0da7-3e42-403b-899b-2026fe4f2151)<!----></div><script>
+      function widgetOwnerLabelLoad()
+      {
+        SetFieldValue("OwnerLabel", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="2" align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="OwnerSummaryText" class="LabelStyle StaticText" style="color: White; font-family: 'Arial'; font-size: 11pt; font-weight: normal; font-style: normal; ">$UUIDSTRING(5ce80259-8a29-42ce-a13d-bc107487487a)<!----></div><script>
+      function widgetOwnerSummaryTextLoad()
+      {
+        var errors = new Array();
+        var params = new Array();
+    
+        params[0] = htmlEncode(GetInternalFieldValue("OWNER", null));
+        if (params[0] == null) errors[errors.length] = "OWNER";
+        
+        var template = '<span style=\"white-space:nowrap;\">{0}</span>';
+        var content = BuildString(template, params);
+            
+        SetFieldValue("OwnerSummaryText", content, true);
+      }
+        
+      // add event callbacks
+    
+      AddLoadCallback(widgetOwnerSummaryTextLoad);
+    
+      AddChangeCallback("OWNER", widgetOwnerSummaryTextLoad);
+            </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; max-width: 30px; min-width: 30px;"> 
+            <img width="30" height="0" src="images/t1x1.gif" /></th><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="57" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="140" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; height:100%; "> 
+        <img width="0" height="100%" src="images/t1x1.gif" /></td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div id="MainTabsSection" class="TabCtrl FlexColumn" style="width: 100%; "><ul class="TabRow FlexHead nav nav-tabs"><li id="li_0-f8219434-c73a-4469-984d-a66c2d900ba5" class="TabCtrlTab " onclick="SelectFormTab(this, true)"><a id="a_0-f8219434-c73a-4469-984d-a66c2d900ba5" href="#0-f8219434-c73a-4469-984d-a66c2d900ba5" style="font-family: 'Arial'; font-size: 12pt;  border-top-left-radius: 0px; border-top-right-radius: 0px; " data-toggle="tab"><span>$UUIDSTRING(f8219434-c73a-4469-984d-a66c2d900ba5)</span></a></li><li id="li_0-91c1eca6-a61f-443f-b7c8-156989360edd" class="TabCtrlTab " onclick="SelectFormTab(this, true)"><a id="a_0-91c1eca6-a61f-443f-b7c8-156989360edd" href="#0-91c1eca6-a61f-443f-b7c8-156989360edd" style="font-family: 'Arial'; font-size: 12pt;  border-top-left-radius: 0px; border-top-right-radius: 0px; " data-toggle="tab"><span>$UUIDSTRING(91c1eca6-a61f-443f-b7c8-156989360edd)</span></a></li><li id="li_0-a4246cf5-7372-4690-a238-df91bb20f96f" class="TabCtrlTab " onclick="SelectFormTab(this, true)"><a id="a_0-a4246cf5-7372-4690-a238-df91bb20f96f" href="#0-a4246cf5-7372-4690-a238-df91bb20f96f" style="font-family: 'Arial'; font-size: 12pt;  border-top-left-radius: 0px; border-top-right-radius: 0px; " data-toggle="tab"><span>$UUIDSTRING(a4246cf5-7372-4690-a238-df91bb20f96f)</span></a></li><li id="li_0-ec030016-affd-467d-bcbe-71080c96c0d1" class="TabCtrlTab " onclick="SelectFormTab(this, true)"><a id="a_0-ec030016-affd-467d-bcbe-71080c96c0d1" href="#0-ec030016-affd-467d-bcbe-71080c96c0d1" style="font-family: 'Arial'; font-size: 12pt;  border-top-left-radius: 0px; border-top-right-radius: 0px; " data-toggle="tab"><span>$UUIDSTRING(ec030016-affd-467d-bcbe-71080c96c0d1)</span></a></li><li id="li_0-067b4ed3-2cc5-465a-aa0c-4d0283149763" class="TabCtrlTab " onclick="SelectFormTab(this, true)"><a id="a_0-067b4ed3-2cc5-465a-aa0c-4d0283149763" href="#0-067b4ed3-2cc5-465a-aa0c-4d0283149763" style="font-family: 'Arial'; font-size: 12pt;  border-top-left-radius: 0px; border-top-right-radius: 0px; " data-toggle="tab"><span>$UUIDSTRING(067b4ed3-2cc5-465a-aa0c-4d0283149763)</span></a></li><li id="li_0-b5f492c6-5f21-46ff-b281-4367008e40b1" class="TabCtrlTab " onclick="SelectFormTab(this, true)"><a id="a_0-b5f492c6-5f21-46ff-b281-4367008e40b1" href="#0-b5f492c6-5f21-46ff-b281-4367008e40b1" style="font-family: 'Arial'; font-size: 12pt;  border-top-left-radius: 0px; border-top-right-radius: 0px; " data-toggle="tab"><span>$UUIDSTRING(b5f492c6-5f21-46ff-b281-4367008e40b1)</span></a></li><li id="li_0-5bc7dd76-b748-461d-a915-0ae661cb5e79" class="TabCtrlTab " onclick="SelectFormTab(this, true)"><a id="a_0-5bc7dd76-b748-461d-a915-0ae661cb5e79" href="#0-5bc7dd76-b748-461d-a915-0ae661cb5e79" style="font-family: 'Arial'; font-size: 12pt;  border-top-left-radius: 0px; border-top-right-radius: 0px; " data-toggle="tab"><span>$UUIDSTRING(5bc7dd76-b748-461d-a915-0ae661cb5e79)</span></a></li><li id="li_0-f16aef48-93e4-41a9-91f1-84db23bcc20c" class="TabCtrlTab " onclick="SelectFormTab(this, true)"><a id="a_0-f16aef48-93e4-41a9-91f1-84db23bcc20c" href="#0-f16aef48-93e4-41a9-91f1-84db23bcc20c" style="font-family: 'Arial'; font-size: 12pt;  border-top-left-radius: 0px; border-top-right-radius: 0px; " data-toggle="tab"><span>$UUIDSTRING(f16aef48-93e4-41a9-91f1-84db23bcc20c)</span></a></li></ul><style><!---->{}
+        </style><div class="tab-content FlexBody"><div id="0-f8219434-c73a-4469-984d-a66c2d900ba5" class="genericTabContent tab-pane" data-name="DetailsTab" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-right-radius: 0px; padding: 10px 10px 10px 10px; background-color: white; background-repeat: no-repeat;  width: 100%; height: 100%;"><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="ab1d679c-ac45-4e0a-b498-849b97f20398" class="Panel" data-name="DetailsPanel" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Title/Summary" nowrap="">
+    $ITEMFIELDLABEL(8f5a8886-b538-42a5-a1bc-8fe337be8211, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " colspan="3" align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Title/Summary"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(8f5a8886-b538-42a5-a1bc-8fe337be8211, , ControlStyle, width: 100%; )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Description" nowrap="">
+    $ITEMFIELDLABEL(8c3c3e86-2f31-451c-973a-61dfe59898c5, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " colspan="3" align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Description"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(8c3c3e86-2f31-451c-973a-61dfe59898c5, , ControlStyle, width: 100%; )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Requirement Statement/User Story" nowrap="">
+    $ITEMFIELDLABEL(92fb2eec-bbd0-4a84-bd39-66cf6f1f8c50, , LabelStyle, e2deca59-07c2-4a20-a74d-ca1cac3928d8
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " colspan="3" align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Requirement Statement/User Story"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(92fb2eec-bbd0-4a84-bd39-66cf6f1f8c50, , ControlStyle, width: 100%; )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Issue Type" nowrap="">
+    $ITEMFIELDLABEL(876dd07a-997d-43d4-b6e0-24bcc3a18037, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Issue Type"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(876dd07a-997d-43d4-b6e0-24bcc3a18037, , ControlStyle, width: 100%; )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="SDD Application" nowrap="">
+    $ITEMFIELDLABEL(f03f72d6-b512-4d88-bc5c-ce576dd8ca31, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="SDD Application"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(f03f72d6-b512-4d88-bc5c-ce576dd8ca31, , ControlStyle, width: 100%; )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Branch/PMO" nowrap="">
+    $ITEMFIELDLABEL(89385fc6-a54d-4d6f-a3a3-0528897e6391, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Branch/PMO"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(89385fc6-a54d-4d6f-a3a3-0528897e6391, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="SDD Application Module(s)" nowrap="">
+    $ITEMFIELDLABEL(67f3ea28-17bf-49a2-9c49-1b27ea4a5b4b, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="SDD Application Module(s)"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(67f3ea28-17bf-49a2-9c49-1b27ea4a5b4b, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Tag/Label" nowrap="">
+    $ITEMFIELDLABEL(18a1f59f-9a36-4cae-ac57-b9ea5d3b37af, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " colspan="3" align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Tag/Label"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(18a1f59f-9a36-4cae-ac57-b9ea5d3b37af, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 50%;"> 
+            <img width="100" height="0" src="images/t1x1.gif" /></th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 50%;"> 
+            <img width="100" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="516" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><div id="0-91c1eca6-a61f-443f-b7c8-156989360edd" class="genericTabContent tab-pane" data-name="ChangeRequestsTab" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-right-radius: 0px; padding: 10px 10px 10px 10px; background-color: white; background-repeat: no-repeat;  width: 100%; height: 100%;"><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><fieldset id="d05e384a-cc42-4565-9f65-12d88f2cb3c1" class="GroupBoxRoot responsive" style="border-radius: 0px; padding-left: 0px;width: 100%; "><div id="d05e384a-cc42-4565-9f65-12d88f2cb3c1_container" class="GroupBoxContent" style="padding: 0px 0px 0px 0px; "><div class="LayoutTable responsive" cellpadding="5px"><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:5px;" align="left" vertical-align="top"><div id="6ed19145-5026-4773-ab91-b2f3366534c0.wrapper" name="6ed19145-5026-4773-ab91-b2f3366534c0.wrapper" class="widgetWrapper FlexColumn vPx ControlStyle" style="width: 100%; height: 400px; background-color: transparent; "><div class="widgetContent FlexBody"><iframe id="6ed19145-5026-4773-ab91-b2f3366534c0" name="6ed19145-5026-4773-ab91-b2f3366534c0" class="ControlStyle" style="border: none; overflow: auto; " scrolling="auto" frameborder="0" marginwidth="0" marginheight="0" src=""> </iframe></div><script>
+      function widgetChangeRequestsReportWidgetLoad()
+      {
+        var urlString = "tmtrack.dll";
+          
+        var errors = new Array();
+        var params = new Array();
+    
+        params[0] = GetInternalFieldValue("RecordId", null);
+        if (params[0] == null) errors[errors.length] = "RecordId";
+        
+        var msg = '<b>' + defaultParamErrorString + '</b><br />' + defaultPermissionErrorString + '<br />';
+        if (SetFrameErrorIfNeeded("ChangeRequestsReportWidget", msg, errors)) return;
+  
+        var template = 'ReportPage=&template=reports%2FjqDataTables&ReportUUID=698d9ba3-a9a5-4753-8faf-b5950490b6cb&AppRptProjId=I_USR_SDDCRS_CHANGE_REQUESTS.CRS_CHANGE_REQUESTS_PROJECT&HasRuntimeParams=1&embedded=&F_TS_SREL_EPIC_STORY={0}';
+        urlString = urlString + "?" + BuildURL(template, params);
+
+        OnEmbeddedReportWidgetLoad("6ed19145-5026-4773-ab91-b2f3366534c0", "ReportPage&template={0}&embedded", urlString);
+      }
+          
+      // add event callbacks
+    
+      AddLoadCallback(widgetChangeRequestsReportWidgetLoad);
+    
+      AddClickCallback("ChangeRequestsTab", widgetChangeRequestsReportWidgetLoad);
+    </script></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:5px;" align="left" vertical-align="top"><div id="ChangeRequestsReportMessage" class="LabelStyle StaticText" style="width: 100%; "><!----></div><script>
+      function widgetChangeRequestsReportMessageLoad()
+      {
+        SetFieldValue("ChangeRequestsReportMessage", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div></fieldset><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="210" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><div id="0-a4246cf5-7372-4690-a238-df91bb20f96f" class="genericTabContent tab-pane" data-name="CRTasksTab" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-right-radius: 0px; padding: 10px 10px 10px 10px; background-color: white; background-repeat: no-repeat;  width: 100%; height: 100%;"><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="2" align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="SubtasksText2" class="CRStateHeadingStyle StaticText" style="width: 100%; ">$UUIDSTRING(4a331742-9982-4dd3-9d15-e5f312db2407)<!----></div><script>
+      function widgetSubtasksText2Load()
+      {
+        SetFieldValue("SubtasksText2", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="2" align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><fieldset id="1a4467eb-ddf1-430e-9782-c28c2d4ad477" class="GroupBoxRoot" style="border-radius: 0px; padding-left: 0px;width: 100%; "><div id="1a4467eb-ddf1-430e-9782-c28c2d4ad477_container" class="GroupBoxContent" style="padding: 0px 0px 0px 0px; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><div class="widgetWrapper FlexColumn " style="width: 100%; "><div class="widgetContent FlexBody" id="07b0b93f-b3d6-466e-b03b-2fe0b17358b8" style="border: none; overflow: hidden; "><div class="vFillWrap"><script type="text/javascript" src="$FORM_EXTENSION_ASSET_PATH(Action List Extension)/javascript/ActionListExt.js"></script>
+<link rel="stylesheet" type="text/css" href="$FORM_EXTENSION_ASSET_PATH(Action List Extension)/styles/actionList-1.0.css"></link>
+<div id="ActionListWrapper"></div>
+<div class="sbm_ActionListTemplate" id="07b0b93f-b3d6-466e-b03b-2fe0b17358b8.Template"> </div><script>
+      function widgetActionListLoad()
+      {
+        var errors = new Array();
+        var params = new Array();
+    
+        params[0] = htmlEncode(GetInternalFieldValue("RecordId", null));
+        if (params[0] == null) errors[errors.length] = "RecordId";
+        
+        var msg = '<b>' + defaultParamErrorString + '</b><br />' + defaultPermissionErrorString + '<br />';
+        if (SetInlineErrorIfNeeded("ActionList", msg, errors)) return;
+  
+        var template = '<script type=\"text/javascript\" src=\"$FORM_EXTENSION_ASSET_PATH(Action List Extension)/javascript/ActionListUtilities.js\"></'+'script>\
+<script>\
+			var ActionListParams = [];\
+			var ActionListCheckFilter = function(a){\
+				if(a.name && a.value){\
+					var ActionListPrefixed = /^F_TS_.+/i.test(a.name);\
+					if (!ActionListPrefixed){\
+						var ActionListTemp = \"F_TS_\"+a.name;\
+						a.name = ActionListTemp;\
+					}\
+					ActionListParams.push(a);\
+				}\
+			};\
+			\
+			ActionListCheckFilter({name:\'F_TS_CHANGE_REQUEST\',value:\'{0}\'});\
+			ActionListCheckFilter({name:\'F_TS_ACTIVEINACTIVE\',value:\'0\'});\
+			ActionListCheckFilter({});\
+			ActionListCheckFilter({});\
+			ActionListCheckFilter({});\
+			ActionListCheckFilter({});\
+			ActionListCheckFilter({});\
+			\
+			var ActionListSize;\
+			switch (\"Large\"){\
+				case \"Small\":\
+					ActionListSize = { width: \"500\", height: \"400\" };\
+					break;\
+				case \"Medium\":\
+					ActionListSize = { width: \"900\", height: \"600\" };\
+					break;\
+				case \"Large\":\
+					ActionListSize = { width: \"1024\", height: \"768\" };\
+					break;\
+				case \"Full Screen\":\
+					ActionListSize = { width: \"100%\", height: \"100%\" };\
+					break;\
+				default:\
+					ActionListSize = { width: \"1024\", height: \"768\" };\
+			}\
+			\
+			jQuerySBM(document).ready(function() {\
+				jQuerySBM(\"#ActionListWrapper\").actionList({\
+					reportID: \"abd7061c-91a2-4c70-90ec-dc1ac8d5d7b0\",\
+					AppRptProjId: \"I_USR_SDDCRS_TASKS.CRS_TASKS_PROJECT\",\
+					reportParams: ActionListParams,\
+					groupByField: \"State\",\
+					dialogSize: ActionListSize,\
+					emptyFieldText: \"(None)\",\
+					widgetName: \"ActionList\"\
+				});\
+			});  \
+		</'+'script>\
+';
+        var content = BuildString(template, params);
+        if (content.length == 0) content = " ";
+        // Place the generated content into the div representing the widget defined above
+        jQuerySBM("#07b0b93f-b3d6-466e-b03b-2fe0b17358b8\\.Template").html(content);
+      }
+              
+      // add event callbacks
+    
+      AddLoadCallback(widgetActionListLoad);
+    
+      AddClickCallback("CRTasksTab", widgetActionListLoad);
+    </script></div></div></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="150" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div></fieldset><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper" abbr="Task(s)" nowrap="">
+    $ITEMFIELDLABEL(d3effaa4-f098-450b-95c5-66569de91add, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper" abbr="Task(s)"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(d3effaa4-f098-450b-95c5-66569de91add, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="100" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><div id="0-ec030016-affd-467d-bcbe-71080c96c0d1" class="genericTabContent tab-pane" data-name="CommentsTab" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-right-radius: 0px; padding: 10px 10px 10px 10px; background-color: white; background-repeat: no-repeat;  width: 100%; height: 100%;"><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="b89ae662-d465-4208-9a3c-51254569cc34" class="Panel" data-name="OptionsPanel" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|2457ba54-8b53-43d5-9129-ef87a009da31)<a id="AddCommentsLog" style="" href="#" onclick="return false;" class="hoverHelpText HyperLinkStyle" title="">$UUIDSTRING(555fa4cd-da75-470e-b31e-fc45c0b13a7c)</a><script>
+      function getAddCommentsLogTransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        var ctid = LookupTransitionId('2457ba54-8b53-43d5-9129-ef87a009da31');
+        if (ctid != null)
+        {
+          var corder = LookupTransitionOrder('2457ba54-8b53-43d5-9129-ef87a009da31');
+          if ((tid == null) || (corder < order))
+          {
+            tid = ctid;
+            order = corder;
+          }
+        }
+          
+        return tid;
+      }
+      
+      function handleAddCommentsLogTransition()
+      {
+        var $el = jQuerySBM(document.getElementById('AddCommentsLog'));
+        if ($el.length)
+        {
+          var tid = getAddCommentsLogTransitionID();
+          if (tid != null)
+          {
+            $el.on("click", doAddCommentsLogTransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doAddCommentsLogTransitionClick(e) 
+      {
+        var tid = getAddCommentsLogTransitionID();
+        PerformTransitionEx('AddCommentsLog', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleAddCommentsLogTransition);
+      </script><script>
+      function widgetAddCommentsLogLoad()
+      {
+        SetFieldValue("AddCommentsLog", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="83" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="99b5c586-e228-4793-84dd-2aa5d2c74707" class="Panel" data-name="CommentsPanel" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="2"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="2" align="left" vertical-align="top"><div class="fillWrapper" style="padding:2px"><div class="overflowWrapper" abbr="Comments"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(e1f54da6-7d5b-4a73-b143-809abb994a41, , ControlStyle, width: 100%; )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="8" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="104" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><div id="0-067b4ed3-2cc5-465a-aa0c-4d0283149763" class="genericTabContent tab-pane" data-name="WorkLogTab" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-right-radius: 0px; padding: 10px 10px 10px 10px; background-color: white; background-repeat: no-repeat;  width: 100%; height: 100%;"><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="17ab6489-f2e7-4797-8489-b0d7de6bea14" class="Panel" data-name="OptionsPanel2" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper">$IF(TRANSITIONENABLED|600fb1bd-ef93-4b27-a3c4-9a1c48310214)<a id="AddWorkLog" style="" href="#" onclick="return false;" class="hoverHelpText HyperLinkStyle" title="">$UUIDSTRING(dcbd2d5c-c003-4484-b1ce-5a12e3d1ddca)</a><script>
+      function getAddWorkLogTransitionID()
+      {
+        var tid = null;
+        var order = -1;
+          
+        var ctid = LookupTransitionId('600fb1bd-ef93-4b27-a3c4-9a1c48310214');
+        if (ctid != null)
+        {
+          var corder = LookupTransitionOrder('600fb1bd-ef93-4b27-a3c4-9a1c48310214');
+          if ((tid == null) || (corder < order))
+          {
+            tid = ctid;
+            order = corder;
+          }
+        }
+          
+        return tid;
+      }
+      
+      function handleAddWorkLogTransition()
+      {
+        var $el = jQuerySBM(document.getElementById('AddWorkLog'));
+        if ($el.length)
+        {
+          var tid = getAddWorkLogTransitionID();
+          if (tid != null)
+          {
+            $el.on("click", doAddWorkLogTransitionClick);
+          
+            var $hoverHelpTextEl = $el.is(".hoverHelpText") ? $el : $el.find(".hoverHelpText")
+              
+            var title = $hoverHelpTextEl.attr("data-original-title");
+            if (title == "" || title == null) $hoverHelpTextEl.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+          
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doAddWorkLogTransitionClick(e) 
+      {
+        var tid = getAddWorkLogTransitionID();
+        PerformTransitionEx('AddWorkLog', "TransitionId."+tid);
+        return false;
+      }      
+        
+      
+      AddLoadCallback(handleAddWorkLogTransition);
+      </script><script>
+      function widgetAddWorkLogLoad()
+      {
+        SetFieldValue("AddWorkLog", "", true);
+      }
+        
+      // add event callbacks
+    </script>
+      $ENDIF()
+    <!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="74" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="e3c327e7-323f-4018-ab09-536db64cfa3d" class="Panel" data-name="WorkLogPanel" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="2" align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Work Log"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(ed2c954d-f62f-4bbc-918a-53ed6f9fecbe, , ControlStyle, width: 100%; )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="8" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="100" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><div id="0-b5f492c6-5f21-46ff-b281-4367008e40b1" class="genericTabContent tab-pane" data-name="CRRolesTeamsTab" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-right-radius: 0px; padding: 10px 10px 10px 10px; background-color: white; background-repeat: no-repeat;  width: 100%; height: 100%;"><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="4c441386-dee3-431a-b75c-7de5aafa5bed" class="Panel" data-name="DetailsPanel5" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Project Manager (GOV)" nowrap="">
+    $ITEMFIELDLABEL(0923e477-a860-48f0-a201-598028f5b4b2, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Project Manager (GOV)"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(0923e477-a860-48f0-a201-598028f5b4b2, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Project Controller" nowrap="">
+    $ITEMFIELDLABEL(959753ae-046f-4f10-91b8-49f848107021, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Project Controller"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(959753ae-046f-4f10-91b8-49f848107021, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Project Analyst (CTR)" nowrap="">
+    $ITEMFIELDLABEL(91a46a56-5d01-4b9e-a543-7e60a6183a29, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Project Analyst (CTR)"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(91a46a56-5d01-4b9e-a543-7e60a6183a29, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="CM Analyst" nowrap="">
+    $ITEMFIELDLABEL(807fb204-0688-4666-902b-352c596d6306, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="CM Analyst"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(807fb204-0688-4666-902b-352c596d6306, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="CM Manager" nowrap="">
+    $ITEMFIELDLABEL(872c8355-b58c-48bc-beee-31935cf6ce34, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="CM Manager"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(872c8355-b58c-48bc-beee-31935cf6ce34, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Developer" nowrap="">
+    $ITEMFIELDLABEL(fcff1643-76a5-4792-bb2c-e6652337e463, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Developer"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(fcff1643-76a5-4792-bb2c-e6652337e463, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Development Manager" nowrap="">
+    $ITEMFIELDLABEL(780dee66-ae3c-4fcf-9f34-8ffe759b9fa3, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Development Manager"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(780dee66-ae3c-4fcf-9f34-8ffe759b9fa3, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="ISSM" nowrap="">
+    $ITEMFIELDLABEL(303d8d99-50cd-4e38-9204-59be3aa8373d, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="ISSM"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(303d8d99-50cd-4e38-9204-59be3aa8373d, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="ISSO" nowrap="">
+    $ITEMFIELDLABEL(3a6543c5-b08c-49d8-b076-c150719c9915, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="ISSO"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(3a6543c5-b08c-49d8-b076-c150719c9915, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Program Manager" nowrap="">
+    $ITEMFIELDLABEL(f92d7c03-cf26-476c-a4f0-54d1dcb729e9, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Program Manager"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(f92d7c03-cf26-476c-a4f0-54d1dcb729e9, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="OPS Gov Lead" nowrap="">
+    $ITEMFIELDLABEL(a24ea68f-a2ef-4af5-b449-9da8ae84e482, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="OPS Gov Lead"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(a24ea68f-a2ef-4af5-b449-9da8ae84e482, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Requirements Analyst" nowrap="">
+    $ITEMFIELDLABEL(28c31b3c-de8d-4b40-89d0-56e079eba8d1, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Requirements Analyst"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(28c31b3c-de8d-4b40-89d0-56e079eba8d1, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="System Engineer (CTR)" nowrap="">
+    $ITEMFIELDLABEL(559c8306-8ee8-499c-a1c6-1c914fa7b116, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="System Engineer (CTR)"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(559c8306-8ee8-499c-a1c6-1c914fa7b116, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="System Engineer (GOV)" nowrap="">
+    $ITEMFIELDLABEL(b1f445fc-f15a-46d5-9eb0-ae54c2e9fa70, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="System Engineer (GOV)"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(b1f445fc-f15a-46d5-9eb0-ae54c2e9fa70, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Test Lead (CTR)" nowrap="">
+    $ITEMFIELDLABEL(39aa8b95-73ad-4848-8ae5-1ccb244ebbfe, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Test Lead (CTR)"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(39aa8b95-73ad-4848-8ae5-1ccb244ebbfe, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Test Lead (GOV)" nowrap="">
+    $ITEMFIELDLABEL(3d785d69-924e-4be0-8504-83a1b890bd6e, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Test Lead (GOV)"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(3d785d69-924e-4be0-8504-83a1b890bd6e, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Test Coordinator" nowrap="">
+    $ITEMFIELDLABEL(38428ad4-ccfc-44cb-9eca-b70f730e8cd8, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Test Coordinator"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(38428ad4-ccfc-44cb-9eca-b70f730e8cd8, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Tester" nowrap="">
+    $ITEMFIELDLABEL(8577bff4-2fd0-4d09-b328-71f55a899f3e, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Tester"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(8577bff4-2fd0-4d09-b328-71f55a899f3e, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="CM Team" nowrap="">
+    $ITEMFIELDLABEL(26cbabc2-ec6e-414d-a584-b4b6cc725c4e, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="CM Team"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(26cbabc2-ec6e-414d-a584-b4b6cc725c4e, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="OPS Team" nowrap="">
+    $ITEMFIELDLABEL(d8959853-b81c-4ef2-8ce5-3304814cecd4, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="OPS Team"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(d8959853-b81c-4ef2-8ce5-3304814cecd4, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Project Team" nowrap="">
+    $ITEMFIELDLABEL(b383a394-0597-4bf1-b5dc-2804c7c8a7b4, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Project Team"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(b383a394-0597-4bf1-b5dc-2804c7c8a7b4, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Requirements Team" nowrap="">
+    $ITEMFIELDLABEL(9bb6b04f-17c6-4e68-b2b6-3494b2517299, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Requirements Team"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(9bb6b04f-17c6-4e68-b2b6-3494b2517299, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Test Team" nowrap="">
+    $ITEMFIELDLABEL(10217fe9-4857-4c53-b0b6-ae39e0ad9e64, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Test Team"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(10217fe9-4857-4c53-b0b6-ae39e0ad9e64, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Vendor Team" nowrap="">
+    $ITEMFIELDLABEL(3cb5039c-f16b-43a6-8def-8fea94206907, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Vendor Team"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(3cb5039c-f16b-43a6-8def-8fea94206907, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Change Req Team" nowrap="">
+    $ITEMFIELDLABEL(aa0c261a-757b-4d2a-a57d-ee2ab1ba31a7, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Change Req Team"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(aa0c261a-757b-4d2a-a57d-ee2ab1ba31a7, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Vendor(s)" nowrap="">
+    $ITEMFIELDLABEL(383dfe5d-0343-4124-bc62-9116bce3eae1, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Vendor(s)"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(383dfe5d-0343-4124-bc62-9116bce3eae1, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 50%;"> 
+            <img width="100" height="0" src="images/t1x1.gif" /></th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 50%;"> 
+            <img width="100" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="484" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><div id="0-5bc7dd76-b748-461d-a915-0ae661cb5e79" class="genericTabContent tab-pane" data-name="NotesAttachmentsTab" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-right-radius: 0px; padding: 10px 10px 10px 10px; background-color: white; background-repeat: no-repeat;  width: 100%; height: 100%;"><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="AttachmentsText" class="CRStateHeadingStyle StaticText" style="width: 100%; ">$UUIDSTRING(b3a1410d-b7f5-444b-b3d0-1bc7821e3e6d)<!----></div><script>
+      function widgetAttachmentsTextLoad()
+      {
+        SetFieldValue("AttachmentsText", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper">$IF(ATTACHMENTS)<div id="3a41078c-0559-42b4-8058-6fb9a3854036" class="Panel" data-name="Attachments_Section" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; ">
+        $ATTACHMENT_LIST()
+      </div>$ENDIF()<!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="NotesText" class="CRStateHeadingStyle StaticText" style="width: 100%; ">$UUIDSTRING(f3b292c2-0d7c-4d75-9d94-750f8af4b196)<!----></div><script>
+      function widgetNotesTextLoad()
+      {
+        SetFieldValue("NotesText", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper">$IF(NOTESOPTIONS)<div id="4968752b-3e28-4483-9e4f-132bf4177815" class="Panel" data-name="Notes_Section" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; ">
+        $NOTES_LIST()
+      </div>$ENDIF()<!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="200" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><div id="0-f16aef48-93e4-41a9-91f1-84db23bcc20c" class="genericTabContent tab-pane" data-name="HistoryTab" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-right-radius: 0px; padding: 10px 10px 10px 10px; background-color: white; background-repeat: no-repeat;  width: 100%; height: 100%;"><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="4" align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="SystemFieldsText" class="CRStateHeadingStyle StaticText" style="width: 100%; ">$UUIDSTRING(50f534b3-8b5f-433c-bac4-0abcdb17888a)<!----></div><script>
+      function widgetSystemFieldsTextLoad()
+      {
+        SetFieldValue("SystemFieldsText", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="4" align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="0c40b4c9-419f-4aec-8eb7-5f6fb39f64b2" class="Panel" data-name="SystemExpander" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="0"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Owner" nowrap="">
+    $ITEMFIELDLABEL(b853a0d8-fec0-4557-a4f2-612951984c8d, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Owner"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(b853a0d8-fec0-4557-a4f2-612951984c8d, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Project" nowrap="">
+    $ITEMFIELDLABEL(81824406-b5ce-4df9-91ab-b01ec4f2aa51, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Project"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(81824406-b5ce-4df9-91ab-b01ec4f2aa51, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Submitter" nowrap="">
+    $ITEMFIELDLABEL(4290dfd3-a387-40f0-9d04-172fd2130142, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Submitter"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(4290dfd3-a387-40f0-9d04-172fd2130142, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Submit Date" nowrap="">
+    $ITEMFIELDLABEL(493bfdea-2210-4428-a030-ac8c7a8dfb84, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Submit Date"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(493bfdea-2210-4428-a030-ac8c7a8dfb84, , ControlStyle, width: 150px; )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Last Modifier" nowrap="">
+    $ITEMFIELDLABEL(dbea4456-45db-43a9-a7b7-105dea5945ea, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Last Modifier"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(dbea4456-45db-43a9-a7b7-105dea5945ea, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Date Last Modified" nowrap="">
+    $ITEMFIELDLABEL(45e2b82b-2617-4ba8-877a-bd059aea4146, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Date Last Modified"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(45e2b82b-2617-4ba8-877a-bd059aea4146, , ControlStyle, width: 150px; )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Last State Changer" nowrap="">
+    $ITEMFIELDLABEL(d6a00b2b-e749-4823-a2ca-ccc853e3f58a, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Last State Changer"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(d6a00b2b-e749-4823-a2ca-ccc853e3f58a, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Date Last State Change" nowrap="">
+    $ITEMFIELDLABEL(aeeac7d7-b6a7-4ae0-b6b2-c1e199361d28, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Date Last State Change"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(aeeac7d7-b6a7-4ae0-b6b2-c1e199361d28, , ControlStyle, width: 150px; )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Active/Inactive" nowrap="">
+    $ITEMFIELDLABEL(34c7c5d1-7345-4dcb-8003-73e68fd9752b, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Active/Inactive"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(34c7c5d1-7345-4dcb-8003-73e68fd9752b, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Close Date" nowrap="">
+    $ITEMFIELDLABEL(95ca5234-5eb9-4cc3-acbf-48df40dac97e, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Close Date"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(95ca5234-5eb9-4cc3-acbf-48df40dac97e, , ControlStyle, width: 150px; )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Item Id" nowrap="">
+    $ITEMFIELDLABEL(df2ad3d1-b7e6-4238-ad3f-dadc9b56de48, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Item Id"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(df2ad3d1-b7e6-4238-ad3f-dadc9b56de48, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper"><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="right" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Epic" nowrap="">
+    $ITEMFIELDLABEL(8799bf34-4002-49d0-a848-57cfee630321, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Epic"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(8799bf34-4002-49d0-a848-57cfee630321, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" " align="right" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Change Request(s)" nowrap="">
+    $ITEMFIELDLABEL(361c179c-b2d9-4e34-997d-77f4dbee633c, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:0px"><div class="overflowWrapper" abbr="Change Request(s)"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(361c179c-b2d9-4e34-997d-77f4dbee633c, , ControlStyle, )
+    </div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 50%;"> 
+            <img width="100" height="0" src="images/t1x1.gif" /></th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 50%;"> 
+            <img width="150" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="4" align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="StateChangeHistoryText" class="CRStateHeadingStyle StaticText" style="width: 100%; ">$UUIDSTRING(cbda8e5b-24c6-47e4-969e-0f0d9a98e51d)<!----></div><script>
+      function widgetStateChangeHistoryTextLoad()
+      {
+        SetFieldValue("StateChangeHistoryText", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="4" align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper">$IF(STATE_CHANGE_ON)<div id="cc1214ac-30fd-403f-81b0-e3c39e8b6c49" class="Panel" data-name="StateChangeHistory_Section" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; ">
+        $INCLUDE(viewstatehist.htm)
+      </div>$ENDIF()<!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="4" align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="ChangeHistoryText" class="CRStateHeadingStyle StaticText" style="width: 100%; ">$UUIDSTRING(1c64d29b-352d-45a5-8653-e22b84a0bd87)<!----></div><script>
+      function widgetChangeHistoryTextLoad()
+      {
+        SetFieldValue("ChangeHistoryText", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="4" align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper">$IF(CHANGE_HISTORY_ON)<div id="e3935d8c-7e86-44e2-9ec9-3ed5ba92072e" class="Panel" data-name="ChangeHistory_Section" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; ">
+        $CHANGE_HISTORY()
+      </div>$ENDIF()<!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " colspan="4" align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="2adac8b5-fd08-42b2-b572-9a2c1af9e266" style="background-color: transparent; width: 100%;  border-radius: 0px; " class="expanderRoot FlexColumn"><div id="2adac8b5-fd08-42b2-b572-9a2c1af9e266_header" class="expanderHead FlexHead" style="" onclick="toggleVisible('2adac8b5-fd08-42b2-b572-9a2c1af9e266');" alt="Expand/Collapse section"><a href="#" onclick="event.preventDefault()" class="rttl2" style="font-family: 'Arial'; font-size: 12pt; " id="2adac8b5-fd08-42b2-b572-9a2c1af9e266_label" width="100%">$UUIDSTRING(2adac8b5-fd08-42b2-b572-9a2c1af9e266) </a></div><div id="2adac8b5-fd08-42b2-b572-9a2c1af9e266_content" class="expanderContent FlexBody"><div class="expanderContentWrap" style="padding: 0px 20px 0px 20px; "><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="right" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper" abbr="Change Package Title" nowrap="">
+    $ITEMFIELDLABEL(f4263f2a-872f-499e-a365-384c8f0fa31b, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper" abbr="Change Package Title"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(f4263f2a-872f-499e-a365-384c8f0fa31b, , ControlStyle, width: 100%; )
+    </div><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="right" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper" abbr="Change  Package" nowrap="">
+    $ITEMFIELDLABEL(f235a3c5-0546-4299-808a-9d05f1c02a3d, , LabelStyle
+    )
+    <!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper" abbr="Change  Package"><div style="" class="longTextWrapper">
+      $ITEMFIELDVALUE(f235a3c5-0546-4299-808a-9d05f1c02a3d, , ControlStyle, )
+    </div><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr class="LayoutRow" style=""><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 50%;"> 
+            <img width="100" height="0" src="images/t1x1.gif" /></th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 50%;"> 
+            <img width="8" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div></div></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 50%;"> 
+            <img width="20" height="0" src="images/t1x1.gif" /></th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 50%;"> 
+            <img width="20" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div></div></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="1069" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; height:100%; "> 
+        <img width="0" height="100%" src="images/t1x1.gif" /></td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; max-width: 230px; min-width: 230px;"> 
+            <img width="230" height="0" src="images/t1x1.gif" /></th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="8" height="0" src="images/t1x1.gif" /></th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table></div></td></tr></table></div><div class="scrollableStretch"> </div></td><td id="RightSidebar" class="sidebar sidebarCell" style=""><!----></td></tr><tr><td colspan="3" id="BottomSidebar" class="header-footer sidebarCell" style=""><!----></td></tr></table></div>
+      $HIDDENFIELDFROMUUID(c8eca6c4-10fb-4e92-8bce-f95943819dd5)
+    <style> #titlebar, #itemtitle {display:none;}#projectName {display:none;}#buttonsDiv {display:none;}#transitionbuttons, #state_form_buttons {display:none;}#lasttransitioninfo {display:none;}#actionControls, #toggle {display:none;}</style><script>
+      AddLoadCallback(function()
+      {
+      
+      });
+    </script><script>
+      function GetTransitionInternalName()
+      {
+        return "$TRANSITIONINTERNALNAME()";
+      }
+      function GetCurrentUser()
+      {
+        return "$USERID()";
+      }
+    </script><script language="javascript" type="text/javascript">
+
+AddLoadCallback(fn_FormLoadConfigureUI);
+
+function fn_FormLoadConfigureUI(e)
+{
+  action_SOOLoadUtils();
+
+  action_SOOSetupMoreActions("MoreActions");
+
+  ActivateTab("DetailsTab");
+
+  SetVisible("HiddenFieldsPanel", "hide");
+}
+
+
+AddLoadCallback(fn_FormLoadInitializeFormStack);
+
+function fn_FormLoadInitializeFormStack(e)
+{
+  SBMSOL.FormUtil.reportNavigation();
+$("#toggle .separator").remove();
+  $("#goback").prependTo("#iterate");
+$('#toggle').show();
+//jQuerySBM(document.getElementById("backToResultsContainer")).insertBefore('#reportToggle');
+;
+}
+
+
+AddLoadCallback(fn_FormLoadHideChildTasksIfNoLinkedChildren);
+
+function fn_FormLoadHideChildTasksIfNoLinkedChildren(e)
+{
+  if (condition_FieldOrInputControlEmptyOperator("MREL_TASKS", "is empty"))
+  {
+    SetVisible("CRTasksTab", "hide");
+  }
+}
+
+
+AddLoadCallback(fn_FormLoadHideUnnecessaryTabsBasedOnLinkedCP);
+
+function fn_FormLoadHideUnnecessaryTabsBasedOnLinkedCP(e)
+{
+  if (condition_FieldOrInputControlEmptyOperator("SREL_EPIC_STORY", "is not empty"))
+  {
+    SetVisible("ChangeRequestsTab", "hide");
+  }
+  else
+  {
+    SetVisible("ChangeRequestsTab", "show");
+  }
+}
+
+
+function condition_FieldOrInputControlEmptyOperator(source, operator)
+{
+  if (operator == "is empty") return IsFieldEmpty(source);
+  else return !IsFieldEmpty(source);
+}
+
+function action_SOOLoadUtils()
+{
+  SOO.ShellFormatting.init();
+}
+
+function action_SOOSetupMoreActions(source)
+{
+  //SBMSOL.FormUtil.MoreActions.setupMoreActions(source);
+
+          SOO.ShellFormatting.MoreActions.setupMoreActions(source);
+}
+
+</script>
+      $STUDIOJS(551a1c6f-f6bf-4a10-a4d4-5dd64dd1e2de)
+    
+      $STUDIOJS(6e756b30-fb9a-4fa2-9017-ec69e4c7b6d0)
+    
+      $STUDIOJS(b35ec051-fee4-4f43-a020-d18aaeb33dc1)
+    
+      $STUDIOJS(96d32648-6c14-4d3a-a18e-afb9dad20df4)
+    
+      $STUDIOJS(97497d02-4eec-470b-a4a7-b40caf52bdcc)
+    </div>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CustomStorage>
+  <Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution>
+    <TtSolution id="1b7f1aa3-25b5-446a-a05d-78b8d3bc48aa">
+      <EventID>6b149cf8-198c-413a-adfe-6a3a59544923</EventID>
+    </TtSolution>
+  </Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtSolution>
+  <Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtScript>
+    <TtScript id="0d7746c0-2e08-4190-a603-e1f481fd5e5e">
+      <Description />
+    </TtScript>
+    <TtScript id="76666fe2-2139-4141-808a-04f401271b3b">
+      <Description />
+    </TtScript>
+  </Serena.Studio.PlugIns.TeamTrack.ObjectModel.TtScript>
+</CustomStorage>

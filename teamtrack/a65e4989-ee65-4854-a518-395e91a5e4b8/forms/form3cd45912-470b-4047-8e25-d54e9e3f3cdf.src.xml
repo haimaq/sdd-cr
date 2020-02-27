@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TtForm validateRequiredFields="True" includeJQuery="True" layoutMode="Responsive" labelLocation="Top">
+  <Name>Epic Link CRs</Name>
+  <Type>transition</Type>
+  <FormSBMVersion>11.3.1</FormSBMVersion>
+  <ApplicationId>a65e4989-ee65-4854-a518-395e91a5e4b8</ApplicationId>
+  <CollapseToolBar>true</CollapseToolBar>
+  <ShowItemIdentifier>false</ShowItemIdentifier>
+  <ShowProjectName>false</ShowProjectName>
+  <ShowButtonBar>false</ShowButtonBar>
+  <ShowActionBar>false</ShowActionBar>
+  <ShowViewport>true</ShowViewport>
+  <ShowTransitionIndicator>false</ShowTransitionIndicator>
+  <HideCustomButtonsFromButtonBar>false</HideCustomButtonsFromButtonBar>
+  <AllowExtendedTransitionButtonMapping>false</AllowExtendedTransitionButtonMapping>
+  <GenerationMode>runtime</GenerationMode>
+  <ThemeDir>graphite</ThemeDir>
+  <IsModern>true</IsModern>
+  <IsResponsive>true</IsResponsive>
+  <ImagesDir>images</ImagesDir>
+  <ImagesThemeDir>images\$THEME()</ImagesThemeDir>
+  <LayoutMode>Responsive</LayoutMode>
+  <CssHref>33e8c0ea-6387-4edb-a51b-fd25a0758193.css</CssHref>
+  <Scripts>
+    <Script>551a1c6f-f6bf-4a10-a4d4-5dd64dd1e2de</Script>
+    <Script>8c70ec90-69be-4fda-b3e6-b9f77c3ae45f</Script>
+    <Script>96d32648-6c14-4d3a-a18e-afb9dad20df4</Script>
+    <Script>b35ec051-fee4-4f43-a020-d18aaeb33dc1</Script>
+    <Script>cda3927c-4a18-40e6-a607-7aa3b57b51aa</Script>
+  </Scripts>
+  <InvalidFieldText>One or more fields are invalid.</InvalidFieldText>
+  <RequiredFieldText>'{0}' is a required field. Please supply a valid value to complete this transition.</RequiredFieldText>
+  <SSOPreviewText>Preview only supports SSO authentication if you are logged in to the repository. In the User Workspace, customers will see the Web page located at: {0}</SSOPreviewText>
+  <SSONoTokenText>Unable to retrieve a valid Security Token for request to: {0}.</SSONoTokenText>
+  <PDFMissingText>Download Adobe Acrobat Reader in order to view this PDF.</PDFMissingText>
+  <ReportPreviewText>Preview does not support embedded reports. In the User Workspace, customers will see the report located at: {0}</ReportPreviewText>
+  <WeCouldNotLocateErrorText>We could not locate all of the data needed to perform your request.</WeCouldNotLocateErrorText>
+  <YouMayNotHavePermissionsErrorText>You may not have permission to access these fields.</YouMayNotHavePermissionsErrorText>
+  <SearchingEllipsesText>Searching...</SearchingEllipsesText>
+  <WeDidNotFindAnyMatchesErrorText>REST service call failed. Check the authentication settings of the endpoint used by this REST grid in Application Repository.</WeDidNotFindAnyMatchesErrorText>
+  <TheResponseWasTooLargeErrorText>The response was too large.</TheResponseWasTooLargeErrorText>
+  <PleaseTryRestrictingTheDataErrorText>Please try restricting the data returned by adjusting the input parameters.</PleaseTryRestrictingTheDataErrorText>
+  <UpdatingEllipsesText>Updating...</UpdatingEllipsesText>
+  <UpdatedText>Updated</UpdatedText>
+  <AuthorizationFailedErrorText>Authorization failed - check the Screen Name and Password</AuthorizationFailedErrorText>
+  <StatusPostErrorText>An error occured posting the status update</StatusPostErrorText>
+  <ShowingRangeText>Showing {0}-{1} of {2}</ShowingRangeText>
+  <ShowingPageText>Showing page {0}</ShowingPageText>
+  <GotoFirstPageText>Go to first page</GotoFirstPageText>
+  <GotoPreviousPageText>Go to previous page</GotoPreviousPageText>
+  <GotoNextPageText>Go to next page</GotoNextPageText>
+  <GotoLastPageText>Go to last page</GotoLastPageText>
+  <TheRestGridIsNotConfigured>The REST Grid is not configured: </TheRestGridIsNotConfigured>
+  <FormLogic>
+
+AddLoadCallback(fn_FormLoadAdjustContractorVendorZeroValue);
+
+function fn_FormLoadAdjustContractorVendorZeroValue(e)
+{
+  action_SOOLoadUtils();
+
+  //get location field ID
+//var ContractId = LookupFieldId("SDDPRODUCT");
+//update zero-Value text
+//jQuerySBM("#"+ContractId+" option[value='0']").text("All");
+//update zero-Value value
+//jQuerySBM("#"+ContractId+" option[value='0']").attr('value','');
+
+  RefreshField("RelationalGridWidget");
+
+  ActionControl_DoClick("goButton");
+}
+
+
+AddLoadCallback(fn_FormLoadSRFormatting3);
+
+function fn_FormLoadSRFormatting3(e)
+{
+  ActionControl_DoClick("goButton");
+}
+
+
+AddLoadCallback(fn_FormLoadCreateExpandAllExtension);
+
+function fn_FormLoadCreateExpandAllExtension(e)
+{
+  action_SOO_loadExpandAllExtension();
+}
+
+
+function action_SOOLoadUtils()
+{
+  SOO.ShellFormatting.init();
+}
+
+function action_SOO_loadExpandAllExtension()
+{
+  var dropdown = jQuerySBM("&lt;select id='ExpandAllExtension' onchange='sooExpander(this)' /&gt;");
+  jQuerySBM("#actionControls").append(jQuerySBM(dropdown));
+  jQuerySBM(document).ready(function(){
+  	getExpanders();
+  });
+}
+
+</FormLogic>
+  <TransitionBar dock="top" UUID="a20825dc-3731-4803-a05f-d3ad90c3a68e" custom="True">
+    <EnabledActions>TransitionBarActions</EnabledActions>
+    <Button name="OK" width="70px" default="true" system="true">
+      <Text>OK</Text>
+    </Button>
+    <Button name="Cancel" system="true">
+      <Text>Cancel</Text>
+    </Button>
+    <ActionOption id="AttAction" templateUrl="attnote" name="AddNote" enabled="True">
+      <Text>Add Note</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="atturl" name="AddURL" enabled="True">
+      <Text>Add URL</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="attfile" name="AddFile" enabled="True">
+      <Text>Add File</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="attlink" name="AddItemLink" enabled="True">
+      <Text>Add Item Link</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="itemnotification" name="AddItemNotification" enabled="True">
+      <Text>Add Item Notification</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="vcmanage" name="AddFileAssociation" enabled="True">
+      <Text>Add File Association</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="linksubtask-1" name="LinkSubtasks" enabled="True">
+      <Text>Link Subtasks</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="linksubtask-2" name="LinkToPrincipal" enabled="True">
+      <Text>Link to Principal</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="unlinkprincipal" name="UnlinkPrincipal" enabled="True">
+      <Text>Unlink Principal</Text>
+    </ActionOption>
+    <ActionButton id="emaillink" name="SendEmail" enabled="True">
+      <Text>Click to Send E-mail</Text>
+    </ActionButton>
+    <ActionButton id="manage_ext_users" name="ManageExternalUsers" enabled="True">
+      <Text>Manage External Users</Text>
+    </ActionButton>
+    <ActionButton id="display_associated_workflow" name="DisplayItemWorkflow" enabled="True">
+      <Text>Get Help for this Application</Text>
+    </ActionButton>
+    <ActionButton id="display_help" name="GetItemHelp" enabled="True">
+      <Text>Get Help for this Form</Text>
+    </ActionButton>
+  </TransitionBar>
+  <TopFormTable>
+    <TopSidebar layoutMode="Responsive" hAlign="Justify" vAlign="Justify">
+      <SizeFlavor>AutoSize</SizeFlavor>
+      <PixelSize>100</PixelSize>
+      <PercentageSize>20</PercentageSize>
+      <Padding>
+        <Left>0</Left>
+        <Top>0</Top>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </Padding>
+      <Container cellPadding="0">
+        <ResponsiveRow>
+          <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+            <Panel name="StateTopPanel2" id="95bed91e-5306-4d9b-9f12-6b45ce73edab" panelId="95bed91e-5306-4d9b-9f12-6b45ce73edab" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+              <Padding>
+                <Left>10</Left>
+                <Top>10</Top>
+                <Right>10</Right>
+                <Bottom>10</Bottom>
+              </Padding>
+              <Text id="95bed91e-5306-4d9b-9f12-6b45ce73edab">Panel</Text>
+              <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                <ColumnDefs>
+                  <Column />
+                  <Column width="100%" min-width="216" />
+                </ColumnDefs>
+                <Row>
+                  <Cell hAlign="Far" vAlign="Center">
+                    <Panel name="Panel3" id="a126c4af-3bb8-45a8-a1cc-a240b4b4ae51" panelId="a126c4af-3bb8-45a8-a1cc-a240b4b4ae51" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" bgcolor="Transparent" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                      <Padding>
+                        <Left>0</Left>
+                        <Top>0</Top>
+                        <Right>0</Right>
+                        <Bottom>0</Bottom>
+                      </Padding>
+                      <Text id="a126c4af-3bb8-45a8-a1cc-a240b4b4ae51">Panel</Text>
+                      <Table hAlign="Near" vAlign="Near" cellPadding="0" cellSpacing="0">
+                        <ColumnDefs>
+                          <Column />
+                        </ColumnDefs>
+                        <Row>
+                          <Cell hAlign="Center" vAlign="Center">
+                            <StaticImage name="LogohImage" id="LogohImage" buttonStyle="False" class="ControlStyle" image="26679965-1c01-4da9-a9b5-83161fb63ef1.png" image-repeat-x="true" image-repeat-y="true" width="64" height="64">
+                              <Behavior>URL</Behavior>
+                              <Parameter name="Url">
+                                <Template outputHtml="False" />
+                              </Parameter>
+                              <Target>_blank</Target>
+                              <Template outputHtml="False" />
+                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              <SecondaryContent>
+                                <Template outputHtml="False" />
+                                <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              </SecondaryContent>
+                              <ToolBarAction>refresh_view</ToolBarAction>
+                            </StaticImage>
+                          </Cell>
+                        </Row>
+                      </Table>
+                    </Panel>
+                  </Cell>
+                  <Cell hAlign="Near" vAlign="Center">
+                    <StaticText name="InvFormHeader" id="InvFormHeader" mobileOption="HideInSimpleMode" class="LabelStyle" fgcolor="#575551" font="Arial Black" fontsize="16" bold="True" italic="False">
+                      <Text id="53655df7-11ed-4cae-bfd9-5d958d3b1d49">{Item Id}: {Name}</Text>
+                      <Template outputHtml="True">{0}</Template>
+                      <Param>TITLE</Param>
+                      <Refresh onpageload="True" ondatachange="True" onclick="False" />
+                    </StaticText>
+                  </Cell>
+                </Row>
+              </Table>
+            </Panel>
+          </ResponsiveCell>
+        </ResponsiveRow>
+      </Container>
+    </TopSidebar>
+    <LeftSidebar empty="true" />
+    <ScrollableContent percentageWidth="100" percentageHeight="100" hAlign="Near" vAlign="Near">
+      <Container cellPadding="0">
+        <ResponsiveRow>
+          <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+            <GroupBox name="DetailsTab" id="d44fc617-8af7-43fa-ae63-867f3fe7ce15" groupId="d44fc617-8af7-43fa-ae63-867f3fe7ce15" mobileOption="AlwaysShow" layoutMode="Responsive" labelLocation="Top" bgcolor="White" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+              <Padding>
+                <Left>20</Left>
+                <Top>10</Top>
+                <Right>20</Right>
+                <Bottom>10</Bottom>
+              </Padding>
+              <Text id="d44fc617-8af7-43fa-ae63-867f3fe7ce15" />
+              <Container cellPadding="4">
+                <ResponsiveRow>
+                  <ResponsiveCell hAlign="Justify" vAlign="Near" ResponsiveBlockWidth="12">
+                    <GroupBox name="KnownErrors_GroupBox" id="d54cd0ca-a1fa-47cc-8f88-21b1ff00175b" groupId="d54cd0ca-a1fa-47cc-8f88-21b1ff00175b" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                      <Padding>
+                        <Left>0</Left>
+                        <Top>0</Top>
+                        <Right>0</Right>
+                        <Bottom>0</Bottom>
+                      </Padding>
+                      <Text id="d54cd0ca-a1fa-47cc-8f88-21b1ff00175b" />
+                      <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                        <ColumnDefs>
+                          <Column width="100%" min-width="542" />
+                        </ColumnDefs>
+                        <Row>
+                          <Cell hAlign="Justify" vAlign="Near">
+                            <Panel name="Panel13" id="642ad671-080b-4277-a1df-732f502f7c62" panelId="642ad671-080b-4277-a1df-732f502f7c62" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                              <Padding>
+                                <Left>0</Left>
+                                <Top>0</Top>
+                                <Right>0</Right>
+                                <Bottom>0</Bottom>
+                              </Padding>
+                              <Text id="642ad671-080b-4277-a1df-732f502f7c62">Panel</Text>
+                              <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                                <ColumnDefs>
+                                  <Column />
+                                  <Column />
+                                  <Column width="100%" min-width="62" />
+                                </ColumnDefs>
+                                <Row>
+                                  <Cell hAlign="Near" vAlign="Center">
+                                    <UnLabel name="knownErrorsSearchBox_Label" id="knownErrorsSearchBox_Label" colIndex="0" class="LabelStyle" font="Arial" fontsize="10" bold="True" italic="False">
+                                      <Text>Refine Search</Text>
+                                    </UnLabel>
+                                  </Cell>
+                                  <Cell hAlign="Near" vAlign="Near">
+                                    <UnEditBox name="TitleSearchTextBox" id="52188853-f2a2-42f5-9e7f-c0f98f9cdd39" useTranslation="True" mobileOption="HideInSimpleMode" class="ControlStyle" width="350">
+                                      <Text />
+                                      <Template outputHtml="False" />
+                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                    </UnEditBox>
+                                  </Cell>
+                                  <Cell hAlign="Near" vAlign="Near">
+                                    <Button name="goButton" id="goButton" mobileOption="HideInSimpleMode" class="SubmitButton">
+                                      <Text id="072da121-f7e0-4aeb-aa24-c94c88dee319">Search</Text>
+                                      <Behavior>URL</Behavior>
+                                      <Parameter name="Url">
+                                        <Template outputHtml="False" />
+                                      </Parameter>
+                                      <Target>_blank</Target>
+                                      <Template outputHtml="True" />
+                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                    </Button>
+                                  </Cell>
+                                </Row>
+                              </Table>
+                            </Panel>
+                          </Cell>
+                        </Row>
+                        <Row>
+                          <Cell hAlign="Justify" vAlign="Near">
+                            <EmbeddedReportWidget name="RelationalGridWidget" id="f4dd97da-70bf-4591-aebb-3b6bb6d69b73" borders="False" scrollbars="True" class="GridStyle" height="500">
+                              <ReportType>Relational</ReportType>
+                              <RelationalField>MREL_CHANGE_REQUESTS</RelationalField>
+                              <RelationalFieldID>361c179c-b2d9-4e34-997d-77f4dbee633c</RelationalFieldID>
+                              <ShowOnlySelectedItemsJSValue>_ShowOnlySelectedItems.NO</ShowOnlySelectedItemsJSValue>
+                              <ShowShowOnlySelectedCheckboxJSValue>_ShowShowOnlySelectedCheckbox.NEVER</ShowShowOnlySelectedCheckboxJSValue>
+                              <ShowTitle>false</ShowTitle>
+                              <ShowDetails>false</ShowDetails>
+                              <ShowRequeryLink>false</ShowRequeryLink>
+                              <ShowSelectLinks>true</ShowSelectLinks>
+                              <ShowClearLink>true</ShowClearLink>
+                              <ReportHash>XxxU5qgIZoa9qFtfatRMrpO/8Jw=</ReportHash>
+                              <AlternateSelection>true</AlternateSelection>
+                              <Caption />
+                              <Url>tmtrack.dll</Url>
+                              <Query>
+                                <Template outputHtml="False">ReportPage=&amp;template=reports%2Fjsonlist&amp;ReportUUID=bf378cf1-2d81-4ec2-8443-27d5244de32a&amp;AppRptProjId=I_USR_SDDCRS_CHANGE_REQUESTS.CRS_CHANGE_REQUESTS_PROJECT&amp;HasRuntimeParams=1&amp;F_TS_ISSUEID={0}&amp;F_TS_TITLE={0}&amp;F_TS_SREL_PRODUCT={1}&amp;embedded=&amp;F_TS_SREL_EPIC_STORY={2}</Template>
+                                <Param>TitleSearchTextBox</Param>
+                                <Param field="SDD Application" path="ID">SREL_PRODUCT</Param>
+                                <Param>RecordId</Param>
+                              </Query>
+                              <Refresh onpageload="True" ondatachange="True" onclick="True" buttonname="goButton" buttonid="072da121-f7e0-4aeb-aa24-c94c88dee319" />
+                            </EmbeddedReportWidget>
+                          </Cell>
+                        </Row>
+                      </Table>
+                    </GroupBox>
+                  </ResponsiveCell>
+                </ResponsiveRow>
+              </Container>
+            </GroupBox>
+          </ResponsiveCell>
+        </ResponsiveRow>
+      </Container>
+    </ScrollableContent>
+    <RightSidebar empty="true" />
+    <BottomSidebar layoutMode="Responsive" hAlign="Justify" vAlign="Justify" bgcolor="White">
+      <SizeFlavor>AutoSize</SizeFlavor>
+      <PixelSize>48</PixelSize>
+      <PercentageSize>20</PercentageSize>
+      <Padding>
+        <Left>0</Left>
+        <Top>0</Top>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </Padding>
+      <Container cellPadding="4">
+        <ResponsiveRow>
+          <ResponsiveCell hAlign="Far" vAlign="Near" ResponsiveBlockWidth="12">
+            <Panel name="ButtonPanel" id="0c7eee24-4054-4a69-a24d-429c231d927d" panelId="0c7eee24-4054-4a69-a24d-429c231d927d" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Top" bgcolor="Transparent" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+              <Padding>
+                <Left>0</Left>
+                <Top>0</Top>
+                <Right>5</Right>
+                <Bottom>0</Bottom>
+              </Padding>
+              <Text id="0c7eee24-4054-4a69-a24d-429c231d927d">Panel</Text>
+              <Table hAlign="Near" vAlign="Near" cellPadding="4" cellSpacing="0">
+                <ColumnDefs>
+                  <Column />
+                  <Column />
+                </ColumnDefs>
+                <Row>
+                  <Cell hAlign="Far" vAlign="Near">
+                    <Button name="SubmitButton" id="SubmitButton" mobileOption="HideInSimpleMode" class="SubmitButton">
+                      <Text id="91dde228-2345-435f-b1e8-1d9b9114b1a0">OK</Text>
+                      <Behavior>SubmitForm</Behavior>
+                      <Template outputHtml="True" />
+                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                    </Button>
+                  </Cell>
+                  <Cell hAlign="Near" vAlign="Near">
+                    <Button name="CancelButton" id="CancelButton" mobileOption="HideInSimpleMode" class="CancelButton">
+                      <Text id="dee06450-a8b7-4da7-81b8-341214326c2d">Cancel</Text>
+                      <Behavior>CancelForm</Behavior>
+                      <Template outputHtml="True" />
+                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                    </Button>
+                  </Cell>
+                </Row>
+              </Table>
+            </Panel>
+          </ResponsiveCell>
+        </ResponsiveRow>
+      </Container>
+    </BottomSidebar>
+  </TopFormTable>
+  <HiddenField name="Title/Summary" id="8f5a8886-b538-42a5-a1bc-8fe337be8211" needSubmit="False" omitFromAutoSections="False" />
+  <HiddenField name="Change Request(s)" id="361c179c-b2d9-4e34-997d-77f4dbee633c" needSubmit="False" omitFromAutoSections="True" />
+  <HiddenField name="SDD Application" id="f03f72d6-b512-4d88-bc5c-ce576dd8ca31" needSubmit="False" omitFromAutoSections="False" />
+  <Includes>
+    <Include type="js" name="ExpandAll.js">$FORM_EXTENSION_ASSET_PATH(Expand All)/javascript/ExpandAll.js</Include>
+    <Include type="css" name="TransitionIcon.css">$FORM_EXTENSION_ASSET_PATH(Transition Icon)/styles/TransitionIcon.css</Include>
+  </Includes>
+</TtForm>

@@ -1,0 +1,125 @@
+def SetControllerAndSubstitutes() {
+	var retVal = Variant();
+	
+	global sSecOwners;
+	if (sSecOwners.is_var_undef()) { sSecOwners = ","; }
+	var fldValue = Variant();
+	var toState = Shell.ToStateName().to_string();
+	var toTransition = Shell.TransitionName().to_string();
+
+	switch (toState) {
+		case( "DRAFT" ) {
+			retVal = Shell.Item().GetFieldValue( PROJECT_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+	
+			retVal = Shell.Item().GetFieldValue( CM_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			retVal = Shell.Item().GetFieldValue( VENDOR_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+			
+			retVal = Shell.Item().GetFieldValue( REQUIREMENTS_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+			break;
+
+		}
+		case( "IPT REVIEW" ) {
+	
+			retVal = Shell.Item().GetFieldValue( PROJECT_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			retVal = Shell.Item().GetFieldValue( REQUIREMENTS_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			retVal = Shell.Item().GetFieldValue( VENDOR_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+			
+			break;
+
+		}
+		case( "GOV APPROVAL" ) {
+ 			retVal = Shell.Item().GetFieldValue( PROJECT_MANAGER_GOV_FLD );
+    			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+			//if(!IsBlank(retVal)){ Shell.Item().SetFieldValue( "ASSIGNEE", retVal);  }
+
+			retVal = Shell.Item().GetFieldValue( CM_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			break;
+		}
+		case( "PRODUCT BACKLOG" ) {
+			retVal = Shell.Item().GetFieldValue( PROJECT_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+			break;
+		}
+		case( "SPRINT BACKLOG" ) {
+			retVal = Shell.Item().GetFieldValue( PROJECT_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			retVal = Shell.Item().GetFieldValue( VENDOR_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			break;
+
+		}
+		case( "WORKING" ) {
+			retVal = Shell.Item().GetFieldValue( VENDOR_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			retVal = Shell.Item().GetFieldValue( PROJECT_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			break;
+		}
+
+		case( "TESTING" ) {
+			retVal = Shell.Item().GetFieldValue( TEST_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+			
+			retVal = Shell.Item().GetFieldValue( PROJECT_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			break;
+		}
+		case( "TEST QUEUE" ) {
+			retVal = Shell.Item().GetFieldValue( TEST_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			retVal = Shell.Item().GetFieldValue( PROJECT_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			break;
+		}
+		case( "CR TASK(S) IN PROGRESS" ) {
+			retVal = Shell.Item().GetFieldValue( PROJECT_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			break;
+		}
+		case( "CR TASKS COMPLETE" ) {
+
+			break;
+		}
+		case( "DONE" ) {
+			retVal = Shell.Item().GetFieldValue( PROJECT_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+			break;
+		}
+		case( "IMPLEMENTED" ) {
+			retVal = Shell.Item().GetFieldValue( CM_TEAM_FLD );
+			if(!IsBlank(retVal)){ sSecOwners = sSecOwners &&& TrimCommas(retVal.to_string()) &&& ","; }
+
+			break;
+		}
+		case( "CANCEL / WITHDRAWN" ) {
+			break;
+		}
+		default {
+			break;
+		}
+	}
+	if ( sSecOwners=="," ) { sSecOwners=",," ; }
+	//Shell.Item().SetFieldValue("CRS_TEAM",sSecOwners);
+	return sSecOwners;
+
+}

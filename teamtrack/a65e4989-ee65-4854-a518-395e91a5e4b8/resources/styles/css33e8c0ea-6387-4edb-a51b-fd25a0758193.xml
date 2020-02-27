@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualStyles id="33e8c0ea-6387-4edb-a51b-fd25a0758193" sbmVersion="11.3.1">
+  <VisualStyle name="Annotation Style" id="36e00023-8de4-471f-835c-ac52d31506b4" type="system">
+    <key>.annotation</key>
+    <description />
+    <options>annotation</options>
+    <pencolor>#666666</pencolor>
+    <penwidth>1</penwidth>
+    <penstyle>Solid</penstyle>
+    <brushcolor>#FCF585</brushcolor>
+    <font family="Tahoma" size="7" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Swimlane Style" id="192bdff2-bd75-4096-9437-7f8a9dffd15d" type="system">
+    <key>.band</key>
+    <description />
+    <options>band</options>
+    <pencolor>White</pencolor>
+    <penwidth>1</penwidth>
+    <penstyle>Solid</penstyle>
+    <brushcolor>Yellow</brushcolor>
+    <font family="Tahoma" size="10" bold="true" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Control Style" id="1711ecf1-bc93-4609-accb-039cab3d7ab7" type="system">
+    <key>.control</key>
+    <description />
+    <options>control</options>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="StatePanel" id="c4e9a1ee-2564-4cf4-b1b7-bf01c94051ae" type="custom">
+    <key>faf76ca2-36f9-48dd-a5f9-1c4e7a07f1a2</key>
+    <description />
+    <options>container</options>
+    <brushcolor>#01A9E7</brushcolor>
+    <colortwo>Transparent</colortwo>
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="StatePanelText" id="e06804c8-b5b0-4fb5-853e-3d6c87851ddf" type="custom">
+    <key>52ed4377-6da6-4ffd-bf61-292c87309776</key>
+    <description />
+    <options>control</options>
+    <pencolor>#01A9E7</pencolor>
+    <font family="Arial" size="18" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="WarningStyle" id="e0cd8355-1b59-4864-827b-8e750651ebef" type="custom">
+    <key>dc335c4b-536d-41d9-bd91-3bb21f724305</key>
+    <description />
+    <options>control</options>
+    <pencolor>#BA1419</pencolor>
+    <font family="Arial" size="10" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="GroupBoxWBorder" id="0fff662f-86c0-4863-b77b-ed7f0d3f5abe" type="custom">
+    <key>50368ef7-2652-439e-a760-3f486ca3cf38</key>
+    <description />
+    <options>container</options>
+    <pencolor>#5C83B4</pencolor>
+    <brushcolor>Transparent</brushcolor>
+    <font family="Tahoma" size="10.2" bold="true" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Transition Link" id="04f550cc-a4ad-446c-8662-55ddf6fa181d" type="custom">
+    <key>b08a4317-2d4a-42fb-bbfb-53509a663fde</key>
+    <description />
+    <options>control</options>
+    <pencolor>#56606E</pencolor>
+    <brushcolor>Transparent</brushcolor>
+    <font family="Arial" size="11.25" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Transition Form Button Panel" id="462d182c-a586-4605-b883-1f22e4cde98c" type="custom">
+    <key>226e9eab-4350-4581-b015-47b983c5a057</key>
+    <description />
+    <options>container</options>
+    <brushcolor>#F6F6F6</brushcolor>
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Titlebar Panel Style 3" id="fc1d2740-1e53-4860-b527-2724d3f7081b" type="custom">
+    <key>0ed25900-df30-4db9-9fa3-84b6ab98592b</key>
+    <description />
+    <options>container</options>
+    <pencolor>White</pencolor>
+    <brushcolor>#646363</brushcolor>
+    <font family="Arial" size="8.25" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Titlebar Panel Style" id="0f48625f-d4e3-41b5-bd70-f9c213fa5509" type="custom">
+    <key>0ed25900-df30-4db9-9fa3-84b6ab98592b</key>
+    <description />
+    <options>container</options>
+    <pencolor>White</pencolor>
+    <brushcolor>#646363</brushcolor>
+    <font family="Arial" size="8.25" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="StateHeaderPanelText" id="89fbff22-53ae-475b-aae7-22d57693d287" type="custom">
+    <key>871076f9-460f-424e-bcd4-e2dbb5512ea9</key>
+    <description />
+    <options>control</options>
+    <pencolor>#575551</pencolor>
+    <font family="Tahoma" size="14" bold="true" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="SooGroupBoxWBorder" id="e8523f8e-51c2-483c-9cf3-c354c6a01b86" type="custom">
+    <key>409e9538-fefb-4d04-a354-6c4a3b015e88</key>
+    <description />
+    <options>container</options>
+    <pencolor>#8066A0</pencolor>
+    <brushcolor>#F7F4EB</brushcolor>
+    <font family="Tahoma" size="10.2" bold="true" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="PrinterSubHeading" id="eb80deb9-a7ed-4e5b-901b-9bba30339f5b" type="custom">
+    <key>743ae808-093d-4231-8788-54425d40b415</key>
+    <description />
+    <options>control</options>
+    <pencolor>#727272</pencolor>
+    <font family="Tahoma" size="7.8" bold="true" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Label Style" id="e2e684d8-01b3-4912-898f-b8f9bca107b6" type="system">
+    <key>.label</key>
+    <description />
+    <options>control</options>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Transition Button" id="a84db8bf-a929-4641-a599-3130921585b7" type="custom">
+    <key>28be9059-d0d3-4219-b99c-b39b06ea10f0</key>
+    <description />
+    <options>control</options>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="NoWrapControlStyle" id="7702ae70-82c3-4d34-9762-9fc8c17052ae" type="custom">
+    <key>.control</key>
+    <description />
+    <options>control</options>
+    <font family="Arial" size="8" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="HyperLink Style" id="8c7e4953-9632-41ea-8a6a-cf4e2bd577f9" type="system">
+    <key>.link</key>
+    <description />
+    <options>control</options>
+    <pencolor>#595959</pencolor>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="IM State Heading Style" id="0c941cc3-b2ea-4e5e-971d-b3150d9c2eb2" type="custom">
+    <key>.label</key>
+    <description />
+    <options>control</options>
+    <pencolor>#0072BC</pencolor>
+    <font family="Tahoma" size="10" bold="true" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Expander Style" id="5929410c-9245-491a-8a57-00fced2b0fbb" type="system">
+    <key>.section</key>
+    <description />
+    <options>container</options>
+    <font family="Arial" size="12" bold="true" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="UIPBackground" id="b6412d42-a988-4bbe-8498-0aa40a3dfd70" type="custom">
+    <key>409e9538-fefb-4d04-a354-6c4a3b015e88</key>
+    <description />
+    <options>container</options>
+    <pencolor>White</pencolor>
+    <brushcolor>WhiteSmoke</brushcolor>
+    <font family="Arial" size="10" bold="true" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Tab Style" id="731cc036-5c17-4252-8de0-dbff4fee3b35" type="system">
+    <key>.tab</key>
+    <description />
+    <options>container</options>
+    <font family="Arial" size="12" bold="true" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Preferred" id="725c63e7-672f-47a7-b786-4a3034424cb1" type="system">
+    <key>PreferredPath</key>
+    <description />
+    <options>transition</options>
+    <pencolor>#22B14C</pencolor>
+    <penwidth>1</penwidth>
+    <penstyle>Solid</penstyle>
+    <brushcolor>White</brushcolor>
+    <font family="Tahoma" size="8" />
+  </VisualStyle>
+  <VisualStyle name="Optional" id="8642c15e-b60f-44c8-a601-9ff6dd8e11ab" type="system">
+    <key>OptionalPath</key>
+    <description />
+    <options>transition</options>
+    <pencolor>#575551</pencolor>
+    <penwidth>1</penwidth>
+    <penstyle>Dash</penstyle>
+    <brushcolor>White</brushcolor>
+    <font family="Tahoma" size="8" />
+  </VisualStyle>
+  <VisualStyle name="Exception" id="2d3e4803-e158-43d9-8fab-efefbb0410d7" type="system">
+    <key>ExceptionPath</key>
+    <description />
+    <options>transition</options>
+    <pencolor>#BA1419</pencolor>
+    <penwidth>1</penwidth>
+    <penstyle>Solid</penstyle>
+    <brushcolor>White</brushcolor>
+    <font family="Tahoma" size="8" />
+  </VisualStyle>
+  <VisualStyle name="Normal" id="d4070834-c513-4e0c-bdf4-e1cfee81ef0d" type="system">
+    <key>Regular</key>
+    <description />
+    <options>transition</options>
+    <pencolor>#575551</pencolor>
+    <penwidth>1</penwidth>
+    <penstyle>Solid</penstyle>
+    <brushcolor>White</brushcolor>
+    <font family="Tahoma" size="8" />
+  </VisualStyle>
+  <VisualStyle name="Active State Style" id="cda3f42b-c42b-451c-a4e7-e9ef018f3a15" type="system">
+    <key>.active_state</key>
+    <description />
+    <options>state</options>
+    <penwidth>2</penwidth>
+    <penstyle>Solid</penstyle>
+    <brushcolor>White</brushcolor>
+    <font family="Tahoma" size="10" bold="true" />
+  </VisualStyle>
+  <VisualStyle name="Inactive State Style" id="16a8cec9-07f5-4036-a0db-dbbf3d0312f1" type="system">
+    <key>.inactive_state</key>
+    <description />
+    <options>state</options>
+    <pencolor>#282828</pencolor>
+    <penwidth>2</penwidth>
+    <penstyle>Solid</penstyle>
+    <brushcolor>White</brushcolor>
+    <font family="Tahoma" size="10" bold="true" />
+  </VisualStyle>
+  <VisualStyle name="Decision Style" id="dc2d8533-7413-4165-8da4-3ec69b0b0168" type="system">
+    <key>.decision</key>
+    <description />
+    <options>decision</options>
+    <penwidth>2</penwidth>
+    <penstyle>Solid</penstyle>
+    <brushcolor>White</brushcolor>
+    <font family="Tahoma" size="8" />
+  </VisualStyle>
+  <VisualStyle name="Workflow Style" id="5dbcfff9-eebc-4231-bbd7-dfd0f3b914a7" type="system">
+    <key>.stateflow</key>
+    <description />
+    <options>stateflow</options>
+    <pencolor>#D2EAF0</pencolor>
+    <penwidth>1</penwidth>
+    <penstyle>Solid</penstyle>
+  </VisualStyle>
+  <VisualStyle name="SDDCFStateHeadingStyle" id="c0c76f2f-6d60-4137-9b55-4783221f8951" type="custom">
+    <key>871076f9-460f-424e-bcd4-e2dbb5512ea9</key>
+    <description />
+    <options>control</options>
+    <pencolor>#5C83B4</pencolor>
+    <brushcolor>Transparent</brushcolor>
+    <font family="Tahoma" size="10" bold="true" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="State Form Style" id="1c7d2dd7-3a1a-4258-9498-214d3a9a9dcb" type="system">
+    <key>View</key>
+    <description />
+    <options>form</options>
+    <brushcolor>Transparent</brushcolor>
+  </VisualStyle>
+  <VisualStyle name="Container Style" id="244740d6-a477-4eb8-995b-a1dc7604ac86" type="custom">
+    <key>c357f27e-c6b5-41bd-a6d5-6dab02b48b20</key>
+    <description />
+    <options>container</options>
+    <brushcolor>Transparent</brushcolor>
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="CR State Heading Style" id="1143b16b-a5f2-4e03-9250-3bed874c0fe4" type="custom">
+    <key>.label</key>
+    <description />
+    <options>control</options>
+    <pencolor>#5C83B4</pencolor>
+    <font family="Arial" size="16" bold="true" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Titlebar Panel Style 4" id="f350462a-1510-4ffd-80d5-fcda82a2a459" type="custom">
+    <key>0ed25900-df30-4db9-9fa3-84b6ab98592b</key>
+    <description />
+    <options>container</options>
+    <pencolor>White</pencolor>
+    <brushcolor>#646363</brushcolor>
+    <font family="Arial" size="8.25" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Transition Form Style" id="14eb4474-6d6d-4fb4-b097-ef5522c07e59" type="system">
+    <key>Edit</key>
+    <description />
+    <options>form</options>
+    <brushcolor>Transparent</brushcolor>
+  </VisualStyle>
+  <GridVisualStyle name="Grid Style" id="fe3c008a-dec5-43e2-89ce-e6f675bf8a59" type="system">
+    <key>.grid</key>
+    <description />
+    <options>grid</options>
+    <brushcolor>Transparent</brushcolor>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </GridVisualStyle>
+  <VisualStyle name="PanelGroupWBackground" id="fd4bfd9b-0231-40e2-b44b-70b3fbf154f0" type="custom">
+    <key>cb86340a-1b7f-41a4-a510-58737bdb73cb</key>
+    <description />
+    <options>container</options>
+    <brushcolor>#F7F7F7</brushcolor>
+    <font family="Arial" size="10" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="SubmitButton" id="dd0987ba-2102-4877-84e3-d0ebdc9a241f" type="custom">
+    <key>38e3aca6-e2ca-4849-a1b4-1bd057723640</key>
+    <description />
+    <options>control</options>
+    <pencolor>White</pencolor>
+    <brushcolor>#007CD0</brushcolor>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Print Section Style" id="2a5f9059-83cd-49f5-8594-8236a0e24f8a" type="system">
+    <key>.print_section</key>
+    <description />
+    <options>container</options>
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>-1</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Blue Text" id="b1b2739d-4a10-471c-80f1-8f24e4f55525" type="custom">
+    <key>f27715d4-3528-4dee-8498-368b685c0031</key>
+    <description />
+    <options>control</options>
+    <pencolor>#36595D</pencolor>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Blue Text Container" id="c2ab1ccf-f852-4970-93b7-af7771a1d0a4" type="custom">
+    <key>73e4086c-f9c3-4ae9-8477-1543e5fe105b</key>
+    <description />
+    <options>container</options>
+    <pencolor>#36595D</pencolor>
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="CancelButton" id="d7b86e9f-eb3c-4a6b-877c-944a1a1f6a40" type="custom">
+    <key>38e3aca6-e2ca-4849-a1b4-1bd057723640</key>
+    <description />
+    <options>control</options>
+    <pencolor>#007CD0</pencolor>
+    <brushcolor>White</brushcolor>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Header Text Style" id="b525c60d-f3a4-4564-8195-41ba1ea812f3" type="custom">
+    <key>.label</key>
+    <description />
+    <options>control</options>
+    <pencolor>White</pencolor>
+    <font family="Arial" size="14.25" bold="true" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Print Form Style" id="8d711ddd-1215-4ce5-a6b3-e4bc966db1ad" type="system">
+    <key>Print</key>
+    <description />
+    <options>form</options>
+  </VisualStyle>
+  <VisualStyle name="Transition Button Style" id="4af883f0-137a-43b6-8794-e24ebfc6d60f" type="custom">
+    <key>fafeee4a-bec7-43e5-a35a-09390b810d2a</key>
+    <description />
+    <options>control</options>
+    <brushcolor>White</brushcolor>
+    <font family="Tahoma" size="9" bold="true" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="MainContainerPanel" id="893607d6-2a81-4edb-a382-275d0f5ac9a5" type="custom">
+    <key>6f768522-eb96-4e57-9808-149f640a3764</key>
+    <description />
+    <options>container</options>
+    <brushcolor>Transparent</brushcolor>
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Header Style" id="5ab98ea3-4526-4942-b589-3029318cd0fd" type="system">
+    <key>.sidebarTop</key>
+    <description />
+    <options>sidebar</options>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="TitleStyle" id="6047e46b-eb61-486f-82cb-9258eb2a36a2" type="custom">
+    <key>ad5c2da7-a5a5-4f53-88fe-cebac93aff6b</key>
+    <description />
+    <options>control</options>
+    <pencolor>White</pencolor>
+    <font family="Arial" size="16" bold="true" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Footer Style" id="ce35ee24-53bb-4374-a7f4-6eba130d2865" type="system">
+    <key>.sidebarBottom</key>
+    <description />
+    <options>sidebar</options>
+    <brushcolor>White</brushcolor>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Left Sidebar Style" id="389f6e66-34a3-434b-9d01-b4fd009e848c" type="system">
+    <key>.sidebarLeft</key>
+    <description />
+    <options>sidebar</options>
+    <brushcolor>#F7F7F7</brushcolor>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Right Sidebar Style" id="2cc5cef9-3050-4897-85a1-affe74694586" type="system">
+    <key>.sidebarRight</key>
+    <description />
+    <options>sidebar</options>
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="Dark Panel Style" id="97f9e9ee-d4d4-41cf-9b48-43ff585e2c49" type="custom">
+    <key>2fd9cb9c-12e7-486a-a8fc-65f289ba5dcd</key>
+    <description />
+    <options>container</options>
+    <pencolor>#595959</pencolor>
+    <brushcolor>#F2F2F2</brushcolor>
+    <colortwo>#F2F2F2</colortwo>
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Default Container Style" id="545a99ee-55dd-4148-b118-704aecb75deb" type="custom">
+    <key>1818577c-44c6-446a-9c55-43b6dc805a45</key>
+    <description />
+    <options>container</options>
+    <pencolor>#0073E7</pencolor>
+    <brushcolor>Transparent</brushcolor>
+    <font family="Tahoma" size="10" bold="true" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="SooButtonText" id="b766fabb-06e8-4565-85ca-db7d5fda3a22" type="custom">
+    <key>b4e81750-310d-4ff5-9184-4391fbc58c30</key>
+    <description />
+    <options>control</options>
+    <pencolor>White</pencolor>
+    <font family="Arial" size="10" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="SooCancelButton" id="cf9731a7-0380-4cca-b872-c172ae7ca540" type="custom">
+    <key>50da7df1-2926-444e-bc0b-1fb438249740</key>
+    <description />
+    <options>container</options>
+    <pencolor>White</pencolor>
+    <brushcolor>#F7F4EB</brushcolor>
+    <image id="e776a803-72fc-4790-b039-ed2995fe4236" />
+    <font family="Arial" size="10" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="New Expander Style" id="11c4292a-8bb0-40cb-9dc9-1398ebaec9d8" type="custom">
+    <key>a9c36a05-2d04-4095-bf86-07b013d06264</key>
+    <description />
+    <options>container</options>
+    <pencolor>#0071BC</pencolor>
+    <brushcolor>Transparent</brushcolor>
+    <font family="Tahoma" size="12" bold="true" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="CRS Expander Style" id="a6d31090-42ed-4d9a-b6d3-9aff94c44144" type="custom">
+    <key>a9c36a05-2d04-4095-bf86-07b013d06264</key>
+    <description />
+    <options>container</options>
+    <colortwo>White</colortwo>
+    <font family="Arial" size="10" bold="true" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Expander Style 12 blue" id="f245b878-6b52-49f4-886a-de9c52067538" type="custom">
+    <key>392466ab-2fd3-438f-89ae-ffcf11c2502f</key>
+    <description />
+    <options>container</options>
+    <pencolor>#0072BC</pencolor>
+    <brushcolor>Transparent</brushcolor>
+    <font family="Arial" size="12" bold="true" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Header Panel Style" id="267cba4a-982b-4507-be27-3bb6bbeb4c45" type="custom">
+    <key>0ed25900-df30-4db9-9fa3-84b6ab98592b</key>
+    <description />
+    <options>container</options>
+    <brushcolor>#F6F6F6</brushcolor>
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="Header 1 Container Style" id="8aa1d179-9f08-423a-bd31-dae3176068c3" type="custom">
+    <key>05b4883d-b08d-4793-8c6c-8aab00daf31c</key>
+    <description />
+    <options>container</options>
+    <pencolor>White</pencolor>
+    <brushcolor>#959697</brushcolor>
+    <font family="Arial" size="10" bold="true" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+  <VisualStyle name="SR State Heading Style" id="d1bafd13-64b2-418a-9398-b223715f30ac" type="custom">
+    <key>.label</key>
+    <description />
+    <options>control</options>
+    <pencolor>#5C83B4</pencolor>
+    <font family="Tahoma" size="10" bold="true" />
+    <vAlign>Near</vAlign>
+    <hAlign>Near</hAlign>
+  </VisualStyle>
+  <VisualStyle name="OKButton" id="57aa5b4b-c853-4370-ae55-8f12c1df3966" type="custom">
+    <key>50da7df1-2926-444e-bc0b-1fb438249740</key>
+    <description />
+    <options>container</options>
+    <pencolor>White</pencolor>
+    <brushcolor>Transparent</brushcolor>
+    <font family="Tahoma" size="10.2" />
+    <vAlign>Justify</vAlign>
+    <hAlign>Justify</hAlign>
+    <cornerradius>0</cornerradius>
+  </VisualStyle>
+</VisualStyles>

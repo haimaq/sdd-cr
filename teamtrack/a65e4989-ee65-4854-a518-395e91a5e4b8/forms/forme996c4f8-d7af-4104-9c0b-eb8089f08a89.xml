@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TtForm version="100103000" showSizeGuide="True" width="1000" height="700" validateRequiredFields="False" includeJQuery="True" layoutMode="Responsive" hAlign="Justify" vAlign="Near">
+  <Name>CR TASK FORM</Name>
+  <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+  <Type>transition</Type>
+  <FormSBMVersion>11.3.1</FormSBMVersion>
+  <CollapseToolBar>false</CollapseToolBar>
+  <ShowItemIdentifier>false</ShowItemIdentifier>
+  <ShowProjectName>false</ShowProjectName>
+  <ShowButtonBar>true</ShowButtonBar>
+  <ShowActionBar>true</ShowActionBar>
+  <ShowViewport>false</ShowViewport>
+  <ShowTransitionIndicator>false</ShowTransitionIndicator>
+  <HideCustomButtonsFromButtonBar>false</HideCustomButtonsFromButtonBar>
+  <AllowExtendedTransitionButtonMapping>false</AllowExtendedTransitionButtonMapping>
+  <MasterLayout>Sections</MasterLayout>
+  <SideLabels>true</SideLabels>
+  <LegacyMode>false</LegacyMode>
+  <StyleOverride>cornerradius: 0;</StyleOverride>
+  <JavaScript>551a1c6f-f6bf-4a10-a4d4-5dd64dd1e2de</JavaScript>
+  <JavaScript>6e756b30-fb9a-4fa2-9017-ec69e4c7b6d0</JavaScript>
+  <JavaScript>96d32648-6c14-4d3a-a18e-afb9dad20df4</JavaScript>
+  <JavaScript>b35ec051-fee4-4f43-a020-d18aaeb33dc1</JavaScript>
+  <JavaScript>cda3927c-4a18-40e6-a607-7aa3b57b51aa</JavaScript>
+  <StringList sortOrder="Name" />
+  <TransitionBar dock="top" UUID="e58aecf4-ba14-4e54-8bba-f3c73cb2d55e">
+    <EnabledActions>AddNote, AddURL, AddFile, AddItemLink, AddFileAssociation, LinkSubtasks, LinkToPrincipal, UnlinkPrincipal, DisplayItemWorkflow, GetItemHelp</EnabledActions>
+    <SubmitButtonText>Submit</SubmitButtonText>
+    <CancelButtonText />
+  </TransitionBar>
+  <TableLayout columns="1" rows="1" cellPadding="0" cellSpacing="0">
+    <ColumnDefs>
+      <Column min-width="12">
+        <WidthFlavor>Fixed</WidthFlavor>
+        <PixelWidth>710</PixelWidth>
+        <PercentageWidth>100</PercentageWidth>
+        <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+      </Column>
+    </ColumnDefs>
+    <RowDefs>
+      <Row>
+        <HeightFlavor>AutoSize</HeightFlavor>
+        <PixelHeight>20</PixelHeight>
+        <PercentageHeight>100</PercentageHeight>
+      </Row>
+    </RowDefs>
+    <Cell row="0">
+      <TtFieldSectionControl UUID="7e366de6-b9aa-4f6a-8fdf-3a93d3bb2bb7" layoutMode="Inherit" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0">
+        <Name>MainContainerPanel</Name>
+        <Description />
+        <Text>Panel</Text>
+        <HorizontalAlignment>Justify</HorizontalAlignment>
+        <VerticalAlignment>Near</VerticalAlignment>
+        <Padding>
+          <Left>0</Left>
+          <Top>0</Top>
+          <Right>0</Right>
+          <Bottom>0</Bottom>
+        </Padding>
+        <SectionType>Panel</SectionType>
+        <BoundPrivilegeSections>None</BoundPrivilegeSections>
+        <CustomText>True</CustomText>
+        <PlaceholderRow>-1</PlaceholderRow>
+        <SideLabels>true</SideLabels>
+        <AutoSection>false</AutoSection>
+        <StyleOverride>bgcolor: Transparent;cornerradius: -1;</StyleOverride>
+        <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+        <TableLayout columns="1" rows="1" cellPadding="0" cellSpacing="0">
+          <ColumnDefs>
+            <Column min-width="12">
+              <WidthFlavor>Percentage</WidthFlavor>
+              <PixelWidth>20</PixelWidth>
+              <PercentageWidth>50</PercentageWidth>
+              <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+            </Column>
+          </ColumnDefs>
+          <RowDefs>
+            <Row>
+              <HeightFlavor>AutoSize</HeightFlavor>
+              <PixelHeight>20</PixelHeight>
+              <PercentageHeight>100</PercentageHeight>
+            </Row>
+          </RowDefs>
+          <Cell row="0">
+            <TtFieldSectionControl UUID="34b2b85d-702f-46c3-8f9d-3702a4dd68de" layoutMode="Inherit" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0" defaultbgcolor="White">
+              <Name>detailsTab</Name>
+              <Description />
+              <Text>Details</Text>
+              <HorizontalAlignment>Justify</HorizontalAlignment>
+              <VerticalAlignment>Near</VerticalAlignment>
+              <Padding>
+                <Left>20</Left>
+                <Top>10</Top>
+                <Right>20</Right>
+                <Bottom>10</Bottom>
+              </Padding>
+              <SectionType>Panel</SectionType>
+              <BoundPrivilegeSections>None</BoundPrivilegeSections>
+              <CustomText>True</CustomText>
+              <PlaceholderRow>-1</PlaceholderRow>
+              <SideLabels>true</SideLabels>
+              <AutoSection>false</AutoSection>
+              <StyleOverride>cornerradius: -1;</StyleOverride>
+              <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+              <TableLayout columns="1" rows="1" cellPadding="2" cellSpacing="0">
+                <ColumnDefs>
+                  <Column min-width="12">
+                    <WidthFlavor>AutoSize</WidthFlavor>
+                    <PixelWidth>20</PixelWidth>
+                    <PercentageWidth>100</PercentageWidth>
+                    <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+                  </Column>
+                </ColumnDefs>
+                <RowDefs>
+                  <Row>
+                    <HeightFlavor>AutoSize</HeightFlavor>
+                    <PixelHeight>20</PixelHeight>
+                    <PercentageHeight>100</PercentageHeight>
+                  </Row>
+                </RowDefs>
+                <Cell row="0">
+                  <TtFieldSectionControl UUID="6bd2df90-5f20-42a5-9d74-4e830b708ea3" layoutMode="Inherit" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0" defaultbgcolor="White">
+                    <Name>mainPanel</Name>
+                    <Description />
+                    <Text>Panel</Text>
+                    <HorizontalAlignment>Justify</HorizontalAlignment>
+                    <VerticalAlignment>Near</VerticalAlignment>
+                    <Padding>
+                      <Left>0</Left>
+                      <Top>0</Top>
+                      <Right>0</Right>
+                      <Bottom>0</Bottom>
+                    </Padding>
+                    <SectionType>Panel</SectionType>
+                    <BoundPrivilegeSections>None</BoundPrivilegeSections>
+                    <CustomText>True</CustomText>
+                    <PlaceholderRow>-1</PlaceholderRow>
+                    <SideLabels>true</SideLabels>
+                    <AutoSection>false</AutoSection>
+                    <StyleOverride>cornerradius: -1;</StyleOverride>
+                    <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+                    <TableLayout columns="1" rows="1" cellPadding="0" cellSpacing="0">
+                      <ColumnDefs>
+                        <Column min-width="12">
+                          <WidthFlavor>Percentage</WidthFlavor>
+                          <PixelWidth>20</PixelWidth>
+                          <PercentageWidth>100</PercentageWidth>
+                          <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+                        </Column>
+                      </ColumnDefs>
+                      <RowDefs>
+                        <Row>
+                          <HeightFlavor>AutoSize</HeightFlavor>
+                          <PixelHeight>568</PixelHeight>
+                          <PercentageHeight>100</PercentageHeight>
+                        </Row>
+                      </RowDefs>
+                      <Cell row="0">
+                        <TtFieldSectionControl UUID="7220269d-1c7d-4ca2-826f-f5286eef8230" layoutMode="Standard" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0" defaultbgcolor="White" CornerRadius="0">
+                          <Name>Panel</Name>
+                          <Description />
+                          <Text>Panel</Text>
+                          <HorizontalAlignment>Justify</HorizontalAlignment>
+                          <VerticalAlignment>Near</VerticalAlignment>
+                          <Padding>
+                            <Left>0</Left>
+                            <Top>0</Top>
+                            <Right>0</Right>
+                            <Bottom>0</Bottom>
+                          </Padding>
+                          <SectionType>Panel</SectionType>
+                          <BoundPrivilegeSections>None</BoundPrivilegeSections>
+                          <CustomText>True</CustomText>
+                          <PlaceholderRow>-1</PlaceholderRow>
+                          <SideLabels>true</SideLabels>
+                          <AutoSection>false</AutoSection>
+                          <StyleOverride>cornerradius: 0;</StyleOverride>
+                          <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+                          <TableLayout columns="7" rows="8" cellPadding="2" cellSpacing="2">
+                            <ColumnDefs>
+                              <Column min-width="173">
+                                <WidthFlavor>Fixed</WidthFlavor>
+                                <PixelWidth>173</PixelWidth>
+                                <PercentageWidth>50</PercentageWidth>
+                                <ResponsiveBlockWidth>1</ResponsiveBlockWidth>
+                              </Column>
+                              <Column min-width="20">
+                                <WidthFlavor>Fixed</WidthFlavor>
+                                <PixelWidth>20</PixelWidth>
+                                <PercentageWidth>100</PercentageWidth>
+                                <ResponsiveBlockWidth>1</ResponsiveBlockWidth>
+                              </Column>
+                              <Column min-width="225">
+                                <WidthFlavor>Fixed</WidthFlavor>
+                                <PixelWidth>225</PixelWidth>
+                                <PercentageWidth>50</PercentageWidth>
+                                <ResponsiveBlockWidth>1</ResponsiveBlockWidth>
+                              </Column>
+                              <Column min-width="80">
+                                <WidthFlavor>Fixed</WidthFlavor>
+                                <PixelWidth>80</PixelWidth>
+                                <PercentageWidth>100</PercentageWidth>
+                                <ResponsiveBlockWidth>1</ResponsiveBlockWidth>
+                              </Column>
+                              <Column min-width="173">
+                                <WidthFlavor>Fixed</WidthFlavor>
+                                <PixelWidth>173</PixelWidth>
+                                <PercentageWidth>50</PercentageWidth>
+                                <ResponsiveBlockWidth>1</ResponsiveBlockWidth>
+                              </Column>
+                              <Column min-width="20">
+                                <WidthFlavor>Fixed</WidthFlavor>
+                                <PixelWidth>20</PixelWidth>
+                                <PercentageWidth>100</PercentageWidth>
+                                <ResponsiveBlockWidth>1</ResponsiveBlockWidth>
+                              </Column>
+                              <Column min-width="225">
+                                <WidthFlavor>Fixed</WidthFlavor>
+                                <PixelWidth>225</PixelWidth>
+                                <PercentageWidth>100</PercentageWidth>
+                                <ResponsiveBlockWidth>1</ResponsiveBlockWidth>
+                              </Column>
+                            </ColumnDefs>
+                            <RowDefs>
+                              <Row>
+                                <HeightFlavor>AutoSize</HeightFlavor>
+                                <PixelHeight>20</PixelHeight>
+                                <PercentageHeight>100</PercentageHeight>
+                              </Row>
+                              <Row>
+                                <HeightFlavor>AutoSize</HeightFlavor>
+                                <PixelHeight>20</PixelHeight>
+                                <PercentageHeight>100</PercentageHeight>
+                              </Row>
+                              <Row>
+                                <HeightFlavor>AutoSize</HeightFlavor>
+                                <PixelHeight>20</PixelHeight>
+                                <PercentageHeight>100</PercentageHeight>
+                              </Row>
+                              <Row>
+                                <HeightFlavor>AutoSize</HeightFlavor>
+                                <PixelHeight>21</PixelHeight>
+                                <PercentageHeight>100</PercentageHeight>
+                              </Row>
+                              <Row>
+                                <HeightFlavor>AutoSize</HeightFlavor>
+                                <PixelHeight>20</PixelHeight>
+                                <PercentageHeight>100</PercentageHeight>
+                              </Row>
+                              <Row>
+                                <HeightFlavor>AutoSize</HeightFlavor>
+                                <PixelHeight>20</PixelHeight>
+                                <PercentageHeight>100</PercentageHeight>
+                              </Row>
+                              <Row>
+                                <HeightFlavor>AutoSize</HeightFlavor>
+                                <PixelHeight>20</PixelHeight>
+                                <PercentageHeight>100</PercentageHeight>
+                              </Row>
+                              <Row>
+                                <HeightFlavor>AutoSize</HeightFlavor>
+                                <PixelHeight>20</PixelHeight>
+                                <PercentageHeight>100</PercentageHeight>
+                              </Row>
+                            </RowDefs>
+                            <Cell row="0">
+                              <TtLabelControl UUID="c759e6b5-e29c-4e16-a21a-3744dcac1e0a" width="0" colIndex="0">
+                                <Name>TASKTITLE_Label</Name>
+                                <Description />
+                                <Text>TASK TITLE</Text>
+                                <HorizontalAlignment>Near</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <FieldID>4a96740e-28b8-4c4f-bf55-db26374e4df6</FieldID>
+                                <AssociatedControlID>9bc881d1-d348-4b10-b506-afabd03a0b5e</AssociatedControlID>
+                                <CustomLabel>False</CustomLabel>
+                                <PreviousFieldName>TASK TITLE</PreviousFieldName>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                              </TtLabelControl>
+                            </Cell>
+                            <Cell />
+                            <Cell colspan="5">
+                              <TtEditControl UUID="9bc881d1-d348-4b10-b506-afabd03a0b5e" mobileOption="AlwaysShow" width="0">
+                                <Name>TASKTITLE_Control</Name>
+                                <Description />
+                                <Text>TASK TITLE</Text>
+                                <RefreshableContent />
+                                <RefreshOnPageLoad>false</RefreshOnPageLoad>
+                                <RefreshOnDataChange>false</RefreshOnDataChange>
+                                <RefreshOnClick>false</RefreshOnClick>
+                                <RefreshButtonID />
+                                <HorizontalAlignment>Justify</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <EditType>EditBox</EditType>
+                                <Prefix />
+                                <Suffix />
+                                <FieldID>4a96740e-28b8-4c4f-bf55-db26374e4df6</FieldID>
+                                <AssociatedControlID>c759e6b5-e29c-4e16-a21a-3744dcac1e0a</AssociatedControlID>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                                <Render>
+                                  <Template outputHtml="False" />
+                                  <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                </Render>
+                              </TtEditControl>
+                            </Cell>
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell row="1">
+                              <TtLabelControl UUID="5ce3ef20-82d0-4e12-a1ce-92343d2f425f" width="0" colIndex="0">
+                                <Name>TASKDESCRIPTION_Label</Name>
+                                <Description />
+                                <Text>TASK DESCRIPTION</Text>
+                                <HorizontalAlignment>Near</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <FieldID>1e4de03c-a9e0-4142-86a5-9eeaa09a6a6a</FieldID>
+                                <AssociatedControlID>81925425-e2ef-44b1-8b43-c2de82e8a5a4</AssociatedControlID>
+                                <CustomLabel>False</CustomLabel>
+                                <PreviousFieldName>TASK DESCRIPTION</PreviousFieldName>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                              </TtLabelControl>
+                            </Cell>
+                            <Cell />
+                            <Cell colspan="5">
+                              <TtEditControl UUID="81925425-e2ef-44b1-8b43-c2de82e8a5a4" mobileOption="HideInSimpleMode" width="150" height="100">
+                                <Name>TASKDESCRIPTION_Control</Name>
+                                <Description />
+                                <Text>TASK DESCRIPTION</Text>
+                                <RefreshableContent />
+                                <RefreshOnPageLoad>false</RefreshOnPageLoad>
+                                <RefreshOnDataChange>false</RefreshOnDataChange>
+                                <RefreshOnClick>false</RefreshOnClick>
+                                <RefreshButtonID />
+                                <HorizontalAlignment>Justify</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <EditType>MultiLineEditBox</EditType>
+                                <Prefix />
+                                <Suffix />
+                                <FieldID>1e4de03c-a9e0-4142-86a5-9eeaa09a6a6a</FieldID>
+                                <AssociatedControlID>5ce3ef20-82d0-4e12-a1ce-92343d2f425f</AssociatedControlID>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                                <Render>
+                                  <Template outputHtml="False" />
+                                  <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                </Render>
+                              </TtEditControl>
+                            </Cell>
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell colspan="7" row="2">
+                              <TtFieldSectionControl UUID="4fb33c4e-fd4c-448a-b4e9-452b8254f5db" layoutMode="Standard" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0" defaultbgcolor="White" CornerRadius="0">
+                                <Name>Panel4</Name>
+                                <Description />
+                                <Text>Panel</Text>
+                                <HorizontalAlignment>Justify</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <SectionType>Panel</SectionType>
+                                <BoundPrivilegeSections>None</BoundPrivilegeSections>
+                                <CustomText>True</CustomText>
+                                <PlaceholderRow>-1</PlaceholderRow>
+                                <SideLabels>true</SideLabels>
+                                <AutoSection>false</AutoSection>
+                                <ImageID repeatX="True" repeatY="True">80b65c1a-f46e-458d-8578-a7bc62457e5b</ImageID>
+                                <StyleOverride>cornerradius: 0;</StyleOverride>
+                                <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+                                <TableLayout columns="1" rows="1" cellPadding="0" cellSpacing="0">
+                                  <ColumnDefs>
+                                    <Column min-width="20">
+                                      <WidthFlavor>Percentage</WidthFlavor>
+                                      <PixelWidth>20</PixelWidth>
+                                      <PercentageWidth>100</PercentageWidth>
+                                      <ResponsiveBlockWidth>1</ResponsiveBlockWidth>
+                                    </Column>
+                                  </ColumnDefs>
+                                  <RowDefs>
+                                    <Row>
+                                      <HeightFlavor>AutoSize</HeightFlavor>
+                                      <PixelHeight>20</PixelHeight>
+                                      <PercentageHeight>100</PercentageHeight>
+                                    </Row>
+                                  </RowDefs>
+                                  <Cell row="0">
+                                    <StaticTextControl UUID="e70743e9-a30b-46ea-a541-4dfb11a67004" mobileOption="HideInSimpleMode" width="0">
+                                      <Name>Text10</Name>
+                                      <Description />
+                                      <Text>.</Text>
+                                      <Behavior>URL</Behavior>
+                                      <Url />
+                                      <Target>_blank</Target>
+                                      <PopupHTML />
+                                      <PopupFeatures>height=300, width=500, status=no, menubar=no, resizable=no, scrollbars=yes, toolbar=no, location=no</PopupFeatures>
+                                      <ShowTransitionName>false</ShowTransitionName>
+                                      <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                      <ToolTipText />
+                                      <RefreshableContent>&amp;nbsp;</RefreshableContent>
+                                      <RefreshOnPageLoad>true</RefreshOnPageLoad>
+                                      <RefreshOnDataChange>false</RefreshOnDataChange>
+                                      <RefreshOnClick>false</RefreshOnClick>
+                                      <RefreshButtonID />
+                                      <HorizontalAlignment>Near</HorizontalAlignment>
+                                      <VerticalAlignment>Near</VerticalAlignment>
+                                      <StyleOverride>cornerradius: -1;</StyleOverride>
+                                      <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                                      <Render>
+                                        <Template outputHtml="True">&amp;nbsp;</Template>
+                                        <Refresh onpageload="True" ondatachange="False" onclick="False" />
+                                      </Render>
+                                    </StaticTextControl>
+                                  </Cell>
+                                </TableLayout>
+                              </TtFieldSectionControl>
+                            </Cell>
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell row="3">
+                              <TtLabelControl UUID="98afc9b7-882e-450d-bef8-88d9e7e82437" width="0" colIndex="0">
+                                <Name>TASKTYPE_Label</Name>
+                                <Description />
+                                <Text>TASK TYPE</Text>
+                                <HorizontalAlignment>Near</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <FieldID>ca5d3fbd-1d00-461f-a609-9c5ce469c4d2</FieldID>
+                                <AssociatedControlID>0a63d01d-36d2-4288-978e-2ebf9efa319f</AssociatedControlID>
+                                <CustomLabel>False</CustomLabel>
+                                <PreviousFieldName>TASK TYPE</PreviousFieldName>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                              </TtLabelControl>
+                            </Cell>
+                            <Cell />
+                            <Cell>
+                              <TtListControl UUID="0a63d01d-36d2-4288-978e-2ebf9efa319f" mobileOption="HideInSimpleMode" dualList="True" width="0">
+                                <Name>TASKTYPE_Control</Name>
+                                <Description />
+                                <Text>TASK TYPE</Text>
+                                <HorizontalAlignment>Justify</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <ListType>ComboBox</ListType>
+                                <FieldID>ca5d3fbd-1d00-461f-a609-9c5ce469c4d2</FieldID>
+                                <AssociatedControlID>98afc9b7-882e-450d-bef8-88d9e7e82437</AssociatedControlID>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                              </TtListControl>
+                            </Cell>
+                            <Cell />
+                            <Cell>
+                              <TtLabelControl UUID="5720ec91-a914-4428-b9c9-6b15a96308f1" width="0" colIndex="4">
+                                <Name>SDDApplication_Label</Name>
+                                <Description />
+                                <Text>SDD_APPLICATION</Text>
+                                <HorizontalAlignment>Near</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <FieldID>f03f72d6-b512-4d88-bc5c-ce576dd8ca31</FieldID>
+                                <AssociatedControlID>c312bb18-b984-49df-88c0-d8f08919c7e3</AssociatedControlID>
+                                <CustomLabel>True</CustomLabel>
+                                <PreviousFieldName>SDD Application</PreviousFieldName>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                              </TtLabelControl>
+                            </Cell>
+                            <Cell />
+                            <Cell>
+                              <TtListControl UUID="c312bb18-b984-49df-88c0-d8f08919c7e3" mobileOption="HideInSimpleMode" dualList="True" width="0">
+                                <Name>SDDApplication_Control</Name>
+                                <Description />
+                                <Text>SDD Application</Text>
+                                <HorizontalAlignment>Justify</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <ListType>ComboBox</ListType>
+                                <FieldID>f03f72d6-b512-4d88-bc5c-ce576dd8ca31</FieldID>
+                                <AssociatedControlID>5720ec91-a914-4428-b9c9-6b15a96308f1</AssociatedControlID>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                              </TtListControl>
+                            </Cell>
+                            <Cell row="4">
+                              <TtLabelControl UUID="d7538091-d8c6-48b4-9da2-b14fc6b1d4bb" width="0" colIndex="0">
+                                <Name>TASKDUEDATE_Label</Name>
+                                <Description />
+                                <Text>TASK DUE DATE</Text>
+                                <HorizontalAlignment>Near</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <FieldID>46ffc145-eead-4dbf-8f9e-e74f9e857861</FieldID>
+                                <AssociatedControlID>230b9501-1bd3-415a-82ff-0fe75333f87e</AssociatedControlID>
+                                <CustomLabel>False</CustomLabel>
+                                <PreviousFieldName>TASK DUE DATE</PreviousFieldName>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                              </TtLabelControl>
+                            </Cell>
+                            <Cell />
+                            <Cell>
+                              <TtEditControl UUID="230b9501-1bd3-415a-82ff-0fe75333f87e" mobileOption="AlwaysShow" width="150">
+                                <Name>TASKDUEDATE_Control</Name>
+                                <Description />
+                                <Text>TASK DUE DATE</Text>
+                                <RefreshableContent />
+                                <RefreshOnPageLoad>false</RefreshOnPageLoad>
+                                <RefreshOnDataChange>false</RefreshOnDataChange>
+                                <RefreshOnClick>false</RefreshOnClick>
+                                <RefreshButtonID />
+                                <HorizontalAlignment>Justify</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <EditType>DateTimePicker</EditType>
+                                <Prefix />
+                                <Suffix />
+                                <FieldID>46ffc145-eead-4dbf-8f9e-e74f9e857861</FieldID>
+                                <AssociatedControlID>d7538091-d8c6-48b4-9da2-b14fc6b1d4bb</AssociatedControlID>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                                <Render>
+                                  <Template outputHtml="False" />
+                                  <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                </Render>
+                              </TtEditControl>
+                            </Cell>
+                            <Cell />
+                            <Cell>
+                              <TtLabelControl UUID="8037d004-c1f1-4652-aff6-583c1ec4aea1" width="0" colIndex="4">
+                                <Name>AffectedUser_Label</Name>
+                                <Description />
+                                <Text>TASK OWNER</Text>
+                                <HorizontalAlignment>Near</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <FieldID>52084842-2efc-4b07-aff6-3d04fdab018d</FieldID>
+                                <AssociatedControlID>40ef97fe-bc63-41ea-9f47-66b74cbdf5c5</AssociatedControlID>
+                                <CustomLabel>True</CustomLabel>
+                                <PreviousFieldName>Affected User</PreviousFieldName>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                              </TtLabelControl>
+                            </Cell>
+                            <Cell />
+                            <Cell>
+                              <TtListControl UUID="40ef97fe-bc63-41ea-9f47-66b74cbdf5c5" mobileOption="HideInSimpleMode" dualList="True" width="0">
+                                <Name>AffectedUser_Control</Name>
+                                <Description />
+                                <Text>Affected User</Text>
+                                <HorizontalAlignment>Justify</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <ListType>ComboBox</ListType>
+                                <FieldID>52084842-2efc-4b07-aff6-3d04fdab018d</FieldID>
+                                <AssociatedControlID>8037d004-c1f1-4652-aff6-583c1ec4aea1</AssociatedControlID>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                              </TtListControl>
+                            </Cell>
+                            <Cell row="5" />
+                            <Cell />
+                            <Cell />
+                            <Cell />
+                            <Cell>
+                              <TtLabelControl UUID="868a15b1-6107-4a7a-9c9d-b7cfaffb5fce" width="0" colIndex="4">
+                                <Name>AffectedUsers_Label</Name>
+                                <Description />
+                                <Text>TASK TEAM</Text>
+                                <HorizontalAlignment>Near</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <FieldID>021dfb4c-af22-4b0f-b0b5-f21b3e78d1f1</FieldID>
+                                <AssociatedControlID>8fcda488-3d99-49b3-a67a-148fbd4cc7a6</AssociatedControlID>
+                                <CustomLabel>True</CustomLabel>
+                                <PreviousFieldName>Affected User(s)</PreviousFieldName>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                              </TtLabelControl>
+                            </Cell>
+                            <Cell />
+                            <Cell>
+                              <TtListControl UUID="8fcda488-3d99-49b3-a67a-148fbd4cc7a6" mobileOption="HideInSimpleMode" dualList="True">
+                                <Name>AffectedUsers_Control</Name>
+                                <Description />
+                                <Text>Affected User(s)</Text>
+                                <HorizontalAlignment>Near</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <ListType>ListBox</ListType>
+                                <FieldID>021dfb4c-af22-4b0f-b0b5-f21b3e78d1f1</FieldID>
+                                <AssociatedControlID>868a15b1-6107-4a7a-9c9d-b7cfaffb5fce</AssociatedControlID>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                                <ListSize>5</ListSize>
+                              </TtListControl>
+                            </Cell>
+                            <Cell row="6">
+                              <TtLabelControl UUID="722d6bf3-b3a6-49e4-8906-e6950bc5392e" width="0" colIndex="0">
+                                <Name>TASKCOMMENTS_Label</Name>
+                                <Description />
+                                <Text>TASK COMMENTS</Text>
+                                <HorizontalAlignment>Near</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <FieldID>a18d8986-ffee-44dd-9f38-5bd75a30c0c6</FieldID>
+                                <AssociatedControlID>520e813c-e489-4cdc-9a66-1fdc79381e00</AssociatedControlID>
+                                <CustomLabel>False</CustomLabel>
+                                <PreviousFieldName>TASK COMMENTS</PreviousFieldName>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                              </TtLabelControl>
+                            </Cell>
+                            <Cell />
+                            <Cell colspan="5">
+                              <TtEditControl UUID="520e813c-e489-4cdc-9a66-1fdc79381e00" mobileOption="HideInSimpleMode" width="150" height="100">
+                                <Name>TASKCOMMENTS_Control</Name>
+                                <Description />
+                                <Text>TASK COMMENTS</Text>
+                                <RefreshableContent />
+                                <RefreshOnPageLoad>false</RefreshOnPageLoad>
+                                <RefreshOnDataChange>false</RefreshOnDataChange>
+                                <RefreshOnClick>false</RefreshOnClick>
+                                <RefreshButtonID />
+                                <HorizontalAlignment>Justify</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <EditType>MultiLineEditBox</EditType>
+                                <Prefix />
+                                <Suffix />
+                                <FieldID>a18d8986-ffee-44dd-9f38-5bd75a30c0c6</FieldID>
+                                <AssociatedControlID>722d6bf3-b3a6-49e4-8906-e6950bc5392e</AssociatedControlID>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                                <Render>
+                                  <Template outputHtml="False" />
+                                  <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                </Render>
+                              </TtEditControl>
+                            </Cell>
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell row="7">
+                              <TtLabelControl UUID="6eb2a1dd-9c55-4433-a460-10f65733b67e" width="0" colIndex="0">
+                                <Name>TASKWORKLOG_Label</Name>
+                                <Description />
+                                <Text>TASK WORKLOG</Text>
+                                <HorizontalAlignment>Near</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <FieldID>838e77d5-be42-4b1e-8377-2231c6b97b0c</FieldID>
+                                <AssociatedControlID>a33bba83-553e-4b0a-8252-2ca4a2194105</AssociatedControlID>
+                                <CustomLabel>False</CustomLabel>
+                                <PreviousFieldName>TASK WORKLOG</PreviousFieldName>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                              </TtLabelControl>
+                            </Cell>
+                            <Cell />
+                            <Cell colspan="5">
+                              <TtEditControl UUID="a33bba83-553e-4b0a-8252-2ca4a2194105" mobileOption="HideInSimpleMode" width="150" height="100">
+                                <Name>TASKWORKLOG_Control</Name>
+                                <Description />
+                                <Text>TASK WORKLOG</Text>
+                                <RefreshableContent />
+                                <RefreshOnPageLoad>false</RefreshOnPageLoad>
+                                <RefreshOnDataChange>false</RefreshOnDataChange>
+                                <RefreshOnClick>false</RefreshOnClick>
+                                <RefreshButtonID />
+                                <HorizontalAlignment>Justify</HorizontalAlignment>
+                                <VerticalAlignment>Near</VerticalAlignment>
+                                <EditType>MultiLineEditBox</EditType>
+                                <Prefix />
+                                <Suffix />
+                                <FieldID>838e77d5-be42-4b1e-8377-2231c6b97b0c</FieldID>
+                                <AssociatedControlID>6eb2a1dd-9c55-4433-a460-10f65733b67e</AssociatedControlID>
+                                <StyleOverride>cornerradius: -1;</StyleOverride>
+                                <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                                <Render>
+                                  <Template outputHtml="False" />
+                                  <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                </Render>
+                              </TtEditControl>
+                            </Cell>
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                            <Cell hidden="true" />
+                          </TableLayout>
+                        </TtFieldSectionControl>
+                      </Cell>
+                    </TableLayout>
+                  </TtFieldSectionControl>
+                </Cell>
+              </TableLayout>
+            </TtFieldSectionControl>
+          </Cell>
+        </TableLayout>
+      </TtFieldSectionControl>
+    </Cell>
+  </TableLayout>
+  <FieldSections>
+    <Section id="7e366de6-b9aa-4f6a-8fdf-3a93d3bb2bb7" name="MainContainerPanel" mobileOption="AlwaysShow" display="Panel" type="Panel">
+      <Section id="34b2b85d-702f-46c3-8f9d-3702a4dd68de" name="detailsTab" mobileOption="AlwaysShow" display="Details" type="Panel">
+        <Section id="6bd2df90-5f20-42a5-9d74-4e830b708ea3" name="mainPanel" mobileOption="AlwaysShow" display="Panel" type="Panel">
+          <Section id="7220269d-1c7d-4ca2-826f-f5286eef8230" name="Panel" mobileOption="AlwaysShow" display="Panel" type="Panel">
+            <Field id="4a96740e-28b8-4c4f-bf55-db26374e4df6" name="TASK TITLE" mobileOption="AlwaysShow" dbName="EXT_ITEM_TITLE" spanEntireRow="False" />
+            <Field id="1e4de03c-a9e0-4142-86a5-9eeaa09a6a6a" name="TASK DESCRIPTION" mobileOption="HideInSimpleMode" dbName="EXT_ITEM_DESCRIPTION" spanEntireRow="False" />
+            <Section id="4fb33c4e-fd4c-448a-b4e9-452b8254f5db" name="Panel4" mobileOption="AlwaysShow" display="Panel" type="Panel">
+              <LabelControl id="e70743e9-a30b-46ea-a541-4dfb11a67004" name="Text10" mobileOption="HideInSimpleMode" text="." />
+            </Section>
+            <Field id="ca5d3fbd-1d00-461f-a609-9c5ce469c4d2" name="TASK TYPE" mobileOption="HideInSimpleMode" dbName="EXT_ITEM_TYPE" spanEntireRow="False" />
+            <Field id="f03f72d6-b512-4d88-bc5c-ce576dd8ca31" name="SDD Application" mobileOption="HideInSimpleMode" dbName="SREL_PRODUCT" spanEntireRow="False" customLabel="SDD_APPLICATION" />
+            <Field id="46ffc145-eead-4dbf-8f9e-e74f9e857861" name="TASK DUE DATE" mobileOption="AlwaysShow" dbName="EXT_ITEM_DUE_DATE" spanEntireRow="False" />
+            <Field id="52084842-2efc-4b07-aff6-3d04fdab018d" name="Affected User" mobileOption="HideInSimpleMode" dbName="AFFECTED_USER" spanEntireRow="False" customLabel="TASK OWNER" />
+            <Field id="021dfb4c-af22-4b0f-b0b5-f21b3e78d1f1" name="Affected User(s)" mobileOption="HideInSimpleMode" dbName="AFFECTED_USER_LIST" spanEntireRow="False" customLabel="TASK TEAM" />
+            <Field id="a18d8986-ffee-44dd-9f38-5bd75a30c0c6" name="TASK COMMENTS" mobileOption="HideInSimpleMode" dbName="EXT_ITEM_COMMENTS" spanEntireRow="False" />
+            <Field id="838e77d5-be42-4b1e-8377-2231c6b97b0c" name="TASK WORKLOG" mobileOption="HideInSimpleMode" dbName="EXT_ITEM_WORK_LOG" spanEntireRow="False" />
+          </Section>
+        </Section>
+      </Section>
+    </Section>
+  </FieldSections>
+  <FormLogicCollection>
+    <FormLogic UUID="98ed3570-8e94-45e2-99b9-5ffaadaf8462" enabled="True" ignoreOnImport="true">
+      <Name>Text10Refresh__!hiddenImpl</Name>
+      <Description />
+      <Events>
+        <Event>
+          <Name>event_PageLoaded</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue />
+              <TargetType>Undefined</TargetType>
+              <TargetValueMobile />
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+      </Events>
+      <FormStatements>
+        <FormStatement>
+          <ActionsOnly>true</ActionsOnly>
+          <OrConditions>false</OrConditions>
+          <Conditions />
+          <Actions>
+            <Action>
+              <Name>action_SetFieldOrControlValue</Name>
+              <Description />
+              <FormLogicBindParameters>
+                <FormLogicBindParameter>
+                  <Name>{Field.Text | Field.Selection | Field.MultipleSelection | Field.Binary | Field.Numeric | Field.DateTime | Field.User | Field.MultipleUser | TextControl | ImageControl | InputControl | ButtonControl | LinkControl}</Name>
+                  <Description />
+                  <TargetNodeID>e70743e9-a30b-46ea-a541-4dfb11a67004</TargetNodeID>
+                  <TargetIDs />
+                  <TargetValue>Text10</TargetValue>
+                  <TargetType>StaticControl</TargetType>
+                  <TargetValueMobile>Text10</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+                <FormLogicBindParameter>
+                  <Name>{?}</Name>
+                  <Description />
+                  <TargetIDs />
+                  <TargetValue>&amp;nbsp;</TargetValue>
+                  <TargetType>DependentValue</TargetType>
+                  <TargetValueMobile>&amp;nbsp;</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+              </FormLogicBindParameters>
+            </Action>
+          </Actions>
+        </FormStatement>
+      </FormStatements>
+    </FormLogic>
+    <FormLogic UUID="ce7e6b48-ee27-4ed4-aac0-f727151f692b" enabled="True" ignoreOnImport="true">
+      <Name>InvFormHeaderRefresh__!hiddenImpl</Name>
+      <Description />
+      <Events>
+        <Event>
+          <Name>event_PageLoaded</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue />
+              <TargetType>Undefined</TargetType>
+              <TargetValueMobile />
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+        <Event>
+          <Name>event_FieldOrInputControlChanged</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>{Field.Text | Field.Selection | Field.MultipleSelection | Field.Binary | Field.Numeric | Field.Summation | Field.DateTime | Field.Relational | Field.Contact | Field.MultipleRelational | Field.State | Field.User | Field.MultipleUser | Field.MultipleGroup | Field.SubRelational | Field.File | Field.URL | InputControl | RelationalGridWidget | RESTGridWidget}</Name>
+              <Description />
+              <TargetNodeID>8f5a8886-b538-42a5-a1bc-8fe337be8211</TargetNodeID>
+              <TargetIDs />
+              <TargetValue>Title/Summary</TargetValue>
+              <TargetType>Field</TargetType>
+              <TargetValueMobile>Title/Summary</TargetValueMobile>
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue />
+              <TargetType>Undefined</TargetType>
+              <TargetValueMobile />
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+      </Events>
+      <FormStatements>
+        <FormStatement>
+          <ActionsOnly>true</ActionsOnly>
+          <OrConditions>false</OrConditions>
+          <Conditions />
+          <Actions>
+            <Action>
+              <Name>action_SetFieldOrControlValue</Name>
+              <Description />
+              <FormLogicBindParameters>
+                <FormLogicBindParameter>
+                  <Name>{Field.Text | Field.Selection | Field.MultipleSelection | Field.Binary | Field.Numeric | Field.DateTime | Field.User | Field.MultipleUser | TextControl | ImageControl | InputControl | ButtonControl | LinkControl}</Name>
+                  <Description />
+                  <TargetNodeID>f60236ab-ef94-402b-9c27-a6ff4e382773</TargetNodeID>
+                  <TargetIDs />
+                  <TargetValue>InvFormHeader</TargetValue>
+                  <TargetType>StaticControl</TargetType>
+                  <TargetValueMobile>InvFormHeader</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+                <FormLogicBindParameter>
+                  <Name>{?}</Name>
+                  <Description />
+                  <TargetIDs />
+                  <TargetValue>{"Field.Title/Summary","8f5a8886-b538-42a5-a1bc-8fe337be8211",""}</TargetValue>
+                  <TargetType>DependentValue</TargetType>
+                  <TargetValueMobile>{8f5a8886-b538-42a5-a1bc-8fe337be8211}</TargetValueMobile>
+                  <MatchesNone>false</MatchesNone>
+                </FormLogicBindParameter>
+              </FormLogicBindParameters>
+            </Action>
+          </Actions>
+        </FormStatement>
+      </FormStatements>
+    </FormLogic>
+    <FormLogic UUID="6b445889-4eee-429c-8c9c-20b5e4c75b85" enabled="True">
+      <Name>Form Load: SOO Shell Formatting</Name>
+      <Description>Apply SOO formatting</Description>
+      <Events>
+        <Event>
+          <Name>event_PageLoaded</Name>
+          <Description />
+          <FormLogicBindParameters>
+            <FormLogicBindParameter>
+              <Name>_actionName</Name>
+              <Description />
+              <TargetIDs />
+              <TargetValue>fn_FormLoadSOOShellFormatting</TargetValue>
+              <TargetType>ActionName</TargetType>
+              <TargetValueMobile>fn_FormLoadSOOShellFormatting</TargetValueMobile>
+              <MatchesNone>false</MatchesNone>
+            </FormLogicBindParameter>
+          </FormLogicBindParameters>
+        </Event>
+      </Events>
+      <FormStatements>
+        <FormStatement>
+          <ActionsOnly>true</ActionsOnly>
+          <OrConditions>false</OrConditions>
+          <Conditions />
+          <Actions>
+            <Action>
+              <Name>action_SOOLoadUtils</Name>
+              <Description />
+              <FormLogicBindParameters />
+            </Action>
+          </Actions>
+        </FormStatement>
+      </FormStatements>
+    </FormLogic>
+  </FormLogicCollection>
+  <TopSidebar layoutMode="Inherit" hAlign="Justify" vAlign="Justify">
+    <SizeFlavor>AutoSize</SizeFlavor>
+    <PixelSize>100</PixelSize>
+    <PercentageSize>20</PercentageSize>
+    <SideLabels>true</SideLabels>
+    <Padding>
+      <Left>0</Left>
+      <Top>0</Top>
+      <Right>0</Right>
+      <Bottom>0</Bottom>
+    </Padding>
+    <StyleOverride>cornerradius: 0;</StyleOverride>
+    <DefaultStyleClass>HeaderStyle</DefaultStyleClass>
+    <TableLayout columns="1" rows="1" cellPadding="0" cellSpacing="0">
+      <ColumnDefs>
+        <Column min-width="12">
+          <WidthFlavor>AutoSize</WidthFlavor>
+          <PixelWidth>20</PixelWidth>
+          <PercentageWidth>100</PercentageWidth>
+          <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+        </Column>
+      </ColumnDefs>
+      <RowDefs>
+        <Row>
+          <HeightFlavor>AutoSize</HeightFlavor>
+          <PixelHeight>20</PixelHeight>
+          <PercentageHeight>100</PercentageHeight>
+        </Row>
+      </RowDefs>
+      <Cell row="0">
+        <TtFieldSectionControl UUID="68929f01-7915-4e4e-ac7b-f695bbe970d5" layoutMode="Standard" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0" defaultbgcolor="White">
+          <Name>StateTopPanel2</Name>
+          <Description />
+          <Text>Panel</Text>
+          <HorizontalAlignment>Justify</HorizontalAlignment>
+          <VerticalAlignment>Near</VerticalAlignment>
+          <Padding>
+            <Left>10</Left>
+            <Top>10</Top>
+            <Right>10</Right>
+            <Bottom>10</Bottom>
+          </Padding>
+          <SectionType>Panel</SectionType>
+          <BoundPrivilegeSections>None</BoundPrivilegeSections>
+          <CustomText>True</CustomText>
+          <PlaceholderRow>-1</PlaceholderRow>
+          <SideLabels>false</SideLabels>
+          <AutoSection>false</AutoSection>
+          <StyleOverride>cornerradius: -1;</StyleOverride>
+          <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+          <TableLayout columns="2" rows="1" cellPadding="0" cellSpacing="0">
+            <ColumnDefs>
+              <Column min-width="64">
+                <WidthFlavor>AutoSize</WidthFlavor>
+                <PixelWidth>20</PixelWidth>
+                <PercentageWidth>100</PercentageWidth>
+                <ResponsiveBlockWidth>1</ResponsiveBlockWidth>
+              </Column>
+              <Column min-width="216">
+                <WidthFlavor>Percentage</WidthFlavor>
+                <PixelWidth>20</PixelWidth>
+                <PercentageWidth>50</PercentageWidth>
+                <ResponsiveBlockWidth>12</ResponsiveBlockWidth>
+              </Column>
+            </ColumnDefs>
+            <RowDefs>
+              <Row>
+                <HeightFlavor>AutoSize</HeightFlavor>
+                <PixelHeight>20</PixelHeight>
+                <PercentageHeight>100</PercentageHeight>
+              </Row>
+            </RowDefs>
+            <Cell row="0">
+              <TtFieldSectionControl UUID="617a5576-a44a-4b82-9a65-9d1e76e5cff0" layoutMode="Standard" mobileOption="AlwaysShow" CollapsedDefault="False" ShowRowLines="False" width="0" height="0">
+                <Name>Panel3</Name>
+                <Description />
+                <Text>Panel</Text>
+                <HorizontalAlignment>Far</HorizontalAlignment>
+                <VerticalAlignment>Center</VerticalAlignment>
+                <Padding>
+                  <Left>0</Left>
+                  <Top>0</Top>
+                  <Right>0</Right>
+                  <Bottom>0</Bottom>
+                </Padding>
+                <SectionType>Panel</SectionType>
+                <BoundPrivilegeSections>None</BoundPrivilegeSections>
+                <CustomText>True</CustomText>
+                <PlaceholderRow>-1</PlaceholderRow>
+                <SideLabels>true</SideLabels>
+                <AutoSection>false</AutoSection>
+                <StyleOverride>bgcolor: Transparent;cornerradius: -1;</StyleOverride>
+                <DefaultStyleClass>ExpanderStyle</DefaultStyleClass>
+                <TableLayout columns="1" rows="1" cellPadding="0" cellSpacing="0">
+                  <ColumnDefs>
+                    <Column min-width="64">
+                      <WidthFlavor>AutoSize</WidthFlavor>
+                      <PixelWidth>64</PixelWidth>
+                      <PercentageWidth>100</PercentageWidth>
+                      <ResponsiveBlockWidth>0</ResponsiveBlockWidth>
+                    </Column>
+                  </ColumnDefs>
+                  <RowDefs>
+                    <Row>
+                      <HeightFlavor>AutoSize</HeightFlavor>
+                      <PixelHeight>64</PixelHeight>
+                      <PercentageHeight>100</PercentageHeight>
+                    </Row>
+                  </RowDefs>
+                  <Cell row="0">
+                    <StaticImageControl UUID="2e9d1ff3-481f-4b97-a540-9c1f3f829f4b" mobileOption="HideInSimpleMode" width="0" height="0">
+                      <Name>LogohImage</Name>
+                      <Description />
+                      <Text />
+                      <Behavior>URL</Behavior>
+                      <Url />
+                      <Target>_blank</Target>
+                      <PopupHTML />
+                      <PopupFeatures>height=300, width=500, status=no, menubar=no, resizable=no, scrollbars=yes, toolbar=no, location=no</PopupFeatures>
+                      <ShowTransitionName>false</ShowTransitionName>
+                      <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                      <ToolTipText />
+                      <ImageID>80ea8c92-0a66-4e26-9a68-25798944acde</ImageID>
+                      <ButtonStyle>false</ButtonStyle>
+                      <RefreshableContent />
+                      <RefreshOnPageLoad>false</RefreshOnPageLoad>
+                      <RefreshOnDataChange>false</RefreshOnDataChange>
+                      <RefreshOnClick>false</RefreshOnClick>
+                      <RefreshButtonID />
+                      <RefreshableContent2 />
+                      <RefreshOnPageLoad2>false</RefreshOnPageLoad2>
+                      <RefreshOnDataChange2>false</RefreshOnDataChange2>
+                      <RefreshOnClick2>false</RefreshOnClick2>
+                      <RefreshButtonID2 />
+                      <HorizontalAlignment>Center</HorizontalAlignment>
+                      <VerticalAlignment>Center</VerticalAlignment>
+                      <StyleOverride>cornerradius: -1;</StyleOverride>
+                      <DefaultStyleClass>ControlStyle</DefaultStyleClass>
+                      <Render>
+                        <Template outputHtml="True" />
+                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                        <SecondaryContent>
+                          <Template outputHtml="True" />
+                          <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                        </SecondaryContent>
+                      </Render>
+                      <ToolBarAction>
+                        <Action>ReloadItem</Action>
+                      </ToolBarAction>
+                    </StaticImageControl>
+                  </Cell>
+                </TableLayout>
+              </TtFieldSectionControl>
+            </Cell>
+            <Cell>
+              <StaticTextControl UUID="f60236ab-ef94-402b-9c27-a6ff4e382773" mobileOption="HideInSimpleMode" width="0">
+                <Name>InvFormHeader</Name>
+                <Description />
+                <Text>{Item Id}: {Name}</Text>
+                <Behavior>URL</Behavior>
+                <Url />
+                <Target>_blank</Target>
+                <PopupHTML />
+                <PopupFeatures>height=300, width=500, status=no, menubar=no, resizable=no, scrollbars=yes, toolbar=no, location=no</PopupFeatures>
+                <ShowTransitionName>false</ShowTransitionName>
+                <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                <ToolTipText />
+                <RefreshableContent>{"Field.Title/Summary","8f5a8886-b538-42a5-a1bc-8fe337be8211",""}</RefreshableContent>
+                <RefreshOnPageLoad>true</RefreshOnPageLoad>
+                <RefreshOnDataChange>true</RefreshOnDataChange>
+                <RefreshOnClick>false</RefreshOnClick>
+                <RefreshButtonID />
+                <HorizontalAlignment>Near</HorizontalAlignment>
+                <VerticalAlignment>Center</VerticalAlignment>
+                <StyleOverride>fgcolor: #575551;cornerradius: -1;font: Arial Black;fontsize: 16;bold: True;</StyleOverride>
+                <DefaultStyleClass>LabelStyle</DefaultStyleClass>
+                <Render>
+                  <Template outputHtml="True">{0}</Template>
+                  <Param>TITLE</Param>
+                  <Refresh onpageload="True" ondatachange="True" onclick="False" />
+                </Render>
+              </StaticTextControl>
+            </Cell>
+          </TableLayout>
+        </TtFieldSectionControl>
+      </Cell>
+    </TableLayout>
+  </TopSidebar>
+  <HiddenField name="Title/Summary" id="8f5a8886-b538-42a5-a1bc-8fe337be8211" needSubmit="False" omitFromAutoSections="False" />
+</TtForm>

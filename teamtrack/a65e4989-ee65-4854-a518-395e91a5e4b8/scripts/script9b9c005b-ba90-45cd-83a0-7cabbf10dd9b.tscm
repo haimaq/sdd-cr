@@ -1,0 +1,397 @@
+
+ def script_init_journalfield(journalField, strJrFldValue) {
+    var s_changepackage = Variant();
+    var fldValue  = "";
+
+    //  Recuperation des valeurs des champs a afficher
+    var valTransition = Shell.TransitionName();
+    var valFromState = Shell.FromStateName();
+    var valToState = Shell.ToStateName();
+    var currentUser = Shell.User().GetId();
+    Shell.Item().Fields().FindField("SREL_CPID").GetDisplayValue(s_changepackage);
+//    Shell.RedoMessage() = 	GetTableField("USR_RELEASE_PACKAGE","TITLE",Shell.Item().GetFieldValue("CHANGE_PACKAGE"));
+//Shell.RedoMessage() = 	"dssf: " &&& Shell.Item().GetFieldValue("CHANGE_PACKAGE");
+
+    fldValue = fldValue &&& "Change Package: " &&& s_changepackage.to_string() &&& "\n";
+    fldValue = fldValue &&& "From State: " &&& valFromState &&& "   -   " &&& "Transition From: " &&& valTransition &&& "\n";
+    fldValue = fldValue &&& "To State: " &&& valToState &&& "   -   "  &&&  "By: "  &&& NameByUserId(currentUser)  &&& "\n";
+    fldValue = fldValue &&& "Date: " &&& Now() &&& "\n";
+   // Call DoLogging("Must append following string to journal field " & Appendvalue,2)
+    var field = Shell.Item().Fields().FindField(journalField);
+    //  Insertion du texte dans le champ journal
+    if ( !( field.AppendJournalText(fldValue) )) {
+        // Call DoLogging("Error : Fail to update field " & journalField & " with " & Appendvalue & vbCrLf,0)
+        return false;
+    } else {
+	return true;
+        //  Call DoLogging("Field " & journalField & " updated with " & Appendvalue & vbCrLf,1)
+    }
+}
+
+def NameByUserId(str_UserId) {
+  var NameByUserId = Variant();
+   var oRecord = Variant();
+   var str_Where = Variant();
+   var str_Name = Variant();
+   oRecord= Ext.CreateAppRecord(Ext.TableId("TS_USERS"));
+   if ( Left(str_UserId,1) == "," ) { str_UserId = Right(str_UserId,Len(str_UserId)-1); }
+   if ( Right(str_UserId,1) == "," ) { str_UserId = Left(str_UserId,Len(str_UserId)-1); }
+   str_Where = "TS_ID  = " &&& str_UserId;
+  oRecord.ReadWithWhere(str_Where);
+  oRecord.GetFieldValue("NAME",str_Name);
+   NameByUserId = str_Name;
+   oRecord= Nothing;
+   return NameByUserId;
+ }
+
+
+def  WriteField(trgName, fldValue) {
+	// Write to the destination field
+	if ( !( Shell.Item().SetFieldValue( trgName, fldValue ) )) {
+		// Error finding the field or writing to it
+		Ext.LogErrorMsg( "Cannot write to field \"" &&& trgName&&& "\"" );
+		// ModScript can use backslash to escape double quotes
+		return;
+	}
+}
+
+def IsBlank(fldval) {
+	var retVal = false;
+	if ( fldval.is_var_undef() ) {
+		retVal = true;
+	}
+	if( IsNumeric(fldval) || fldval.type_name == "int"){
+		if ( fldval == 0 ) { retVal = true; } 
+	}
+	if( fldval.is_var_null() ) {
+		retVal = true;
+	}
+	switch ( fldval.type_name() ) {
+		case( "Vector" ) {
+			if( fldval.empty()) { retVal = true; }
+			break;
+		}
+		case( "Map" ) {
+			if( fldval.empty()) { retVal = true; }
+			break;
+		}
+		case( "string" ) {
+			if( fldval.trim().empty() || (trim(fldval) == ",") || (trim(fldval) == ",,") ) { retVal = true; }
+			//if( fldval.trim().empty()) { retVal = true; }
+			//if ( (trim(fldval) == ",") || (trim(fldval) == ",,") ){ retVal = true; }
+			break;
+		}
+		case( "Variant" ) {
+			if ( IsEmpty(fldval) || IsNull(fldval) ) {
+				retVal = true;
+			} else if( IsNumeric(fldval) ){
+				if ( fldval == 0 ) {  
+					retVal = true; 
+				}
+			} else if(IsObject(fldval)) {
+				if(IsEmpty(fldval) ) {
+					retVal = true;
+				}
+			} else if( VarType(fldval) == vbString ) {
+				if( fldval == "" ) { retVal = true; }
+				if ( (fldval == ",") || (fldval == ",,") ){ retVal = true; }
+			}
+			break;
+		}
+		default {
+			retVal = false;
+        break;
+    }
+	} 
+	return retVal;
+}
+
+
+// define a function that trims commas and returns the new string
+def TrimCommas( s ) {
+	// ChaiScript engine automatically returns whatever occurs on the last line of a function. 
+	// We could add a "return" statement here if desired for clarity
+	// This may be a little hard to follow, but we call drop_while on our string to remove the starting commas, then the return value is reversed, we do drop_while again to trim the back, then reverse again.
+	// These "fun" statements are anonymous functions known as lambdas
+	reverse( drop_while( reverse( drop_while( s, fun(x){ return x == ','; } ) ), fun(x) { x == ','; })); 
+}
+
+def VarInfo( r ) {
+
+	// If the param is undefined don't do anything else with it.
+	if ( r.is_var_undef() ) {
+		return true;
+		// If the param is defined by NULL, also don't do anything with it.
+	} else if ( r.is_var_null() ) {
+		return true;
+	} else {
+
+		var str ;
+		str = "chai:" &&& r.type_name();
+		// If the Chai type is ModScript "Variant" type, i.e. a VBScript type object, then use the VBScript functions to get more info.
+		if (r.type_name() == "Variant") {
+				// Append the VBScript variable type number and it's related text.
+				str = str &&& " / VBScript VarType:" &&& VarType(r) &&& " (" ;
+			switch (VarType(r)){
+				case(vbEmpty) { 
+					str = str &&& "Empty"; break;}
+				case(vbNull) { 
+					str = str &&& "Null"; break;}
+				case(vbInteger) { 
+					str = str &&& "Integer"; break;}
+				case(vbLong) { 
+					str = str &&& "Long integer"; break;}
+				case(vbSingle) { 
+					str = str &&& "Single"; break;}
+				case(vbDouble) { 
+					str = str &&& "Double"; break;}
+				case(vbCurrency) { 
+					str = str &&& "Currency"; break;}
+				case(vbDate) { 
+					str = str &&& "Date"; break;}
+				case(vbString) { 
+					str = str &&& "String"; break;}
+				case(vbObject) { 
+					str = str &&& "Automation object"; break;}
+				case(vbError) { 
+					str = str &&& "Error"; break;}
+				case(vbBoolean) { 
+					str = str &&& "Boolean"; break;}
+				case(vbVariant) { 
+					str = str &&& "Variant()"; break;}
+				case(vbDataObject) { 
+					str = str &&& "Data-access object"; break;}
+				case(vbByte) { 
+					str = str &&& "Byte"; break;}
+				case(vbArray) { 
+					str = str &&& "Array"; break;}
+				default { 
+					str = str &&& "-unknown VB type-" ; break ; }
+			}
+			str = str &&& ")" ;
+			if (IsObject(r)) {
+				str = str &&& " / Object";
+			if (r is Nothing) { 
+				str = str &&& " Is Nothing"; }
+			}
+			// Append the AppScript subtype name using the VBScript function.
+			str = str &&& " / " &&& TypeName(r) ;
+
+		}
+	return str;
+	}
+}
+
+def ItemSetFieldValue(item, field, val, errMsg) {
+	if ( errMsg != "" ) { return false; }
+	var retVal = item.SetFieldValue(field,val);
+	if ( !retVal ) {
+		errMsg = "ERROR: unable to WRITE value ("&&& val &&& ") to field ("&&& field &&&") to REC id ("&&& item.GetId() &&&")";
+	}
+	return retVal;
+}
+def ItemGetDisplayValue(item, fldName, errorMsg) {
+	if ( errorMsg != "" ) { return; }
+
+    var fldObj = item.Fields().FindField( fldName );
+	var fldVal = Variant();
+	if ( fldObj.is_var_null() ) { fldVal = NONE_FOUND; } else { fldObj.GetDisplayValue( fldVal ); }
+	return fldVal.to_string();
+}
+def FormatNumberString(number, digits) {
+	
+	var str = number.to_string();
+	var count = digits - str.size();
+	var strValue = "";
+    if( (str.size() < digits) ) {
+		for (var i = 0; i < count; ++i) { strValue = strValue &&& to_string(0);}
+		str = strValue &&& str;
+	}
+	return str;
+}
+
+def GetItemMultiRelationalIDsByFld(sTableID,  sWhereClause, returnField) {
+  var objItemList = Variant();
+  var nNbPoPs = Variant();
+  var objItem = Variant();
+  var nRecordId = Variant();
+  var str_Item_Ids = Variant();
+  var fldVal = Variant();
+  str_Item_Ids = ",";
+  objItemList = Ext.CreateAppRecordList(Ext.TableId(sTableID));
+  // sWhereClause = "TS_"& UCase(mrFldName) & " = " & nItemID
+
+  if ( objItemList.ReadWithWhere(sWhereClause) ) {
+      for (  objItem : objItemList ) {
+	  if ( (returnField == "ID") ) {
+          	nRecordId = objItem.GetId();
+	  	str_Item_Ids = str_Item_Ids &&& nRecordId &&& ","	;
+      	  } else {
+          if ( objItem.GetFieldValue(returnField, fldVal) ) { 
+		str_Item_Ids = str_Item_Ids &&& fldVal &&& ",";
+          } else {
+              str_Item_Ids  = NONE_FOUND;
+          }
+      }
+	// nRecordId = objItem.GetId()
+         // str_Item_Ids = str_Item_Ids & nRecordId & ","
+      }
+}
+  return str_Item_Ids.to_string();
+}
+
+
+
+
+
+def ItemGetFieldValue(item, fldName, errMsg) {
+	var fldVal = Variant();
+	if ( errMsg != "" ) { return; }
+	if( !( item.GetFieldValue( fldName, fldVal ) )) { 
+		fldVal = NONE_FOUND
+		errMsg = "ERROR: unable to READ field ("&&&fldName&&&") from REC id ("&&&item.GetId()&&&")";
+		return fldVal;
+	}
+	return fldVal;
+}
+
+def parseMultiValues(string s, string token){
+	var result = Vector();
+	var str = s.to_string();
+	while (str.size() > 0) {
+		var index = find(str, token);
+		if (index != size_t(-1)) {
+			result.push_back(str.substr(0, index));
+			str = str.substr(index + token.size(), str.size());
+			if (str.size() == 0) {
+				result.push_back(str);
+			}
+		} else {
+			result.push_back(str);
+			str = "";
+		}
+	}
+	return result;
+}
+
+
+
+
+
+def SetAppParam(strName, strValue ) {
+	var retVal = Variant();
+	var appRec = Variant();
+	appRec = Ext.CreateAppRecord ( Ext.TableId("USR_SDDCRS_APP_PARAMS"));
+	if ( appRec.ReadWithWhere ( "TS_TITLE = '" &&& strName &&& "'") ) {
+		appRec.SetFieldValue("VALUE", strValue);
+		retVal = appRec.UpdateWithLock(true);
+	} else {
+		appRec.SetFieldValue("TITLE", strName);
+		appRec.SetFieldValue("VALUE", strValue);
+		retVal     = appRec.Add();
+	}
+
+	return retVal;
+}
+
+def GetAppParam(strName){
+	var appRec = Variant();
+	var fldVal = Variant();
+	var retVal = Variant();
+	appRec   = Ext.CreateAppRecord(Ext.TableId("USR_SDDCRS_APP_PARAMS"));
+	if ( appRec.ReadWithWhere("TS_TITLE = '" &&& strName &&& "'") ) {
+		if ( appRec.GetFieldValue("VALUE", fldVal) ) {
+			 retVal = fldVal;
+		} else {
+			retVal = "NONE_FOUND";
+		}
+	} else {
+		retVal = "NONE_FOUND";
+	}
+	return retVal;
+}
+
+// Get TS_ID from TS_SELECTIONS for any field value of type "single selection" or "multi-selection"
+// tblName: DBNAME of original table; fldName: DBNAME of the original field; displayValue: The value to search
+def GetSelectionId(tblName, fldName, displayValue) {
+  var GetSelectionId = Variant();
+  var ts_table = Variant();
+  var ts_field = Variant();
+  var ts_selections = Variant();
+  var tblId = Variant();
+  var fldId = Variant();
+  // Call Ext.LogInfoMsg(time & " --> GetSelectionId(" & tblName & "," & fldName & "," & displayValue & ")" & vbCrLf)
+  // Get table id
+  ts_table = Ext.CreateAppRecord(Ext.TableId("TS_TABLES"));
+  if ( !vbNOT!( ts_table.ReadWithWhere("ts_dbname = '" &&& UCase(tblName) &&& "'")  )) {
+      GetSelectionId = "0";
+      return GetSelectionId;
+  }   //TS_TABLES
+  tblId = ts_table.GetId();
+  // Get field id
+  if ( (InStr(1,fldName, "TS_", 1) == 1) ) {
+      fldName = Mid(fldName, 4);
+  }  //fldName
+  ts_field = Ext.CreateAppRecord(Ext.TableId("TS_FIELDS"));
+  if ( !vbNOT!( ts_field.ReadWithWhere("ts_dbname = '" &&& UCase(fldName) &&& "' AND ts_tableid = " &&& CStr(tblId))  )) {
+      GetSelectionId = "0";
+      return GetSelectionId;
+  }  //TS_FIELDS
+  fldId = ts_field.GetId();
+  // Get internal value (TS_ID) from TS_SELECTIONS table
+  ts_selections = Ext.CreateAppRecord(Ext.TableId("TS_SELECTIONS"));
+  if ( !vbNOT!( ts_selections.ReadWithWhere("ts_fldid = " &&& CStr(fldId) &&& " AND UPPER(ts_name) = '" &&& UCase(displayValue) &&& "' AND ts_status = 0")  )) {
+      GetSelectionId = "0";
+      return GetSelectionId;
+  }  //TS_SELECTIONS
+  GetSelectionId = CStr(ts_selections.GetId());
+  return GetSelectionId;
+}
+
+
+def SetRequester() {
+  var SetRequester = Variant();
+	var ret = Variant();
+
+	Shell.Item().SetFieldValue("SUBMITTER",Shell.User().GetId());
+	//Shell.Item().SetFieldValue("ASSIGNEE",Shell.User().GetId());
+
+	SetRequester=ret;
+	return SetRequester;
+}
+
+def ValidateRequester() {
+	var ret = Variant();
+	var iSubmitter = Variant();
+
+	Shell.Item().GetFieldValue("SUBMITTER",iSubmitter);
+	if ( iSubmitter=="" ) {
+	ret="SUBMITTER: No Valid User. ";
+	}
+	//Shell.Item().GetFieldValue("ASSIGNEE",iSubmitter);
+	//if ( iSubmitter=="" ) {
+//	ret="ASSIGNEE: No Valid User. ";
+	//}
+	return ret;
+} 
+
+
+def GetTableField( table, field, id ) {
+  var retVal = Variant();
+	var fldVal = Variant();
+	var Tbl_Rec = Variant();
+	Tbl_Rec = Ext.CreateAppRecord(Ext.TableId(table));
+	if ( Tbl_Rec.ReadWithWhere("TS_ID = " &&& id;) ) {
+		if ( Tbl_Rec.GetFieldValue(field,fldVal) ) {
+			retVal = fldVal;
+			return retVal;
+		} else {
+			retVal = "NONE_FOUND";
+			//'DoLogging("Error GetretValTableField : Field " &&& champ &&& " not found in table " &&& table &&& " ( id " &&& id &&& " )!" &&& vbCrLf,0);
+		}
+	} else {
+		retVal = "NONE_FOUND";
+		//DoLogging("Error retVal : id " &&& id &&& " not found in table " &&& table &&& vbCrLf,0);
+	}
+	return retVal;
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Endpoints xmlns="http://www.serena.com/vail/definition" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<EndpointList />
+	<ALFEventEndpoint ID="70aaeb6b-d8b6-4940-ac30-22babe785d6d" type="ALFEVENTMANAGER">
+		<Name>ALFEVENTMANAGER</Name>
+		<Description>ALFEVENTMANAGER</Description>
+		<InUse>false</InUse>
+		<DescriptorLocation>resources/xml/ALFServiceFlowService.wsdl</DescriptorLocation>
+		<ExternalDescriptorLocation>C:\Program Files\Micro Focus\SBM\Composer\Conf\ALFServiceFlowService.wsdl</ExternalDescriptorLocation>
+		<ServiceName>EventDefinition</ServiceName>
+		<PortName>EventDefinitionSOAP</PortName>
+		<ServiceLocationHint />
+		<!--To Be Filled By Admin Console-->
+		<ServiceLocation />
+		<AuthenticationType />
+		<UserName />
+		<Password />
+		<XSDLocation>resources/xml/ALFEventBase_1.xsd</XSDLocation>
+		<ALFEventList>
+			<ALFEvent UUID="6b149cf8-198c-413a-adfe-6a3a59544923">
+				<Name>Event without Reply</Name>
+				<Description />
+				<InUse>false</InUse>
+				<DescriptorLocation>resources/xml/alf6b149cf8-198c-413a-adfe-6a3a59544923.wsdl</DescriptorLocation>
+				<ServiceName>CRSTasksEventDefinition</ServiceName>
+				<PortName>CRSTasksEventDefinitionSOAP</PortName>
+				<StudioDataLocation>resources/xml/alf6b149cf8-198c-413a-adfe-6a3a59544923.xml</StudioDataLocation>
+				<ProductName>CRSTasks</ProductName>
+				<ProductVersion>1.0</ProductVersion>
+				<ProductInstance>Sole</ProductInstance>
+				<ExtensionName>Extension</ExtensionName>
+				<ExtensionFirstElement>TaskType</ExtensionFirstElement>
+			</ALFEvent>
+		</ALFEventList>
+	</ALFEventEndpoint>
+</Endpoints>

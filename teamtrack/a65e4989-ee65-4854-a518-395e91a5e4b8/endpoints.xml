@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Endpoints xmlns="http://www.serena.com/vail/definition" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<EndpointList />
+	<ALFEventEndpoint ID="5028a4a8-c34f-4277-8585-4b3575c5b2cd" type="ALFEVENTMANAGER">
+		<Name>ALFEVENTMANAGER</Name>
+		<Description>ALFEVENTMANAGER</Description>
+		<InUse>false</InUse>
+		<DescriptorLocation>resources/xml/ALFServiceFlowService.wsdl</DescriptorLocation>
+		<ExternalDescriptorLocation>C:\Program Files\Micro Focus\SBM\Composer\Conf\ALFServiceFlowService.wsdl</ExternalDescriptorLocation>
+		<ServiceName>EventDefinition</ServiceName>
+		<PortName>EventDefinitionSOAP</PortName>
+		<ServiceLocationHint />
+		<!--To Be Filled By Admin Console-->
+		<ServiceLocation />
+		<AuthenticationType />
+		<UserName />
+		<Password />
+		<XSDLocation>resources/xml/ALFEventBase_1.xsd</XSDLocation>
+		<ALFEventList>
+			<ALFEvent UUID="0507bbca-85c7-4c80-a359-fce2ee3a6678">
+				<Name>Event without Reply</Name>
+				<Description />
+				<InUse>false</InUse>
+				<DescriptorLocation>resources/xml/alf0507bbca-85c7-4c80-a359-fce2ee3a6678.wsdl</DescriptorLocation>
+				<ServiceName>CRSChangeRequestsEventDefinition</ServiceName>
+				<PortName>CRSChangeRequestsEventDefinitionSOAP</PortName>
+				<StudioDataLocation>resources/xml/alf0507bbca-85c7-4c80-a359-fce2ee3a6678.xml</StudioDataLocation>
+				<ProductName>CRSChangeRequests</ProductName>
+				<ProductVersion>1.0</ProductVersion>
+				<ProductInstance>Sole</ProductInstance>
+				<ExtensionName>Extension</ExtensionName>
+				<ExtensionFirstElement>Comments</ExtensionFirstElement>
+			</ALFEvent>
+		</ALFEventList>
+	</ALFEventEndpoint>
+</Endpoints>

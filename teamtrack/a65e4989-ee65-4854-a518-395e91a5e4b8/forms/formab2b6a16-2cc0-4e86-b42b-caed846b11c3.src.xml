@@ -1,0 +1,2217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TtForm validateRequiredFields="False" includeJQuery="True" layoutMode="Standard" labelLocation="Left">
+  <Name>Base State Form</Name>
+  <Type>state</Type>
+  <FormSBMVersion>11.3.1</FormSBMVersion>
+  <ApplicationId>a65e4989-ee65-4854-a518-395e91a5e4b8</ApplicationId>
+  <CollapseToolBar>false</CollapseToolBar>
+  <ShowItemIdentifier>false</ShowItemIdentifier>
+  <ShowProjectName>false</ShowProjectName>
+  <ShowButtonBar>false</ShowButtonBar>
+  <ShowActionBar>false</ShowActionBar>
+  <ShowViewport>true</ShowViewport>
+  <ShowTransitionIndicator>false</ShowTransitionIndicator>
+  <HideCustomButtonsFromButtonBar>false</HideCustomButtonsFromButtonBar>
+  <AllowExtendedTransitionButtonMapping>false</AllowExtendedTransitionButtonMapping>
+  <GenerationMode>runtime</GenerationMode>
+  <ThemeDir>graphite</ThemeDir>
+  <IsModern>true</IsModern>
+  <IsResponsive>false</IsResponsive>
+  <ImagesDir>images</ImagesDir>
+  <ImagesThemeDir>images\$THEME()</ImagesThemeDir>
+  <CssHref>33e8c0ea-6387-4edb-a51b-fd25a0758193.css</CssHref>
+  <Scripts>
+    <Script>551a1c6f-f6bf-4a10-a4d4-5dd64dd1e2de</Script>
+    <Script>6e756b30-fb9a-4fa2-9017-ec69e4c7b6d0</Script>
+    <Script>96d32648-6c14-4d3a-a18e-afb9dad20df4</Script>
+    <Script>b35ec051-fee4-4f43-a020-d18aaeb33dc1</Script>
+    <Script>97497d02-4eec-470b-a4a7-b40caf52bdcc</Script>
+  </Scripts>
+  <InvalidFieldText>One or more fields are invalid.</InvalidFieldText>
+  <RequiredFieldText>'{0}' is a required field. Please supply a valid value to complete this transition.</RequiredFieldText>
+  <SSOPreviewText>Preview only supports SSO authentication if you are logged in to the repository. In the User Workspace, customers will see the Web page located at: {0}</SSOPreviewText>
+  <SSONoTokenText>Unable to retrieve a valid Security Token for request to: {0}.</SSONoTokenText>
+  <PDFMissingText>Download Adobe Acrobat Reader in order to view this PDF.</PDFMissingText>
+  <ReportPreviewText>Preview does not support embedded reports. In the User Workspace, customers will see the report located at: {0}</ReportPreviewText>
+  <WeCouldNotLocateErrorText>We could not locate all of the data needed to perform your request.</WeCouldNotLocateErrorText>
+  <YouMayNotHavePermissionsErrorText>You may not have permission to access these fields.</YouMayNotHavePermissionsErrorText>
+  <SearchingEllipsesText>Searching...</SearchingEllipsesText>
+  <WeDidNotFindAnyMatchesErrorText>REST service call failed. Check the authentication settings of the endpoint used by this REST grid in Application Repository.</WeDidNotFindAnyMatchesErrorText>
+  <TheResponseWasTooLargeErrorText>The response was too large.</TheResponseWasTooLargeErrorText>
+  <PleaseTryRestrictingTheDataErrorText>Please try restricting the data returned by adjusting the input parameters.</PleaseTryRestrictingTheDataErrorText>
+  <UpdatingEllipsesText>Updating...</UpdatingEllipsesText>
+  <UpdatedText>Updated</UpdatedText>
+  <AuthorizationFailedErrorText>Authorization failed - check the Screen Name and Password</AuthorizationFailedErrorText>
+  <StatusPostErrorText>An error occured posting the status update</StatusPostErrorText>
+  <ShowingRangeText>Showing {0}-{1} of {2}</ShowingRangeText>
+  <ShowingPageText>Showing page {0}</ShowingPageText>
+  <GotoFirstPageText>Go to first page</GotoFirstPageText>
+  <GotoPreviousPageText>Go to previous page</GotoPreviousPageText>
+  <GotoNextPageText>Go to next page</GotoNextPageText>
+  <GotoLastPageText>Go to last page</GotoLastPageText>
+  <TheRestGridIsNotConfigured>The REST Grid is not configured: </TheRestGridIsNotConfigured>
+  <FormLogic>
+
+AddLoadCallback(fn_FormLoadConfigureUI);
+
+function fn_FormLoadConfigureUI(e)
+{
+  action_SOOLoadUtils();
+
+  action_SOOSetupMoreActions("MoreActions");
+
+  ActivateTab("DetailsTab");
+
+  SetVisible("HiddenFieldsPanel", "hide");
+}
+
+
+AddLoadCallback(fn_FormLoadInitializeFormStack);
+
+function fn_FormLoadInitializeFormStack(e)
+{
+  SBMSOL.FormUtil.reportNavigation();
+$("#toggle .separator").remove();
+  $("#goback").prependTo("#iterate");
+$('#toggle').show();
+//jQuerySBM(document.getElementById("backToResultsContainer")).insertBefore('#reportToggle');
+;
+}
+
+
+AddLoadCallback(fn_FormLoadHideForm);
+
+function fn_FormLoadHideForm(e)
+{
+  if (condition_FieldOrInputControlEmptyOperator("SREL_CHANGE_PACKAGE", "is empty"))
+  {
+    SetVisible("SREL_CHANGE_PACKAGE", "hide");
+  }
+  else
+  {
+    SetVisible("SREL_CHANGE_PACKAGE", "show");
+  }
+}
+
+
+AddLoadCallback(fn_FormLoadDisplayMessageIfNoAffectedUser);
+
+function fn_FormLoadDisplayMessageIfNoAffectedUser(e)
+{
+  if (condition_FieldOrControlVisible("Notes_Section", "hidden"))
+  {
+    SetVisible("NotesText", "hide");
+  }
+}
+
+
+AddLoadCallback(fn_FormLoadDisplayMessageIfNoAffectedUser2);
+
+function fn_FormLoadDisplayMessageIfNoAffectedUser2(e)
+{
+  if (condition_FieldOrControlVisible("Attachments_Section", "hidden"))
+  {
+    SetVisible("AttachmentsText", "hide");
+  }
+}
+
+
+function condition_FieldOrInputControlEmptyOperator(source, operator)
+{
+  if (operator == "is empty") return IsFieldEmpty(source);
+  else return !IsFieldEmpty(source);
+}
+
+function condition_FieldOrControlVisible(source, value)
+{
+  return (value == "visible") ? IsShown(source) : !IsShown(source);
+}
+
+function action_SOOLoadUtils()
+{
+  SOO.ShellFormatting.init();
+}
+
+function action_SOOSetupMoreActions(source)
+{
+  //SBMSOL.FormUtil.MoreActions.setupMoreActions(source);
+
+          SOO.ShellFormatting.MoreActions.setupMoreActions(source);
+}
+
+</FormLogic>
+  <StateBar dock="top" UUID="47f40233-e915-4aff-ac96-5d5c1a04f770" custom="True">
+    <EnabledActions>StateBarActions</EnabledActions>
+    <ActionOption id="AttAction" templateUrl="attnote" name="AddNote" enabled="True">
+      <Text>Add Note</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="atturl" name="AddURL" enabled="True">
+      <Text>Add URL</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="attfile" name="AddFile" enabled="True">
+      <Text>Add File</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="attlink" name="AddItemLink" enabled="True">
+      <Text>Add Item Link</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="itemnotification" name="AddItemNotification" enabled="True">
+      <Text>Add Item Notification</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="vcmanage" name="AddFileAssociation" enabled="True">
+      <Text>Add File Association</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="linksubtask-1" name="LinkSubtasks" enabled="True">
+      <Text>Link Subtasks</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="linksubtask-2" name="LinkToPrincipal" enabled="True">
+      <Text>Link to Principal</Text>
+    </ActionOption>
+    <ActionOption id="AttAction" templateUrl="unlinkprincipal" name="UnlinkPrincipal" enabled="True">
+      <Text>Unlink Principal</Text>
+    </ActionOption>
+    <ActionButton id="refresh_view" name="ReloadItem" enabled="True">
+      <Text>Reload Item</Text>
+    </ActionButton>
+    <ActionButton id="printable" name="DisplayPrintableView" enabled="True">
+      <Text>Display Printable View</Text>
+    </ActionButton>
+    <ActionButton id="emaillink" name="SendEmail" enabled="True">
+      <Text>Click to Send E-mail</Text>
+    </ActionButton>
+    <ActionButton id="manage_ext_users" name="ManageExternalUsers" enabled="True">
+      <Text>Manage External Users</Text>
+    </ActionButton>
+    <ActionButton id="copy_url_to_clipboard" name="CopyURLToClipboard" enabled="True">
+      <Text>Copy URL to Clipboard</Text>
+    </ActionButton>
+    <ActionButton id="display_associated_workflow" name="DisplayItemWorkflow" enabled="True">
+      <Text>Get Help for this Application</Text>
+    </ActionButton>
+    <ActionButton id="display_help" name="GetItemHelp" enabled="True">
+      <Text>Get Help for this Form</Text>
+    </ActionButton>
+    <ReportLink id="goback" name="GoBackToResults" enabled="True">
+      <Text>Back to Results</Text>
+    </ReportLink>
+    <ReportLink id="gofirst" name="GoToFirstItem" enabled="True">
+      <Text>First Item</Text>
+    </ReportLink>
+    <ReportLink id="goprevious" name="GoToPreviousItem" enabled="True">
+      <Text>Previous Item</Text>
+    </ReportLink>
+    <ReportLink id="gonext" name="GoToNextItem" enabled="True">
+      <Text>Next Item</Text>
+    </ReportLink>
+    <ReportLink id="golast" name="GoToLastItem" enabled="True">
+      <Text>Last Item</Text>
+    </ReportLink>
+  </StateBar>
+  <TopFormTable>
+    <TopSidebar hAlign="Justify" vAlign="Near">
+      <SizeFlavor>AutoSize</SizeFlavor>
+      <PixelSize>117</PixelSize>
+      <PercentageSize>20</PercentageSize>
+      <Padding>
+        <Left>0</Left>
+        <Top>0</Top>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </Padding>
+      <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+        <ColumnDefs>
+          <Column width="100%" min-width="240" />
+        </ColumnDefs>
+        <Row>
+          <Cell hAlign="Justify" vAlign="Near">
+            <Panel name="StateHeaderPanel" id="a9f0cb64-3d92-4061-b835-abcbc94e9206" panelId="a9f0cb64-3d92-4061-b835-abcbc94e9206" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" bgcolor="White" showRowLines="False" CornerRadius="0">
+              <Padding>
+                <Left>0</Left>
+                <Top>0</Top>
+                <Right>0</Right>
+                <Bottom>0</Bottom>
+              </Padding>
+              <Text id="a9f0cb64-3d92-4061-b835-abcbc94e9206">Panel</Text>
+              <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                <ColumnDefs>
+                  <Column />
+                  <Column width="100%" min-width="176" />
+                </ColumnDefs>
+                <Row>
+                  <Cell rowspan="2" hAlign="Center" vAlign="Center">
+                    <StaticImage name="RefreshImage" id="RefreshImage" buttonStyle="False" class="ControlStyle" image="20ebd9ee-e084-4f02-94c7-146c1519fe6b.png" image-repeat-x="true" image-repeat-y="true" width="64" height="64">
+                      <Behavior>PerformToolBarAction</Behavior>
+                      <Template outputHtml="False" />
+                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                      <SecondaryContent>
+                        <Template outputHtml="False" />
+                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                      </SecondaryContent>
+                      <ToolBarAction>refresh_view</ToolBarAction>
+                    </StaticImage>
+                  </Cell>
+                  <Cell hAlign="Near" vAlign="Near">
+                    <GenericWidget name="FormStackPanel" id="07f4e9f3-5f49-4046-81be-a5f9d060a6f8" mobileOption="AlwaysHide" borders="False" scrollbars="False" titlesonly="False" usessoauthentication="False" type="HTML" class="ControlStyle" height="30">
+                      <Caption />
+                      <Template outputHtml="True">&lt;div id=\"reportToggle\" style=\"white-space:nowrap;\"&gt;&lt;/div&gt;</Template>
+                      <Content>&lt;div id="reportToggle" style="white-space:nowrap;"&gt;&lt;/div&gt;</Content>
+                      <Refresh onpageload="True" ondatachange="False" onclick="False" />
+                    </GenericWidget>
+                  </Cell>
+                </Row>
+                <Row>
+                  <Cell hAlign="Near" vAlign="Near">
+                    <StaticText name="TitleBarText" id="TitleBarText" mobileOption="HideInSimpleMode" class="LabelStyle" font="Tahoma" fontsize="14" bold="True" italic="False">
+                      <Text id="14a082b6-c7ec-464f-91e7-3272c24e8ced">Request ID: Title</Text>
+                      <Template outputHtml="True">{0}: {1}</Template>
+                      <Param>ISSUEID</Param>
+                      <Param>TITLE</Param>
+                      <Refresh onpageload="True" ondatachange="True" onclick="False" />
+                    </StaticText>
+                  </Cell>
+                </Row>
+              </Table>
+            </Panel>
+          </Cell>
+        </Row>
+      </Table>
+    </TopSidebar>
+    <LeftSidebar empty="true" />
+    <ScrollableContent percentageWidth="100" percentageHeight="100" hAlign="Justify" vAlign="Justify">
+      <Table hAlign="Justify" vAlign="Justify" cellPadding="0" cellSpacing="0">
+        <ColumnDefs>
+          <Column width="230" min-width="230" />
+          <Column width="100%" min-width="8" />
+        </ColumnDefs>
+        <Row height="100%">
+          <Cell colspan="2" hAlign="Justify" vAlign="Justify">
+            <Panel name="PrimaryContentPanel" id="addbcd41-9473-493a-89d9-71f26315eae7" panelId="addbcd41-9473-493a-89d9-71f26315eae7" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+              <Padding>
+                <Left>0</Left>
+                <Top>10</Top>
+                <Right>0</Right>
+                <Bottom>0</Bottom>
+              </Padding>
+              <Text id="addbcd41-9473-493a-89d9-71f26315eae7">Panel</Text>
+              <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                <ColumnDefs>
+                  <Column />
+                  <Column width="100%" min-width="1001" />
+                </ColumnDefs>
+                <Row>
+                  <Cell hAlign="Justify" vAlign="Near">
+                    <Panel name="SideBarPanel" id="1f74d43b-a224-4824-a440-c3b1c743a64e" panelId="1f74d43b-a224-4824-a440-c3b1c743a64e" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                      <Padding>
+                        <Left>0</Left>
+                        <Top>0</Top>
+                        <Right>0</Right>
+                        <Bottom>0</Bottom>
+                      </Padding>
+                      <Text id="1f74d43b-a224-4824-a440-c3b1c743a64e">Panel</Text>
+                      <Table hAlign="Near" vAlign="Justify" cellPadding="0" cellSpacing="0">
+                        <ColumnDefs>
+                          <Column />
+                        </ColumnDefs>
+                        <Row height="100%">
+                          <Cell hAlign="Justify" vAlign="Near">
+                            <Panel name="Sidebar_Expanded" id="555f25e8-830e-43f8-8ba6-d12e2e5df0e7" panelId="555f25e8-830e-43f8-8ba6-d12e2e5df0e7" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                              <Padding>
+                                <Left>0</Left>
+                                <Top>0</Top>
+                                <Right>0</Right>
+                                <Bottom>0</Bottom>
+                              </Padding>
+                              <Text id="555f25e8-830e-43f8-8ba6-d12e2e5df0e7" />
+                              <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                                <ColumnDefs>
+                                  <Column width="100%" min-width="158" />
+                                </ColumnDefs>
+                                <Row>
+                                  <Cell hAlign="Justify" vAlign="Near">
+                                    <Panel name="buttonPanel" id="6152f163-b0e2-4d0b-8eb0-94174c60326f" panelId="6152f163-b0e2-4d0b-8eb0-94174c60326f" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" bgcolor="Transparent" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                      <Padding>
+                                        <Left>5</Left>
+                                        <Top>0</Top>
+                                        <Right>5</Right>
+                                        <Bottom>5</Bottom>
+                                      </Padding>
+                                      <Text id="6152f163-b0e2-4d0b-8eb0-94174c60326f">Panel</Text>
+                                      <Table hAlign="Justify" vAlign="Near" cellPadding="2" cellSpacing="1">
+                                        <ColumnDefs>
+                                          <Column width="100%" min-width="142" />
+                                        </ColumnDefs>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton21" id="TransitionButton21" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>0b3718bb-4b7f-4d58-9f7e-c4991fe585c0</TransitionID>
+                                                <TransitionID>c7619f09-3727-4c15-99f8-a4ec022412e9</TransitionID>
+                                                <TransitionID>4de9b249-f3d1-4fb9-9ece-6d623b300e96</TransitionID>
+                                                <TransitionID>b243473a-07cf-499c-8cb1-03b22d51f151</TransitionID>
+                                                <TransitionID>897c116a-6726-4f1a-80e5-b7b6ee521168</TransitionID>
+                                                <TransitionID>914cc140-af69-4748-aceb-f178103ffc45</TransitionID>
+                                                <TransitionID>3760ed7a-56f0-403f-aaf2-13f6c3c05f7e</TransitionID>
+                                                <TransitionID>813f47cc-f1ae-4079-9675-938fd7c07011</TransitionID>
+                                                <TransitionID>348beaf2-7299-4515-a0a0-af04ef52ebef</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton22" id="TransitionButton22" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>b8fb8bf7-8800-41f6-878d-1a0b1aac387a</TransitionID>
+                                                <TransitionID>22a7573d-443c-4da4-802f-9a39e84735fe</TransitionID>
+                                                <TransitionID>bf394e64-4aa7-44ce-96f4-ac7c2cbb7264</TransitionID>
+                                                <TransitionID>fab9e65b-de49-4e4d-ba85-7077ee3c3f1f</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton24" id="TransitionButton24" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>cb1bd3ef-4a8e-4c9e-8a62-1c676bc4442e</TransitionID>
+                                                <TransitionID>ecf4eeae-2f03-403e-8b97-cd130bd75cb0</TransitionID>
+                                                <TransitionID>73d1a1a3-9457-471c-b181-73d37b0884a5</TransitionID>
+                                                <TransitionID>841539dd-695a-4035-b815-07b2a8349192</TransitionID>
+                                                <TransitionID>fec806cb-f987-40b7-8edc-d4045cc2a843</TransitionID>
+                                                <TransitionID>1ca08836-c51c-4a98-a661-4f0887b3ecd9</TransitionID>
+                                                <TransitionID>220331fa-19b6-4be0-bbeb-946abd680ebc</TransitionID>
+                                                <TransitionID>c6fde1be-3e3c-41f3-838f-d5641312f5fa</TransitionID>
+                                                <TransitionID>e4f89cbb-1dd6-4fa3-bb11-b46823ce4b52</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton25" id="TransitionButton25" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>8b04b4e3-a48e-4827-bf57-324b5d4b2a19</TransitionID>
+                                                <TransitionID>4e07dd34-2df9-499a-b611-4e873fee6647</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton23" id="TransitionButton23" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>96eb7dc4-6354-46c6-830f-d82a31b057c6</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton30" id="TransitionButton30" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>8df3bcb7-01ee-45ad-a6ba-e31bd13c5a25</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton29" id="TransitionButton29" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>d2b55d58-3973-45df-89f0-8dbe1a6ecbdb</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton1" id="TransitionButton1" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>1d1ae317-de94-46e7-8914-4966bd7ca7bb</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton17" id="TransitionButton17" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>2457ba54-8b53-43d5-9129-ef87a009da31</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton19" id="TransitionButton19" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>600fb1bd-ef93-4b27-a3c4-9a1c48310214</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton9" id="TransitionButton9" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>5a95651e-e159-4ccc-bea3-5f0e85af340e</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton31" id="TransitionButton31" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>37c07e2f-b197-464a-afe2-04447a7c2926</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton20" id="TransitionButton20" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>7ba1ec54-f906-48b1-a62e-da6bcf4d0840</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton27" id="TransitionButton27" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>eea390e7-f7c4-4ded-97a2-09bf377a9fff</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton16" id="TransitionButton16" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>131081c9-6129-4d17-86e0-925b45ccbd8c</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton28" id="TransitionButton28" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>ce59b492-aa7b-416d-bfda-38be1670e0f9</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="TransitionButton12" id="TransitionButton12" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Behavior>PerformTransition</Behavior>
+                                              <ShowTransitionName>true</ShowTransitionName>
+                                              <ShowTransitionNameAsToolTip>false</ShowTransitionNameAsToolTip>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                              <PerformTransitionList>
+                                                <TransitionID>8cb9e264-17dd-4cdd-a510-2b492b482878</TransitionID>
+                                              </PerformTransitionList>
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Button name="MoreActions" id="MoreActions" mobileOption="HideInSimpleMode" class="TransitionButtonStyle">
+                                              <Text id="32d710df-e71b-49c3-a6d0-d0a1358b860f">More &amp;#9654;</Text>
+                                              <Behavior>URL</Behavior>
+                                              <Parameter name="Url">
+                                                <Template outputHtml="False" />
+                                              </Parameter>
+                                              <Target>_blank</Target>
+                                              <Template outputHtml="True" />
+                                              <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                            </Button>
+                                          </Cell>
+                                        </Row>
+                                      </Table>
+                                    </Panel>
+                                  </Cell>
+                                </Row>
+                                <Row>
+                                  <Cell hAlign="Justify" vAlign="Near">
+                                    <Panel name="Panel16" id="ab240e16-964a-4bb5-a492-65427bdb8ceb" panelId="ab240e16-964a-4bb5-a492-65427bdb8ceb" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                      <Padding>
+                                        <Left>5</Left>
+                                        <Top>0</Top>
+                                        <Right>5</Right>
+                                        <Bottom>10</Bottom>
+                                      </Padding>
+                                      <Text id="ab240e16-964a-4bb5-a492-65427bdb8ceb">Panel</Text>
+                                      <Table hAlign="Justify" vAlign="Near" cellPadding="2" cellSpacing="1">
+                                        <ColumnDefs>
+                                          <Column width="100%" min-width="140" />
+                                        </ColumnDefs>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Panel name="StatePanel" id="77cbb24b-c95e-4a1d-b676-152617844d82" panelId="77cbb24b-c95e-4a1d-b676-152617844d82" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" bgcolor="#FFC000" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                              <Padding>
+                                                <Left>2</Left>
+                                                <Top>2</Top>
+                                                <Right>2</Right>
+                                                <Bottom>2</Bottom>
+                                              </Padding>
+                                              <Text id="77cbb24b-c95e-4a1d-b676-152617844d82">Panel</Text>
+                                              <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                                                <ColumnDefs>
+                                                  <Column width="30" min-width="30" />
+                                                  <Column width="100%" min-width="47" />
+                                                </ColumnDefs>
+                                                <Row>
+                                                  <Cell hAlign="Near" vAlign="Near">
+                                                    <StaticImage name="Image" id="Image" buttonStyle="False" class="ControlStyle" image="fe2e158b-1eeb-43ce-8e55-33dcfdc2ec1f.png" image-repeat-x="true" image-repeat-y="true" width="30" height="30">
+                                                      <Behavior>URL</Behavior>
+                                                      <Parameter name="Url">
+                                                        <Template outputHtml="False" />
+                                                      </Parameter>
+                                                      <Target>_blank</Target>
+                                                      <Template outputHtml="False" />
+                                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                                      <SecondaryContent>
+                                                        <Template outputHtml="False" />
+                                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                                      </SecondaryContent>
+                                                    </StaticImage>
+                                                  </Cell>
+                                                  <Cell hAlign="Near" vAlign="Center">
+                                                    <StaticText name="StateLabel" id="StateLabel" mobileOption="HideInSimpleMode" class="LabelStyle" font="Arial" fontsize="11" bold="True" italic="False">
+                                                      <Text id="273fac6e-9ecc-46fd-b227-60f660a0e094">State</Text>
+                                                      <Template outputHtml="True" />
+                                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                                    </StaticText>
+                                                  </Cell>
+                                                </Row>
+                                                <Row>
+                                                  <Cell colspan="2" hAlign="Near" vAlign="Near">
+                                                    <StaticText name="OwnerSummaryText2" id="OwnerSummaryText2" mobileOption="HideInSimpleMode" class="LabelStyle" fgcolor="White" font="Arial" fontsize="11" bold="False" italic="False">
+                                                      <Text id="f231ed54-3192-4545-956a-385f269897ea">Owner</Text>
+                                                      <Template outputHtml="True">&lt;span style=\"white-space:nowrap;\"&gt;{0}&lt;/span&gt;</Template>
+                                                      <Param>STATE</Param>
+                                                      <Refresh onpageload="True" ondatachange="True" onclick="False" />
+                                                    </StaticText>
+                                                  </Cell>
+                                                </Row>
+                                              </Table>
+                                            </Panel>
+                                          </Cell>
+                                        </Row>
+                                        <Row>
+                                          <Cell hAlign="Justify" vAlign="Near">
+                                            <Panel name="OwnerPanel" id="ef512539-fabd-4f09-a269-7345e0bc9d61" panelId="ef512539-fabd-4f09-a269-7345e0bc9d61" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" bgcolor="#548DD4" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                              <Padding>
+                                                <Left>2</Left>
+                                                <Top>2</Top>
+                                                <Right>2</Right>
+                                                <Bottom>2</Bottom>
+                                              </Padding>
+                                              <Text id="ef512539-fabd-4f09-a269-7345e0bc9d61">Panel</Text>
+                                              <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                                                <ColumnDefs>
+                                                  <Column width="30" min-width="30" />
+                                                  <Column width="100%" min-width="57" />
+                                                </ColumnDefs>
+                                                <Row>
+                                                  <Cell hAlign="Near" vAlign="Near">
+                                                    <StaticImage name="uSERS" id="uSERS" buttonStyle="False" class="ControlStyle" image="e25deb9f-b5c1-4c80-889e-7801e08c1f22.png" image-repeat-x="true" image-repeat-y="true" width="30" height="30">
+                                                      <Behavior>URL</Behavior>
+                                                      <Parameter name="Url">
+                                                        <Template outputHtml="False" />
+                                                      </Parameter>
+                                                      <Target>_blank</Target>
+                                                      <Template outputHtml="False" />
+                                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                                      <SecondaryContent>
+                                                        <Template outputHtml="False" />
+                                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                                      </SecondaryContent>
+                                                    </StaticImage>
+                                                  </Cell>
+                                                  <Cell hAlign="Near" vAlign="Center">
+                                                    <StaticText name="OwnerLabel" id="OwnerLabel" mobileOption="HideInSimpleMode" class="LabelStyle" font="Arial" fontsize="11" bold="True" italic="False">
+                                                      <Text id="8d48eb7b-97f2-4f4a-acd3-f9107e379405">Owner</Text>
+                                                      <Template outputHtml="True" />
+                                                      <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                                    </StaticText>
+                                                  </Cell>
+                                                </Row>
+                                                <Row>
+                                                  <Cell colspan="2" hAlign="Near" vAlign="Near">
+                                                    <StaticText name="OwnerSummaryText" id="OwnerSummaryText" mobileOption="HideInSimpleMode" class="LabelStyle" fgcolor="White" font="Arial" fontsize="11" bold="False" italic="False">
+                                                      <Text id="f810ea44-97d1-4361-9b04-c614dd296bbb">Owner</Text>
+                                                      <Template outputHtml="True">&lt;span style=\"white-space:nowrap;\"&gt;{0}&lt;/span&gt;</Template>
+                                                      <Param>OWNER</Param>
+                                                      <Refresh onpageload="True" ondatachange="True" onclick="False" />
+                                                    </StaticText>
+                                                  </Cell>
+                                                </Row>
+                                              </Table>
+                                            </Panel>
+                                          </Cell>
+                                        </Row>
+                                      </Table>
+                                    </Panel>
+                                  </Cell>
+                                </Row>
+                              </Table>
+                            </Panel>
+                          </Cell>
+                        </Row>
+                      </Table>
+                    </Panel>
+                  </Cell>
+                  <Cell hAlign="Justify" vAlign="Near">
+                    <TabBar name="MainTabsSection" groupId="0" mobileOption="AlwaysShow">
+                      <Tab name="DetailsTab" id="34dd7f88-cfe9-4dda-9331-68cf5d0a7c74" tabId="34dd7f88-cfe9-4dda-9331-68cf5d0a7c74" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" collapsed="False" showRowLines="False" CornerRadius="0">
+                        <Padding>
+                          <Left>10</Left>
+                          <Top>10</Top>
+                          <Right>10</Right>
+                          <Bottom>10</Bottom>
+                        </Padding>
+                        <Text id="34dd7f88-cfe9-4dda-9331-68cf5d0a7c74">Details</Text>
+                        <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                          <ColumnDefs>
+                            <Column width="100%" min-width="515" />
+                          </ColumnDefs>
+                          <Row>
+                            <Cell hAlign="Justify" vAlign="Near">
+                              <Panel name="DetailsPanel" id="0c263d35-50d1-47ce-9df1-cd91eb88dc4a" panelId="0c263d35-50d1-47ce-9df1-cd91eb88dc4a" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="0c263d35-50d1-47ce-9df1-cd91eb88dc4a">Panel</Text>
+                                <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                                  <ColumnDefs>
+                                    <Column />
+                                    <Column width="50%" min-width="100" />
+                                    <Column />
+                                    <Column width="50%" min-width="100" />
+                                  </ColumnDefs>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Title/Summary" id="8f5a8886-b538-42a5-a1bc-8fe337be8211" mobileOption="AlwaysShow" colIndex="0" class="LabelStyle">
+                                        <Text>Title/Summary</Text>
+                                        <Description>High-level summary of the change being requested, expressed clearly enough for non-technical staff to comprehend</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell colspan="3" hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Title/Summary" id="8f5a8886-b538-42a5-a1bc-8fe337be8211" dbname="TITLE" ftype="text" stype="fixed" mobileOption="AlwaysShow" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Title/Summary</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Description" id="8c3c3e86-2f31-451c-973a-61dfe59898c5" mobileOption="AlwaysShow" colIndex="0" class="LabelStyle">
+                                        <Text>Description</Text>
+                                        <Description>Detailed description of the change being requested, specifying affected components/subsystems, and to what degree items will be changed</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell colspan="3" hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Description" id="8c3c3e86-2f31-451c-973a-61dfe59898c5" dbname="DESCRIPTION" ftype="text" stype="memo" mobileOption="AlwaysShow" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Description</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Justification" id="1db3922a-e736-4f33-a58e-6906500718d7" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Justification</Text>
+                                        <Description>Justification for requesting the change and consequences of not performing it</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell colspan="3" hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Justification" id="1db3922a-e736-4f33-a58e-6906500718d7" dbname="JUSTIFICATION" ftype="text" stype="memo" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Justification</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Epic" id="8799bf34-4002-49d0-a848-57cfee630321" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Epic</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell colspan="3" hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Epic" id="8799bf34-4002-49d0-a848-57cfee630321" dbname="SREL_EPIC_STORY" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="SDD Application" id="f03f72d6-b512-4d88-bc5c-ce576dd8ca31" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>SDD Application</Text>
+                                        <Description>Selection of SDD application being changed</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="SDD Application" id="f03f72d6-b512-4d88-bc5c-ce576dd8ca31" dbname="SREL_PRODUCT" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell />
+                                    <Cell />
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Change  Package" id="f235a3c5-0546-4299-808a-9d05f1c02a3d" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Change  Package</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Change  Package" id="f235a3c5-0546-4299-808a-9d05f1c02a3d" dbname="SREL_CPID" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell />
+                                    <Cell />
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Change  Package(Legacy)" id="3fd93d31-9931-4e2f-991e-ee30a56baf89" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Change  Package(Legacy)</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Change  Package(Legacy)" id="3fd93d31-9931-4e2f-991e-ee30a56baf89" dbname="SREL_CHANGE_PACKAGE" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell />
+                                    <Cell />
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Tag/Label" id="18a1f59f-9a36-4cae-ac57-b9ea5d3b37af" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Tag/Label</Text>
+                                        <Description>Optional categorical words to be applied to the CR record, for later use by the product team</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell colspan="3" hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Tag/Label" id="18a1f59f-9a36-4cae-ac57-b9ea5d3b37af" dbname="MREL_KEYWORDS" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Issue Type" id="876dd07a-997d-43d4-b6e0-24bcc3a18037" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Issue Type</Text>
+                                        <Description>Selection of issue type that made the change request necessary (Defect/SIR, SCR-T, or SCR-F)</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Issue Type" id="876dd07a-997d-43d4-b6e0-24bcc3a18037" dbname="ISSUETYPE" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Change Type" id="78ef278e-b912-40d9-885c-319fa5e5aef1" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Change Type</Text>
+                                        <Description>Selection of approach requested to accomplish the change (Change code or the DB schema, Data Table Update, Change to Configuration)
+&lt;br&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Change Type" id="78ef278e-b912-40d9-885c-319fa5e5aef1" dbname="CHANGE_TYPE" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Version Found in" id="76900aac-85c9-440f-89be-716e3a73f7af" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Version Found in</Text>
+                                        <Description>Version number of the SDD Application in which the issue/defect was discovered</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Version Found in" id="76900aac-85c9-440f-89be-716e3a73f7af" dbname="AFFECTED_VERSION" ftype="text" stype="fixed" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Version Found in</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Version Fixed In" id="a6d331d5-69d2-42ed-9c2f-48bbfc03a29c" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Version Fixed In</Text>
+                                        <Description>Planned version number of the SDD application in which the issue/defect will be fixed</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Version Fixed In" id="a6d331d5-69d2-42ed-9c2f-48bbfc03a29c" dbname="FIX_VERSION" ftype="text" stype="fixed" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Version Fixed In</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Priority" id="2e9aa5c6-875e-4448-8057-bab1fe4f22f5" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Priority</Text>
+                                        <Description>The product team's rating of its urgency to accomplish the change (1 = High, 5= Low)</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Priority" id="2e9aa5c6-875e-4448-8057-bab1fe4f22f5" dbname="PRIORITY" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Severity" id="68a59853-a002-4490-b418-9eeb258bf439" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Severity</Text>
+                                        <Description>The degree of impact on the product or system if the requested change is not made ( 1=Emergency, 2= Urgent, 3= High, 4= Routine, 5=Minor)</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Severity" id="68a59853-a002-4490-b418-9eeb258bf439" dbname="SEVERITY" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Story Points" id="7d9abb5b-8b90-4a64-ab46-fdf8b1389782" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Story Points</Text>
+                                        <Description>Rate of effort of work in a Fibonacci numerical sequence to be used by Product Team at their discretion.</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Story Points" id="7d9abb5b-8b90-4a64-ab46-fdf8b1389782" dbname="STORY_POINTS" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Branch/PMO" id="89385fc6-a54d-4d6f-a3a3-0528897e6391" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Branch/PMO</Text>
+                                        <Description>SDD Branch/PMO managing the application</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Branch/PMO" id="89385fc6-a54d-4d6f-a3a3-0528897e6391" dbname="SREL_BRANCH" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Discretionary" id="7394411f-4654-4e1a-aff2-30e4bf1727f9" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Discretionary</Text>
+                                        <Description>Indication that the effort is discretionary or if it is mandatory, based on SDD guidance</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Discretionary" id="7394411f-4654-4e1a-aff2-30e4bf1727f9" dbname="DISCRETIONARY" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>N/A</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Release Qualification" id="ac5c294a-f3a4-4908-a243-098edbcb23d8" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Release Qualification</Text>
+                                        <Description>Degree of impact on the SDD Application's baseline if the if the change described in the CR were to be implemented by itself</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Release Qualification" id="ac5c294a-f3a4-4908-a243-098edbcb23d8" dbname="RELEASE_QUALIFICATION" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Requirements Prioritizing" id="9d2a0b11-9500-4a85-8a63-c2fe2dda7231" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Requirements Prioritizing</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Requirements Prioritizing" id="9d2a0b11-9500-4a85-8a63-c2fe2dda7231" dbname="REQUIREMENTS_PRIORITIZING" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Related Tracking Number" id="64274710-09f0-4b33-8af8-3c33fda4e345" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Related Tracking Number</Text>
+                                        <Description>Tracking system's specific ticket number for the CR, if applicable</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Related Tracking Number" id="64274710-09f0-4b33-8af8-3c33fda4e345" dbname="RELATED_TRACKING_NUMBER" ftype="text" stype="fixed" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Related Tracking Number</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Related Tracking System" id="e7dc2238-2794-45b6-9dab-222101d3391b" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Related Tracking System</Text>
+                                        <Description>Selection of a listed tracking system in which the CR originated, if applicable</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Related Tracking System" id="e7dc2238-2794-45b6-9dab-222101d3391b" dbname="RELATED_TRACKING_SYSTEM" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Date of Gov't Approval" id="81e6cc55-de9c-47d2-9400-0f8acb37c52d" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Date of Gov't Approval</Text>
+                                        <Description>Auto populated based on exact date Gov't approved the CR</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Date of Gov\'t Approval" id="81e6cc55-de9c-47d2-9400-0f8acb37c52d" dbname="DATE_OF_GOV_APPROVAL" ftype="date" stype="date" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Date of Gov't Approval</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Date of Deployment" id="b58e178a-27d1-4372-b36a-17baa53d3911" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Date of Deployment</Text>
+                                        <Description>Auto populated based on CP Planned or targeted date for deployment of the change described in the Change Request</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Date of Deployment" id="b58e178a-27d1-4372-b36a-17baa53d3911" dbname="DATE_OF_DEPLOYMENT" ftype="date" stype="date" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Date of Deployment</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell />
+                                    <Cell />
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Requires Gov Approval" id="25e06dff-2b9e-4ea3-9487-74b8af651258" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Requires Gov Approval</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Requires Gov Approval" id="25e06dff-2b9e-4ea3-9487-74b8af651258" dbname="IS_GOV_APPROVAL_REQUIRED" ftype="binary" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>Yes</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell />
+                                    <Cell />
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Requires IPT Review" id="51da92b7-faed-437b-9576-bb282c95f972" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Requires IPT Review</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Requires IPT Review" id="51da92b7-faed-437b-9576-bb282c95f972" dbname="IS_IPT_REVIEW_REQUIRED" ftype="binary" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>Yes</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell />
+                                    <Cell />
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Requires Testing" id="5cff3d12-4d56-4c6c-ae77-ac7ecf4c61b4" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Requires Testing</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Requires Testing" id="5cff3d12-4d56-4c6c-ae77-ac7ecf4c61b4" dbname="IS_TESTING_REQUIRED" ftype="binary" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>Yes</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell />
+                                    <Cell />
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="SDD Application Module(s)" id="67f3ea28-17bf-49a2-9c49-1b27ea4a5b4b" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>SDD Application Module(s)</Text>
+                                        <Description>An optional subcomponent of the SDD Application, if so used by the product team</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="SDD Application Module(s)" id="67f3ea28-17bf-49a2-9c49-1b27ea4a5b4b" dbname="MREL_PRODUCTS" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell />
+                                    <Cell />
+                                  </Row>
+                                </Table>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                        </Table>
+                      </Tab>
+                      <Tab name="Tab" id="1adeb17c-c429-42ac-8726-6052830cb0c7" tabId="1adeb17c-c429-42ac-8726-6052830cb0c7" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" collapsed="False" showRowLines="False" CornerRadius="0">
+                        <Padding>
+                          <Left>10</Left>
+                          <Top>10</Top>
+                          <Right>10</Right>
+                          <Bottom>10</Bottom>
+                        </Padding>
+                        <Text id="1adeb17c-c429-42ac-8726-6052830cb0c7">Requirements</Text>
+                        <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                          <ColumnDefs>
+                            <Column width="100%" min-width="255" />
+                          </ColumnDefs>
+                          <Row>
+                            <Cell hAlign="Justify" vAlign="Near">
+                              <Panel name="Panel11" id="3d7fd7fb-60d3-4904-91fb-c5ad833c6f49" panelId="3d7fd7fb-60d3-4904-91fb-c5ad833c6f49" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="3d7fd7fb-60d3-4904-91fb-c5ad833c6f49">Panel</Text>
+                                <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                                  <ColumnDefs>
+                                    <Column />
+                                    <Column width="100%" min-width="100" />
+                                  </ColumnDefs>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Requirements Number" id="2fc97e7d-d5c2-4446-a949-51b2d8ad789b" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Requirements Number</Text>
+                                        <Description>Reference number from the related requirements tracking system</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Requirements Number" id="2fc97e7d-d5c2-4446-a949-51b2d8ad789b" dbname="REQUIREMENTS_NUMBER" ftype="text" stype="fixed" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Requirements Number</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Requirement Statement/User Story" id="92fb2eec-bbd0-4a84-bd39-66cf6f1f8c50" mobileOption="HideInSimpleMode" customLabel="True" colIndex="0" class="LabelStyle">
+                                        <Text id="b1d7eeb1-278d-46b4-bc15-27425fe0462d">Requirement Statement/
+User Story</Text>
+                                        <Description>The applicable requirement statement or user story addressed by the CR</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Requirement Statement/User Story" id="92fb2eec-bbd0-4a84-bd39-66cf6f1f8c50" dbname="RM_STATEMENT_USER_STORY" ftype="text" stype="memo" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Requirement Statement/User Story</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Acceptance Criteria" id="fa8f76da-65f5-4ce0-94f1-bdc23c0600e5" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Acceptance Criteria</Text>
+                                        <Description>Any specific test or evaluation to be followed in confirming the success of the change</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Acceptance Criteria" id="fa8f76da-65f5-4ce0-94f1-bdc23c0600e5" dbname="ACCEPTANCE_CRITERIA" ftype="text" stype="memo" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Acceptance Criteria</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="T&amp;E Notification Memo" id="41bc0381-3bb4-4557-a02d-9f93b73105d9" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>T&amp;E Notification Memo</Text>
+                                        <Description>Boilerplate text to be used in generating test results for this CR</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="T&amp;E Notification Memo" id="41bc0381-3bb4-4557-a02d-9f93b73105d9" dbname="DTE_NOTIFICATION_MEMO" ftype="text" stype="memo" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>T&amp;E Notification Memo</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="T&amp;E Notification Number" id="accb239d-c1de-4159-ac36-c0d3a2a2db18" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>T&amp;E Notification Number</Text>
+                                        <Description>A number to be assigned to the test effort for this CR</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="T&amp;E Notification Number" id="accb239d-c1de-4159-ac36-c0d3a2a2db18" dbname="DTE_NOTIFICATION_NUMBER" ftype="text" stype="fixed" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>T&amp;E Notification Number</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="RM Team Acceptance" id="147844b0-aba3-4147-8328-9d9f039a1767" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>RM Team Acceptance</Text>
+                                        <Description>Used only by RM Team to signify a CR's requirements are properly identified</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="RM Team Acceptance" id="147844b0-aba3-4147-8328-9d9f039a1767" dbname="RM_TEAM_ACCEPTANCE" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="CM Team Acceptance" id="7e9292a8-c39e-432a-949d-e33dc07f5d04" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>CM Team Acceptance</Text>
+                                        <Description>Used only by CM Team to mark a Change Request as ready for the Government to review and decide whether the vendor may being work</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="CM Team Acceptance" id="7e9292a8-c39e-432a-949d-e33dc07f5d04" dbname="CM_TEAM_ACCCEPTANCE" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Process Deviation" id="e13e5f51-0dea-4fcb-ae68-32813a4f3788" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Process Deviation</Text>
+                                        <Description>Used only by CM Team to document deviations from the standard process</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Process Deviation" id="e13e5f51-0dea-4fcb-ae68-32813a4f3788" dbname="PROCESS_DEVIATION" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                </Table>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                        </Table>
+                      </Tab>
+                      <Tab name="CRTasksTab" id="2cde2349-92ce-48b5-8f0d-663f5c51d732" tabId="2cde2349-92ce-48b5-8f0d-663f5c51d732" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" collapsed="False" showRowLines="False" CornerRadius="0">
+                        <Padding>
+                          <Left>10</Left>
+                          <Top>10</Top>
+                          <Right>10</Right>
+                          <Bottom>10</Bottom>
+                        </Padding>
+                        <Text id="2cde2349-92ce-48b5-8f0d-663f5c51d732">Tasks</Text>
+                        <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                          <ColumnDefs>
+                            <Column />
+                            <Column width="100%" min-width="100" />
+                          </ColumnDefs>
+                          <Row>
+                            <Cell colspan="2" hAlign="Justify" vAlign="Near">
+                              <GroupBox name="SubtasksGroupBox6" id="aaa29fed-c070-4e0b-bd2e-24c3abf6068e" groupId="aaa29fed-c070-4e0b-bd2e-24c3abf6068e" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="aaa29fed-c070-4e0b-bd2e-24c3abf6068e" />
+                                <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                                  <ColumnDefs>
+                                    <Column width="100%" min-width="200" />
+                                  </ColumnDefs>
+                                  <Row>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <EmbeddedReportWidget name="ChangeRequestsReportWidget2" id="b7236510-34b2-4d71-8f51-831723a52ad6" borders="False" scrollbars="True" class="ControlStyle" height="400">
+                                        <ReportType>Definition</ReportType>
+                                        <ReportHash>nIOTUare325dfpkrd/PL8gV68uk=</ReportHash>
+                                        <AlternateSelection>false</AlternateSelection>
+                                        <Caption />
+                                        <Url>tmtrack.dll</Url>
+                                        <Query>
+                                          <Template outputHtml="False">ReportPage=&amp;template=reports%2FjqDataTables&amp;ReportUUID=fa0e3a3a-09af-4605-a1d6-55b2174b3afb&amp;AppRptProjId=I_USR_SDDCRS_TASKS.CRS_TASKS_PROJECT&amp;HasRuntimeParams=1&amp;embedded=&amp;F_TS_CHANGE_REQUEST={0}</Template>
+                                          <Param>RecordId</Param>
+                                        </Query>
+                                        <Refresh onpageload="True" ondatachange="False" onclick="True" buttonname="CRTasksTab" buttonid="2cde2349-92ce-48b5-8f0d-663f5c51d732" />
+                                      </EmbeddedReportWidget>
+                                    </Cell>
+                                  </Row>
+                                </Table>
+                              </GroupBox>
+                            </Cell>
+                          </Row>
+                          <Row>
+                            <Cell hAlign="Near" vAlign="Near">
+                              <TtLabel name="Task(s)" id="d3effaa4-f098-450b-95c5-66569de91add" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                <Text>Task(s)</Text>
+                              </TtLabel>
+                            </Cell>
+                            <Cell hAlign="Near" vAlign="Near">
+                              <TtTextBox name="Task(s)" id="d3effaa4-f098-450b-95c5-66569de91add" dbname="MREL_TASKS" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                <Text />
+                              </TtTextBox>
+                            </Cell>
+                          </Row>
+                        </Table>
+                      </Tab>
+                      <Tab name="CommentsTab" id="bed5ee34-c7d7-4370-a718-06b6a827f84f" tabId="bed5ee34-c7d7-4370-a718-06b6a827f84f" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" collapsed="False" showRowLines="False" CornerRadius="0">
+                        <Padding>
+                          <Left>10</Left>
+                          <Top>10</Top>
+                          <Right>10</Right>
+                          <Bottom>10</Bottom>
+                        </Padding>
+                        <Text id="bed5ee34-c7d7-4370-a718-06b6a827f84f">Comments</Text>
+                        <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                          <ColumnDefs>
+                            <Column width="100%" min-width="104" />
+                          </ColumnDefs>
+                          <Row>
+                            <Cell hAlign="Justify" vAlign="Near">
+                              <Panel name="CommentsPanel" id="066a7f74-97e9-4c5e-915e-e383e13822dc" panelId="066a7f74-97e9-4c5e-915e-e383e13822dc" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Top" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="066a7f74-97e9-4c5e-915e-e383e13822dc">Panel</Text>
+                                <Table hAlign="Justify" vAlign="Near" cellPadding="2" cellSpacing="0">
+                                  <ColumnDefs>
+                                    <Column />
+                                    <Column width="100%" min-width="8" />
+                                  </ColumnDefs>
+                                  <Row>
+                                    <Cell colspan="2" hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Comments" id="e1f54da6-7d5b-4a73-b143-809abb994a41" dbname="COMMENTS" ftype="text" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Comments</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                </Table>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                        </Table>
+                      </Tab>
+                      <Tab name="WorkLogTab" id="2bcf6d69-c7d9-44e1-afb4-721e05a4c0f4" tabId="2bcf6d69-c7d9-44e1-afb4-721e05a4c0f4" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" collapsed="False" showRowLines="False" CornerRadius="0">
+                        <Padding>
+                          <Left>10</Left>
+                          <Top>10</Top>
+                          <Right>10</Right>
+                          <Bottom>10</Bottom>
+                        </Padding>
+                        <Text id="2bcf6d69-c7d9-44e1-afb4-721e05a4c0f4">Work Log</Text>
+                        <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                          <ColumnDefs>
+                            <Column width="100%" min-width="100" />
+                          </ColumnDefs>
+                          <Row>
+                            <Cell hAlign="Justify" vAlign="Near">
+                              <Panel name="WorkLogPanel" id="ce63a7cc-d220-4b57-bcca-20413d9597f7" panelId="ce63a7cc-d220-4b57-bcca-20413d9597f7" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="ce63a7cc-d220-4b57-bcca-20413d9597f7">Panel</Text>
+                                <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                                  <ColumnDefs>
+                                    <Column width="100%" min-width="100" />
+                                  </ColumnDefs>
+                                  <Row>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="Work Log" id="ed2c954d-f62f-4bbc-918a-53ed6f9fecbe" dbname="WORK_LOG" ftype="text" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Work Log</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                </Table>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                        </Table>
+                      </Tab>
+                      <Tab name="CRRolesTeamsTab" id="18025b9f-b5a4-4582-8458-3654470d38ae" tabId="18025b9f-b5a4-4582-8458-3654470d38ae" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" collapsed="False" showRowLines="False" CornerRadius="0">
+                        <Padding>
+                          <Left>10</Left>
+                          <Top>10</Top>
+                          <Right>10</Right>
+                          <Bottom>10</Bottom>
+                        </Padding>
+                        <Text id="18025b9f-b5a4-4582-8458-3654470d38ae">Roles / Teams</Text>
+                        <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                          <ColumnDefs>
+                            <Column width="100%" min-width="484" />
+                          </ColumnDefs>
+                          <Row>
+                            <Cell hAlign="Justify" vAlign="Near">
+                              <Panel name="DetailsPanel5" id="6c5a608f-a489-4953-93dd-a1cbb0601739" panelId="6c5a608f-a489-4953-93dd-a1cbb0601739" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="6c5a608f-a489-4953-93dd-a1cbb0601739">OVERVIEW</Text>
+                                <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                                  <ColumnDefs>
+                                    <Column />
+                                    <Column width="50%" min-width="100" />
+                                    <Column />
+                                    <Column width="50%" min-width="100" />
+                                  </ColumnDefs>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Project Manager (GOV)" id="0923e477-a860-48f0-a201-598028f5b4b2" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Project Manager (GOV)</Text>
+                                        <Description>Project Officer</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Project Manager (GOV)" id="0923e477-a860-48f0-a201-598028f5b4b2" dbname="PROJECT_MANAGER_GOV" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Project Controller" id="959753ae-046f-4f10-91b8-49f848107021" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Project Controller</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Project Controller" id="959753ae-046f-4f10-91b8-49f848107021" dbname="PROJECT_CONTROLLER" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Project Analyst (CTR)" id="91a46a56-5d01-4b9e-a543-7e60a6183a29" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Project Analyst (CTR)</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Project Analyst (CTR)" id="91a46a56-5d01-4b9e-a543-7e60a6183a29" dbname="PROJECT_ANALYST_CTR" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="CM Analyst" id="807fb204-0688-4666-902b-352c596d6306" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>CM Analyst</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="CM Analyst" id="807fb204-0688-4666-902b-352c596d6306" dbname="CM_ANALYST" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="CM Manager" id="872c8355-b58c-48bc-beee-31935cf6ce34" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>CM Manager</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="CM Manager" id="872c8355-b58c-48bc-beee-31935cf6ce34" dbname="CM_MANAGER" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Developer" id="fcff1643-76a5-4792-bb2c-e6652337e463" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Developer</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Developer" id="fcff1643-76a5-4792-bb2c-e6652337e463" dbname="DEVELOPER" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Development Manager" id="780dee66-ae3c-4fcf-9f34-8ffe759b9fa3" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Development Manager</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Development Manager" id="780dee66-ae3c-4fcf-9f34-8ffe759b9fa3" dbname="DEVELOPMENT_MANAGER" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="ISSM" id="303d8d99-50cd-4e38-9204-59be3aa8373d" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>ISSM</Text>
+                                        <Description>Cyber Security Engineer</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="ISSM" id="303d8d99-50cd-4e38-9204-59be3aa8373d" dbname="ISSM" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="ISSO" id="3a6543c5-b08c-49d8-b076-c150719c9915" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>ISSO</Text>
+                                        <Description>&amp;nbsp;(IA Analyst)</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="ISSO" id="3a6543c5-b08c-49d8-b076-c150719c9915" dbname="ISSO" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Program Manager" id="f92d7c03-cf26-476c-a4f0-54d1dcb729e9" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Program Manager</Text>
+                                        <Description>Program Manager</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Program Manager" id="f92d7c03-cf26-476c-a4f0-54d1dcb729e9" dbname="PROGRAM_MANAGER" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="OPS Gov Lead" id="a24ea68f-a2ef-4af5-b449-9da8ae84e482" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>OPS Gov Lead</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="OPS Gov Lead" id="a24ea68f-a2ef-4af5-b449-9da8ae84e482" dbname="OPS_GOV_LEAD" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Requirements Analyst" id="28c31b3c-de8d-4b40-89d0-56e079eba8d1" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Requirements Analyst</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Requirements Analyst" id="28c31b3c-de8d-4b40-89d0-56e079eba8d1" dbname="REQUIREMENTS_ANALYST" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="System Engineer (CTR)" id="559c8306-8ee8-499c-a1c6-1c914fa7b116" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>System Engineer (CTR)</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="System Engineer (CTR)" id="559c8306-8ee8-499c-a1c6-1c914fa7b116" dbname="SYSTEM_ENGINEER_CTR" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="System Engineer (GOV)" id="b1f445fc-f15a-46d5-9eb0-ae54c2e9fa70" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>System Engineer (GOV)</Text>
+                                        <Description>&lt;br&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="System Engineer (GOV)" id="b1f445fc-f15a-46d5-9eb0-ae54c2e9fa70" dbname="SYSTEM_ENGINEER_GOV" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Test Lead (CTR)" id="39aa8b95-73ad-4848-8ae5-1ccb244ebbfe" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Test Lead (CTR)</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Test Lead (CTR)" id="39aa8b95-73ad-4848-8ae5-1ccb244ebbfe" dbname="TEST_LEAD_CTR" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Test Lead (GOV)" id="3d785d69-924e-4be0-8504-83a1b890bd6e" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Test Lead (GOV)</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Test Lead (GOV)" id="3d785d69-924e-4be0-8504-83a1b890bd6e" dbname="TEST_LEAD_GOV" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Test Coordinator" id="38428ad4-ccfc-44cb-9eca-b70f730e8cd8" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Test Coordinator</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Test Coordinator" id="38428ad4-ccfc-44cb-9eca-b70f730e8cd8" dbname="TEST_COORDINATOR" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Tester" id="8577bff4-2fd0-4d09-b328-71f55a899f3e" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Tester</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Tester" id="8577bff4-2fd0-4d09-b328-71f55a899f3e" dbname="TESTER" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="CM Team" id="26cbabc2-ec6e-414d-a584-b4b6cc725c4e" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>CM Team</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="CM Team" id="26cbabc2-ec6e-414d-a584-b4b6cc725c4e" dbname="CM_TEAM" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="OPS Team" id="d8959853-b81c-4ef2-8ce5-3304814cecd4" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>OPS Team</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="OPS Team" id="d8959853-b81c-4ef2-8ce5-3304814cecd4" dbname="OPS_TEAM" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Project Team" id="b383a394-0597-4bf1-b5dc-2804c7c8a7b4" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Project Team</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Project Team" id="b383a394-0597-4bf1-b5dc-2804c7c8a7b4" dbname="PROJECT_TEAM" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Requirements Team" id="9bb6b04f-17c6-4e68-b2b6-3494b2517299" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Requirements Team</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Requirements Team" id="9bb6b04f-17c6-4e68-b2b6-3494b2517299" dbname="REQUIREMENTS_TEAM" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Test Team" id="10217fe9-4857-4c53-b0b6-ae39e0ad9e64" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Test Team</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Test Team" id="10217fe9-4857-4c53-b0b6-ae39e0ad9e64" dbname="TEST_TEAM" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Vendor Team" id="3cb5039c-f16b-43a6-8def-8fea94206907" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Vendor Team</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Vendor Team" id="3cb5039c-f16b-43a6-8def-8fea94206907" dbname="VENDOR_TEAM" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Change Req Team" id="aa0c261a-757b-4d2a-a57d-ee2ab1ba31a7" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Change Req Team</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Change Req Team" id="aa0c261a-757b-4d2a-a57d-ee2ab1ba31a7" dbname="CHANGE_REQUEST_TEAM" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Vendor(s)" id="383dfe5d-0343-4124-bc62-9116bce3eae1" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Vendor(s)</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Vendor(s)" id="383dfe5d-0343-4124-bc62-9116bce3eae1" dbname="MREL_VENDORS" ftype="multi" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" multiple="True">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                </Table>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                        </Table>
+                      </Tab>
+                      <Tab name="NotesAttachmentsTab" id="45f06061-1339-4018-9582-d6397e007b34" tabId="45f06061-1339-4018-9582-d6397e007b34" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" collapsed="False" showRowLines="False" CornerRadius="0">
+                        <Padding>
+                          <Left>10</Left>
+                          <Top>10</Top>
+                          <Right>10</Right>
+                          <Bottom>10</Bottom>
+                        </Padding>
+                        <Text id="45f06061-1339-4018-9582-d6397e007b34">Notes/Attachments</Text>
+                        <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                          <ColumnDefs>
+                            <Column width="100%" min-width="200" />
+                          </ColumnDefs>
+                          <Row>
+                            <Cell hAlign="Justify" vAlign="Near">
+                              <Panel name="OptionsPanel3" id="7606b238-59b3-45fe-89f1-ead395c1054c" panelId="7606b238-59b3-45fe-89f1-ead395c1054c" mobileOption="AlwaysHide" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="7606b238-59b3-45fe-89f1-ead395c1054c">Panel</Text>
+                                <Table hAlign="Near" vAlign="Near" cellPadding="0" cellSpacing="0">
+                                  <ColumnDefs>
+                                    <Column />
+                                    <Column width="20" min-width="20" />
+                                    <Column />
+                                  </ColumnDefs>
+                                  <Row>
+                                    <Cell hAlign="Center" vAlign="Center">
+                                      <Link name="AddWorkLog2" id="AddWorkLog2" mobileOption="HideInSimpleMode" class="TransitionLink">
+                                        <Text id="c15dd7f5-f2d8-4175-8c3d-40c1718a9370">Add File</Text>
+                                        <Behavior>PerformToolBarAction</Behavior>
+                                        <Template outputHtml="True" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <ToolBarAction templateUrl="attfile">AttAction</ToolBarAction>
+                                      </Link>
+                                    </Cell>
+                                    <Cell />
+                                    <Cell hAlign="Center" vAlign="Center">
+                                      <Link name="AddWorkLog3" id="AddWorkLog3" mobileOption="HideInSimpleMode" class="TransitionLink">
+                                        <Text id="7334d127-236f-4014-b11f-8599f76ea7c8">Add Note</Text>
+                                        <Behavior>PerformToolBarAction</Behavior>
+                                        <Template outputHtml="True" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <ToolBarAction templateUrl="attnote">AttAction</ToolBarAction>
+                                      </Link>
+                                    </Cell>
+                                  </Row>
+                                </Table>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                          <Row>
+                            <Cell hAlign="Justify" vAlign="Near">
+                              <StaticText name="AttachmentsText" id="AttachmentsText" mobileOption="HideInSimpleMode" class="CRStateHeadingStyle">
+                                <Text id="2f33f646-84b8-4046-910c-0e430ce6b9ea">Attachments</Text>
+                                <Template outputHtml="True" />
+                                <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              </StaticText>
+                            </Cell>
+                          </Row>
+                          <Row>
+                            <Cell hAlign="Justify" vAlign="Near">
+                              <Panel name="Attachments_Section" id="ac4bd0ab-07ad-4e4f-9e59-6cc276fadf06" panelId="ac4bd0ab-07ad-4e4f-9e59-6cc276fadf06" mobileOption="AlwaysShow" font="Arial" fontsize="12" details="Attachments" macro1="ATTACHMENTS" macro2="ATTACHMENTS_COUNT" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="ac4bd0ab-07ad-4e4f-9e59-6cc276fadf06">Attachments</Text>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                          <Row>
+                            <Cell hAlign="Justify" vAlign="Near">
+                              <StaticText name="NotesText" id="NotesText" mobileOption="HideInSimpleMode" class="CRStateHeadingStyle">
+                                <Text id="1036d6f0-75a8-4523-ae32-e0312544f4da">Notes</Text>
+                                <Template outputHtml="True" />
+                                <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              </StaticText>
+                            </Cell>
+                          </Row>
+                          <Row>
+                            <Cell hAlign="Justify" vAlign="Near">
+                              <Panel name="Notes_Section" id="03c07bbb-1a12-443b-8003-ae0d2656226a" panelId="03c07bbb-1a12-443b-8003-ae0d2656226a" mobileOption="AlwaysShow" font="Arial" fontsize="12" details="Notes" macro1="NOTESOPTIONS" macro2="NOTES_COUNT" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="03c07bbb-1a12-443b-8003-ae0d2656226a">Notes</Text>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                        </Table>
+                      </Tab>
+                      <Tab name="HistoryTab" id="f5ee928d-25af-41c6-bffc-597902de53af" tabId="f5ee928d-25af-41c6-bffc-597902de53af" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" collapsed="False" showRowLines="False" CornerRadius="0">
+                        <Padding>
+                          <Left>10</Left>
+                          <Top>10</Top>
+                          <Right>10</Right>
+                          <Bottom>10</Bottom>
+                        </Padding>
+                        <Text id="f5ee928d-25af-41c6-bffc-597902de53af">System</Text>
+                        <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                          <ColumnDefs>
+                            <Column />
+                            <Column width="50%" min-width="20" />
+                            <Column />
+                            <Column width="50%" min-width="20" />
+                          </ColumnDefs>
+                          <Row>
+                            <Cell colspan="4" hAlign="Justify" vAlign="Near">
+                              <Panel name="SystemExpander" id="4a4867f3-73b2-44b5-8793-27c58413fd72" panelId="4a4867f3-73b2-44b5-8793-27c58413fd72" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" fgcolor="#5C83B4" font="Arial" fontsize="12" showRowLines="False" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="4a4867f3-73b2-44b5-8793-27c58413fd72">System Fields</Text>
+                                <Table hAlign="Justify" vAlign="Near" cellPadding="0" cellSpacing="0">
+                                  <ColumnDefs>
+                                    <Column />
+                                    <Column width="50%" min-width="100" />
+                                    <Column />
+                                    <Column width="50%" min-width="150" />
+                                  </ColumnDefs>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Owner" id="b853a0d8-fec0-4557-a4f2-612951984c8d" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Owner</Text>
+                                        <Description>The primary person who currently owns the item</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Owner" id="b853a0d8-fec0-4557-a4f2-612951984c8d" dbname="OWNER" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Project" id="81824406-b5ce-4df9-91ab-b01ec4f2aa51" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Project</Text>
+                                        <Description>The project in which this item resides</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Project" id="81824406-b5ce-4df9-91ab-b01ec4f2aa51" dbname="PROJECTID" ftype="UNKNOWN" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(None)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Submitter" id="4290dfd3-a387-40f0-9d04-172fd2130142" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Submitter</Text>
+                                        <Description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Submitter" id="4290dfd3-a387-40f0-9d04-172fd2130142" dbname="SUBMITTER" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Submit Date" id="493bfdea-2210-4428-a030-ac8c7a8dfb84" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Submit Date</Text>
+                                        <Description>The date that the item was created/submitted</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Submit Date" id="493bfdea-2210-4428-a030-ac8c7a8dfb84" dbname="SUBMITDATE" ftype="date" stype="datetime" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" width="150">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Submit Date</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Last Modifier" id="dbea4456-45db-43a9-a7b7-105dea5945ea" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Last Modifier</Text>
+                                        <Description>The last person to change the data in this item</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Last Modifier" id="dbea4456-45db-43a9-a7b7-105dea5945ea" dbname="LASTMODIFIER" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Date Last Modified" id="45e2b82b-2617-4ba8-877a-bd059aea4146" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Date Last Modified</Text>
+                                        <Description>The last time the item's data was changed</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Date Last Modified" id="45e2b82b-2617-4ba8-877a-bd059aea4146" dbname="LASTMODIFIEDDATE" ftype="date" stype="datetime" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" width="150">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Date Last Modified</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Last State Changer" id="d6a00b2b-e749-4823-a2ca-ccc853e3f58a" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Last State Changer</Text>
+                                        <Description>The last person to change the state of this item</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Last State Changer" id="d6a00b2b-e749-4823-a2ca-ccc853e3f58a" dbname="LASTSTATECHANGER" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Date Last State Change" id="aeeac7d7-b6a7-4ae0-b6b2-c1e199361d28" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Date Last State Change</Text>
+                                        <Description>The last time the state of this item was changed</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Date Last State Change" id="aeeac7d7-b6a7-4ae0-b6b2-c1e199361d28" dbname="LASTSTATECHANGEDATE" ftype="date" stype="datetime" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" width="150">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Date Last State Change</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Active/Inactive" id="34c7c5d1-7345-4dcb-8003-73e68fd9752b" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Active/Inactive</Text>
+                                        <Description>Whether the item is active or inactive in its current state</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Active/Inactive" id="34c7c5d1-7345-4dcb-8003-73e68fd9752b" dbname="ACTIVEINACTIVE" ftype="binary" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(Auto)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Close Date" id="95ca5234-5eb9-4cc3-acbf-48df40dac97e" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Close Date</Text>
+                                        <Description>The date that the item was closed</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Close Date" id="95ca5234-5eb9-4cc3-acbf-48df40dac97e" dbname="CLOSEDATE" ftype="date" stype="datetime" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle" width="150">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Close Date</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="CP Assigned" id="59f716a3-1f2b-4de8-8516-7acf0734e479" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>CP Assigned</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="CP Assigned" id="59f716a3-1f2b-4de8-8516-7acf0734e479" dbname="CHANGE_PACKAGE_ASSIGNED" ftype="binary" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>No</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Item Id" id="df2ad3d1-b7e6-4238-ad3f-dadc9b56de48" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Item Id</Text>
+                                        <Description>The displayed identifier of the item</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Item Id" id="df2ad3d1-b7e6-4238-ad3f-dadc9b56de48" dbname="ISSUEID" ftype="text" stype="fixed" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>Item Id</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="State" id="c8eca6c4-10fb-4e92-8bce-f95943819dd5" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>State</Text>
+                                        <Description>The current state of the item</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="State" id="c8eca6c4-10fb-4e92-8bce-f95943819dd5" dbname="STATE" ftype="UNKNOWN" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text>(Auto)</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Submitting Agent" id="36a39621-2bd3-47c5-98ef-236556130e14" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>Submitting Agent</Text>
+                                        <Description>The person who submitted the item, even if submitted on behalf of another.</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Submitting Agent" id="36a39621-2bd3-47c5-98ef-236556130e14" dbname="SUBMITTINGAGENT" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                  <Row>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="Reported By" id="55a9ad3e-0adc-434b-ac63-d2930904f92c" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Reported By</Text>
+                                        <Description>The user who is making the request.</Description>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Reported By" id="55a9ad3e-0adc-434b-ac63-d2930904f92c" dbname="REPORTED_BY" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtLabel name="FLD_DBVALUE_SAVE" id="2bf8b4e3-2def-43e5-b43e-1d363cedf270" mobileOption="HideInSimpleMode" colIndex="2" class="LabelStyle">
+                                        <Text>FLD_DBVALUE_SAVE</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Justify" vAlign="Near">
+                                      <TtTextBox name="FLD_DBVALUE_SAVE" id="2bf8b4e3-2def-43e5-b43e-1d363cedf270" dbname="FLD_DBVALUE_SAVE" ftype="text" stype="fixed" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Template outputHtml="False" />
+                                        <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                                        <Text>FLD_DBVALUE_SAVE</Text>
+                                      </TtTextBox>
+                                    </Cell>
+                                  </Row>
+                                </Table>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                          <Row>
+                            <Cell colspan="4" hAlign="Justify" vAlign="Near">
+                              <StaticText name="StateChangeHistoryText" id="StateChangeHistoryText" mobileOption="HideInSimpleMode" class="CRStateHeadingStyle">
+                                <Text id="5b4f0523-6cf8-44bf-9774-3504937ad340">State Change History</Text>
+                                <Template outputHtml="True" />
+                                <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              </StaticText>
+                            </Cell>
+                          </Row>
+                          <Row>
+                            <Cell colspan="4" hAlign="Justify" vAlign="Near">
+                              <Panel name="StateChangeHistory_Section" id="a0b2acdc-bc89-4756-9c00-ffa0383e3fed" panelId="a0b2acdc-bc89-4756-9c00-ffa0383e3fed" mobileOption="AlwaysShow" font="Arial" fontsize="12" details="StateChangeHistory" macro1="STATE_CHANGE_ON" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="a0b2acdc-bc89-4756-9c00-ffa0383e3fed">State Change History</Text>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                          <Row>
+                            <Cell colspan="4" hAlign="Justify" vAlign="Near">
+                              <StaticText name="ChangeHistoryText" id="ChangeHistoryText" mobileOption="HideInSimpleMode" class="CRStateHeadingStyle">
+                                <Text id="c4d87490-7de7-41d7-a4cf-3ee1a8f9ab04">Change History</Text>
+                                <Template outputHtml="True" />
+                                <Refresh onpageload="False" ondatachange="False" onclick="False" />
+                              </StaticText>
+                            </Cell>
+                          </Row>
+                          <Row>
+                            <Cell colspan="4" hAlign="Justify" vAlign="Near">
+                              <Panel name="ChangeHistory_Section" id="fe1f2928-d842-4819-9214-ea91199a537f" panelId="fe1f2928-d842-4819-9214-ea91199a537f" mobileOption="AlwaysHide" font="Arial" fontsize="12" details="ChangeHistory" macro1="CHANGE_HISTORY_ON" CornerRadius="0">
+                                <Padding>
+                                  <Left>0</Left>
+                                  <Top>0</Top>
+                                  <Right>0</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="fe1f2928-d842-4819-9214-ea91199a537f">Change History</Text>
+                              </Panel>
+                            </Cell>
+                          </Row>
+                          <Row>
+                            <Cell colspan="4" hAlign="Justify" vAlign="Near">
+                              <Section name="HiddenFieldsPanel" id="8ca1a042-97d7-4d5e-b137-d92e3d357f5a" sectionId="8ca1a042-97d7-4d5e-b137-d92e3d357f5a" mobileOption="AlwaysShow" layoutMode="Standard" labelLocation="Left" font="Arial" fontsize="12" collapsed="False" showRowLines="False" CornerRadius="0">
+                                <Padding>
+                                  <Left>20</Left>
+                                  <Top>0</Top>
+                                  <Right>20</Right>
+                                  <Bottom>0</Bottom>
+                                </Padding>
+                                <Text id="8ca1a042-97d7-4d5e-b137-d92e3d357f5a">Hidden Fields</Text>
+                                <Table hAlign="Justify" vAlign="Near" cellPadding="4" cellSpacing="0">
+                                  <ColumnDefs>
+                                    <Column />
+                                    <Column width="50%" min-width="100" />
+                                    <Column />
+                                    <Column width="50%" min-width="8" />
+                                  </ColumnDefs>
+                                  <Row>
+                                    <Cell hAlign="Far" vAlign="Near">
+                                      <TtLabel name="Assignee" id="f895fcb4-d803-41a3-916f-014580690efe" mobileOption="HideInSimpleMode" colIndex="0" class="LabelStyle">
+                                        <Text>Assignee</Text>
+                                      </TtLabel>
+                                    </Cell>
+                                    <Cell hAlign="Near" vAlign="Near">
+                                      <TtTextBox name="Assignee" id="f895fcb4-d803-41a3-916f-014580690efe" dbname="ASSIGNEE" ftype="single" mobileOption="HideInSimpleMode" readOnly="True" class="ControlStyle">
+                                        <Text />
+                                      </TtTextBox>
+                                    </Cell>
+                                    <Cell />
+                                    <Cell />
+                                  </Row>
+                                </Table>
+                              </Section>
+                            </Cell>
+                          </Row>
+                        </Table>
+                      </Tab>
+                    </TabBar>
+                  </Cell>
+                </Row>
+              </Table>
+            </Panel>
+          </Cell>
+        </Row>
+      </Table>
+    </ScrollableContent>
+    <RightSidebar empty="true" />
+    <BottomSidebar empty="true" />
+  </TopFormTable>
+  <Includes>
+    <Include type="js" name="ExpandAll.js">$FORM_EXTENSION_ASSET_PATH(Expand All)/javascript/ExpandAll.js</Include>
+    <Include type="css" name="TransitionIcon.css">$FORM_EXTENSION_ASSET_PATH(Transition Icon)/styles/TransitionIcon.css</Include>
+  </Includes>
+</TtForm>

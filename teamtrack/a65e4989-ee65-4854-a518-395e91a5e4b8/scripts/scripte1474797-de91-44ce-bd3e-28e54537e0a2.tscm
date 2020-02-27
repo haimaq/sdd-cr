@@ -1,0 +1,76 @@
+// set up some constants for use later in the script
+add_global_const( "USR_SDDCRS_TASKS", "USR_SDDCRS_TASKS_TBL_NAME" );
+add_global_const( "CHANGE_REQUEST", "CHANGE_REQUEST_FIELD" );
+add_global_const( "USR_SDDCRS_TASKS.CRS_TASKS_PROJECT", "CRS_TASKS_PROJECT" );
+add_global_const( "[none]", "NONE_FOUND" ); // add a global constant called "TBL_NAME"
+add_global_const( 1, "CR_TASKS_COMPLETED_YES" ); // add a global constant called "TBL_NAME"
+add_global_const( 0, "CR_TASKS_COMPLETED_NO" ); // add a global constant called "TBL_NAME"
+add_global_const( 1, "TASK_COMPLETE_YES" ); // add a global constant called "TBL_NAME"
+add_global_const( 0, "TASK_COMPLETE_NO" ); // add a global constant called "TBL_NAME"
+
+include("app.ChangeRequests.Utils");
+
+// Get the container application table id and add it as a global
+global USR_SDDCRS_TASKS_TBL = Ext.TableId(USR_SDDCRS_TASKS_TBL_NAME);
+global USR_SDDCRS_CHANGE_REQUESTS_TBL = Ext.TableId("USR_SDDCRS_CHANGE_REQUESTS");
+
+// define a function that trims commas and returns the new string
+def TrimCommass( s ) {
+	// ChaiScript engine automatically returns whatever occurs on the last line of a function. 
+	// We could add a "return" statement here if desired for clarity
+	// This may be a little hard to follow, but we call drop_while on our string to remove the starting commas, then the return value is reversed, we do drop_while again to trim the back, then reverse again.
+	// These "fun" statements are anonymous functions known as lambdas
+	reverse( drop_while( reverse( drop_while( s, fun(x){ return x == ','; } ) ), fun(x) { x == ','; })); 
+}
+global errorMsg;
+if (errorMsg.is_var_undef()) { errorMsg = ""; } // only initialize g2 once, if global decl hit more than once
+
+global recordID = Variant();
+global crTaskList = Variant();
+global readOk = Variant();
+global fldValue = Variant();
+global itemList = Variant();
+global listRecord = Variant();
+global sTaskParentCr= Variant();
+global sWhere = Variant();
+global numItems = Variant();
+global projectRecord = Variant();
+sTaskParentCr = Shell.Item().GetId();
+sWhere = "TS_CHANGE_REQUEST=" &&& sTaskParentCr;
+crTaskList = TrimCommass(GetItemMultiRelationalIDsByFld(USR_SDDCRS_TASKS_TBL_NAME , sWhere, "ID"));
+if(!IsBlank(crTaskList)){ Shell.Item().SetFieldValue( "CR_CHILD_TASKS", "," &&& crTaskList &&& ",");  }
+
+var userList = Variant();
+var item = Variant();
+ listRecord = Ext.CreateAppRecordList(Ext.TableId(USR_SDDCRS_TASKS_TBL_NAME));
+listRecord.ReadWithWhere("TS_ACTIVEINACTIVE = 0 AND TS_TASK_COMPLETE=? AND TS_CHANGE_REQUEST=?", [ Pair(DBTypeConstants.INTEGER, TASK_COMPLETE_NO), Pair(DBTypeConstants.INTEGER, sTaskParentCr)]);
+numItems = listRecord.Length();
+if(numItems == 0){ Shell.Item().SetFieldValue( "CR_TASKS_COMPLETE",  CR_TASKS_COMPLETED_YES);  }
+if(numItems > 0){ Shell.Item().SetFieldValue( "CR_TASKS_COMPLETE",  CR_TASKS_COMPLETED_NO);  }
+//Shell.RedoMessage() = numItems &&& ": " &&& crTaskList
+/**
+if(numItems == 0) {
+		
+	//projectRecord = Ext.CreateProjectBasedRecord( USR_SDDCRS_CHANGE_REQUESTS_TBL );
+	//projectRecord.QuickTransition( "CRS_CHANGE_REQUESTS.ALL_TASKS_COMPLETE_2", true );
+	Shell.Item().SetFieldValue( "CR_TASKS_COMPLETE", 1);
+
+} 
+if(numItems > 0) {
+//Shell.RedoMessage() = itemIDs.size();
+	//projectRecord = Ext.CreateProjectBasedRecord( USR_SDDCRS_CHANGE_REQUESTS_TBL );
+	//projectRecord.QuickTransition( "CRS_CHANGE_REQUESTS.ALL_TASKS_COMPLETE_2", true );
+		Shell.Item().SetFieldValue( "CR_TASKS_COMPLETE", 0);
+
+} 
+**/
+/**
+if ( !any_of( itemIDs, 
+			fun( itemID ) { // return true if item is active
+				 projectRecord = Ext.CreateProjectBasedRecord( USR_SDDCRS_TASKS_TBL );
+				return projectRecord.Read(itemID) && projectRecord.GetFieldValue( "TASK_COMPLETE" ) == 0;
+			} ) ){
+		// no items found that are active, we need to transition this container item
+		projectRecord.QuickTransition( "CRS_CHANGE_REQUESTS.ALL_TASKS_COMPLETE_2", true );
+	}
+**/

@@ -1,0 +1,48 @@
+add_global_const( "ASSIGNEE", "ASSIGNEE_FLD" );
+add_global_const( "[none]", "NONE_FOUND" );
+global errorMsg;
+if (errorMsg.is_var_undef()) { errorMsg = ""; } // only initialize g2 once, if global decl hit more than once
+global sSecOwners;
+	if (sSecOwners.is_var_undef()) { sSecOwners = ","; } // only initialize g2 once, if global decl hit more than once
+
+def  WriteField(fldName, fldValue){
+	// Write to the destination field
+	if ( !( Shell.Item().SetFieldValue( fldName, fldValue ) )) {
+		// Error finding the field or writing to it
+		Ext.LogErrorMsg( "Cannot write to field \"" &&& trgName&&& "\"" );
+		// ModScript can use backslash to escape double quotes
+		return;
+	}
+}
+//  Read from one field, write back to another field
+def ReadWriteFields() {
+  var fldValue = Variant(); // since fields can have lots of different data types, we can only get their value as a Variant. When passing a var as an output-parameter to a function that takes a Variant, we need to ensure we create a Variant to pass in.
+  
+  //  Read from the source field
+  if ( !( Shell.Item().GetFieldValue( FLD_ASSIGNEE, fldValue ) )) {
+    //  Error finding the field or reading from it
+    Ext.LogErrorMsg( "Cannot read from field \"" + FLD_ASSIGNEE + "\"" ); // ModScript can concat values with + or &&&, but + will add if both the left and right values can be cast to numbers, where-as &&& will always concatenate
+    return;
+  }
+  //  Write to the destination field
+  if ( !( Shell.Item().SetFieldValue( FLD_ASSIGNEE, Shell.User().GetId() ) )) {
+    //  Error finding the field or writing to it
+    Ext.LogErrorMsg("Cannot write to field \"" &&& FLD_FULFILLER &&& "\"" ); // ModScript can use backslash to escape double quotes
+    return;
+  }
+}
+
+global fldValue = Variant();
+
+
+
+//  Find the item being transitioned
+//if ( Ext.ShellHasProp( "Item" ) ) {
+  	//var userFldPrimaryAssignee = Shell.Item().GetFieldValue("ASSIGNEE").to_string();
+//var userFldTaskOwner = Shell.Item().GetFieldValue("TASK_OWNER").to_string();
+	//if(userFldTaskOwner == 0 && userFldPrimaryAssignee > 0){ userFldTaskOwner = userFldPrimaryAssignee; }
+	//if ( userFldTaskOwner > 0 ) { Shell.Item().SetFieldValue("TASK_OWNER", userFldTaskOwner); sSecOwners=sSecOwners &&& userFldTaskOwner &&& ","; }
+	//if(sSecOwners == ","){sSecOwners=sSecOwners &&& ","; }
+	//Shell.Item().SetFieldValue("TASK_TEAM", sSecOwners);
+//}
+	

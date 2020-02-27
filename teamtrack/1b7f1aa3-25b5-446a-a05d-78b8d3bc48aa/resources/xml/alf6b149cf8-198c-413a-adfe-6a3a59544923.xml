@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TtEvent lockDefinition="False">
+  <description />
+  <EventTypes>
+    <EventType value="undefined" id="True" />
+  </EventTypes>
+  <ObjectTypes>
+    <ObjectType value="CRSTask" id="primary" />
+  </ObjectTypes>
+  <ExcludedFields />
+  <ExtendedData />
+</TtEvent>

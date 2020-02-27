@@ -1,0 +1,52 @@
+add_global_const("ASSIGNEE", "ASSIGNEE_FLD");
+add_global_const("REPORTED_BY", "REPORTED_BY_FLD");
+add_global_const("AFFECTED_USER", "AFFECTED_USER_FLD");
+add_global_const("AFFECTED_USER_LIST", "AFFECTED_USER_LIST_FLD");
+
+add_global_const("CM_ANALYST", "CM_ANALYST_FLD");
+add_global_const("CM_MANAGER", "CM_MANAGER_FLD");
+add_global_const("DEVELOPER", "DEVELOPER_FLD");
+add_global_const("DEVELOPMENT_MANAGER", "DEVELOPMENT_MANAGER_FLD");
+add_global_const("ISSM", "ISSM_FLD");
+add_global_const("ISSO", "ISSO_FLD");
+add_global_const("OPS_GOV_LEAD", "OPS_GOV_LEAD_FLD");
+add_global_const("PROGRAM_MANAGER", "PROGRAM_MANAGER_FLD");
+add_global_const("PROJECT_ANALYST_CTR", "PROJECT_ANALYST_CTR_FLD");
+add_global_const("PROJECT_CONTROLLER", "PROJECT_CONTROLLER_FLD");
+add_global_const("PROJECT_MANAGER_GOV", "PROJECT_MANAGER_GOV_FLD");
+add_global_const("REQUIREMENTS_ANALYST", "REQUIREMENTS_ANALYST_FLD");
+add_global_const("SYSTEM_ENGINEER_CTR", "SYSTEM_ENGINEER_CTR_FLD");
+add_global_const("SYSTEM_ENGINEER_GOV", "SYSTEM_ENGINEER_GOV_FLD");
+add_global_const("TEST_COORDINATOR", "TEST_COORDINATOR_FLD");
+add_global_const("TEST_LEAD_CTR", "TEST_LEAD_CTR_FLD");
+add_global_const("TEST_LEAD_GOV", "TEST_LEAD_GOV_FLD");
+add_global_const("TESTER", "TESTER_FLD");
+
+add_global_const("CHANGE_REQUEST_TEAM", "CHANGE_REQUEST_TEAM_FLD");
+add_global_const("CM_TEAM", "CM_TEAM_FLD");
+add_global_const("OPS_TEAM", "OPS_TEAM_FLD");
+add_global_const("PROJECT_TEAM", "PROJECT_TEAM_FLD");
+add_global_const("REQUIREMENTS_TEAM", "REQUIREMENTS_TEAM_FLD");
+add_global_const("TEST_TEAM", "TEST_TEAM_FLD");
+add_global_const("VENDOR_TEAM", "VENDOR_TEAM_FLD");
+
+add_global_const("MREL_PRODUCTS", "MREL_PRODUCTS_FLD");
+add_global_const("MREL_VENDORS", "MREL_VENDORS_FLD");
+add_global_const("SREL_CHANGE_PACKAGE", "SREL_CHANGE_PACKAGE_FLD");
+add_global_const("SREL_EPIC", "SREL_EPIC_FLD");
+add_global_const("SREL_PRODUCT", "SREL_PRODUCT_FLD");
+add_global_const("SREL_BRANCH", "SREL_BRANCH_FLD");
+add_global_const("CR_STATE", "CR_STATE_FLD");
+
+add_global_const( "[none]", "NONE_FOUND" );
+add_global_const( "USR_SDD_PRODUCTS", "SDD_PRODUCTS_TBL" );
+
+add_global_const( "USR_SDDCRS_TASKS", "USR_SDDCRS_TASKS_TBL_NAME" );
+add_global_const( "USR_SDDCRS_TASKS.CRS_TASKS_PROJECT", "CRS_TASKS_PROJECT" );
+
+add_global_const( 1, "CR_TASKS_COMPLETED_YES" ); // add a global constant called "TBL_NAME"
+add_global_const( 0, "CR_TASKS_COMPLETED_NO" ); // add a global constant called "TBL_NAME"
+add_global_const( 1, "TASK_COMPLETE_YES" ); // add a global constant called "TBL_NAME"
+add_global_const( 0, "TASK_COMPLETE_NO" ); // add a global constant called "TBL_NAME"
+
+add_global_const( "VELOCITY", "VELOCITY_FLD");  //get Vendors multi-rel

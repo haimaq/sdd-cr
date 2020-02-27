@@ -1,0 +1,294 @@
+﻿$INCLUDE(jquery)<div><!-- --><script>
+      var nCurrentSection = [];
+      var TabGroups = {};
+      var bValidate = false;
+      var bgRepeat = "no-repeat"; </script>
+    $JAVASCRIPT(aeplugin_modern.js)
+    
+    $INCLUDE(javascript/date.jsvar)
+    $JAVASCRIPT(date.js)
+    <script language="Javascript" name="ExpandAll.js" src="$FORM_EXTENSION_ASSET_PATH(Expand All)/javascript/ExpandAll.js"> </script><link rel="stylesheet" type="text/css" href="$FORM_EXTENSION_ASSET_PATH(Transition Icon)/styles/TransitionIcon.css" /><script>
+      SetFormVersion("11.3.1");   
+      var isPreview = false;
+
+      InitFieldLookup({ "Fields": [
+        { uuid: "newnote", name: "newnote", fid: "newnote", dbName: "_NEWNOTE" }, 
+        $JSONDATAFROMFIELDUUID(e1f54da6-7d5b-4a73-b143-809abb994a41),
+        $JSONDATAFROMFIELDUUID(ed2c954d-f62f-4bbc-918a-53ed6f9fecbe),
+        $JSONDATAFROMFIELDUUID(8f5a8886-b538-42a5-a1bc-8fe337be8211),
+        $JSONDATAFROMFIELDUUID(df2ad3d1-b7e6-4238-ad3f-dadc9b56de48),
+        { uuid: "TitleText2", name: "TitleText2", fid: "TitleText2", dbName: null, type: "edit" },
+        { uuid: "Image", name: "Image", fid: "Image", dbName: null, type: "image" },
+        { uuid: "SubmitButton2", name: "SubmitButton2", fid: "SubmitButton2", dbName: null, type: "button" },
+        { uuid: "CancelButton2", name: "CancelButton2", fid: "CancelButton2", dbName: null, type: "button" },
+        { uuid: "e9edaeaf-8451-4ced-a25f-0f2aeaaa7653", name: "HiddenFieldsPanel", fid: "e9edaeaf-8451-4ced-a25f-0f2aeaaa7653", dbName: null, type: "section" },
+        { uuid: "317adb99-ebc8-4a0a-95de-a8c2a8092359", name: "CommentsGroupBoxControl", fid: "317adb99-ebc8-4a0a-95de-a8c2a8092359", dbName: null, type: "container" },
+        { uuid: "52eb2eaa-8556-469e-96f8-b1426fd8a2a0", name: "WorkLogGroupBoxControl", fid: "52eb2eaa-8556-469e-96f8-b1426fd8a2a0", dbName: null, type: "container" },
+        { uuid: "1c398d65-c4ad-4265-aaa6-bcc1f309301e", name: "MainContainerPanel", fid: "1c398d65-c4ad-4265-aaa6-bcc1f309301e", dbName: null, type: "container" },
+        { uuid: "e65a5984-09c8-45a0-889f-4a1ebbe08d95", name: "detailsTab", fid: "e65a5984-09c8-45a0-889f-4a1ebbe08d95", dbName: null, type: "container" },
+        { uuid: "b2a2cb1b-eda6-4b77-973e-406ead6309d0", name: "mainPanel", fid: "b2a2cb1b-eda6-4b77-973e-406ead6309d0", dbName: null, type: "container" },
+        { uuid: null, name: null, fid: null, dbName: null, type: null } ]}, bValidate
+      );
+
+      InitTransitionLookup({ "Transitions": [
+        $JSONDATATRANSINFO()
+        { name: null, fid: null, type: null } ] }
+      );
+    </script><div id="fixedContainer"><table class="tableFixed" cellpadding="0" cellspacing="0"><tr><td colspan="3" id="TopSidebar" class="header-footer sidebarCell" style="padding: 0px 0px 0px 0px; " autosize="" align="left" vertical-align="top"><!----><div style="" class="sidebarContainer  hJustify vJustify"><table class="LayoutTable" border="0" width="100%" cellspacing="0" cellpadding="4"><tr class="LayoutRow" style=""><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><button type="button" id="SubmitButton2" style="" customlook="true" class="roundedbutton hoverHelpText SubmitButton" title="">$UUIDSTRING(48033038-059c-4249-9894-ddc6d7dfc107)</button><script>
+      function getSubmitButton2TransitionID()
+      {
+        return 'formbtns_ok';
+      }
+      
+      function handleSubmitButton2Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('SubmitButton2'));
+        if ($el.length)
+        {
+          var tid = getSubmitButton2TransitionID();
+          if (tid != null)
+          {
+            $el.on("click", doSubmitButton2StandardClick);
+
+            var title = $el.attr("data-original-title");
+            if (title == "" || title == null) $el.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+        
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doSubmitButton2StandardClick(e) 
+      {
+        var tid = getSubmitButton2TransitionID(); 
+        PerformTransitionEx('SubmitButton2', tid, true); 
+        return false;
+      }       
+        
+      
+      AddLoadCallback(handleSubmitButton2Transition);
+      </script><script>
+      function widgetSubmitButton2Load()
+      {
+        SetFieldValue("SubmitButton2", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><button type="button" id="CancelButton2" style="" customlook="true" class="roundedbutton hoverHelpText CancelButton" title="">$UUIDSTRING(81cae497-4925-413c-8f10-c382c7d74fd4)</button><script>
+      function getCancelButton2TransitionID()
+      {
+        return 'formbtns_cancel';
+      }
+      
+      function handleCancelButton2Transition()
+      {
+        var $el = jQuerySBM(document.getElementById('CancelButton2'));
+        if ($el.length)
+        {
+          var tid = getCancelButton2TransitionID();
+          if (tid != null)
+          {
+            $el.on("click", doCancelButton2StandardClick);
+
+            var title = $el.attr("data-original-title");
+            if (title == "" || title == null) $el.attr("data-original-title", GetTransitionButtonTitle("TransitionId." + tid, true));
+        
+          }
+          else
+          {
+            $el.hide();
+          }
+        }
+      }
+      
+        
+      function doCancelButton2StandardClick(e) 
+      {
+        var tid = getCancelButton2TransitionID(); 
+        PerformTransitionEx('CancelButton2', tid, true); 
+        return false;
+      }       
+        
+      
+      AddLoadCallback(handleCancelButton2Transition);
+      </script><script>
+      function widgetCancelButton2Load()
+      {
+        SetFieldValue("CancelButton2", "", true);
+      }
+        
+      // add event callbacks
+    </script><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="TitleText2" class="TitleStyle StaticText" style="color: Black; font-size: 12pt; ">$UUIDSTRING(b7fd4997-e7d5-428e-a8f6-c05979f784da)<!----></div><script>
+      function widgetTitleText2Load()
+      {
+        var errors = new Array();
+        var params = new Array();
+    
+        params[0] = htmlEncode(GetInternalFieldValue("TITLE", null));
+        if (params[0] == null) errors[errors.length] = "TITLE";
+        
+        var template = '<span nowrap>$TRANSITIONNAME():</b> {0}</span>';
+        var content = BuildString(template, params);
+            
+        SetFieldValue("TitleText2", content, true);
+      }
+        
+      // add event callbacks
+    
+      AddLoadCallback(widgetTitleText2Load);
+    </script><!----></div></div></td><td class="LayoutCell" style=" "><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><!----></div></div></td><td class="LayoutCell" style=" " align="left" vertical-align="top"><div class="fillWrapper" style="padding:4px"><div class="overflowWrapper"><div id="Image" class="CustomImage hoverHelpText " style="color: #000000; background-image: url($IMAGE(80ea8c92-0a66-4e26-9a68-25798944acde.png, NOTAG)); width: 25px; height: 25px; " title=""><span style="" class="ImageText ControlStyle" id="Image.text"> </span><script>
+      function widgetImageLoad()
+      {
+        SetFieldValue("Image", "", true);
+      }
+        
+      // add event callbacks
+    </script><script>
+      function widgetImageLoad2()
+      {
+        var valueObj = {text: ''};
+        
+        SetFieldValue("Image", valueObj, true);
+      }
+        
+      // add event callbacks
+    </script></div><!----></div></div></td><td class="hideCell fixCell" style="width: 1px; "> 
+        </td></tr><tr style="height: 1px; overflow: hidden; font-size: .01em; "><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><th class="hideCell fixCell" style="height:1px; width: 100%;"> 
+            <img width="8" height="0" src="images/t1x1.gif" /></th><th class="hideCell fixCell" style="height:1px; "> 
+            </th><td class="hideCell fixCell" style="width: 1px; height: 1px;"><img width="0" height="0" src="images/t1x1.gif" /></td></tr></table><!----></div></td></tr><tr><td id="LeftSidebar" class="sidebar sidebarCell" style=""><!----></td><td class="scrollableCell" style="height:100%; width:100%;"><div id="ScrollableContent"><table cellspacing="0" cellpadding="0"><tr><td id="ScrollableAlign" align="left" vertical-align="top"><div id="ErrorMsgTransplant"><!--placeholder for server error--></div><div id="CustomErrorMsg" class="dberr" style="display: none; "><!--placeholder for custom error message--></div><div class=""><div class="LayoutTable responsive" cellpadding="4px"><div class="LayoutRow"><div class="LayoutCell col-md-12"><div id="signDiv">$SIGN()</div></div></div><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:4px;" align="left" vertical-align="top"><div id="1c398d65-c4ad-4265-aaa6-bcc1f309301e" class="Panel" data-name="MainContainerPanel" style="padding: 0px 0px 0px 0px; border-radius: 0px; background-color: Transparent;width: 100%; "><div class="LayoutTable responsive" cellpadding="0px"><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:0px;" align="left" vertical-align="top"><div id="e65a5984-09c8-45a0-889f-4a1ebbe08d95" class="Panel" data-name="detailsTab" style="padding: 10px 10px 10px 10px; border-radius: 0px; width: 100%; "><div class="LayoutTable responsive" cellpadding="0px"><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:0px;" align="left" vertical-align="top"><div id="b2a2cb1b-eda6-4b77-973e-406ead6309d0" class="Panel" data-name="mainPanel" style="padding: 0px 0px 0px 0px; border-radius: 0px; width: 100%; "><div class="LayoutTable responsive" cellpadding="0px"><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:0px;" align="left" vertical-align="top"><fieldset id="317adb99-ebc8-4a0a-95de-a8c2a8092359" class="GroupBoxRoot responsive" style="border-radius: 0px; padding-left: 0px;background-color: Transparent; width: 100%; "><div id="317adb99-ebc8-4a0a-95de-a8c2a8092359_container" class="GroupBoxContent" style="padding: 0px 5px 0px 5px; "><div class="LayoutTable responsive" cellpadding="2px"><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:2px;" vertical-align="top"><div class="doubleCell" style="padding:2px;" align="left" vertical-align="bottom" abbr="Comments" nowrap="">
+    $ITEMFIELDLABEL(e1f54da6-7d5b-4a73-b143-809abb994a41, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:2px;" align="justify" vertical-align="top" abbr="Comments"><div class="longTextWrapper memoFld" style="overflow: auto; ">
+      $ITEMFIELDVALUE(e1f54da6-7d5b-4a73-b143-809abb994a41, height: 400px; , ControlStyle TxaCtrl, height: 100%; )
+    </div><script>
+      function widgetCOMMENTSLoad()
+      {
+        SetFieldValue("Comments", "", true);
+      }
+        
+      // add event callbacks
+    </script></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div></fieldset><!----></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:0px;"><!----></div><div class="responsiveCellMinHeight" style="height:20px;"> </div></div><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:0px;" align="left" vertical-align="top"><fieldset id="52eb2eaa-8556-469e-96f8-b1426fd8a2a0" class="GroupBoxRoot responsive" style="border-radius: 0px; padding-left: 0px;background-color: Transparent; width: 100%; "><div id="52eb2eaa-8556-469e-96f8-b1426fd8a2a0_container" class="GroupBoxContent" style="padding: 0px 5px 0px 5px; "><div class="LayoutTable responsive" cellpadding="2px"><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:2px;" vertical-align="top"><div class="doubleCell" style="padding:2px;" align="left" vertical-align="bottom" abbr="Work Log" nowrap="">
+    $ITEMFIELDLABEL(ed2c954d-f62f-4bbc-918a-53ed6f9fecbe, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:2px;" align="justify" vertical-align="top" abbr="Work Log"><div class="longTextWrapper memoFld" style="overflow: auto; ">
+      $ITEMFIELDVALUE(ed2c954d-f62f-4bbc-918a-53ed6f9fecbe, height: 400px; , ControlStyle TxaCtrl, height: 100%; )
+    </div><script>
+      function widgetWORK_LOGLoad()
+      {
+        SetFieldValue("Work Log", "", true);
+      }
+        
+      // add event callbacks
+    </script></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div></fieldset><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12  LayoutCell" style=" padding:4px;" align="left" vertical-align="top"><div id="e9edaeaf-8451-4ced-a25f-0f2aeaaa7653" style="background-color: transparent; width: 100%;  border-radius: 0px; " class="expanderRoot FlexColumn responsive collapsed"><div id="e9edaeaf-8451-4ced-a25f-0f2aeaaa7653_header" class="expanderHead FlexHead" style="" onclick="toggleVisible('e9edaeaf-8451-4ced-a25f-0f2aeaaa7653');" alt="Expand/Collapse section"><a href="#" onclick="event.preventDefault()" class="rttl2" style="font-family: 'Arial'; font-size: 12pt; " id="e9edaeaf-8451-4ced-a25f-0f2aeaaa7653_label" width="100%">$UUIDSTRING(e9edaeaf-8451-4ced-a25f-0f2aeaaa7653) </a></div><div id="e9edaeaf-8451-4ced-a25f-0f2aeaaa7653_content" class="expanderContent FlexBody"><div class="expanderContentWrap" style="padding: 0px 10px 10px 10px; "><div class="LayoutTable responsive" cellpadding="0px"><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Title/Summary" nowrap="">
+    $ITEMFIELDLABEL(8f5a8886-b538-42a5-a1bc-8fe337be8211, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="justify" vertical-align="top" abbr="Title/Summary">
+    
+    $ITEMFIELDVALUE(8f5a8886-b538-42a5-a1bc-8fe337be8211, , ControlStyle, )
+    
+    <script>
+      function widgetTITLELoad()
+      {
+        SetFieldValue("Title/Summary", "", true);
+      }
+        
+      // add event callbacks
+    </script></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div><div class="LayoutRow"><div class="col-md-12 doubleCellVertical LayoutCell" style=" padding:0px;" vertical-align="top"><div class="doubleCell" style="padding:0px;" align="left" vertical-align="top" abbr="Item Id" nowrap="">
+    $ITEMFIELDLABEL(df2ad3d1-b7e6-4238-ad3f-dadc9b56de48, , LabelStyle
+    )
+    </div><div class="responsiveCellMinHeight" style="height: px;"> </div><div class="doubleCell" style="padding:0px;" align="justify" vertical-align="top" abbr="Item Id">
+    
+    $ITEMFIELDVALUE(df2ad3d1-b7e6-4238-ad3f-dadc9b56de48, , ControlStyle, )
+    
+    <script>
+      function widgetISSUEIDLoad()
+      {
+        SetFieldValue("Item Id", "", true);
+      }
+        
+      // add event callbacks
+    </script></div><div class="responsiveCellMinHeight" style="height: px;"> </div></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div></div></div><!----></div><div class="responsiveCellMinHeight" style=""> </div></div></div></div></td></tr></table></div><div class="scrollableStretch"> </div></td><td id="RightSidebar" class="sidebar sidebarCell" style=""><!----></td></tr><tr><td colspan="3" id="BottomSidebar" class="header-footer sidebarCell" style=""><!----></td></tr></table></div><style> #buttonsHeaderSection, #formbtns, #viewpoint {display:none;}#viewpoint {display:none;}#titlebar, #itemtitle {display:none;}#projectName {display:none;}#buttonsDiv {display:none;}#transitionbuttons, #state_form_buttons {display:none;}#lasttransitioninfo {display:none;}#actionControls, #toggle {display:none;}</style><script>
+      AddLoadCallback(function()
+      {
+        
+      });
+    </script><script>
+      function GetTransitionInternalName()
+      {
+        return "$TRANSITIONINTERNALNAME()";
+      }
+      function GetCurrentUser()
+      {
+        return "$USERID()";
+      }
+    </script><script language="javascript" type="text/javascript">
+
+AddLoadCallback(fn_FormLoadSOOShellFormatting);
+
+function fn_FormLoadSOOShellFormatting(e)
+{
+  action_SOOLoadUtils();
+
+  SetVisible("HiddenFieldsPanel", "hide");
+}
+
+
+AddLoadCallback(fn_FormLoadChangeAssignmentAction3);
+
+function fn_FormLoadChangeAssignmentAction3(e)
+{
+  if (condition_CurrentTransition("in", "CRS_CHANGE_REQUESTS.ADD_COMMENT"))
+  {
+    SetVisible("WorkLogGroupBoxControl", "hide");
+  }
+}
+
+
+AddLoadCallback(fn_FormLoadChangeAssignmentAction5);
+
+function fn_FormLoadChangeAssignmentAction5(e)
+{
+  if (condition_CurrentTransition("in", "CRS_CHANGE_REQUESTS.ADD_WORK_LOG"))
+  {
+    SetVisible("CommentsGroupBoxControl", "hide");
+  }
+}
+
+
+function condition_CurrentTransition(operator, value)
+{
+  var asInternalNames = value.split(',');
+  var transitionInternalName = GetTransitionInternalName();
+  for (var i = 0; i < asInternalNames.length; i++)
+  {
+    if (transitionInternalName == asInternalNames[i]) 
+    {
+      return (operator == "in");
+    }
+  }
+  return (operator != "in");
+}
+
+function action_SOOLoadUtils()
+{
+  SOO.ShellFormatting.init();
+}
+
+</script>
+      $STUDIOJS(551a1c6f-f6bf-4a10-a4d4-5dd64dd1e2de)
+    
+      $STUDIOJS(6e756b30-fb9a-4fa2-9017-ec69e4c7b6d0)
+    
+      $STUDIOJS(96d32648-6c14-4d3a-a18e-afb9dad20df4)
+    
+      $STUDIOJS(b35ec051-fee4-4f43-a020-d18aaeb33dc1)
+    
+      $STUDIOJS(cda3927c-4a18-40e6-a607-7aa3b57b51aa)
+    </div>

@@ -1,0 +1,215 @@
+include("app.ChangeRequests.Constants");
+add_global_const("BRANCH_PMO", "SREL_BRANCH_FLD_PRODTBL");
+include("app.ChangeRequests.Utils");
+include("app.ChangeRequests.SetControllerAndSubstitutes");
+
+def XferFieldValue(intDirection, srcAppData, dstAppData, srcAppField, dstAppField) {
+	var retVal = Variant();
+switch ( intDirection ) {
+	case( 0 ) {
+		retVal = srcAppData.GetFieldValue( srcAppField );
+		if(!IsBlank(retVal)){ dstAppData.SetFieldValue ( dstAppField, retVal); }
+		break;
+	}
+	default {
+		retVal = dstAppData.GetFieldValue( dstAppField );
+		if(!IsBlank(retVal)){ srcAppData.SetFieldValue( srcAppField, retVal); }
+		break;
+	}
+}
+	return retVal;
+
+}
+global errorMsg;
+if (errorMsg.is_var_undef()) { errorMsg = ""; } // only initialize g2 once, if global decl hit more than once
+
+global retVal = Variant();
+global productRecord = Variant();
+global readOk = Variant();
+
+global fldValue = Variant();
+
+global productID = Variant();
+global sSecOwners;
+if (sSecOwners.is_var_undef()) {  sSecOwners = ","; }
+
+global errMsg;
+if (errMsg.is_var_undef()) { errMsg = ""; }
+
+global u_ProjectController;
+global u_ProjectManagerGov;
+global u_Developer;
+global u_DevelopmentManager;
+global u_CMAnalyst;
+global u_ISSM;
+global u_TestLeadCtr;
+global u_RequirementsAnalyst;
+global u_SystemEngineerGov;
+global u_Tester;
+global u_ISSO;
+global u_SystemEngineerCtr;
+global u_TestLeadGov;
+global u_ProgramManager;
+global u_OPSGovLead;
+global u_CMManager;
+global u_TestCoordinator;
+global u_ProjectAnalystCtr;
+global u_LastStateChanger;
+global u_Owner;
+global u_Submitter;
+global u_LastModifier;
+global u_SubmittingAgent;
+global u_ReportedBy;
+global u_Assignee;
+global u_AffectedUser;
+
+global mu_RequirementsTeam;
+global mu_ChangeReqTeam;
+global mu_ProjectTeam;
+global mu_CMTeam;
+global mu_OPSTeam;
+global mu_VendorTeam;
+global mu_TestTeam;
+global mu_SecondaryOwner;
+global mu_AffectedUsers;
+
+global srel_Branch;
+global mrel_Vendors;
+global srel_Product;
+
+
+
+//s_VendorTeam  = XferFieldValue(0, Shell.Item(), Shell.Item(), "VENDOR_TEAM (TEMPLATE)", "VENDOR_TEAM");
+
+//s_TestTeam = Shell.Item().GetFieldValue("TEST_TEAM (TEMPLATE)").to_string().trim();
+//s_VendorTeam = TrimCommas(Shell.Item().GetFieldValue("VENDOR_TEAM (TEMPLATE)").to_string().trim());
+//s_VendorTeam = TrimCommas(Shell.Item().GetFieldValue("TEST_TEAM (TEMPLATE)").to_string().trim());
+
+//s_CMTeam = TrimCommas(Shell.Item().GetFieldValue("CM_TEAM (TEMPLATE)").to_string().trim());
+//s_ProjectTeam = TrimCommas(Shell.Item().GetFieldValue("PROJECT_TEAM (TEMPLATE)").to_string().trim());
+//s_OpsTeam = TrimCommas(Shell.Item().GetFieldValue("OPS_TEAM (TEMPLATE)").to_string().trim());
+//s_VendorTeam  = XferFieldValue(0, Shell.Item(), Shell.Item(), "VENDOR_TEAM (TEMPLATE)", "VENDOR_TEAM");
+//s_TestTeam = XferFieldValue(0, Shell.Item(), Shell.Item(), "TEST_TEAM (TEMPLATE)", "TEST_TEAM");
+//s_CMTeam = XferFieldValue(0, Shell.Item(), Shell.Item(), "CM_TEAM (TEMPLATE)", "CM_TEAM");
+//s_ProjectTeam = XferFieldValue(0, Shell.Item(), Shell.Item(), "PROJECT_TEAM (TEMPLATE)", "PROJECT_TEAM");
+//s_OpsTeam = XferFieldValue(0, Shell.Item(), Shell.Item(), "OPS_TEAM (TEMPLATE)", "OPS_TEAM");
+ ///if( !s_VendorTeam.empty()) { Shell.Item().SetFieldValue("VENDOR_TEAM", "," &&& s_VendorTeam &&& ","); }
+
+//s_VendorTeam  = ItemGetFieldValue(Shell.Item(), "VENDOR_TEAM(TEMPLATE)",errorMsg);
+//s_TestTeam  = ItemGetFieldValue(Shell.Item(), "TEST_TEAM(TEMPLATE)",errorMsg);
+//s_CMTeam  = ItemGetFieldValue(Shell.Item(), "CM_TEAM(TEMPLATE)",errorMsg);
+//s_ProjectTeam  = ItemGetFieldValue(Shell.Item(), "PROJECT_TEAM(TEMPLATE)",errorMsg);
+//s_OpsTeam  = ItemGetFieldValue(Shell.Item(), "OPS_TEAM(TEMPLATE)",errorMsg);
+/**
+Shell.Item().Fields().FindField(TEST_TEAM_FLD).SetBlankValue();
+Shell.Item().Fields().FindField(OPS_TEAM_FLD).SetBlankValue();
+Shell.Item().Fields().FindField(CM_TEAM_FLD).SetBlankValue();
+Shell.Item().Fields().FindField(PROJECT_TEAM_FLD).SetBlankValue();
+Shell.Item().Fields().FindField(VENDOR_TEAM_FLD).SetBlankValue();
+Shell.Item().Fields().FindField(REQUIREMENTS_TEAM_FLD).SetBlankValue();
+Shell.Item().Fields().FindField(CHANGE_REQUEST_TEAM_FLD).SetBlankValue(); **/
+
+var s_TestTeam = Variant();
+var s_VendorTeam = Variant();
+var s_CMTeam = Variant();
+var s_ProjectTeam = Variant();
+var s_OpsTeam = Variant();
+var s_ReqTeam = Variant();
+
+if (s_TestTeam.is_var_undef()) {  s_TestTeam = ","; }
+if (s_ReqTeam.is_var_undef()) {  s_ReqTeam = ","; }
+if (s_VendorTeam.is_var_undef()) {  s_VendorTeam = ","; }
+if (s_CMTeam.is_var_undef()) {  s_CMTeam = ","; }
+if (s_ProjectTeam.is_var_undef()) {  s_ProjectTeam = ","; }
+if (s_OpsTeam.is_var_undef()) {  s_OpsTeam = ","; }
+
+
+
+
+//Shell.Item().Fields().FindField(SREL_PRODUCT_FLD).GetValue(productID);
+productID = Shell.Item().GetFieldValue("SREL_PRODUCT");
+productRecord = Ext.CreateAppRecord(Ext.TableId (SDD_PRODUCTS_TBL));
+
+if(!IsBlank(productID)) {
+	if ( productRecord.ReadWithWhere ("TS_ID = " &&& productID) ) {
+		
+		srel_Branch = productRecord.GetFieldValue("BRANCH_PMO");
+		if( !IsBlank(srel_Branch) ){ Shell.Item().SetFieldValue( SREL_BRANCH_FLD, srel_Branch); }
+		//Shell.RedoMessage() = srel_Branch;
+
+		u_ProjectController = productRecord.GetFieldValue("PROJECT_CONTROLLER");
+		if(!IsBlank(u_ProjectController)){ Shell.Item().SetFieldValue( PROJECT_CONTROLLER_FLD, u_ProjectController); }
+		
+
+		u_ProjectManagerGov = productRecord.GetFieldValue("PROJECT_OFFICER");
+		if(!IsBlank(u_ProjectManagerGov)){ Shell.Item().SetFieldValue( PROJECT_MANAGER_GOV_FLD, u_ProjectManagerGov); }
+
+		u_Developer = productRecord.GetFieldValue("VENDOR_DEVELOPER");
+		if(!IsBlank(u_Developer)){ Shell.Item().SetFieldValue( DEVELOPER_FLD, u_Developer); }
+
+		u_DevelopmentManager = productRecord.GetFieldValue("VENDOR_MANAGER");
+		if(!IsBlank(u_DevelopmentManager)){ Shell.Item().SetFieldValue( DEVELOPMENT_MANAGER_FLD, u_DevelopmentManager); }
+		
+		u_CMAnalyst = productRecord.GetFieldValue("CM_ANALYST");
+		if(!IsBlank(u_CMAnalyst)){ Shell.Item().SetFieldValue( CM_ANALYST_FLD, u_CMAnalyst); }
+
+		u_ISSM = productRecord.GetFieldValue("ISSM");
+		if(!IsBlank(u_ISSM)){ Shell.Item().SetFieldValue( ISSM_FLD, u_ISSM); }
+
+		u_TestLeadCtr = productRecord.GetFieldValue("QA_TEST_LEAD_CTR");
+		if(!IsBlank(u_TestLeadCtr)){ Shell.Item().SetFieldValue( TEST_LEAD_CTR_FLD, u_TestLeadCtr); }
+
+		u_RequirementsAnalyst = productRecord.GetFieldValue("REQUIREMENTS_ANALYST");
+		if(!IsBlank(u_RequirementsAnalyst)){ Shell.Item().SetFieldValue( REQUIREMENTS_ANALYST_FLD, u_RequirementsAnalyst); }
+
+		u_SystemEngineerGov = productRecord.GetFieldValue("SYSTEM_ENGINEER_GOV");
+		if(!IsBlank(u_SystemEngineerGov)){ Shell.Item().SetFieldValue( SYSTEM_ENGINEER_GOV_FLD, u_SystemEngineerGov); }
+
+		u_Tester = productRecord.GetFieldValue("QA_TEST_ENGINEER");
+		if(!IsBlank(u_Tester)){ Shell.Item().SetFieldValue( TESTER_FLD, u_Tester); }
+
+		u_ISSO = productRecord.GetFieldValue("ISSO");
+		if(!IsBlank(u_ISSO)){ Shell.Item().SetFieldValue( ISSO_FLD, u_ISSO); }
+
+		u_SystemEngineerCtr = productRecord.GetFieldValue("PROJECT_TECH_ENG_LEAD_CTR");
+		if(!IsBlank(u_SystemEngineerCtr)){ Shell.Item().SetFieldValue( SYSTEM_ENGINEER_CTR_FLD, u_SystemEngineerCtr); }
+
+		u_TestLeadGov = productRecord.GetFieldValue("QA_TEST_LEAD_GOV");
+		if(!IsBlank(u_TestLeadGov)){ Shell.Item().SetFieldValue( TEST_LEAD_GOV_FLD, u_TestLeadGov); }
+
+		u_ProgramManager = productRecord.GetFieldValue("PROGRAM_MANAGER");
+		if(!IsBlank(u_ProgramManager)){ Shell.Item().SetFieldValue( PROGRAM_MANAGER_FLD, u_ProgramManager); }
+
+		u_OPSGovLead = productRecord.GetFieldValue("OPS_GOV_LEAD");
+		if(!IsBlank(u_OPSGovLead)){ Shell.Item().SetFieldValue( OPS_GOV_LEAD_FLD, u_OPSGovLead); }
+
+		u_CMManager = productRecord.GetFieldValue("CM_MANAGER");
+		if(!IsBlank(u_CMManager)){ Shell.Item().SetFieldValue( CM_MANAGER_FLD, u_CMManager); }
+
+		u_TestCoordinator = productRecord.GetFieldValue("TEST_COORDINATOR");
+		if(!IsBlank(u_TestCoordinator)){ Shell.Item().SetFieldValue( TEST_COORDINATOR_FLD, u_TestCoordinator); }
+
+		u_ProjectAnalystCtr = productRecord.GetFieldValue("PROJECT_COORDINATOR");
+		if(!IsBlank(u_ProjectAnalystCtr)){ Shell.Item().SetFieldValue( PROJECT_ANALYST_CTR_FLD, u_ProjectAnalystCtr); }
+
+
+		mu_RequirementsTeam = productRecord.GetFieldValue("REQUIREMENTS_TEAM");
+		mu_ProjectTeam = productRecord.GetFieldValue("PROJECT_TEAM");
+		mu_CMTeam = productRecord.GetFieldValue("CM_TEAM");
+		mu_OPSTeam = productRecord.GetFieldValue("OPS_TEAM");
+		mu_VendorTeam = productRecord.GetFieldValue("VENDOR_TEAM");
+
+		mu_TestTeam = productRecord.GetFieldValue("QA_TEAM");
+		//if(!IsBlank(mu_TestTeam)){ s_QATeam = s_QATeam &&& TrimCommas(mu_TestTeam.to_string()) &&& ","; }
+		if(!IsBlank(mu_TestTeam)){ Shell.Item().SetFieldValue( TEST_TEAM_FLD, mu_TestTeam); }
+
+
+
+		mrel_Vendors = productRecord.GetFieldValue("VENDORS").to_string();
+		if(!IsBlank(mrel_Vendors)){ Shell.Item().SetFieldValue( MREL_VENDORS_FLD, mrel_Vendors); }
+
+
+	}
+		Shell.Item().SetFieldValue( CHANGE_REQUEST_TEAM_FLD, SetControllerAndSubstitutes());
+
+}
